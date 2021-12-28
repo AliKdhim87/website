@@ -1,0 +1,13 @@
+overwrite: true
+customFetch: 'codegen-prismic-fetch'
+schema: ${SCHEMA_URL}
+documents: 'queries/**/*.graphql.ts'
+generates:
+  generated/graphql.tsx:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+  ./graphql.schema.json:
+    plugins:
+      - 'introspection'
