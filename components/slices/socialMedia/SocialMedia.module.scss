@@ -1,0 +1,14 @@
+.social-media {
+  padding-block-start: var(--space-3);
+  padding-block-end: var(--space-3);
+  background-color: var(--colors-secondary-bg);
+}
+
+.social-media__title {
+  margin-block-end: var(--social-media-title-margin-block-end);
+}
+
+.social-media__link {
+  color: var(--text-color-dark);
+  font-size:  24px;
+}

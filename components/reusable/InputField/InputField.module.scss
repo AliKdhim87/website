@@ -1,0 +1,40 @@
+@use '../Typography/Typography.module.scss' as *;
+
+.input-field {
+  @extend .typography-body--size-mobile;
+
+  margin-block: var(--space-1);
+  border: var(--input-field-border-width) solid var(--input-field-border-color);
+  padding: var(--space-1);
+  border-radius: var(--input-field-border-border-radius);
+  outline: none;
+  background-color: transparent;
+  color: var(--input-field-color);
+
+  &::placeholder {
+    @extend .typography-body--size-mobile;
+
+    color: var(--input-field-placeholder-color, inherit);
+  }
+
+  &:hover {
+    --input-field-border-color: var(--input-field-border-color-hover);
+  }
+
+  &:focus {
+    --input-field-border-color: var(--input-field-border-color-focus);
+  }
+
+  &:disabled {
+    --input-field-border-color: var(--input-field-border-color-disabled);
+    --input-field-placeholder-color: var(
+      --input-field-placeholder-disabled-color
+    );
+  }
+
+  &--error {
+    --input-field-border-color: var(--input-field-border-error-color);
+    --input-field-border-color-hover: var(--input-field-border-error-color);
+    --input-field-border-color-focus: var(--input-field-border-error-color);
+  }
+}

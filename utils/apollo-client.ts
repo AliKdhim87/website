@@ -1,10 +1,15 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { PrismicLink } from "apollo-link-prismic";
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+
+const cache = new InMemoryCache();
 
 export const client = new ApolloClient({
-    link: PrismicLink({
-        uri: "https://myblogpost.cdn.prismic.io/graphql",
-        accessToken: process.env.ACCESS_TOKEN
-    }),
-    cache: new InMemoryCache()
+  // Provide required constructor fields
+  cache: cache,
+  uri: process.env.SCHEMA_URL,
+  queryDeduplication: false,
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'cache-and-network',
+    },
+  },
 });

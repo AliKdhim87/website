@@ -1,0 +1,233 @@
+@use "./common/" as *;
+
+:root {
+  --colors-primary: #ffd166;
+  --colors-primary-dark: #ffba1a;
+  --colors-secondary: #115e59;
+  --colors-primary-bg: #222831;
+  --colors-secondary-bg: #393e46;
+  --colors-backdrop-bg: rgba(0 0 0 / 50%);
+  --colors-grey-0: #fff;
+  --colors-grey-50: #fafafa;
+
+  // --colors-grey-100: #f5f5f5;
+  --colors-grey-200: #e5e5e5;
+  --colors-grey-300: #d4d4d4;
+  --colors-grey-400: #a3a3a3;
+  --colors-grey-500: #737373;
+  --colors-grey-600: #525252;
+  --colors-grey-700: #404040;
+  --colors-grey-800: #282828;
+  --colors-grey-900: #0c0b0b;
+  --colors-grey-100: #000;
+  --colors-error: #ff002c;
+  --text-color-dark: var(--colors-grey-0);
+  --text-color-light: var(--colors-grey-100);
+  
+
+  // Button
+
+  --button-padding: 10px 20px;
+  --button-transition: 0.5s;
+  --button-primary-color: var(--colors-grey-100);
+  --button-focus-border: 0 0 0 2px var(--colors-grey-0);
+  --button-disabled-color: var(--colors-grey-500);
+  --button-primary-background-color: var(--colors-primary);
+  --button-primary-hover-background-color: var(--colors-primary-dark);
+  --button-primary-disabled-background-color: var(--colors-grey-300);
+  --button-secondary-color: var(--colors-grey-0);
+  --button-secondary-border: 0 0 0 1px var(--colors-secondary);
+  --button-secondary-disabled-border: 0 0 0 1px var(--colors-grey-300);
+  --button-secondary-hover-background-color: var(--colors-secondary);
+  --button-secondary-focus-background-color: var(--colors-secondary);
+
+  /* Typography */
+  --font-family: "Roboto", sans-serif;
+  --typography-color: var(--text-color-dark);
+  --typography-h1-font-size: var(--typography-h2-font-size);
+  --typography-h1-line-height: var(--typography-h2-line-height);
+  --typography-h2-font-size: 32px;
+  --typography-h2-line-height: 37px;
+  --typography-h3-font-size: var(--typography-h4-font-size);
+  --typography-h3-line-height: var(--typography-h4-line-height);
+  --typography-h4-font-size: var(--typography-h5-font-size);
+  --typography-h4-line-height: var(--typography-h5-line-height);
+  --typography-h5-font-size: 22px;
+  --typography-h5-line-height: 23px;
+  --typography-subtitle-font-size: 20px;
+  --typography-subtitle-line-height: 28px;
+  --typography-body-regular-font-size: 18px;
+  --typography-body-regular-line-height: 28px;
+  --typography-body-regular-mobile-font-size: 16px;
+  --typography-body-regular-secondary-font-size: 14px;
+  --typography-font-weight-500: 500;
+  --typography-font-weight-600: 600;
+  --typography-font-weight-700: 700;
+  --typography-body-padding-block: 0;
+  --typography-body-padding-inline: 0;
+
+  // SocialMedia
+  --social-media-title-margin-block-end: var(--space-3);
+
+  // Card
+  --card-margin-block-start: var(--space-4);
+
+  // Helpers
+  --text-align-sm-center: center;
+  --text-align-sm-start: center;
+  --text-align-md-center: center;
+  --text-align-md-start: center;
+
+  // Spacing
+  --space-1: 10px;
+  --space-2: 20px;
+  --space-3: 30px;
+  --space-4: 50px;
+  --space-5: 80px;
+
+  // Border-Radius
+  --border-radius: 5px;
+
+  // Input field
+  --input-field-border-border-radius: var(--border-radius);
+  --input-field-border-width: 1px;
+  --input-field-border-color: var(--colors-grey-0);
+  --input-field-border-color-hover: var(--colors-primary);
+  --input-field-border-color-focus: var(--colors-primary);
+  --input-field-border-error-color: var(--colors-error);
+  --input-field-border-color-disabled: var(--colors-grey-400);
+  --input-field-color: var(--text-color-dark);
+  --input-field-placeholder-disabled-color: var(--colors-grey-400);
+
+  // Textarea
+  --textarea-border-border-radius: var(--border-radius);
+  --textarea-border-width: 1px;
+  --textarea-border-color: var(--colors-grey-0);
+  --textarea-border-color-hover: var(--colors-primary);
+  --textarea-border-color-focus: var(--colors-primary);
+  --textarea-border-error-color: var(--colors-error);
+  --textarea-border-color-disabled: var(--colors-grey-400);
+  --textarea-color: var(--text-color-dark);
+  --textarea-placeholder-disabled-color: var(--colors-grey-400);
+
+  // PageHeader
+  --page-header-section-padding-block: var(--space-4);
+  --page-header-section-image-padding-block-start: var(--space-3);
+
+  @include breakpoint("lg") {
+    --container-padding-inline: 120px;
+  }
+
+  @include breakpoint("md") {
+    --text-align-md-center: initial;
+    --text-align-md-start: initial;
+    --typography-h1-font-size: 64px;
+    --typography-h1-line-height: 75px;
+    --typography-h3-font-size: 32px;
+    --typography-h3-line-height: 37px;
+    --typography-h4-font-size: 24px;
+    --typography-h4-line-height: 28px;
+  }
+
+  @include breakpoint("sm") {
+    // Spacing/utils/responsive
+
+    .margin-block-sm-5 {
+      margin-block: var(--space-5);
+    }
+
+    .margin-block-sm-0 {
+      margin-block: 0;
+    }
+
+    --page-header-section-padding-block: var(--space-5);
+
+    // SocialMedia
+
+    --social-media-title-margin-block-end: 0;
+
+    // PageHeader
+
+    --page-header-section-image-padding-block-start: 0;
+
+    // Helpers
+    --text-align-sm-center: initial;
+    --text-align-sm-start: initial;
+
+    // justify-content
+    --grid-sm-center: initial;
+  }
+
+  /* Container */
+  --container-padding-inline: 10px;
+
+  /* NavLinksItem */
+  --nav-links-item-margin-inline-start: var(--space-2);
+
+  /* NavLink */
+  --nav-links-hover-color: var(--colors-primary-dark);
+  --nav-links-active-color: var(--colors-primary);
+  --nav-link-border-hover: 4px solid var(--nav-links-hover-color);
+  --nav-link-border-active: 4px solid var(--nav-links-active-color);
+  --nav-link-padding-bottom: 4px;
+}
+
+@media (max-width: 600px) {
+  .margin-block-xs-5 {
+    margin-block: var(--space-5);
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+p, h1, h2, h3, h4, h5{
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+pre {
+  margin-block-start: 0;
+  background-color: var(--colors-primary-bg) !important;
+
+  > code {
+    font-family: var(--font-family) !important;
+  }
+}
+
+.blog {
+  color: var(--text-color-dark);
+  font-family: var(--font-family);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.modal-enter .modal-content {
+  opacity: 0;
+  transform: translateX(400px);
+}
+
+.modal-enter-active .modal-content {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.2s;
+}
+
+.modal-exit .modal-content {
+  opacity: 1;
+}
+
+.modal-exit-active .modal-content {
+  opacity: 0;
+  transform: translateX(400px);
+  transition: all 0.6s;
+}

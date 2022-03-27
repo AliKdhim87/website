@@ -1,0 +1,16 @@
+.page-header-section {
+  text-align: center;
+  padding-block: var(--page-header-section-padding-block);
+}
+
+.page-header-section--bg-primary {
+  background-color: var(--colors-primary-bg);
+}
+
+.page-header-section--bg-transparent {
+  background-color: transparent;
+}
+
+.page-header-section__image {
+  padding-block-start: var(--page-header-section-image-padding-block-start);
+}

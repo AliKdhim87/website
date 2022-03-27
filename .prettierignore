@@ -1,0 +1,18 @@
+# Ignore 3rd party files
+node_modules
+out/
+dist/
+build/
+deployment/
+.gitlab-ci.yml
+
+# Ignore generated files
+.next
+package.json
+package-lock.json
+yarn.lock
+next-env.d.ts
+/storybook-static
+.config/
+CHANGELOG.md
+/lib

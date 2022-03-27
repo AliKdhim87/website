@@ -1,0 +1,87 @@
+@use '../../../styles/common/mixins' as *;
+
+$justify-content: (flex-start, flex-end, center, space-between);
+$align-items: (flex-start, flex-end, center);
+$spacing: (
+  "sm": 8px,
+  "md": 16px,
+  "lg": 24px,
+);
+
+.Grid {
+  &_container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &_item {
+    display: block;
+  }
+
+  @for $i from 1 to 13 {
+    &_xs_#{$i} {
+      flex: 0 0 auto;
+      width: calc($i / 12 * 100%);
+    }
+  }
+
+  @include breakpoint("sm") {
+    @for $i from 1 to 13 {
+      &_sm_#{$i} {
+        flex: 0 0 auto;
+        width: calc($i / 12 * 100%);
+      }
+    }
+  }
+
+  @include breakpoint("md") {
+    @for $i from 1 to 13 {
+      &_md_#{$i} {
+        flex: 0 0 auto;
+        width: calc($i / 12 * 100%);
+      }
+    }
+  }
+
+  @include breakpoint("lg") {
+    @for $i from 1 to 13 {
+      &_lg_#{$i} {
+        flex: 0 0 auto;
+        width: calc($i / 12 * 100%);
+      }
+    }
+  }
+
+  @each $name, $value in $spacing {
+    &_spacing_#{$name} {
+      margin: -$value;
+    }
+
+    &_spacing_#{$name} > &_item {
+      padding: $value;
+    }
+  }
+
+  @each $value in $justify-content {
+    &_justifyContent_#{$value} {
+      display: flex;
+      justify-content: $value;
+    }
+  }
+
+  @each $value in $align-items {
+    &_alignItems_#{$value} {
+      display: flex;
+      align-items: $value;
+    }
+  }
+
+  @include breakpoint("sm") {
+    @each $value in $justify-content {
+      &_justifyContent_sm_#{$value} {
+        display: flex;
+        justify-content: $value;
+      }
+    }
+  }
+}

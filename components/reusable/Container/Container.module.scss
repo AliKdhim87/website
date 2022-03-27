@@ -1,0 +1,16 @@
+@use '../../../styles/common/mixins' as *;
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  padding-inline: var(--container-padding-inline);
+  width: 100%;
+  max-width: 1440px;
+}
+
+.container--fluid {
+  --container-padding-right: 0;
+  --container-padding-left: 0;
+
+  max-width: 1440px;
+}

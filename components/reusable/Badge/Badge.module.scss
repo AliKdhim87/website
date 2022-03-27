@@ -1,0 +1,8 @@
+@use '../Button/Button.module.scss' as *;
+
+.badge {
+  @extend .button--secondary;
+  @extend .button;
+
+  border-radius: var(--border-radius);
+}

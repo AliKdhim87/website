@@ -1,0 +1,13 @@
+@use '../Typography/Typography.module.scss' as *;
+
+.label {
+  @extend .typography-body;
+
+  position: relative;
+}
+
+.label--required::after {
+  content: "*";
+  position: absolute;
+  margin-inline-start: 5px;
+}
