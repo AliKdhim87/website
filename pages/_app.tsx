@@ -1,3 +1,4 @@
+import 'react-toastify/dist/ReactToastify.css';
 import '@fontsource/roboto';
 
 import '@/styles/globals.scss';

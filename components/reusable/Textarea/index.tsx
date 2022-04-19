@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, TextareaHTMLAttributes } from 'react';
+import { DetailedHTMLProps, TextareaHTMLAttributes, forwardRef } from 'react';
 import classNames from 'classnames/bind';
 
 import { Label, HelperText } from '@/components/reusable';
@@ -15,7 +15,10 @@ interface TextareaProps extends DetailedHTMLProps<TextareaHTMLAttributes<HTMLTex
   label: string;
 }
 
-export const Textarea: React.FC<TextareaProps> = ({ required, error, label, helperText, disabled, ...props }) => {
+const forwardRefTextarea = (
+  { required, error, label, helperText, disabled, ...props }: TextareaProps,
+  ref: React.LegacyRef<HTMLTextAreaElement> | undefined,
+) => {
   const id = uuidv4();
   const ariaLabelledby = uuidv4();
   const ariaDescribedby = uuidv4();
@@ -32,9 +35,12 @@ export const Textarea: React.FC<TextareaProps> = ({ required, error, label, help
         disabled={disabled}
         className={textareaClasses}
         aria-describedby={ariaDescribedby}
+        ref={ref}
         {...props}
       />
       <HelperText error={error} id={ariaDescribedby} helperText={helperText} />
     </FormGroup>
   );
 };
+
+export const Textarea = forwardRef(forwardRefTextarea);

@@ -146,7 +146,14 @@ export const Nav = ({ logo, navLinks }: NavProps) => {
             {logo && logo.src && logo.alt && logo.width && logo.height && (
               <Link href="/" passHref>
                 <a>
-                  <Image src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} layout="fixed" />
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={logo.width}
+                    height={logo.height}
+                    layout="fixed"
+                    priority
+                  />
                 </a>
               </Link>
             )}

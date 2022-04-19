@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import { DetailedHTMLProps, forwardRef, InputHTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
 
 import { Label, HelperText } from '@/components/reusable';
@@ -15,19 +15,15 @@ interface InputFieldProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInpu
   label: string;
 }
 
-export const InputField: React.FC<InputFieldProps> = ({
-  type = 'tex',
-  required,
-  error,
-  label,
-  helperText,
-  disabled,
-  ...props
-}) => {
+const forwardRefInputField = (
+  { type = 'tex', required, error, label, helperText, disabled, ...props }: InputFieldProps,
+  ref: React.LegacyRef<HTMLInputElement> | undefined,
+) => {
   const id = uuidv4();
   const ariaLabelledby = uuidv4();
   const ariaDescribedby = uuidv4();
   const inputFieldClasses = css('input-field', { 'input-field--error': error });
+
   return (
     <FormGroup>
       <Label required={required} htmlFor={id} id={ariaLabelledby}>
@@ -40,9 +36,12 @@ export const InputField: React.FC<InputFieldProps> = ({
         disabled={disabled}
         className={inputFieldClasses}
         aria-describedby={ariaDescribedby}
+        ref={ref}
         {...props}
       />
       <HelperText error={error} id={ariaDescribedby} helperText={helperText} />
     </FormGroup>
   );
 };
+
+export const InputField = forwardRef(forwardRefInputField);
