@@ -8,6 +8,7 @@ export * from './Container';
 export * from './CTA';
 export * from './Form';
 export * from './FormGroup';
+export * from './GraphComments';
 export * from './Grid';
 export * from './HelperText';
 export * from './icons/Icon';
