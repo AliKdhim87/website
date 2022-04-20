@@ -12,6 +12,7 @@ import { Container, Grid, BlockCode, SnippetCodeType, Typography, BlogPostTitle 
 import { Tags } from '@/components/slices';
 import { GetStaticProps, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
+import { GraphComment } from '@/components/reusable';
 
 interface PostProps {
   post: Post;
@@ -98,6 +99,7 @@ const Post: NextPage<PostProps> = ({ post, SiteSettings: { footer, navigation } 
                 <PortableText onMissingComponent={false} value={bodyRaw} components={serializers} />
               </Grid>
             </Grid>
+            <GraphComment />
           </Container>
         </>
       </>
