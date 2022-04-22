@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
-import { useState } from 'react';
-import { sendForm } from 'emailjs-com';
+import { useRef, useState } from 'react';
+import { sendForm } from '@emailjs/browser';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -18,6 +18,7 @@ interface AboutPageProps {
 
 const Contact: NextPage<AboutPageProps> = ({ SiteSettings: { navigation, footer }, Route: { openGraph, page } }) => {
   const [isBsy, setIsBsy] = useState(false);
+  const form = useRef<any>();
   const {
     register,
     handleSubmit,
@@ -48,7 +49,7 @@ const Contact: NextPage<AboutPageProps> = ({ SiteSettings: { navigation, footer 
         const { status } = await sendForm(
           process.env.NEXT_PUBLIC_EMAIL_SERVICE,
           process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
-          event.target as HTMLFormElement,
+          form.current,
           process.env.NEXT_PUBLIC_EMAIL_USER_ID,
         );
 
@@ -80,7 +81,7 @@ const Contact: NextPage<AboutPageProps> = ({ SiteSettings: { navigation, footer 
         <ToastContainer />
         <Grid container justifyContent="center">
           <Grid lg={6} md={10} sm={12} xs={12}>
-            <Form onSubmit={handleSubmit(onEmailSubmit)}>
+            <Form onSubmit={handleSubmit(onEmailSubmit)} ref={form}>
               <InputField
                 {...register('fullname', {
                   required: {
