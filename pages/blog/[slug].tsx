@@ -1,13 +1,18 @@
 import { ParsedUrlQuery } from 'querystring';
 
-import { PortableText, PortableTextReactComponents } from '@portabletext/react';
-import { getImageDimensions } from '@sanity/asset-utils';
-import urlBuilder from '@sanity/image-url';
+import { PortableText } from '@portabletext/react';
 import { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 
 import { Layout } from '@/components/global';
-import { Container, Grid, BlockCode, Typography, BlogPostTitle, GraphComment } from '@/components/reusable';
+import {
+  Container,
+  Grid,
+  Typography,
+  BlogPostTitle,
+  PortableTextComponents,
+  GraphComment,
+} from '@/components/reusable';
 import { Tags } from '@/components/slices';
 import { client, createNavData } from '@/utils';
 import { GetAllBlogSlugsQuery, GetBlogBySlugQuery, GetSiteSettingsQuery, Post, SiteSettings } from 'generated/graphql';
@@ -17,50 +22,6 @@ interface PostPageProps {
   post: Post;
   siteSettings: SiteSettings;
 }
-
-const serializers: Partial<PortableTextReactComponents> = {
-  types: {
-    code: ({ value: { language, code } }) => <BlockCode language={language} code={code} />,
-    mainImage: ({ value }) => {
-      if (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID && process.env.NEXT_PUBLIC_SANITY_DATASET) {
-        const { width, height } = getImageDimensions(value);
-        const imageUrl = urlBuilder({
-          projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-          dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-        })
-          .image(value.asset._ref)
-          .width(800)
-          .fit('max')
-          .auto('format')
-          .url();
-
-        return imageUrl ? <Image loading="eager" src={imageUrl} alt={value.alt} width={width} height={height} /> : null;
-      }
-      return null;
-    },
-  },
-  block: {
-    h2: ({ children }) => (
-      <Typography as="h2" variant="h2" className="space-mb-2">
-        {children}
-      </Typography>
-    ),
-    normal: ({ children }) => (
-      <Typography as="p" variant="body" className="space-mb-1">
-        {children}
-      </Typography>
-    ),
-  },
-  listItem: {
-    bullet: ({ children }) => (
-      <li className="text-color">
-        <Typography as="p" variant="body">
-          {children}
-        </Typography>
-      </li>
-    ),
-  },
-};
 
 const PostPage: NextPage<PostPageProps> = ({ post, siteSettings: { footer, navigation } }) => {
   const { title, bodyRaw, categories, excerpt, mainImage, publishedAt } = post;
@@ -91,7 +52,7 @@ const PostPage: NextPage<PostPageProps> = ({ post, siteSettings: { footer, navig
             <Grid container justifyContent="center">
               <Grid md={10} item>
                 {categories && <Tags tags={categories} />}
-                <PortableText onMissingComponent={false} value={bodyRaw} components={serializers} />
+                <PortableText onMissingComponent={false} value={bodyRaw} components={PortableTextComponents} />
               </Grid>
             </Grid>
             <GraphComment />
