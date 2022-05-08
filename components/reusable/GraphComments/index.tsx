@@ -1,4 +1,3 @@
-import { log } from 'console';
 import { useEffect } from 'react';
 
 declare global {
@@ -16,14 +15,14 @@ export const GraphComment: React.FC = () => {
       graphcomment_id: process.env.NEXT_PUBLIC_GRAPH_COMMENTS_WEBSITE_ID,
       fixed_header_height: 0,
     };
-    (function () {
+    (function graphComment() {
       const gc = document.createElement('script');
       gc.type = 'text/javascript';
       gc.async = true;
-      gc.src = 'https://graphcomment.com/js/integration.js?' + Date.now();
+      gc.src = `https://graphcomment.com/js/integration.js?${Date.now()}`;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
     })();
   }, []);
 
-  return <div id="graphcomment"></div>;
+  return <div id="graphcomment" />;
 };

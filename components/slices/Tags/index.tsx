@@ -1,16 +1,12 @@
 import classNames from 'classnames/bind';
-import { Container, Grid, Badge } from '@/components/reusable';
 
 import styles from './Tags.module.scss';
+
+import { Grid, Badge } from '@/components/reusable';
 import { uuidv4 } from '@/utils';
 import { Category, Maybe } from 'generated/graphql';
 
 const css = classNames.bind(styles);
-
-type TagsDataTypes = {
-  title: string;
-  _id: string;
-};
 
 interface TagsProps {
   tags: Maybe<Category>[];

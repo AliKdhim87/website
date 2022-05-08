@@ -1,9 +1,10 @@
 import classNames from 'classnames/bind';
-import { Container, Grid, Typography, Icon, IconsType } from '@/components/reusable';
-import { uuidv4 } from '@/utils';
+import { Maybe } from 'graphql/jsutils/Maybe';
 
 import styles from './SocialMedia.module.scss';
-import { Maybe } from 'graphql/jsutils/Maybe';
+
+import { Container, Grid, Typography, Icon, IconsType } from '@/components/reusable';
+import { uuidv4 } from '@/utils';
 import { Social } from 'generated/graphql';
 
 const css = classNames.bind(styles);

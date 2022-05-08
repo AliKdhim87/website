@@ -1,8 +1,9 @@
 import classNames from 'classnames/bind';
 import { DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
-import { Typography } from '@/components/reusable';
 
 import styles from './Button.module.scss';
+
+import { Typography } from '@/components/reusable';
 
 const css = classNames.bind(styles);
 
@@ -19,6 +20,7 @@ export const Button = ({ text, variant = 'primary', className, loading, ...props
   });
 
   return (
+    // eslint-disable-next-line react/button-has-type
     <button {...props} className={classes} aria-live={loading ? 'polite' : undefined} aria-busy={loading}>
       {text && (
         <Typography as="span" variant="body" className={css({ 'button--hide-text': loading })}>

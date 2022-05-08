@@ -5,7 +5,7 @@ import styles from './Form.module.scss';
 
 const css = classNames.bind(styles);
 
-interface FormProps extends DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement> {}
+type FormProps = DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>;
 
 const forwardRefForm = ({ children, ...props }: FormProps, ref: LegacyRef<HTMLFormElement> | undefined) => (
   <form className={css('form')} {...props} ref={ref}>

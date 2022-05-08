@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind';
 
+import styles from './BlogPostTitle.module.scss';
+
 import { Container, Typography } from '@/components/reusable';
 import { Maybe } from 'generated/graphql';
-
-import styles from './BlogPostTitle.module.scss';
 
 const css = classNames.bind(styles);
 

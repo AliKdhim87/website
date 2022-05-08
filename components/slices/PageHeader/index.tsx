@@ -1,9 +1,10 @@
-import Image from 'next/image';
 import classNames from 'classnames/bind';
-import { Container, Typography, Grid, CTA } from '@/components/reusable';
+import { Maybe } from 'graphql/jsutils/Maybe';
+import Image from 'next/image';
 
 import styles from './PageHeader.module.scss';
-import { Maybe } from 'graphql/jsutils/Maybe';
+
+import { Container, Typography, Grid, CTA } from '@/components/reusable';
 import { Cta } from 'generated/graphql';
 
 const css = classNames.bind(styles);

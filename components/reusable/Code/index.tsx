@@ -1,8 +1,9 @@
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { atomOneDark, atomOneLight, a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import classNames from 'classnames/bind';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 import styles from './Code.module.scss';
+
 import { Typography } from '@/components/reusable';
 
 export type SnippetCodeType = {
@@ -20,7 +21,7 @@ export const BlockCode: React.FC<SnippetCodeType> = ({ language, code }) => (
       language={language}
       style={atomOneDark}
       showLineNumbers
-      wrapLines={true}
+      wrapLines
       lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
     >
       {code}

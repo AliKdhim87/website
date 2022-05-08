@@ -1,8 +1,9 @@
-import { Container, Grid, Typography } from '@/components/reusable';
 import classNames from 'classnames/bind';
 import { Maybe } from 'graphql/jsutils/Maybe';
 
 import styles from './index.module.scss';
+
+import { Container, Grid, Typography } from '@/components/reusable';
 
 const css = classNames.bind(styles);
 

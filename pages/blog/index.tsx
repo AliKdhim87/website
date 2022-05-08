@@ -1,14 +1,14 @@
 import { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
 
-import { GET_ALL_BLOG, GET_PAGE_BY_SLUG } from 'queries/index.graphql';
-import { GetAllBlogQuery, Post, Route, SiteSettings } from 'generated/graphql';
-import { client, createNavData } from '@/utils';
 import { Layout } from '@/components/global';
 import { PageHeader, RecentPostsProps } from '@/components/slices';
+import { client, createNavData } from '@/utils';
+import { GetAllBlogQuery, Post, Route, SiteSettings } from 'generated/graphql';
+import { GET_ALL_BLOG, GET_PAGE_BY_SLUG } from 'queries/index.graphql';
 
 const RecentPosts = dynamic<RecentPostsProps>(
-  () => import('@/components/slices').then(({ RecentPosts }) => RecentPosts),
+  () => import('@/components/slices').then(({ RecentPosts: RecentPostsComponents }) => RecentPostsComponents),
   {
     ssr: false,
   },

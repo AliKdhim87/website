@@ -1,6 +1,6 @@
+import { sendForm } from '@emailjs/browser';
 import { GetStaticProps, NextPage } from 'next';
 import { useRef, useState } from 'react';
-import { sendForm } from '@emailjs/browser';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -38,7 +38,7 @@ const Contact: NextPage<AboutPageProps> = ({ SiteSettings: { navigation, footer 
     });
   };
 
-  const onEmailSubmit = async (_data: any, event: any) => {
+  const onEmailSubmit = async () => {
     try {
       if (
         process.env.NEXT_PUBLIC_EMAIL_SERVICE &&
@@ -65,18 +65,15 @@ const Contact: NextPage<AboutPageProps> = ({ SiteSettings: { navigation, footer 
       }
     } catch (error) {
       setIsBsy(false);
-      console.error(error);
       toastify('Something went wrong! Email not sent', 'error');
     }
   };
 
   return (
     <Layout seo={openGraph} footer={footer?.copyright} nav={createNavData(navigation)}>
-      {page?.content?.map((component) => {
-        if (component?.__typename === 'PageHeader') {
-          return <PageHeader title={component.title} key={uuidv4()} />;
-        }
-      })}
+      {page?.content?.map(
+        (component) => component?.__typename === 'PageHeader' && <PageHeader title={component.title} key={uuidv4()} />,
+      )}
       <Container>
         <ToastContainer />
         <Grid container justifyContent="center">
@@ -103,7 +100,7 @@ const Contact: NextPage<AboutPageProps> = ({ SiteSettings: { navigation, footer 
                   },
                   pattern: {
                     value:
-                      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                     message: 'Please enter a valid email address',
                   },
                 })}

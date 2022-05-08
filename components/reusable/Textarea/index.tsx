@@ -1,11 +1,12 @@
-import { DetailedHTMLProps, TextareaHTMLAttributes, forwardRef } from 'react';
 import classNames from 'classnames/bind';
+import { DetailedHTMLProps, TextareaHTMLAttributes, forwardRef } from 'react';
 
-import { Label, HelperText } from '@/components/reusable';
+import { FormGroup } from '../FormGroup';
 
 import styles from './Textarea.module.scss';
+
+import { Label, HelperText } from '@/components/reusable';
 import { uuidv4 } from '@/utils';
-import { FormGroup } from '../FormGroup';
 
 const css = classNames.bind(styles);
 

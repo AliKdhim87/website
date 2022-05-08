@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
+
 import { Typography } from '../Typography';
 
 import styles from './HelperText.module.scss';
@@ -17,6 +18,7 @@ export const HelperText: React.FC<HelperTextProps> = ({ helperText, error, id })
     'helper-text--error': error,
   });
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {helperText && (
         <Typography as="p" variant="body" className={classes} id={id}>

@@ -1,4 +1,5 @@
 import { ParsedUrlQuery } from 'querystring';
+
 import { GetStaticProps, NextPage } from 'next';
 
 import { Layout } from '@/components/global';
@@ -17,16 +18,16 @@ import { GET_ALL_BLOG_BY_CATEGORY_ID, GET_ALL_CATEGORY_ID, GET_SITE_SETTINGS } f
 interface BlogCategoriesProps {
   allPost: Post[];
   Category: Category;
-  SiteSettings: SiteSettings;
+  siteSettings: SiteSettings;
 }
 
 const BlogCategories: NextPage<BlogCategoriesProps> = ({
   allPost,
-  Category,
-  SiteSettings: { footer, navigation, openGraph },
+  Category: category,
+  siteSettings: { footer, navigation, openGraph },
 }) => (
   <Layout nav={createNavData(navigation)} footer={footer?.copyright} seo={openGraph}>
-    {Category && Category.title && <PageHeader title={Category.title} />}
+    {category && category.title && <PageHeader title={category.title} />}
     <RecentPosts blog={allPost} />
   </Layout>
 );
@@ -37,9 +38,7 @@ export async function getStaticPaths() {
   const { data: allCategoryData } = await client.query<GetAllCategoryIdQuery>({
     query: GET_ALL_CATEGORY_ID,
   });
-  const paths = allCategoryData.allCategory.map((category) => {
-    return { params: { id: category._id } };
-  });
+  const paths = allCategoryData.allCategory.map((category) => ({ params: { id: category._id } }));
 
   return {
     paths,
@@ -60,7 +59,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   });
 
   const {
-    data: { SiteSettings },
+    data: { SiteSettings: siteSettings },
   } = await client.query<GetSiteSettingsQuery>({
     query: GET_SITE_SETTINGS,
   });
@@ -69,10 +68,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return {
       notFound: true,
       props: {
-        SiteSettings,
+        siteSettings,
       },
     };
-  } else {
-    return { props: { ...data, SiteSettings: SiteSettings }, revalidate: 60 };
   }
+  return { props: { ...data, siteSettings }, revalidate: 60 };
 };
