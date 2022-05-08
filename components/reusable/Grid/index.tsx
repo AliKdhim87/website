@@ -1,5 +1,5 @@
-import React, { FunctionComponent, ReactNode } from 'react';
 import classNames from 'classnames/bind';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import styles from './Grid.module.scss';
 
@@ -42,9 +42,9 @@ export const Grid: FunctionComponent<
   className,
   ...props
 }) => {
-  const classNames = css(className, {
-    ['Grid_container']: container,
-    ['Grid_item']: item,
+  const classes = css(className, {
+    Grid_container: container,
+    Grid_item: item,
     [`Grid_xs_${xs}`]: xs,
     [`Grid_sm_${sm}`]: sm,
     [`Grid_md_${md}`]: md,
@@ -58,7 +58,7 @@ export const Grid: FunctionComponent<
   const Component = as as any;
 
   return (
-    <Component className={classNames} {...props}>
+    <Component className={classes} {...props}>
       {children}
     </Component>
   );

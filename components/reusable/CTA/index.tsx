@@ -1,9 +1,10 @@
-import React, { forwardRef } from 'react';
-import Link from 'next/link';
 import classNames from 'classnames/bind';
-import { Typography } from '@/components/reusable';
+import Link from 'next/link';
+import React, { forwardRef } from 'react';
 
 import styles from './CTA.module.scss';
+
+import { Typography } from '@/components/reusable';
 
 const css = classNames.bind(styles);
 
@@ -22,6 +23,7 @@ export const forwardRefLink = (
 
   return href ? (
     <Link href={href} passHref>
+      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
       <a className={classes} ref={ref}>
         {text && (
           <Typography as="span" variant="body">

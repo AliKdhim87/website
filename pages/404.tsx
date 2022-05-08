@@ -1,11 +1,12 @@
+import { GetStaticProps, NextPage } from 'next';
+
 import { Layout } from '@/components/global';
 import { Container, Grid } from '@/components/reusable';
+import { PageHeader } from '@/components/slices';
 import { client, createNavData, uuidv4 } from '@/utils';
 import { Route, SiteSettings } from 'generated/graphql';
-import { GetStaticProps, NextPage } from 'next';
-import { GET_PAGE_BY_SLUG } from 'queries/index.graphql';
 import NotfoundSvg from 'public/404.svg';
-import { PageHeader } from '@/components/slices';
+import { GET_PAGE_BY_SLUG } from 'queries/index.graphql';
 
 interface Custom404Props {
   SiteSettings: SiteSettings;
@@ -22,6 +23,7 @@ const Custom404: NextPage<Custom404Props> = ({ SiteSettings: { navigation, foote
       </Grid>
       {page?.content?.map((component) => {
         if (component?.__typename === 'PageHeader') {
+          // TODO make this nicer
           return (
             <PageHeader
               title={component.title}
@@ -33,6 +35,7 @@ const Custom404: NextPage<Custom404Props> = ({ SiteSettings: { navigation, foote
             />
           );
         }
+        return null;
       })}
     </Container>
   </Layout>

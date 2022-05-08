@@ -4,7 +4,7 @@ const cache = new InMemoryCache();
 
 export const client = new ApolloClient({
   // Provide required constructor fields
-  cache: cache,
+  cache,
   uri: process.env.SCHEMA_URL,
   queryDeduplication: false,
   defaultOptions: {

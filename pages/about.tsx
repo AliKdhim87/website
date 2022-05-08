@@ -1,9 +1,11 @@
+import { GetStaticProps, NextPage } from 'next';
+
 import { Layout } from '@/components/global';
 import { MoreAbout, PageHeader } from '@/components/slices';
 import { client, createNavData, uuidv4 } from '@/utils';
 import { Route, SiteSettings } from 'generated/graphql';
-import { GetStaticProps, NextPage } from 'next';
 import { GET_PAGE_BY_SLUG } from 'queries/index.graphql';
+
 interface AboutPageProps {
   SiteSettings: SiteSettings;
   Route: Route;
@@ -13,7 +15,7 @@ const AboutPage: NextPage<AboutPageProps> = ({ SiteSettings: { navigation, foote
   <Layout seo={openGraph} footer={footer?.copyright} nav={createNavData(navigation)}>
     {page?.content?.map((component) => {
       switch (component?.__typename) {
-        case 'PageHeader':
+        case 'PageHeader': {
           const image = {
             src: component.image?.asset?.url,
             alt: component.image?.alt,
@@ -29,7 +31,7 @@ const AboutPage: NextPage<AboutPageProps> = ({ SiteSettings: { navigation, foote
               key={uuidv4()}
             />
           );
-
+        }
         case 'AboutMe':
           return (
             <MoreAbout

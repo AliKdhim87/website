@@ -2,9 +2,10 @@ import type { GetStaticProps, NextPage } from 'next';
 
 import { Layout } from '@/components/global';
 import { PageHeader, RecentPosts, SocialMedia } from '@/components/slices';
-import { GET_LATEST_BLOG, GET_PAGE_BY_SLUG } from 'queries/index.graphql';
 import { client, uuidv4, createNavData } from '@/utils';
 import { Post, Route, SiteSettings } from 'generated/graphql';
+import { GET_LATEST_BLOG, GET_PAGE_BY_SLUG } from 'queries/index.graphql';
+
 interface HomeProps {
   allPost?: Array<Post>;
   SiteSettings: SiteSettings;

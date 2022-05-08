@@ -1,5 +1,5 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from 'react';
 
 import { NavLinks, NavLinksItem, NavLink } from '@/components/global/Nav';
 
@@ -22,7 +22,7 @@ Default.args = {
         <NavLink href="#!" text="Contact" active={false} />
       </NavLinksItem>
       <NavLinksItem>
-        <NavLink href="#!" text="About" active={true} />
+        <NavLink href="#!" text="About" active />
       </NavLinksItem>
     </>
   ),

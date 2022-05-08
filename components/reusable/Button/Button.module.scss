@@ -51,7 +51,10 @@
     box-shadow: var(--button-secondary-disabled-border);
     cursor: not-allowed;
   }
-  &[aria-busy*=true] { background-color: var(--button-secondary-hover-background-color); }
+
+  &[aria-busy*="true"] {
+    background-color: var(--button-secondary-hover-background-color);
+  }
 }
 
 .button--loading::after {
@@ -81,7 +84,7 @@
   }
 }
 
-.button--hide-text{
+.button--hide-text {
   visibility: hidden;
   opacity: 0;
 }

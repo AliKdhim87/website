@@ -1,75 +1,70 @@
-import Image from 'next/image';
-import urlBuilder from '@sanity/image-url';
-import { getImageDimensions } from '@sanity/asset-utils';
+import { ParsedUrlQuery } from 'querystring';
+
 import { PortableText, PortableTextReactComponents } from '@portabletext/react';
+import { getImageDimensions } from '@sanity/asset-utils';
+import urlBuilder from '@sanity/image-url';
+import { GetStaticProps, NextPage } from 'next';
+import Image from 'next/image';
 
 import { Layout } from '@/components/global';
+import { Container, Grid, BlockCode, Typography, BlogPostTitle, GraphComment } from '@/components/reusable';
+import { Tags } from '@/components/slices';
+import { client, createNavData } from '@/utils';
 import { GetAllBlogSlugsQuery, GetBlogBySlugQuery, GetSiteSettingsQuery, Post, SiteSettings } from 'generated/graphql';
 import { GET_ALL_BLOG_SLUGS, GET_BLOG_BY_SLUG, GET_SITE_SETTINGS } from 'queries/index.graphql';
 
-import { client, createNavData } from '@/utils';
-import { Container, Grid, BlockCode, SnippetCodeType, Typography, BlogPostTitle } from '@/components/reusable';
-import { Tags } from '@/components/slices';
-import { GetStaticProps, NextPage } from 'next';
-import { ParsedUrlQuery } from 'querystring';
-import { GraphComment } from '@/components/reusable';
-
-interface PostProps {
+interface PostPageProps {
   post: Post;
-  SiteSettings: SiteSettings;
+  siteSettings: SiteSettings;
 }
 
-const Post: NextPage<PostProps> = ({ post, SiteSettings: { footer, navigation } }) => {
+const serializers: Partial<PortableTextReactComponents> = {
+  types: {
+    code: ({ value: { language, code } }) => <BlockCode language={language} code={code} />,
+    mainImage: ({ value }) => {
+      if (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID && process.env.NEXT_PUBLIC_SANITY_DATASET) {
+        const { width, height } = getImageDimensions(value);
+        const imageUrl = urlBuilder({
+          projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+          dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+        })
+          .image(value.asset._ref)
+          .width(800)
+          .fit('max')
+          .auto('format')
+          .url();
+
+        return imageUrl ? <Image loading="eager" src={imageUrl} alt={value.alt} width={width} height={height} /> : null;
+      }
+      return null;
+    },
+  },
+  block: {
+    h2: ({ children }) => (
+      <Typography as="h2" variant="h2" className="space-mb-2">
+        {children}
+      </Typography>
+    ),
+    normal: ({ children }) => (
+      <Typography as="p" variant="body" className="space-mb-1">
+        {children}
+      </Typography>
+    ),
+  },
+  listItem: {
+    bullet: ({ children }) => (
+      <li className="text-color">
+        <Typography as="p" variant="body">
+          {children}
+        </Typography>
+      </li>
+    ),
+  },
+};
+
+const PostPage: NextPage<PostPageProps> = ({ post, siteSettings: { footer, navigation } }) => {
   const { title, bodyRaw, categories, excerpt, mainImage, publishedAt } = post;
   const seo = { title, description: excerpt };
-  const serializers: Partial<PortableTextReactComponents> = {
-    types: {
-      code: ({ value: { language, code } }: { value: SnippetCodeType }) => (
-        <BlockCode language={language} code={code} />
-      ),
-      mainImage: ({ value }) => {
-        if (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID && process.env.NEXT_PUBLIC_SANITY_DATASET) {
-          const { width, height } = getImageDimensions(value);
-          const imageUrl = urlBuilder({
-            projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-            dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-          })
-            .image(value.asset._ref)
-            .width(800)
-            .fit('max')
-            .auto('format')
-            .url();
-
-          return imageUrl ? (
-            <Image loading="eager" src={imageUrl} alt={value.alt} width={width} height={height} />
-          ) : null;
-        } else {
-          return null;
-        }
-      },
-    },
-    block: {
-      h2: ({ children }) => (
-        <Typography as="h2" variant="h2" className="space-mb-2">
-          {children}
-        </Typography>
-      ),
-      normal: ({ children }) => (
-        <Typography as="p" variant="body" className="space-mb-1">
-          {children}
-        </Typography>
-      ),
-    },
-    listItem: {
-      bullet: ({ children }) => (
-        <li className="text-color">
-          <Typography as="p" variant="body">
-            {children}
-          </Typography>
-        </li>
-      ),
-    },
-  };
 
   return (
     <Layout footer={footer?.copyright} nav={createNavData(navigation)} seo={seo}>
@@ -107,15 +102,13 @@ const Post: NextPage<PostProps> = ({ post, SiteSettings: { footer, navigation } 
   );
 };
 
-export default Post;
+export default PostPage;
 
 export async function getStaticPaths() {
   const { data } = await client.query<GetAllBlogSlugsQuery>({
     query: GET_ALL_BLOG_SLUGS,
   });
-  const paths = data.allPost.map((post) => {
-    return { params: { slug: post.slug?.current } };
-  });
+  const paths = data.allPost.map((post) => ({ params: { slug: post.slug?.current } }));
 
   return {
     paths,
@@ -135,7 +128,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     variables: { slug },
   });
   const {
-    data: { SiteSettings },
+    data: { SiteSettings: siteSettings },
   } = await client.query<GetSiteSettingsQuery>({
     query: GET_SITE_SETTINGS,
   });
@@ -144,7 +137,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return {
       notFound: true,
     };
-  } else {
-    return { props: { post: data.allPost[0], SiteSettings }, revalidate: 60 };
   }
+  return { props: { post: data.allPost[0], siteSettings }, revalidate: 60 };
 };

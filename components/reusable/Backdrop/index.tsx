@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind';
-import { DetailedHTMLProps, HTMLAttributes, LegacyRef } from 'react';
-
+import { DetailedHTMLProps, HTMLAttributes } from 'react';
 import { createPortal } from 'react-dom';
 
-import styles from './Backdrop.module.scss';
 import { Grid } from '../Grid/index';
+
+import styles from './Backdrop.module.scss';
 
 const css = classNames.bind(styles);
 
@@ -33,9 +33,10 @@ interface BackdropProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>
   className?: string;
 }
 
-export const Backdrop: React.FC<BackdropProps> = ({ children, className, ...props }) => {
+export const Backdrop: React.FC<BackdropProps> = ({ children, ...props }) => {
   const portal = document.getElementById('__next');
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {portal
         ? createPortal(

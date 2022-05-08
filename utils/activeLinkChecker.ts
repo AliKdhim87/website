@@ -1,4 +1,3 @@
-import { Maybe } from "generated/graphql"
+import { Maybe } from 'generated/graphql';
 
-export const activeLinkChecker = (link?: Maybe<string>, currentPath?: string) => link === currentPath
-
+export const activeLinkChecker = (link?: Maybe<string>, currentPath?: string) => link === currentPath;

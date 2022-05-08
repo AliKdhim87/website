@@ -1,18 +1,8 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import classNames from 'classnames/bind';
+import Image from 'next/image';
+import Link from 'next/link';
 // import { Portal } from "pretty-modal"
-import { CSSTransition } from 'react-transition-group';
-
-// import FocusTrap from "focus-trap-react"
-
-import styles from './index.module.scss';
-
-import { Grid } from '@/components/reusable/Grid';
-import { CloseIcon, HamburgerIcon } from '@/components/reusable/icons';
-import { Backdrop } from '@/components/reusable/Backdrop';
-
-import { Header } from '../Header';
+import { useRouter } from 'next/router';
 import {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
@@ -24,17 +14,28 @@ import {
   useState,
   forwardRef,
 } from 'react';
+import { CSSTransition } from 'react-transition-group';
+
+// import FocusTrap from "focus-trap-react"
+
+import { Header } from '../Header';
+
+import styles from './index.module.scss';
+
 import { Container, Typography } from '@/components/reusable';
+import { Backdrop } from '@/components/reusable/Backdrop';
+import { Grid } from '@/components/reusable/Grid';
+import { CloseIcon, HamburgerIcon } from '@/components/reusable/icons';
 import { uuidv4, activeLinkChecker } from '@/utils';
 import { Maybe } from 'generated/graphql';
-import { useRouter } from 'next/router';
 
+const css = classNames.bind(styles);
 interface NavButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   name: 'hamburger' | 'close';
 }
 
 export const NavButton: React.FC<NavButtonProps> = ({ name, ...props }) => (
-  <button className={css('nav-hamburger')} {...props}>
+  <button className={css('nav-hamburger')} type="button" {...props}>
     {name === 'close' ? <CloseIcon aria-label="close nav button" /> : <HamburgerIcon aria-label="open nav button" />}
   </button>
 );
@@ -56,8 +57,6 @@ export interface NavProps {
   navLinks?: NavLinks[];
 }
 
-const css = classNames.bind(styles);
-
 interface NavLinkProps extends DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
   text: string;
   href: string;
@@ -70,6 +69,7 @@ const forwardRefLink = ({ href, text, active }: NavLinkProps, ref: React.LegacyR
   });
   return (
     <Link href={href} passHref>
+      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
       <a className={classes} ref={ref}>
         <Typography as="span" variant="body">
           {text}
@@ -86,25 +86,23 @@ interface NavLinksProps extends DetailedHTMLProps<HTMLAttributes<HTMLUListElemen
 }
 
 export const NavLinks = ({ children, mobile, ...props }: NavLinksProps) => {
-  const classes = css('nav-links', {
+  const classes = css('nav-links', 'modal-content', {
     [css('nav-links--mobile')]: mobile,
   });
   return (
-    <ul className={[classes, 'modal-content'].join(' ')} {...props}>
+    <ul className={classes} {...props}>
       {children}
     </ul>
   );
 };
 
-interface NavLinksItemProps extends DetailedHTMLProps<LiHTMLAttributes<HTMLLIElement>, HTMLLIElement> {}
+type NavLinksItemProps = DetailedHTMLProps<LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>;
 
-export const NavLinksItem = ({ children, className, ...props }: NavLinksItemProps) => {
-  return (
-    <li className={css('nav-links-item', className)} {...props}>
-      {children}
-    </li>
-  );
-};
+export const NavLinksItem = ({ children, className, ...props }: NavLinksItemProps) => (
+  <li className={css('nav-links-item', className)} {...props}>
+    {children}
+  </li>
+);
 
 export const Nav = ({ logo, navLinks }: NavProps) => {
   const [mobileMode, setMobileMode] = useState(false);
@@ -113,15 +111,16 @@ export const Nav = ({ logo, navLinks }: NavProps) => {
 
   useEffect(() => {
     const { current } = backdrop;
-
     const clickHandler = (event: any) => {
       if (event.target === current) {
         setMobileMode(false);
       }
     };
-
+    // FIXME: this is not working
+    // close the nav when clicking outside also when clicking the esc key
     const keyHandler = (event: { which: number }) => {
       if ([27].indexOf(event.which) >= 0 && setMobileMode(false)) {
+        setMobileMode(false);
       }
     };
 
@@ -145,6 +144,7 @@ export const Nav = ({ logo, navLinks }: NavProps) => {
           <Grid item xs={6} md={4}>
             {logo && logo.src && logo.alt && logo.width && logo.height && (
               <Link href="/" passHref>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a>
                   <Image
                     src={logo.src}
@@ -171,7 +171,7 @@ export const Nav = ({ logo, navLinks }: NavProps) => {
               </NavLinksItem>
             </NavLinks>
             <CSSTransition in={mobileMode} timeout={300} classNames="modal" unmountOnExit mountOnEnter>
-              <Backdrop onClick={() => setMobileMode(false)}>
+              <Backdrop ref={backdrop} onClick={() => setMobileMode(false)}>
                 <NavLinks mobile onClick={(e) => e.stopPropagation()}>
                   {navLinks &&
                     navLinks.map(({ href, text }) => (

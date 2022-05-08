@@ -1,13 +1,13 @@
-import React, { forwardRef } from 'react';
 import classNames from 'classnames/bind';
-import { Typography } from '@/components/reusable';
+import React, { forwardRef } from 'react';
 
 import styles from './Badge.module.scss';
 
+import { Typography } from '@/components/reusable';
+
 const css = classNames.bind(styles);
 
-interface BadgeProps
-  extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {}
+type BadgeProps = React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>;
 
 export const forwardRefBadge = (
   { href, children }: BadgeProps,
