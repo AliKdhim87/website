@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next';
 
-import { Layout } from '@/components/global';
+import { Layout, SEOTypes } from '@/components/global';
 import { PageHeader, RecentPosts, SocialMedia } from '@/components/slices';
 import { client, uuidv4, createNavData } from '@/utils';
 import { Post, Route, SiteSettings } from 'generated/graphql';
@@ -12,8 +12,12 @@ interface HomeProps {
   Route: Route;
 }
 
-const Home: NextPage<HomeProps> = ({ allPost, SiteSettings: { navigation, footer }, Route: { openGraph, page } }) => (
-  <Layout seo={openGraph} footer={footer?.copyright} nav={createNavData(navigation)}>
+const Home: NextPage<HomeProps> = ({
+  allPost,
+  SiteSettings: { navigation, footer, schemaOrg },
+  Route: { openGraph, page },
+}) => (
+  <Layout seo={openGraph as SEOTypes} footer={footer?.copyright} nav={createNavData(navigation)} schemaOrg={schemaOrg}>
     {page?.content?.map((component) => {
       switch (component?.__typename) {
         case 'PageHeader':

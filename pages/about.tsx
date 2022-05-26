@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
 
-import { Layout } from '@/components/global';
+import { Layout, SEOTypes } from '@/components/global';
 import { MoreAbout, PageHeader } from '@/components/slices';
 import { client, createNavData, uuidv4 } from '@/utils';
 import { Route, SiteSettings } from 'generated/graphql';
@@ -11,8 +11,11 @@ interface AboutPageProps {
   Route: Route;
 }
 
-const AboutPage: NextPage<AboutPageProps> = ({ SiteSettings: { navigation, footer }, Route: { openGraph, page } }) => (
-  <Layout seo={openGraph} footer={footer?.copyright} nav={createNavData(navigation)}>
+const AboutPage: NextPage<AboutPageProps> = ({
+  SiteSettings: { navigation, footer, schemaOrg },
+  Route: { openGraph, page },
+}) => (
+  <Layout seo={openGraph as SEOTypes} footer={footer?.copyright} nav={createNavData(navigation)} schemaOrg={schemaOrg}>
     {page?.content?.map((component) => {
       switch (component?.__typename) {
         case 'PageHeader': {

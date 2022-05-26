@@ -1,25 +1,15 @@
-import Head from 'next/head';
+import { Nav, NavProps, Main, MainWrapper, Footer, SEO, SEOProps } from '@/components/global';
+import type { Maybe } from 'generated/graphql';
 
-import { Footer } from '../Footer';
-import { Main, MainWrapper } from '../Main/index';
-import { Nav, NavProps } from '../Nav';
-
-import { Maybe, OpenGraph } from 'generated/graphql';
-
-interface LayoutProps {
+export interface LayoutProps extends SEOProps {
   nav?: NavProps;
-  seo?: Maybe<OpenGraph>;
   footer?: Maybe<string>;
   children: React.ReactNode;
 }
 
-export const Layout = ({ nav, seo, children, footer }: LayoutProps) => (
+export const Layout = ({ nav, seo, children, footer, schemaOrg }: LayoutProps) => (
   <>
-    <Head>
-      <title>{seo?.title}</title>
-      <meta name="description" content={seo?.description || ''} />
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+    <SEO seo={seo} schemaOrg={schemaOrg} />
     <MainWrapper>
       {nav && <Nav {...nav} />}
       <Main>{children}</Main>

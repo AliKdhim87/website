@@ -40,6 +40,7 @@ export const GET_ALL_BLOG_BY_CATEGORY_ID = gql`
     }
     Category(id: $categoryId) {
       title
+      description
     }
   }
 `;
@@ -96,6 +97,21 @@ export const GET_SITE_SETTINGS = gql`
       }
       footer {
         copyright
+      }
+      schemaOrg {
+        email
+        jobTitle
+        telephone
+        website
+        openGraph {
+          title
+          description
+          image {
+            asset {
+              url
+            }
+          }
+        }
       }
     }
   }
@@ -180,6 +196,22 @@ export const GET_PAGE_BY_SLUG = gql`
       }
       footer {
         copyright
+      }
+      schemaOrg {
+        email
+        name
+        jobTitle
+        telephone
+        website
+        openGraph {
+          title
+          description
+          image {
+            asset {
+              url
+            }
+          }
+        }
       }
     }
   }

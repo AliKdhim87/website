@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 
-import { Layout } from '@/components/global';
+import { Layout, SEOTypes } from '@/components/global';
 import { Form, InputField, Textarea, Button, Grid, Container } from '@/components/reusable';
 import { PageHeader } from '@/components/slices';
 import { client, createNavData, uuidv4 } from '@/utils';
@@ -16,7 +16,10 @@ interface AboutPageProps {
   Route: Route;
 }
 
-const Contact: NextPage<AboutPageProps> = ({ SiteSettings: { navigation, footer }, Route: { openGraph, page } }) => {
+const Contact: NextPage<AboutPageProps> = ({
+  SiteSettings: { navigation, footer, schemaOrg },
+  Route: { openGraph, page },
+}) => {
   const [isBsy, setIsBsy] = useState(false);
   const form = useRef<any>();
   const {
@@ -70,7 +73,12 @@ const Contact: NextPage<AboutPageProps> = ({ SiteSettings: { navigation, footer 
   };
 
   return (
-    <Layout seo={openGraph} footer={footer?.copyright} nav={createNavData(navigation)}>
+    <Layout
+      seo={openGraph as SEOTypes}
+      footer={footer?.copyright}
+      nav={createNavData(navigation)}
+      schemaOrg={schemaOrg}
+    >
       {page?.content?.map(
         (component) => component?.__typename === 'PageHeader' && <PageHeader title={component.title} key={uuidv4()} />,
       )}

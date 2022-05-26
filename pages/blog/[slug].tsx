@@ -3,6 +3,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { PortableText } from '@portabletext/react';
 import { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import { Layout } from '@/components/global';
 import {
@@ -23,12 +24,19 @@ interface PostPageProps {
   siteSettings: SiteSettings;
 }
 
-const PostPage: NextPage<PostPageProps> = ({ post, siteSettings: { footer, navigation } }) => {
+const PostPage: NextPage<PostPageProps> = ({ post, siteSettings: { footer, navigation, schemaOrg } }) => {
+  const { asPath } = useRouter();
   const { title, bodyRaw, categories, excerpt, mainImage, publishedAt } = post;
-  const seo = { title, description: excerpt };
+  const seo = {
+    title,
+    description: excerpt,
+    image: mainImage,
+    ogUrl: `${schemaOrg?.website}${asPath}`,
+    ogTitle: title,
+  };
 
   return (
-    <Layout footer={footer?.copyright} nav={createNavData(navigation)} seo={seo}>
+    <Layout footer={footer?.copyright} nav={createNavData(navigation)} seo={seo} schemaOrg={schemaOrg}>
       <>
         {mainImage && mainImage.alt && mainImage.asset && mainImage.asset.url && (
           <Container>

@@ -1,6 +1,7 @@
 import { ParsedUrlQuery } from 'querystring';
 
 import { GetStaticProps, NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 import { Layout } from '@/components/global';
 import { PageHeader, RecentPosts } from '@/components/slices';
@@ -24,9 +25,19 @@ interface BlogCategoriesProps {
 const BlogCategories: NextPage<BlogCategoriesProps> = ({
   allPost,
   Category: category,
-  siteSettings: { footer, navigation, openGraph },
+  siteSettings: { footer, navigation, schemaOrg },
 }) => (
-  <Layout nav={createNavData(navigation)} footer={footer?.copyright} seo={openGraph}>
+  <Layout
+    nav={createNavData(navigation)}
+    seo={{
+      title: category?.title,
+      description: category?.description,
+      ogTitle: category?.title,
+      ogUrl: `${schemaOrg?.website}${useRouter().asPath}`,
+    }}
+    footer={footer?.copyright}
+    schemaOrg={schemaOrg}
+  >
     {category && category.title && <PageHeader title={category.title} />}
     <RecentPosts blog={allPost} />
   </Layout>
