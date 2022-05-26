@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
 
-import { Layout } from '@/components/global';
+import { Layout, SEOTypes } from '@/components/global';
 import { Container, Grid } from '@/components/reusable';
 import { PageHeader } from '@/components/slices';
 import { client, createNavData, uuidv4 } from '@/utils';
@@ -13,8 +13,11 @@ interface Custom404Props {
   Route: Route;
 }
 
-const Custom404: NextPage<Custom404Props> = ({ SiteSettings: { navigation, footer }, Route: { openGraph, page } }) => (
-  <Layout seo={openGraph} footer={footer?.copyright} nav={createNavData(navigation)}>
+const Custom404: NextPage<Custom404Props> = ({
+  SiteSettings: { navigation, footer, schemaOrg },
+  Route: { openGraph, page },
+}) => (
+  <Layout seo={openGraph as SEOTypes} footer={footer?.copyright} nav={createNavData(navigation)} schemaOrg={schemaOrg}>
     <Container>
       <Grid container justifyContent="center">
         <Grid sm={12} md={8} xs={12} className="text-color">

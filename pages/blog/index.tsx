@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
 
-import { Layout } from '@/components/global';
+import { Layout, SEOTypes } from '@/components/global';
 import { PageHeader, RecentPostsProps } from '@/components/slices';
 import { client, createNavData } from '@/utils';
 import { GetAllBlogQuery, Post, Route, SiteSettings } from 'generated/graphql';
@@ -20,8 +20,12 @@ interface BlogPageProps {
   Route: Route;
 }
 
-const Blog: NextPage<BlogPageProps> = ({ allPost, SiteSettings: { navigation, footer }, Route: { openGraph } }) => (
-  <Layout seo={openGraph} footer={footer?.copyright} nav={createNavData(navigation)}>
+const Blog: NextPage<BlogPageProps> = ({
+  allPost,
+  SiteSettings: { navigation, footer, schemaOrg },
+  Route: { openGraph },
+}) => (
+  <Layout seo={openGraph as SEOTypes} footer={footer?.copyright} nav={createNavData(navigation)} schemaOrg={schemaOrg}>
     <PageHeader title="Blog" />
     <RecentPosts blog={allPost} />
   </Layout>
