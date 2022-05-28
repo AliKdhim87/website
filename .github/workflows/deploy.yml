@@ -11,6 +11,8 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  deployment:
+  deployment_status:
 
 jobs:
   build:
