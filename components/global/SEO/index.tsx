@@ -1,6 +1,5 @@
 import { Maybe } from 'graphql/jsutils/Maybe';
 import Head from 'next/head';
-import Script from 'next/script';
 
 import { OpenGraph, SchemaOrg } from 'generated/graphql';
 
@@ -35,8 +34,9 @@ export const SEO: React.FC<SEOProps> = ({ seo, schemaOrg }) => {
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
       <link rel="shortcut icon" href="/favicon_io/favicon.ico" />
       <link rel="manifest" href="/favicon_io/site.webmanifest" />
-      <Script
+      <script
         type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             JSON.stringify({
