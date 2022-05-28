@@ -17,7 +17,16 @@ export const SEO: React.FC<SEOProps> = ({ seo, schemaOrg }) => {
   const ogURL = seo?.ogUrl || defaultOgURL;
   const defaultOgTitle = schemaOrg?.openGraph?.title || '';
   const ogTitle = seo?.ogTitle || defaultOgTitle;
-
+  const schemaJsonData = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    email: `mailto:${schemaOrg?.email}`,
+    image: schemaOrg?.openGraph?.image?.asset?.url,
+    jobTitle: schemaOrg?.jobTitle,
+    name: schemaOrg?.name,
+    telephone: schemaOrg?.telephone,
+    url: schemaOrg?.website,
+  };
   return (
     <Head>
       <title>{seo?.title}</title>
@@ -37,20 +46,7 @@ export const SEO: React.FC<SEOProps> = ({ seo, schemaOrg }) => {
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Person',
-              email: `mailto:${schemaOrg?.email}`,
-              image: schemaOrg?.openGraph?.image?.asset?.url,
-              jobTitle: schemaOrg?.jobTitle,
-              name: schemaOrg?.name,
-              telephone: schemaOrg?.telephone,
-              url: schemaOrg?.website,
-            }),
-          ),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonData) }}
       />
     </Head>
   );
