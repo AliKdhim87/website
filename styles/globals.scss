@@ -182,6 +182,7 @@
   }
 }
 
+// global reset styles
 html,
 body {
   padding: 0;
@@ -200,6 +201,10 @@ h5 {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+input, textarea {
+  font-size: inherit;
 }
 
 pre {
