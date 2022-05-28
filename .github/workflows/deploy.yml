@@ -5,14 +5,12 @@ name: Deploy ALI-DEV
 
 on:
   release:
-    types:
+    types: 
       - published
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  deployment:
-  deployment_status:
 
 jobs:
   build:
@@ -37,7 +35,9 @@ jobs:
     - run: npm run codegen
     - run: npm run build
     - name: "Deploy to Vercel"
-      run: |
+      uses: BetaHuhn/deploy-to-vercel-action@v1
+      with:
+       run: |
           prodRun=""
           if [[ ${GITHUB_REF} == "refs/heads/main" ]]; then
             prodRun="--prod"
