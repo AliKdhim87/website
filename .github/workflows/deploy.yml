@@ -1,12 +1,5 @@
 name: Deploy ALI-DEV
-on:
-  release:
-    types:
-      - published
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [ push, pull_request ]
 jobs:
   vercel:
     runs-on: ubuntu-latest
