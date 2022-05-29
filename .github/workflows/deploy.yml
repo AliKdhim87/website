@@ -1,24 +1,18 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: Deploy ALI-DEV
-
 on:
   release:
-    types: 
+    types:
       - published
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
 jobs:
-  build:
+  vercel:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [14.x]
-
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -32,19 +26,31 @@ jobs:
          touch .env
          echo SCHEMA_URL=${{ secrets.SCHEMA_URL }} >> .env
          cat .env
-    - run: npm run codegen
-    - run: npm run build
-    - name: "Deploy to Vercel"
-      uses: BetaHuhn/deploy-to-vercel-action@v1
+    - name: Build
+      run: |
+          npm run codegen
+          npm run build
+    - name: Run Tests Locally
+      run: npm run test
+    - name: Deploy to Staging
+      id: deploy-vercel-staging
+      uses: amondnet/vercel-action@v20
       with:
-       run: |
-          prodRun=""
-          if [[ ${GITHUB_REF} == "refs/heads/main" ]]; then
-            prodRun="--prod"
-          fi
-
-          npx vercel --token ${VERCEL_TOKEN} $prodRun
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        scope: ${{ secrets.VERCEL_ORG_ID }}
+    - name: Run Tests Against Vercel
       env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+        VERCEL_URL: ${{ steps.deploy-vercel-staging.outputs.preview-url }}
+      run: npm run test
+    - name: Deploy to Production
+      uses: amondnet/vercel-action@v20
+      id: deploy-vercel-production
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        vercel-args: '--prod'
+        scope: ${{ secrets.VERCEL_ORG_ID }}
