@@ -27,12 +27,15 @@ export const MoreAbout: React.FC<MoreAboutProps> = ({ introduction, moreAboutIte
           )}
           <ul className={css('more-about__list')}>
             {moreAboutItems &&
-              moreAboutItems.map((item) => (
-                <li className={css('more-about__list-item')} key={uuidv4()}>
-                  <BulletIcon className={css('more-about__list-item-icon')} />
-                  <Card title={item?.title} date={item?.publishedAt} body={item?.body} />
-                </li>
-              ))}
+              moreAboutItems
+                .slice()
+                .sort((a, b) => parseFloat(b?.publishedAt) - parseFloat(a?.publishedAt))
+                .map((item) => (
+                  <li className={css('more-about__list-item')} key={uuidv4()}>
+                    <BulletIcon className={css('more-about__list-item-icon')} />
+                    <Card title={item?.title} date={item?.publishedAt} body={item?.body} />
+                  </li>
+                ))}
           </ul>
         </Grid>
       </Grid>
