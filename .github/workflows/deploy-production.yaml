@@ -1,11 +1,7 @@
-name: deploy-production
-
-on:
-  push:
-    branches: [ main ]
-
+name: Deployment Ali-DEV
+on: [ push, pull_request ]
 jobs:
-  deploy-production:
+  vercel:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -19,13 +15,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - name: Start Deployment
-      uses: bobheadxi/deployments@v0.4.3
-      id: deployment
-      with:
-        step: start
-        token: ${{ secrets.GITHUB_TOKEN }}
-        env: Production
     - name: Create env file
       run: |
          touch .env
@@ -34,9 +23,25 @@ jobs:
     - run: npm run codegen
     - name: Build
       run: npm run build
-    - name: Deploy to Vercel
+    - name: Start Deployment
+      uses: bobheadxi/deployments@v0.4.3
+      id: deployment-preview
+      with:
+        step: start
+        token: ${{ secrets.GITHUB_TOKEN }}
+        env: Preview
+    - name: Deploy to Preview
+      id: vercel-action-preview
       uses: amondnet/vercel-action@v20
-      id: vercel-action
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        scope: ${{ secrets.VERCEL_ORG_ID }}
+    - name: Deploy to Production
+      uses: amondnet/vercel-action@v20
+      id: vercel-action-production
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       with:
         vercel-token: ${{ secrets.VERCEL_TOKEN }}
         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
@@ -46,10 +51,10 @@ jobs:
 
     - name: Update Deployment Status
       uses: bobheadxi/deployments@v0.4.3
-      if: always()
+      if: github.ref != 'refs/heads/main'
       with:
         step: finish
         token: ${{ secrets.GITHUB_TOKEN }}
         status: ${{ job.status }}
-        deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-        env_url: ${{ steps.vercel-action.outputs.preview-url }}
+        deployment_id: ${{ steps.deployment-preview.outputs.deployment_id }}
+        env_url: ${{ steps.vercel-action-preview.outputs.preview-url }}
