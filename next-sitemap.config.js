@@ -1,5 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
+
 module.exports = {
-  siteUrl: 'https://ali-dev.com', // TODO: change this to environment variable
+  siteUrl: process.env.SITE_URL || 'https://ali-dev.com',
   generateRobotsTxt: true,
 };
