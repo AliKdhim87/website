@@ -119,7 +119,7 @@ export const Nav = ({ logo, navLinks }: NavProps) => {
     // FIXME: this is not working
     // close the nav when clicking outside also when clicking the esc key
     const keyHandler = (event: { which: number }) => {
-      if ([27].indexOf(event.which) >= 0 && setMobileMode(false)) {
+      if ([27].indexOf(event.which) >= 0 && mobileMode) {
         setMobileMode(false);
       }
     };
