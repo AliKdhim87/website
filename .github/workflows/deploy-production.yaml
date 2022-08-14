@@ -32,7 +32,6 @@ jobs:
          touch .env
          echo SCHEMA_URL=${{ secrets.SCHEMA_URL }} >> .env
          cat .env
-    - run: npm run codegen
     - name: Build
       run: npm run build
     - name: Start Deployment
