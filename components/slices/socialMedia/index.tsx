@@ -18,8 +18,8 @@ export const SocialMedia: React.FC<SocialMediaProps> = ({ title, socialMedia }) 
   <section className={css('social-media')}>
     <Container>
       <Grid container justifyContent="center">
-        <Grid item xs={12} md={10} lg={10}>
-          <Grid container>
+        <Grid item xs={12} md={10} lg={12}>
+          <Grid container justifyContent="center">
             <Grid item xs={12} lg={5} sm={6} justifyContent="center" justifyContentMd="flex-start">
               {title && (
                 <Typography bodyWeight="bold" variant="body" as="h2" className={css('social-media__title')}>
@@ -27,7 +27,7 @@ export const SocialMedia: React.FC<SocialMediaProps> = ({ title, socialMedia }) 
                 </Typography>
               )}
             </Grid>
-            <Grid lg={5} sm={6} xs={12} alignItems="center" justifyContent="space-between">
+            <Grid lg={5} sm={6} xs={8} alignItems="center" justifyContent="space-between">
               {socialMedia &&
                 socialMedia.map(
                   (item) =>
