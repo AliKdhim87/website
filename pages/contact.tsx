@@ -97,7 +97,7 @@ const Contact: NextPage<AboutPageProps> = ({
                 label="Full name"
                 name="fullname"
                 placeholder="Write your Full name here"
-                helperText={errors?.fullname?.message}
+                helperText={errors?.fullname?.message?.toString()}
                 error={!!errors?.fullname}
               />
               <InputField
@@ -116,7 +116,7 @@ const Contact: NextPage<AboutPageProps> = ({
                 label="Email"
                 name="email"
                 placeholder="Write your Email here"
-                helperText={errors?.email?.message}
+                helperText={errors?.email?.message?.toString()}
                 error={!!errors?.email}
               />
               <InputField
@@ -129,7 +129,7 @@ const Contact: NextPage<AboutPageProps> = ({
                 label="Subject"
                 name="subject"
                 placeholder="Write your subject here"
-                helperText={errors?.subject?.message}
+                helperText={errors?.subject?.message?.toString()}
                 error={!!errors?.subject}
               />
               <Textarea
@@ -142,7 +142,7 @@ const Contact: NextPage<AboutPageProps> = ({
                 })}
                 name="message"
                 placeholder="Write your Message here"
-                helperText={errors?.message?.message}
+                helperText={errors?.message?.message?.toString()}
                 error={!!errors?.message}
               />
               <Button

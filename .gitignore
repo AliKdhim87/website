@@ -39,3 +39,7 @@ yarn-error.log*
 
 # types generated
 /generated
+graphql.schema.json
+
+# storybook output folder
+/storybook-static
