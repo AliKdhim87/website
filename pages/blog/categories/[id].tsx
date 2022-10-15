@@ -83,5 +83,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
     };
   }
-  return { props: { ...data, siteSettings }, revalidate: 60 };
+  return { props: { ...data, siteSettings } };
 };
