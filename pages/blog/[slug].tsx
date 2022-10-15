@@ -107,5 +107,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       notFound: true,
     };
   }
-  return { props: { post: data.allPost[0], siteSettings }, revalidate: 60 };
+  return { props: { post: data.allPost[0], siteSettings } };
 };

@@ -51,6 +51,5 @@ export const getStaticProps: GetStaticProps = async () => {
       Route: pageData.allRoute[0],
       SiteSettings: pageData.SiteSettings,
     },
-    revalidate: 60,
   };
 };
