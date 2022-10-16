@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://ali-dev.com
-
-# Sitemaps
-Sitemap: https://ali-dev.com/sitemap.xml
