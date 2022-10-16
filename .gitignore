@@ -43,3 +43,8 @@ graphql.schema.json
 
 # storybook output folder
 /storybook-static
+
+# next-sitemap
+robots.txt
+sitemap-0.xml
+sitemap.xml
