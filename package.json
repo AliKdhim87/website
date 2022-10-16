@@ -29,7 +29,7 @@
     "eslint-config-next": "^12.2.5",
     "focus-trap-react": "^9.0.2",
     "graphql": "^16.5.0",
-    "next": "12.2.5",
+    "next": "12.3.1",
     "normalize.css": "^8.0.1",
     "pretty-modal": "^3.0.1",
     "react": "18.2.0",
