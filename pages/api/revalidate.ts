@@ -7,7 +7,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    await res.revalidate(`/${req.query.slug}`);
+    if (req.query.slug) {
+      await res.revalidate(`/${req.query.slug}`);
+      await res.revalidate(`/blog`);
+      await res.revalidate(`/`);
+    }
     return res.json({ revalidated: true });
   } catch (err) {
     // If there was an error, Next.js will continue
