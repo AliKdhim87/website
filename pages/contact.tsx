@@ -98,6 +98,7 @@ const Contact: NextPage<AboutPageProps> = ({
                 name="fullname"
                 placeholder="Write your Full name here"
                 helperText={errors?.fullname?.message?.toString()}
+                aria-required="true"
                 error={!!errors?.fullname}
               />
               <InputField
@@ -115,22 +116,10 @@ const Contact: NextPage<AboutPageProps> = ({
                 type="email"
                 label="Email"
                 name="email"
+                aria-required="true"
                 placeholder="Write your Email here"
                 helperText={errors?.email?.message?.toString()}
                 error={!!errors?.email}
-              />
-              <InputField
-                {...register('subject', {
-                  required: {
-                    value: true,
-                    message: 'Please enter your subject',
-                  },
-                })}
-                label="Subject"
-                name="subject"
-                placeholder="Write your subject here"
-                helperText={errors?.subject?.message?.toString()}
-                error={!!errors?.subject}
               />
               <Textarea
                 label="Message"
@@ -141,6 +130,7 @@ const Contact: NextPage<AboutPageProps> = ({
                   },
                 })}
                 name="message"
+                aria-required="true"
                 placeholder="Write your Message here"
                 helperText={errors?.message?.message?.toString()}
                 error={!!errors?.message}

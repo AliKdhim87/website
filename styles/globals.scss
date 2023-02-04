@@ -48,16 +48,11 @@
   /* Typography */
   --font-family: "Roboto", sans-serif;
   --typography-color: var(--text-color-dark);
-  --typography-h1-font-size: var(--typography-h2-font-size);
-  --typography-h1-line-height: var(--typography-h2-line-height);
-  --typography-h2-font-size: 32px;
-  --typography-h2-line-height: 37px;
-  --typography-h3-font-size: var(--typography-h4-font-size);
-  --typography-h3-line-height: var(--typography-h4-line-height);
-  --typography-h4-font-size: var(--typography-h5-font-size);
-  --typography-h4-line-height: var(--typography-h5-line-height);
-  --typography-h5-font-size: 22px;
-  --typography-h5-line-height: 23px;
+  --typography-h1-font-size: 3.052rem;
+  --typography-h2-font-size: 2.441rem;
+  --typography-h3-font-size: 1.953rem;
+  --typography-h4-font-size: 1.563rem;
+  --typography-h5-font-size: 1.25rem;
   --typography-subtitle-font-size: 20px;
   --typography-subtitle-line-height: 28px;
   --typography-body-regular-font-size: 18px;
@@ -125,12 +120,6 @@
   @include breakpoint("md") {
     --text-align-md-center: initial;
     --text-align-md-start: initial;
-    --typography-h1-font-size: 64px;
-    --typography-h1-line-height: 75px;
-    --typography-h3-font-size: 32px;
-    --typography-h3-line-height: 37px;
-    --typography-h4-font-size: 24px;
-    --typography-h4-line-height: 28px;
   }
 
   @include breakpoint("sm") {
@@ -198,9 +187,25 @@ h5 {
   margin: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: 1.3;
+}
+
 a {
   color: inherit;
   text-decoration: none;
+
+  &:focus {
+    @include focus;
+  }
+}
+
+button:focus {
+  @include focus;
 }
 
 input,
@@ -245,4 +250,14 @@ pre {
   opacity: 0;
   transform: translateX(400px);
   transition: all 0.6s;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

@@ -3,9 +3,12 @@ import { HTMLAttributes } from 'react';
 
 import styles from './Typography.module.scss';
 
+export type AsHTMLElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'span' | 'p';
+export type TypographyVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'subtitle' | 'body';
+
 export interface TypographyProps extends React.DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
-  as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'span' | 'p';
-  variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'subtitle' | 'body';
+  as: AsHTMLElement;
+  variant?: TypographyVariant;
   bodyWeight?: 'bold' | 'semi-bold';
   bodySize?: 'mobile' | 'secondary';
 }

@@ -1,29 +1,31 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 
-import { NavLinks, NavLinksItem, NavLink } from '@/components/global/Nav';
+import { NavItem } from '@/components/global/Nav/NavItem';
+import { NavLink } from '@/components/global/Nav/NavLink';
+import { NavList } from '@/components/global/Nav/NavList';
 
 export default {
-  title: 'components/NavLinks',
-  component: NavLinks,
+  title: 'components/NavList',
+  component: NavList,
   argTypes: {},
-} as ComponentMeta<typeof NavLinks>;
+} as ComponentMeta<typeof NavList>;
 
-const Template: ComponentStory<typeof NavLinks> = (args) => <NavLinks {...args} />;
+const Template: ComponentStory<typeof NavList> = (args) => <NavList {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   children: (
     <>
-      <NavLinksItem>
+      <NavItem>
         <NavLink href="#!" text="Blog" active={false} />
-      </NavLinksItem>
-      <NavLinksItem>
+      </NavItem>
+      <NavItem>
         <NavLink href="#!" text="Contact" active={false} />
-      </NavLinksItem>
-      <NavLinksItem>
+      </NavItem>
+      <NavItem>
         <NavLink href="#!" text="About" active />
-      </NavLinksItem>
+      </NavItem>
     </>
   ),
 };

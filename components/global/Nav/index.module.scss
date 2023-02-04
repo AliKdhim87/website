@@ -1,21 +1,28 @@
 @use "../../reusable/Typography/Typography.module.scss" as *;
+@use "../../../styles/common/mixins" as *;
 
 .nav {
+  --nav-list-display: none;
+
   background-color: inherit;
   color: var(--text-color-dark);
   padding-block: var(--space-2);
 }
 
-.nav-links {
-  display: flex;
+.nav__list {
+  display: var(--nav-list-display);
   justify-content: flex-end;
   list-style-type: none;
   padding: var(--space-1) 0;
   margin: 0;
   color: inherit;
+
+  @include breakpoint("sm") {
+    --nav-list-display: flex;
+  }
 }
 
-.nav-links--mobile {
+.nav__list--mobile {
   --nav-links-item-padding-block-end: 20px;
   --nav-links-item-margin-inline-start: 0;
 
@@ -26,7 +33,8 @@
   padding: var(--space-3) 0;
   background-color: var(--colors-secondary-bg);
   height: 100%;
-  width: 50%;
+  inline-size: 50%;
+  max-inline-size: 400px;
   margin: 0;
 }
 
@@ -52,6 +60,10 @@
   &:active {
     @extend .nav-link--active;
   }
+
+  &:focus {
+    @include focus;
+  }
 }
 
 .nav-link--active {
@@ -60,10 +72,31 @@
   border-bottom: var(--nav-link-border-active);
 }
 
-.nav-hamburger {
+.nav__button {
+  --nav-button-display: flex;
+
   color: currentcolor;
   font-size: 2rem;
   cursor: pointer;
   border: none;
   background-color: transparent;
+  display: var(--nav-button-display);
+
+  @include breakpoint("sm") {
+    --nav-button-display: none;
+  }
+}
+
+.nav__button--close {
+  margin-inline: auto;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--colors-backdrop-bg);
+  color: var(--text-color-dark);
 }

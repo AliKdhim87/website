@@ -1,9 +1,9 @@
 .anchor {
   color: var(--anchor-color);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 
   &:hover {
     color: var(--anchor-color-hover);
-    text-decoration: underline;
   }
 }

@@ -1,8 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 
-import { Default as NavLinks } from './MenuLinks.stories';
+import { Default as NavListItems } from './MenuLinks.stories';
 
+import { NavList } from '@/components/global/Nav/NavList';
 import { Backdrop } from '@/components/reusable/Backdrop';
 
 export default {
@@ -15,5 +16,10 @@ const Template: ComponentStory<typeof Backdrop> = (args) => <Backdrop {...args} 
 
 export const Default = Template.bind({});
 Default.args = {
-  children: <NavLinks {...NavLinks.args} mobile />,
+  children: (
+    <NavList mobile>
+      <NavListItems {...NavListItems.args} mobile />
+    </NavList>
+  ),
+  parent: 'root',
 };
