@@ -1,6 +1,7 @@
+import { NavProps } from '@/components/global';
 import { Maybe, Navigation } from 'generated/graphql';
 
-export const createNavData = (data: Maybe<Navigation> | undefined) => {
+export const createNavData = (data: Maybe<Navigation> | undefined): NavProps => {
   const navLinks = data?.items?.map((item) => ({ href: item?.route, text: item?.title }));
 
   const logo = {
@@ -12,5 +13,5 @@ export const createNavData = (data: Maybe<Navigation> | undefined) => {
   return {
     navLinks,
     logo,
-  };
+  } as unknown as NavProps;
 };

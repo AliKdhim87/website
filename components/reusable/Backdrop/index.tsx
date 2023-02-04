@@ -1,8 +1,7 @@
 import classNames from 'classnames/bind';
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
 import { createPortal } from 'react-dom';
 
-import { Grid } from '../Grid/index';
+import { Grid, GridProps } from '../Grid/index';
 
 import styles from './Backdrop.module.scss';
 
@@ -28,19 +27,19 @@ const css = classNames.bind(styles);
 //     ) : null}
 //   </>
 // )
-
-interface BackdropProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  className?: string;
+interface BackdropProps extends GridProps {
+  parent?: string;
 }
 
-export const Backdrop: React.FC<BackdropProps> = ({ children, ...props }) => {
-  const portal = document.getElementById('__next');
+export const Backdrop: React.FC<BackdropProps> = ({ children, ref, parent = '__next' }) => {
+  const portal = document.getElementById(parent);
+
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {portal
         ? createPortal(
-            <Grid container justifyContent="flex-end" {...props} className={css('backdrop')}>
+            <Grid ref={ref} container justifyContent="flex-end" className={css('backdrop')}>
               {children}
             </Grid>,
             portal,

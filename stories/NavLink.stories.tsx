@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 
-import { NavLink } from '@/components/global/Nav';
+import { NavLink } from '@/components/global/Nav/NavLink';
 
 export default {
   title: 'components/NavLink',

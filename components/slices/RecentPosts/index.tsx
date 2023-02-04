@@ -1,17 +1,23 @@
 import classNames from 'classnames/bind';
 import Link from 'next/link';
 
-import { Container, Grid, Typography, Card, CTA } from '@/components/reusable';
-import { Cta, Maybe, Post } from 'generated/graphql';
+import { Container, Grid, Typography, Card, CardProps, CTA } from '@/components/reusable';
+import { Cta, Maybe } from 'generated/graphql';
 import { uuidv4 } from 'utils';
 
-export interface RecentPostsProps {
+export type BlogType = {
+  title: string;
+  slug: { current: string };
+  excerpt: string;
+  publishedAt: string;
+};
+export interface RecentPostsProps extends Readonly<CardProps> {
   title?: Maybe<string>;
-  blog?: Post[];
+  blog?: BlogType[];
   cta?: Maybe<Cta>;
 }
 
-export const RecentPosts: React.FC<RecentPostsProps> = ({ blog, cta, title }) => (
+export const RecentPosts: React.FC<RecentPostsProps> = ({ blog, cta, title, ...props }) => (
   <section className="space-pb-4">
     <Container>
       <Grid container justifyContent="center">
@@ -29,7 +35,7 @@ export const RecentPosts: React.FC<RecentPostsProps> = ({ blog, cta, title }) =>
                   <Link href={`/blog/${slug.current}`} passHref key={uuidv4()}>
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                     <a>
-                      <Card title={blogTitle} body={excerpt} date={publishedAt} />
+                      <Card title={blogTitle} body={excerpt} publishedAt={publishedAt} {...props} />
                     </a>
                   </Link>
                 ),

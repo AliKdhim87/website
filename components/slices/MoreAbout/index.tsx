@@ -3,16 +3,17 @@ import classNames from 'classnames/bind';
 
 import styles from './MoreAbout.module.scss';
 
-import { Container, Grid, Card, PortableTextComponents } from '@/components/reusable';
+import { Container, Grid, Card, CardProps, PortableTextComponents } from '@/components/reusable';
 import { BulletIcon } from '@/components/reusable/icons';
-import { uuidv4 } from '@/utils';
-import { Maybe, Card as CardType } from 'generated/graphql';
+import { uuidv4, orderBy } from '@/utils';
 
 const css = classNames.bind(styles);
 
+export type MoreAboutItem = CardProps;
+
 export type MoreAboutProps = {
-  introduction?: any[] | string;
-  moreAboutItems?: Maybe<Maybe<CardType>[]>;
+  introduction?: any;
+  moreAboutItems?: MoreAboutItem[];
 };
 
 export const MoreAbout: React.FC<MoreAboutProps> = ({ introduction, moreAboutItems }) => (
@@ -27,15 +28,12 @@ export const MoreAbout: React.FC<MoreAboutProps> = ({ introduction, moreAboutIte
           )}
           <ul className={css('more-about__list')}>
             {moreAboutItems &&
-              moreAboutItems
-                .slice()
-                .sort((a, b) => parseFloat(b?.publishedAt) - parseFloat(a?.publishedAt))
-                .map((item) => (
-                  <li className={css('more-about__list-item')} key={uuidv4()}>
-                    <BulletIcon className={css('more-about__list-item-icon')} />
-                    <Card title={item?.title} date={item?.publishedAt} body={item?.body} />
-                  </li>
-                ))}
+              orderBy(moreAboutItems).map((item: MoreAboutItem) => (
+                <li className={css('more-about__list-item')} key={uuidv4()}>
+                  <BulletIcon className={css('more-about__list-item-icon')} />
+                  <Card title={item?.title} publishedAt={item?.publishedAt} body={item?.body} />
+                </li>
+              ))}
           </ul>
         </Grid>
       </Grid>

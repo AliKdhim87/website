@@ -4,7 +4,7 @@ import { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 
 import { Layout } from '@/components/global';
-import { PageHeader, RecentPosts } from '@/components/slices';
+import { BlogType, PageHeader, RecentPosts } from '@/components/slices';
 import { client, createNavData } from '@/utils';
 import {
   Category,
@@ -39,7 +39,7 @@ const BlogCategories: NextPage<BlogCategoriesProps> = ({
     schemaOrg={schemaOrg}
   >
     {category && category.title && <PageHeader title={category.title} />}
-    <RecentPosts blog={allPost} />
+    <RecentPosts blog={allPost as BlogType[]} />
   </Layout>
 );
 

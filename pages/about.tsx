@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from 'next';
 
 import { Layout, SEOTypes } from '@/components/global';
-import { MoreAbout, PageHeader } from '@/components/slices';
+import { MoreAbout, MoreAboutItem, PageHeader } from '@/components/slices';
 import { client, createNavData, uuidv4 } from '@/utils';
 import { Route, SiteSettings } from 'generated/graphql';
 import { GET_PAGE_BY_SLUG } from 'queries/index.graphql';
@@ -39,7 +39,7 @@ const AboutPage: NextPage<AboutPageProps> = ({
           return (
             <MoreAbout
               introduction={component.aboutIntroductionRaw}
-              moreAboutItems={component.aboutMeItems}
+              moreAboutItems={component.aboutMeItems as MoreAboutItem[]}
               key={uuidv4()}
             />
           );

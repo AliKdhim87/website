@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, LegacyRef, ReactNode } from 'react';
 
 import styles from './Grid.module.scss';
 
@@ -11,22 +11,23 @@ type AlignItems = 'flex-start' | 'center' | 'flex-end';
 
 const css = classNames.bind(styles);
 
-export const Grid: FunctionComponent<
-  {
-    children: ReactNode;
-    container?: boolean;
-    item?: boolean;
-    xs?: Cols;
-    sm?: Cols;
-    md?: Cols;
-    lg?: Cols;
-    spacing?: Spacing;
-    justifyContent?: JustifyContent;
-    justifyContentMd?: JustifyContent;
-    alignItems?: AlignItems;
-    as?: 'div' | 'ul' | 'li' | 'section' | 'nav' | 'footer' | 'header';
-  } & React.HTMLAttributes<HTMLDivElement>
-> = ({
+export interface GridProps extends React.HTMLAttributes<HTMLElement> {
+  children: ReactNode;
+  container?: boolean;
+  item?: boolean;
+  xs?: Cols;
+  sm?: Cols;
+  md?: Cols;
+  lg?: Cols;
+  spacing?: Spacing;
+  justifyContent?: JustifyContent;
+  justifyContentMd?: JustifyContent;
+  alignItems?: AlignItems;
+  as?: 'div' | 'ul' | 'li' | 'section' | 'nav' | 'footer' | 'header';
+  ref?: LegacyRef<any>;
+}
+
+export const Grid: FunctionComponent<GridProps> = ({
   children,
   container,
   item,
@@ -40,6 +41,7 @@ export const Grid: FunctionComponent<
   alignItems,
   as = 'div',
   className,
+  ref,
   ...props
 }) => {
   const classes = css(className, {
@@ -55,10 +57,10 @@ export const Grid: FunctionComponent<
     [`Grid_alignItems_${alignItems}`]: alignItems,
   });
 
-  const Component = as as any;
+  const Component = as;
 
   return (
-    <Component className={classes} {...props}>
+    <Component ref={ref} className={classes} {...props}>
       {children}
     </Component>
   );

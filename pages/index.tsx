@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next';
 
 import { Layout, SEOTypes } from '@/components/global';
-import { PageHeader, RecentPosts, SocialMedia } from '@/components/slices';
+import { BlogType, PageHeader, RecentPosts, SocialMedia } from '@/components/slices';
 import { client, uuidv4, createNavData } from '@/utils';
 import { Post, Route, SiteSettings } from 'generated/graphql';
 import { GET_LATEST_BLOG, GET_PAGE_BY_SLUG } from 'queries/index.graphql';
@@ -25,7 +25,9 @@ const Home: NextPage<HomeProps> = ({
         case 'SocialCollection':
           return <SocialMedia title={component.title} socialMedia={component?.items} key={uuidv4()} />;
         case 'BlogList':
-          return <RecentPosts title={component.title} blog={allPost} cta={component.cta} key={uuidv4()} />;
+          return (
+            <RecentPosts title={component.title} blog={allPost as BlogType[]} cta={component.cta} key={uuidv4()} />
+          );
         default:
           return null;
       }
