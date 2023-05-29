@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { Maybe } from 'graphql/jsutils/Maybe';
-import Image from 'next/image';
+import Image, { ImageProps } from 'next/image';
 
 import styles from './PageHeader.module.scss';
 
@@ -9,17 +9,10 @@ import { Cta } from 'generated/graphql';
 
 const css = classNames.bind(styles);
 
-type ImageTypes = {
-  src: string;
-  alt: string;
-  height: string;
-  width: string;
-};
-
 export type PageHeader = {
   title?: Maybe<string>;
   body?: Maybe<string>;
-  image?: ImageTypes;
+  image?: ImageProps;
   titleDistancedBottom?: boolean;
   cta?: Maybe<Cta>;
   backgroundColor?: 'primary' | 'transparent';
@@ -72,7 +65,7 @@ export const PageHeader: React.FC<PageHeader> = ({
                       justifyContent="center"
                       className={css('page-header-section__image')}
                     >
-                      <Image src={image.src} width={image.width} height={image.height} alt={image.alt} layout="fixed" />
+                      <Image src={image.src} width={image.width} height={image.height} alt={image.alt} />
                     </Grid>
                   )}
                 </>

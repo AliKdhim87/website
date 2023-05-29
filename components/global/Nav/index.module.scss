@@ -48,6 +48,8 @@
 }
 
 .nav-link {
+  @extend .typography-body;
+
   padding-bottom: var(--nav-link-padding-bottom);
   transition: 0.2s ease-in-out;
 
@@ -63,6 +65,10 @@
 
   &:focus {
     @include focus;
+  }
+
+  &[aria-current="page"] {
+    @extend .nav-link--active;
   }
 }
 

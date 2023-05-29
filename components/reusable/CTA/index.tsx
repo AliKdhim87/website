@@ -1,38 +1,24 @@
 import classNames from 'classnames/bind';
-import Link from 'next/link';
-import React, { forwardRef } from 'react';
+import Link, { LinkProps } from 'next/link';
+import React from 'react';
 
 import styles from './CTA.module.scss';
 
-import { Typography } from '@/components/reusable';
-
 const css = classNames.bind(styles);
 
-interface ButtonProps
-  extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
+interface ButtonProps extends LinkProps {
   text?: string | React.ReactNode;
   variant?: 'primary' | 'secondary';
+  className?: string;
 }
-export const forwardRefLink = (
-  { href, text, variant = 'primary', className }: ButtonProps,
-  ref: React.LegacyRef<HTMLAnchorElement> | undefined,
-) => {
+
+export const CTA = ({ href, text, variant = 'primary', className }: ButtonProps) => {
   const classes = css('cta', className, {
     [`cta--${variant}`]: variant,
   });
-
-  return href ? (
-    <Link href={href} passHref>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a className={classes} ref={ref}>
-        {text && (
-          <Typography as="span" variant="body">
-            {text}
-          </Typography>
-        )}
-      </a>
+  return (
+    <Link href={href} passHref className={classes}>
+      {text}
     </Link>
-  ) : null;
+  );
 };
-
-export const CTA = forwardRef(forwardRefLink);

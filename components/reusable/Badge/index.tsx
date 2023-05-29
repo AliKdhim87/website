@@ -1,25 +1,17 @@
 import classNames from 'classnames/bind';
-import React, { forwardRef } from 'react';
+import Link, { LinkProps } from 'next/link';
+import React, { ReactNode } from 'react';
 
 import styles from './Badge.module.scss';
 
-import { Typography } from '@/components/reusable';
-
 const css = classNames.bind(styles);
 
-type BadgeProps = React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>;
+interface BadgeProps extends LinkProps {
+  children: ReactNode;
+}
 
-export const forwardRefBadge = (
-  { href, children }: BadgeProps,
-  ref: React.LegacyRef<HTMLAnchorElement> | undefined,
-) => (
-  <a className={css('badge')} href={href} ref={ref}>
-    {children && (
-      <Typography as="span" variant="body">
-        {children}
-      </Typography>
-    )}
-  </a>
+export const Badge: React.FC<BadgeProps> = ({ href, children }) => (
+  <Link className={css('badge')} href={href}>
+    {children && children}
+  </Link>
 );
-
-export const Badge = forwardRef(forwardRefBadge);

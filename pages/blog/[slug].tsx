@@ -2,7 +2,7 @@ import { ParsedUrlQuery } from 'querystring';
 
 import { PortableText } from '@portabletext/react';
 import { GetStaticProps, NextPage } from 'next';
-import Image from 'next/image';
+import Image, { ImageProps } from 'next/image';
 import { useRouter } from 'next/router';
 
 import { Layout } from '@/components/global';
@@ -30,7 +30,7 @@ const PostPage: NextPage<PostPageProps> = ({ post, siteSettings: { footer, navig
   const seo = {
     title,
     description: excerpt,
-    image: mainImage,
+    image: mainImage as ImageProps,
     ogUrl: `${schemaOrg?.website}${asPath}`,
     ogTitle: title,
   };
@@ -38,17 +38,26 @@ const PostPage: NextPage<PostPageProps> = ({ post, siteSettings: { footer, navig
   return (
     <Layout footer={footer?.copyright} nav={createNavData(navigation)} seo={seo} schemaOrg={schemaOrg}>
       <>
-        {mainImage && mainImage.alt && mainImage.asset && mainImage.asset.url && (
-          <Container>
-            <Image
-              src={mainImage.asset.url}
-              alt={mainImage.alt}
-              width={mainImage.asset.metadata?.dimensions?.width || ''}
-              height={mainImage.asset.metadata?.dimensions?.height || ''}
-              loading="eager"
-            />
-          </Container>
-        )}
+        {mainImage &&
+          mainImage.alt &&
+          mainImage.asset &&
+          mainImage.asset.url &&
+          mainImage.asset.metadata?.dimensions?.width &&
+          mainImage.asset.metadata?.dimensions?.height && (
+            <Container>
+              <Image
+                src={mainImage.asset.url}
+                alt={mainImage.alt}
+                width={mainImage.asset.metadata.dimensions.width}
+                height={mainImage.asset.metadata.dimensions.height}
+                loading="eager"
+                style={{
+                  maxWidth: '100%',
+                  height: 'auto',
+                }}
+              />
+            </Container>
+          )}
         <>
           <Container className="space-pb-3">
             <Typography as="span" variant="body" bodySize="mobile">

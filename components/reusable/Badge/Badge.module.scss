@@ -1,8 +1,10 @@
 @use "../Button/Button.module.scss" as *;
+@use "../Typography/Typography.module.scss" as *;
 
 .badge {
   @extend .button--secondary;
   @extend .button;
+  @extend .typography-body;
 
   border-radius: var(--border-radius);
 }
