@@ -10,9 +10,10 @@ interface ContainerProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement
 }
 
 export const Container: React.FC<ContainerProps> = ({ children, fluid, className, ...props }) => {
-  const classes = classNames(css('container', className), {
-    [css('container--fluid')]: fluid,
+  const classes = css('container', className, {
+    'container--fluid': fluid,
   });
+
   return (
     <div className={classes} {...props}>
       {children}

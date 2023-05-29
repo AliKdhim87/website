@@ -12,7 +12,7 @@ export interface NavListProps extends DetailedHTMLProps<HTMLAttributes<HTMLUList
 
 export const NavList: React.FC<NavListProps> = ({ children, mobile, ...props }) => {
   const classes = css('nav__list', 'modal-content', {
-    [css('nav__list--mobile')]: mobile,
+    'nav__list--mobile': mobile,
   });
   return (
     <ul data-state={mobile ? 'mobile' : 'desktop'} className={classes} {...props}>

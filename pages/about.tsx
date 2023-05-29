@@ -1,4 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
+import { ImageProps } from 'next/image';
 
 import { Layout, SEOTypes } from '@/components/global';
 import { MoreAbout, MoreAboutItem, PageHeader } from '@/components/slices';
@@ -24,12 +25,13 @@ const AboutPage: NextPage<AboutPageProps> = ({
             alt: component.image?.alt,
             width: component.image?.asset?.metadata?.dimensions?.width,
             height: component.image?.asset?.metadata?.dimensions?.height,
-          };
+          } as ImageProps;
+
           return (
             <PageHeader
               title={component.title}
               body={component.body}
-              image={image as any}
+              image={image}
               titleDistancedBottom
               key={uuidv4()}
             />

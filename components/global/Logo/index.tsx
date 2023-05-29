@@ -1,14 +1,19 @@
-import Image from 'next/image';
+import Image, { ImageProps } from 'next/image';
 
-export type LogoType = {
-  src: string;
-  alt: string;
-  width: string;
-  height: string;
-};
 export interface LogoProps {
-  logo?: LogoType;
+  logo?: ImageProps;
 }
-
 export const Logo: React.FC<LogoProps> = ({ logo }) =>
-  logo ? <Image src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} layout="fixed" priority /> : null;
+  logo && logo.src && logo.width ? (
+    <Image
+      src={logo.src}
+      alt={logo.alt}
+      width={logo.width}
+      height={logo.height}
+      priority
+      style={{
+        maxWidth: '100%',
+        height: 'auto',
+      }}
+    />
+  ) : null;

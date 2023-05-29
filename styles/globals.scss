@@ -29,7 +29,6 @@
   --button-padding: 10px 20px;
   --button-transition: 0.5s;
   --button-primary-color: var(--colors-grey-100);
-  --button-focus-border: 0 0 0 2px var(--colors-grey-0);
   --button-disabled-color: var(--colors-grey-500);
   --button-primary-background-color: var(--colors-primary);
   --button-primary-hover-background-color: var(--colors-primary-dark);
@@ -38,7 +37,6 @@
   --button-secondary-border: 0 0 0 1px var(--colors-secondary);
   --button-secondary-disabled-border: 0 0 0 1px var(--colors-grey-300);
   --button-secondary-hover-background-color: var(--colors-secondary);
-  --button-secondary-focus-background-color: var(--colors-secondary);
 
   // Anchor
 
@@ -219,6 +217,10 @@ pre {
 
   > code {
     font-family: var(--font-family) !important;
+  }
+
+  span {
+    display: inline !important;
   }
 }
 

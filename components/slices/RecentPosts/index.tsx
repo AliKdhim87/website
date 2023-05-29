@@ -1,4 +1,4 @@
-import classNames from 'classnames/bind';
+import classNames from 'classnames';
 import Link from 'next/link';
 
 import { Container, Grid, Typography, Card, CardProps, CTA } from '@/components/reusable';
@@ -33,10 +33,7 @@ export const RecentPosts: React.FC<RecentPostsProps> = ({ blog, cta, title, ...p
                 slug &&
                 slug.current && (
                   <Link href={`/blog/${slug.current}`} passHref key={uuidv4()}>
-                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                    <a>
-                      <Card title={blogTitle} body={excerpt} publishedAt={publishedAt} {...props} />
-                    </a>
+                    <Card title={blogTitle} body={excerpt} publishedAt={publishedAt} {...props} />
                   </Link>
                 ),
             )}

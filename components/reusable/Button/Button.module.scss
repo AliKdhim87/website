@@ -1,4 +1,9 @@
+@use "../../../styles/common/mixins" as *;
+@use "../Typography/Typography.module.scss" as *;
+
 .button {
+  @extend .typography-body;
+
   position: relative;
   padding: var(--button-padding);
   border: none;
@@ -15,7 +20,7 @@
   background: var(--button-primary-background-color);
 
   &:focus {
-    box-shadow: var(--button-focus-border);
+    @include focus;
   }
 
   &:hover {
@@ -36,8 +41,7 @@
   box-shadow: var(--button-secondary-border);
 
   &:focus {
-    box-shadow: var(--button-focus-border);
-    background-color: var(--button-secondary-focus-background-color);
+    @include focus;
   }
 
   &:hover {

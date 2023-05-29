@@ -2,7 +2,6 @@
 import classNames from 'classnames/bind';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-// import { Portal } from 'pretty-modal';
 import { useEffect, useRef, useState, useId } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
@@ -12,7 +11,6 @@ import { Logo, LogoProps } from '../Logo';
 import styles from './index.module.scss';
 import { NavButton } from './NavButton';
 import { NavItem } from './NavItem';
-import { NavLink, NavLinkProps, LinkType } from './NavLink';
 import { NavList } from './NavList';
 
 import { Container } from '@/components/reusable';
@@ -22,8 +20,13 @@ import { uuidv4, activeLinkChecker, trapFocus } from '@/utils';
 
 const css = classNames.bind(styles);
 
-export interface NavProps extends LogoProps, NavLinkProps {
-  navLinks: LinkType[];
+type NavLinks = {
+  href: string;
+  text: string;
+};
+
+export interface NavProps extends LogoProps {
+  navLinks: NavLinks[];
 }
 
 export const Nav: React.FC<NavProps> = ({ logo, navLinks }) => {
@@ -34,6 +37,7 @@ export const Nav: React.FC<NavProps> = ({ logo, navLinks }) => {
   const { pathname: currentPath } = useRouter();
   const navListRef = useRef(null);
   const [backdrop, setBackdrop] = useState<HTMLElement>();
+
   useEffect(() => {
     const clickHandler = (event: MouseEvent) => {
       if (event.target === backdrop) {
@@ -75,11 +79,8 @@ export const Nav: React.FC<NavProps> = ({ logo, navLinks }) => {
           </span>
           <Grid item xs={6} md={4}>
             {logo && logo.src && logo.alt && logo.width && logo.height && (
-              <Link href="/" passHref legacyBehavior>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a>
-                  <Logo logo={logo} />
-                </a>
+              <Link href="/" passHref>
+                <Logo logo={logo} />
               </Link>
             )}
           </Grid>
@@ -94,7 +95,15 @@ export const Nav: React.FC<NavProps> = ({ logo, navLinks }) => {
               {navLinks &&
                 navLinks.map(({ href, text }) => (
                   <NavItem key={uuidv4()}>
-                    {text && href && <NavLink text={text} href={href} active={activeLinkChecker(href, currentPath)} />}
+                    {text && href && (
+                      <Link
+                        href={href}
+                        aria-current={activeLinkChecker(href, currentPath) && 'page'}
+                        className={css('nav-link')}
+                      >
+                        {text}
+                      </Link>
+                    )}
                   </NavItem>
                 ))}
             </NavList>
@@ -124,8 +133,12 @@ export const Nav: React.FC<NavProps> = ({ logo, navLinks }) => {
                     navLinks.map(({ href, text }) => (
                       <NavItem key={uuidv4()}>
                         {href && text && (
-                          <Link href={href} passHref>
-                            <NavLink text={text} href={href} active={activeLinkChecker(href, currentPath)} />
+                          <Link
+                            href={href}
+                            aria-current={activeLinkChecker(href, currentPath) && 'page'}
+                            className={css('nav-link')}
+                          >
+                            {text}
                           </Link>
                         )}
                       </NavItem>

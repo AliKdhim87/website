@@ -17,7 +17,6 @@ export * from './icons/Icon';
 export * from './InlineCode';
 export * from './InputField';
 export * from './Label';
-export * from './Logo';
 export * from './PortableTextComponents';
 export * from './PostItem';
 export * from './SVGWrapper';

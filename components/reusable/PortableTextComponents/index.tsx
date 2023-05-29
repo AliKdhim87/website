@@ -3,7 +3,7 @@ import { getImageDimensions } from '@sanity/asset-utils';
 import urlBuilder from '@sanity/image-url';
 import Image from 'next/image';
 
-import { Typography, InlineCode, SnippetCodeType, BlockCode, Blockquote, Anchor } from '..';
+import { Typography, InlineCode, SnippetCodeType, BlockCode, Blockquote, Anchor } from '@/components/reusable';
 
 export const PortableTextComponents: Partial<PortableTextReactComponents> = {
   types: {
@@ -21,7 +21,19 @@ export const PortableTextComponents: Partial<PortableTextReactComponents> = {
           .auto('format')
           .url();
 
-        return imageUrl ? <Image loading="eager" src={imageUrl} alt={value.alt} width={width} height={height} /> : null;
+        return imageUrl ? (
+          <Image
+            loading="eager"
+            src={imageUrl}
+            alt={value.alt}
+            width={width}
+            height={height}
+            style={{
+              maxWidth: '100%',
+              height: 'auto',
+            }}
+          />
+        ) : null;
       }
       return null;
     },

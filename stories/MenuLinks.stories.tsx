@@ -2,7 +2,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 
 import { NavItem } from '@/components/global/Nav/NavItem';
-import { NavLink } from '@/components/global/Nav/NavLink';
 import { NavList } from '@/components/global/Nav/NavList';
 
 export default {
@@ -17,15 +16,9 @@ export const Default = Template.bind({});
 Default.args = {
   children: (
     <>
-      <NavItem>
-        <NavLink href="#!" text="Blog" active={false} />
-      </NavItem>
-      <NavItem>
-        <NavLink href="#!" text="Contact" active={false} />
-      </NavItem>
-      <NavItem>
-        <NavLink href="#!" text="About" active />
-      </NavItem>
+      <NavItem>{/* <a href="#!" text="Blog" active={false} /> */}</NavItem>
+      <NavItem>{/* <a href="#!" text="Contact" active={false} /> */}</NavItem>
+      <NavItem>{/* <a href="#!" text="About" active /> */}</NavItem>
     </>
   ),
 };
