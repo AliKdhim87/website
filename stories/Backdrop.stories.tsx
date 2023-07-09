@@ -1,10 +1,10 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 
-import { Default as NavListItems } from './MenuLinks.stories';
-
 import { NavList } from '@/components/global/Nav/NavList';
 import { Backdrop } from '@/components/reusable/Backdrop';
+
+import { Default as NavListItems } from './MenuLinks.stories';
 
 export default {
   title: 'components/Backdrop',

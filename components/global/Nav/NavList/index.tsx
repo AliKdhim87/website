@@ -10,7 +10,7 @@ export interface NavListProps extends DetailedHTMLProps<HTMLAttributes<HTMLUList
   children?: React.ReactNode;
 }
 
-export const NavList: React.FC<NavListProps> = ({ children, mobile, ...props }) => {
+export const NavList = ({ children, mobile, ...props }: NavListProps) => {
   const classes = css('nav__list', 'modal-content', {
     'nav__list--mobile': mobile,
   });

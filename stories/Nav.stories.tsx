@@ -15,8 +15,8 @@ export const Default = Template.bind({});
 Default.args = {
   logo: { src: '/Logo.svg', width: '180', height: '69', alt: 'Ali dev logo' },
   navLinks: [
-    { href: '/blog', text: 'Blog' },
-    { href: '/contact', text: 'Contact' },
-    { href: '/about', text: 'About' },
+    { route: '/blog', title: 'Blog' },
+    { route: '/contact', title: 'Contact' },
+    { route: '/about', title: 'About' },
   ],
 };

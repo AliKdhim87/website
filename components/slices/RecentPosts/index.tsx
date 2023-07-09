@@ -17,7 +17,7 @@ export interface RecentPostsProps extends Readonly<CardProps> {
   cta?: Maybe<Cta>;
 }
 
-export const RecentPosts: React.FC<RecentPostsProps> = ({ blog, cta, title, ...props }) => (
+export const RecentPosts = ({ blog, cta, title, ...props }: RecentPostsProps) => (
   <section className="space-pb-4">
     <Container>
       <Grid container justifyContent="center">

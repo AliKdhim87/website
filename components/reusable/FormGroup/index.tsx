@@ -2,10 +2,8 @@ import classNames from 'classnames/bind';
 
 import styles from './FormGroup.module.scss';
 
-import { Children } from 'global';
-
 const css = classNames.bind(styles);
-
-export const FormGroup: React.FC<{ children: Children }> = ({ children }) => (
-  <div className={css('form-group')}>{children}</div>
-);
+interface FormGroupProps {
+  children: React.ReactNode;
+}
+export const FormGroup = ({ children }: FormGroupProps) => <div className={css('form-group')}>{children}</div>;

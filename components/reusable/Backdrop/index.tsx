@@ -13,12 +13,12 @@ const css = classNames.bind(styles);
 //   isOpen: boolean
 // }
 
-// export const Backdrop: React.FC<DrawerProps> = ({
+// export const Backdrop = ({
 //   children,
 //   backdropRef,
 //   isOpen,
 //   ...props
-// }) => (
+// }: DrawerProps) => (
 //   <>
 //     {isOpen ? (
 //       <div className={css("backdrop")} ref={backdropRef} {...props}>
@@ -31,7 +31,7 @@ interface BackdropProps extends GridProps {
   parent?: string;
 }
 
-export const Backdrop: React.FC<BackdropProps> = ({ children, ref, parent = '__next' }) => {
+export const Backdrop = ({ children, ref, parent = 'root' }: BackdropProps) => {
   const portal = document.getElementById(parent);
 
   return (

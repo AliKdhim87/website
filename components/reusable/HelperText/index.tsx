@@ -13,18 +13,13 @@ interface HelperTextProps extends DetailedHTMLProps<HTMLAttributes<HTMLParagraph
 
 const css = classNames.bind(styles);
 
-export const HelperText: React.FC<HelperTextProps> = ({ helperText, error, id }) => {
+export const HelperText = ({ helperText, error, id }: HelperTextProps) => {
   const classes = css('helper-text', {
     'helper-text--error': error,
   });
-  return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
-    <>
-      {helperText && (
-        <Typography as="p" variant="body" className={classes} id={id}>
-          {helperText}
-        </Typography>
-      )}
-    </>
-  );
+  return helperText ? (
+    <Typography as="p" variant="body" className={classes} id={id}>
+      {helperText}
+    </Typography>
+  ) : null;
 };

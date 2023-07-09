@@ -7,7 +7,7 @@ const css = classNames.bind(styles);
 
 type AnchorProps = DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>;
 
-export const Anchor: React.FC<AnchorProps> = ({ children, className, ...props }) => {
+export const Anchor = ({ children, className, ...props }: AnchorProps) => {
   const classes = css(className, 'anchor');
   return (
     <a className={classes} {...props}>

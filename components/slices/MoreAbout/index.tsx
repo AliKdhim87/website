@@ -1,11 +1,11 @@
 import { PortableText } from '@portabletext/react';
 import classNames from 'classnames/bind';
 
-import styles from './MoreAbout.module.scss';
-
 import { Container, Grid, Card, CardProps, PortableTextComponents } from '@/components/reusable';
 import { BulletIcon } from '@/components/reusable/icons';
 import { uuidv4, orderBy } from '@/utils';
+
+import styles from './MoreAbout.module.scss';
 
 const css = classNames.bind(styles);
 
@@ -16,7 +16,7 @@ export type MoreAboutProps = {
   moreAboutItems?: MoreAboutItem[];
 };
 
-export const MoreAbout: React.FC<MoreAboutProps> = ({ introduction, moreAboutItems }) => (
+export const MoreAbout = ({ introduction, moreAboutItems }: MoreAboutProps) => (
   <section className={css('more-about')}>
     <Container>
       <Grid container justifyContent="center">

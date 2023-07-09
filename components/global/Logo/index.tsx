@@ -3,7 +3,7 @@ import Image, { ImageProps } from 'next/image';
 export interface LogoProps {
   logo?: ImageProps;
 }
-export const Logo: React.FC<LogoProps> = ({ logo }) =>
+export const Logo = ({ logo }: LogoProps) =>
   logo && logo.src && logo.width ? (
     <Image
       src={logo.src}

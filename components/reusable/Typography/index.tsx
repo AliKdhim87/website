@@ -14,7 +14,7 @@ export interface TypographyProps extends React.DetailedHTMLProps<HTMLAttributes<
 }
 const css = classNames.bind(styles);
 
-export const Typography: React.FC<TypographyProps> = ({ as, variant, bodySize, bodyWeight, children, className }) => {
+export const Typography = ({ as, variant, bodySize, bodyWeight, children, className }: TypographyProps) => {
   const classes = css('typography', className, {
     [`typography-${variant}`]: variant,
     [`typography-body--weight-${bodyWeight}`]: bodyWeight,

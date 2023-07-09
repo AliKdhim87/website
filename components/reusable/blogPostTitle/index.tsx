@@ -1,13 +1,15 @@
 import classNames from 'classnames/bind';
 
+import { Container } from '../Container';
+import { Typography } from '../Typography';
+
 import styles from './BlogPostTitle.module.scss';
 
-import { Container, Typography } from '@/components/reusable';
-import { Maybe } from 'generated/graphql';
-
 const css = classNames.bind(styles);
-
-export const BlogPostTitle: React.FC<{ title?: Maybe<string> }> = ({ title }) =>
+interface BlogPostTitleProps {
+  title?: string;
+}
+export const BlogPostTitle = ({ title }: BlogPostTitleProps) =>
   title ? (
     <div className={css('blog-post-title')}>
       <Container>

@@ -1,6 +1,6 @@
-import { gql } from '@apollo/client';
+const gql = (query: any) => query;
 
-export const GET_ALL_BLOG = gql`
+export const GET_ALL_BLOG = gql(`
   query getAllBlog {
     allPost(sort: { publishedAt: DESC }) {
       _id
@@ -12,23 +12,9 @@ export const GET_ALL_BLOG = gql`
       excerpt
     }
   }
-`;
+`);
 
-export const GET_LATEST_BLOG = gql`
-  query getLatestBlog {
-    allPost(sort: { publishedAt: DESC }, limit: 3) {
-      _id
-      title
-      publishedAt
-      slug {
-        current
-      }
-      excerpt
-    }
-  }
-`;
-
-export const GET_ALL_BLOG_BY_CATEGORY_ID = gql`
+export const GET_ALL_BLOG_BY_CATEGORY_ID = gql(`
   query getAllBlogByCategoryId($categoryId: ID!) {
     allPost(where: { _: { references: $categoryId } }) {
       title
@@ -43,9 +29,9 @@ export const GET_ALL_BLOG_BY_CATEGORY_ID = gql`
       description
     }
   }
-`;
+`);
 
-export const GET_BLOG_BY_SLUG = gql`
+export const GET_BLOG_BY_SLUG = gql(`
   query getBlogBySlug($slug: String) {
     allPost(where: { slug: { current: { eq: $slug } } }, limit: 1) {
       title
@@ -64,16 +50,26 @@ export const GET_BLOG_BY_SLUG = gql`
         }
       }
       excerpt
+      updatedAt: _updatedAt
+      publishedAt 
       categories {
         _id
         title
       }
       bodyRaw
     }
+    allSiteSettings {
+      schemaOrg {
+        website
+        openGraph {
+        title
+        }
+      }
+    }
   }
-`;
+`);
 
-export const GET_SITE_SETTINGS = gql`
+export const GET_SITE_SETTINGS = gql(`
   query getSiteSettings {
     SiteSettings(id: "siteSettings") {
       navigation {
@@ -102,6 +98,7 @@ export const GET_SITE_SETTINGS = gql`
         email
         jobTitle
         telephone
+        name
         website
         openGraph {
           title
@@ -115,10 +112,126 @@ export const GET_SITE_SETTINGS = gql`
       }
     }
   }
-`;
+`);
 
-export const GET_PAGE_BY_SLUG = gql`
-  query getPageBuSlug($slug: String) {
+export const GET_CONTACT_PAGE = gql(`
+  query getContactPage($slug: String) {
+    allRoute(where: { slug: { current: { eq: $slug } } }) {
+      slug {
+        current
+      }
+      openGraph {
+        title
+        description
+        image {
+          asset {
+            url
+          }
+        }
+      }
+      page {
+        content {
+          __typename
+          ... on PageHeader {
+            title
+          }
+        }
+      }
+    }
+    allSiteSettings {
+      schemaOrg {
+        website
+        openGraph {
+        title
+        }
+      }
+    }
+  }
+`);
+
+export const GET_BLOG_PAGE = gql(`
+ query getBlogPage($slug: String) {
+  allRoute(where: { slug: { current: { eq: $slug } } }) {
+    slug {
+      current
+    }
+    openGraph {
+      title
+      description
+      image {
+        asset {
+          url
+        }
+      }
+    }
+    page {
+      content {
+        __typename
+        ... on PageHeader {
+          title
+        }
+      }
+    }
+  }
+  allSiteSettings {
+    schemaOrg {
+      website
+      openGraph {
+        title
+      }
+    }
+  }
+  allPost(sort: { publishedAt: DESC }) {
+    _id
+    title
+    publishedAt
+    slug {
+      current
+    }
+    excerpt
+  }
+}
+`);
+
+export const GET_NOT_FOUND_PAGE = gql(`
+  query getNotFoundPage($slug: String) {
+    allRoute(where: { slug: { current: { eq: $slug } } }) {
+      openGraph {
+        title
+        description
+      }
+      page {
+        content {
+          __typename
+          ... on PageHeader {
+            title
+            body
+            cta {
+              title
+              route
+            }
+            titleDistancedBottom
+            image {
+              alt
+              asset {
+                url
+                metadata {
+                  dimensions {
+                    width
+                    height
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`);
+
+export const GET_HOME_PAGE = gql(`
+  query getHomePage($slug: String) {
     allRoute(where: { slug: { current: { eq: $slug } } }) {
       openGraph {
         title
@@ -163,61 +276,23 @@ export const GET_PAGE_BY_SLUG = gql`
               route
             }
           }
-          ... on AboutMe {
-            aboutIntroductionRaw
-            aboutMeItems {
-              title
-              body
-              publishedAt
-            }
-          }
+
         }
       }
     }
-    SiteSettings(id: "siteSettings") {
-      navigation {
-        logo {
-          alt
-          asset {
-            metadata {
-              dimensions {
-                height
-                width
-              }
-            }
-            url
-          }
-        }
-        items {
-          title
-          route
-          kind
-        }
+    allPost(sort: { publishedAt: DESC }, limit: 3) {
+      _id
+      title
+      publishedAt
+      slug {
+        current
       }
-      footer {
-        copyright
-      }
-      schemaOrg {
-        email
-        name
-        jobTitle
-        telephone
-        website
-        openGraph {
-          title
-          description
-          image {
-            asset {
-              url
-            }
-          }
-        }
-      }
+      excerpt
     }
   }
-`;
+`);
 
-export const GET_ALL_BLOG_SLUGS = gql`
+export const GET_ALL_BLOG_SLUGS = gql(`
   query getAllBlogSlugs {
     allPost {
       slug {
@@ -225,12 +300,91 @@ export const GET_ALL_BLOG_SLUGS = gql`
       }
     }
   }
-`;
+`);
 
-export const GET_ALL_CATEGORY_ID = gql`
+export const GET_ALL_CATEGORY_ID = gql(`
   query getAllCategoryId {
     allCategory {
       _id
     }
   }
-`;
+`);
+
+export const GET_ABOUT_PAGE = gql(`
+query getAboutPage($slug: String) {
+  allRoute(where: { slug: { current: { eq: $slug } } }) {
+    slug {
+      current
+    }
+    openGraph {
+      title
+      description
+      image {
+        asset {
+          url
+        }
+      }
+    }
+    page {
+      content {
+        ... on PageHeader {
+          __typename
+          title
+          titleDistancedBottom
+          body
+          image {
+            asset {
+              url
+              metadata {
+                dimensions {
+                  height
+                  width
+                }
+              }
+            }
+            alt
+          }
+        }
+        ... on AboutMe {
+          __typename
+          aboutIntroductionRaw
+          aboutMeItems {
+            title
+            publishedAt
+            body
+          }
+        }
+      }
+    }
+  }
+  allSiteSettings {
+      schemaOrg {
+        website
+        openGraph {
+        title
+        }
+      }
+    }
+}
+`);
+
+export const GET_ALL_PAGES_AND_BLOGS_AND_CATEGORIES = gql(`
+query getAllPagesAndBlogsAndCategories{
+  allRoute (sort:{_updatedAt: DESC}, where:{_:{is_draft: false},includeInSitemap: {eq: true}}){
+    updatedAt:_updatedAt
+    slug{
+      current
+    }
+  }
+  allCategory(sort:{_updatedAt: DESC}, where: {_: {is_draft: false}}){
+    updatedAt:_updatedAt
+    id:_id
+  }
+  allPost(sort:{_updatedAt: DESC}, where:{_: { is_draft: false}}){
+ 	updatedAt:_updatedAt
+    slug {
+      current
+    }
+  }
+}
+`);

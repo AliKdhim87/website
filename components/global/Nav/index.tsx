@@ -1,40 +1,42 @@
+'use client';
+
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import classNames from 'classnames/bind';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useEffect, useRef, useState, useId } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-
-import { Header } from '../Header';
-import { Logo, LogoProps } from '../Logo';
-
-import styles from './index.module.scss';
-import { NavButton } from './NavButton';
-import { NavItem } from './NavItem';
-import { NavList } from './NavList';
 
 import { Container } from '@/components/reusable';
 import { Backdrop } from '@/components/reusable/Backdrop';
 import { Grid } from '@/components/reusable/Grid';
 import { uuidv4, activeLinkChecker, trapFocus } from '@/utils';
 
+import { Header } from '../Header';
+import { Logo } from '../Logo';
+
+import styles from './index.module.scss';
+import { NavButton } from './NavButton';
+import { NavItem } from './NavItem';
+import { NavList } from './NavList';
+
 const css = classNames.bind(styles);
 
-type NavLinks = {
-  href: string;
-  text: string;
+export type NavLinks = {
+  route: string | null;
+  title: string | null;
 };
 
-export interface NavProps extends LogoProps {
+export interface NavProps {
   navLinks: NavLinks[];
+  logo: any;
 }
 
-export const Nav: React.FC<NavProps> = ({ logo, navLinks }) => {
+export const Nav = ({ logo, navLinks }: NavProps) => {
   const [mobileMode, setMobileMode] = useState(false);
   const [active, setActive] = useState(false);
-
-  const navAriaContrOLiD = useId();
-  const { pathname: currentPath } = useRouter();
+  const navAriaContrOLiD = 'nav-aria-controls-id';
+  const pathname = usePathname();
   const navListRef = useRef(null);
   const [backdrop, setBackdrop] = useState<HTMLElement>();
 
@@ -78,11 +80,9 @@ export const Nav: React.FC<NavProps> = ({ logo, navLinks }) => {
             Main Menu
           </span>
           <Grid item xs={6} md={4}>
-            {logo && logo.src && logo.alt && logo.width && logo.height && (
-              <Link href="/" passHref>
-                <Logo logo={logo} />
-              </Link>
-            )}
+            <Link href="/">
+              <Logo logo={...logo} />
+            </Link>
           </Grid>
           <Grid item xs={6} md={8} justifyContent="flex-end">
             <NavButton
@@ -93,15 +93,15 @@ export const Nav: React.FC<NavProps> = ({ logo, navLinks }) => {
             />
             <NavList id={navAriaContrOLiD}>
               {navLinks &&
-                navLinks.map(({ href, text }) => (
+                navLinks.map(({ route, title }) => (
                   <NavItem key={uuidv4()}>
-                    {text && href && (
+                    {title && route && (
                       <Link
-                        href={href}
-                        aria-current={activeLinkChecker(href, currentPath) && 'page'}
+                        href={route}
+                        aria-current={activeLinkChecker(route, pathname) && 'page'}
                         className={css('nav-link')}
                       >
-                        {text}
+                        {title}
                       </Link>
                     )}
                   </NavItem>
@@ -130,15 +130,15 @@ export const Nav: React.FC<NavProps> = ({ logo, navLinks }) => {
                     />
                   </NavItem>
                   {navLinks &&
-                    navLinks.map(({ href, text }) => (
+                    navLinks.map(({ route, title }) => (
                       <NavItem key={uuidv4()}>
-                        {href && text && (
+                        {route && title && (
                           <Link
-                            href={href}
-                            aria-current={activeLinkChecker(href, currentPath) && 'page'}
+                            href={route}
+                            aria-current={activeLinkChecker(route, pathname) && 'page'}
                             className={css('nav-link')}
                           >
-                            {text}
+                            {title}
                           </Link>
                         )}
                       </NavItem>

@@ -1,11 +1,11 @@
 import classNames from 'classnames/bind';
 import { Maybe } from 'graphql/jsutils/Maybe';
 
-import styles from './SocialMedia.module.scss';
-
 import { Container, Grid, Typography, Icon, IconsType } from '@/components/reusable';
 import { uuidv4 } from '@/utils';
 import { Social } from 'generated/graphql';
+
+import styles from './SocialMedia.module.scss';
 
 const css = classNames.bind(styles);
 
@@ -14,7 +14,7 @@ interface SocialMediaProps {
   socialMedia: Maybe<Maybe<Social>[]>;
 }
 
-export const SocialMedia: React.FC<SocialMediaProps> = ({ title, socialMedia }) => (
+export const SocialMedia = ({ title, socialMedia }: SocialMediaProps) => (
   <section className={css('social-media')}>
     <Container>
       <Grid container justifyContent="center">

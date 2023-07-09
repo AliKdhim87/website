@@ -26,7 +26,7 @@ interface IconsProps {
   name: keyof typeof IconsType;
 }
 
-export const Icon: React.FC<IconsProps> = ({ name }) => {
+export const Icon = ({ name }: IconsProps) => {
   const Component = IconsType[name];
   return <Component />;
 };
