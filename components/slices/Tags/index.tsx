@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind';
 
-import styles from './Tags.module.scss';
-
 import { Grid, Badge } from '@/components/reusable';
 import { uuidv4 } from '@/utils';
 import { Category, Maybe } from 'generated/graphql';
+
+import styles from './Tags.module.scss';
 
 const css = classNames.bind(styles);
 
@@ -12,7 +12,7 @@ interface TagsProps {
   tags: Maybe<Category>[];
 }
 
-export const Tags: React.FC<TagsProps> = ({ tags }) => (
+export const Tags = ({ tags }: TagsProps) => (
   <Grid as="ul" container className={css('tags')}>
     {tags &&
       tags.map((tag) => (

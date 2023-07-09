@@ -2,10 +2,10 @@ import classNames from 'classnames/bind';
 import { Maybe } from 'graphql/jsutils/Maybe';
 import Image, { ImageProps } from 'next/image';
 
-import styles from './PageHeader.module.scss';
-
 import { Container, Typography, Grid, CTA } from '@/components/reusable';
 import { Cta } from 'generated/graphql';
+
+import styles from './PageHeader.module.scss';
 
 const css = classNames.bind(styles);
 
@@ -18,14 +18,14 @@ export type PageHeader = {
   backgroundColor?: 'primary' | 'transparent';
 };
 
-export const PageHeader: React.FC<PageHeader> = ({
+export const PageHeader = ({
   title,
   body,
   image,
   titleDistancedBottom,
   cta,
   backgroundColor = 'primary',
-}) => {
+}: PageHeader) => {
   const content = (
     <>
       {title && (

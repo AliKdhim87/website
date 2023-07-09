@@ -1,9 +1,15 @@
+'use client';
+
 import { PortableTextReactComponents } from '@portabletext/react';
 import { getImageDimensions } from '@sanity/asset-utils';
 import urlBuilder from '@sanity/image-url';
 import Image from 'next/image';
 
-import { Typography, InlineCode, SnippetCodeType, BlockCode, Blockquote, Anchor } from '@/components/reusable';
+import { Anchor } from '../Anchor';
+import { Blockquote } from '../Blockquote';
+import { SnippetCodeType, BlockCode } from '../Code';
+import { InlineCode } from '../InlineCode';
+import { Typography } from '../Typography';
 
 export const PortableTextComponents: Partial<PortableTextReactComponents> = {
   types: {

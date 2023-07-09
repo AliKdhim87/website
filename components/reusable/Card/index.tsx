@@ -1,9 +1,10 @@
 import classNames from 'classnames/bind';
 
-import styles from './Card.module.scss';
-
-import { AsHTMLElement, Typography, TypographyVariant } from '@/components/reusable';
 import { Maybe } from 'generated/graphql';
+
+import { AsHTMLElement, Typography, TypographyVariant } from '../Typography';
+
+import styles from './Card.module.scss';
 
 const css = classNames.bind(styles);
 
@@ -17,7 +18,7 @@ export interface CardProps {
   publishedAt?: string;
 }
 
-export const Card: React.FC<CardProps> = ({ title, body, publishedAt, blogTitleOptions }) => (
+export const Card = ({ title, body, publishedAt, blogTitleOptions }: CardProps) => (
   <div className={css('card')}>
     {title && (
       <Typography as={blogTitleOptions?.level || 'h3'} variant={blogTitleOptions?.variant || 'h4'}>

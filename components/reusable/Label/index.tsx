@@ -9,7 +9,7 @@ export interface LabelProps extends DetailedHTMLProps<LabelHTMLAttributes<HTMLLa
 
 const css = classNames.bind(styles);
 
-export const Label: React.FC<LabelProps> = ({ children, htmlFor, required, id, ...props }) => {
+export const Label = ({ children, htmlFor, required, id, ...props }: LabelProps) => {
   const classes = css('label', {
     'label--required': required,
   });

@@ -1,3 +1,5 @@
+'use client';
+
 export * from './Anchor';
 export * from './Backdrop';
 export * from './Badge';
@@ -22,3 +24,4 @@ export * from './PostItem';
 export * from './SVGWrapper';
 export * from './Textarea';
 export * from './Typography';
+export { PortableText } from '@portabletext/react';

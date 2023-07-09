@@ -1,3 +1,5 @@
+'use client';
+
 export * from './MoreAbout';
 export * from './PageHeader';
 export * from './RecentPosts';

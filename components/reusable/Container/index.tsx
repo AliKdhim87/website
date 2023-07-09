@@ -9,7 +9,7 @@ interface ContainerProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement
   fluid?: boolean;
 }
 
-export const Container: React.FC<ContainerProps> = ({ children, fluid, className, ...props }) => {
+export const Container = ({ children, fluid, className, ...props }: ContainerProps) => {
   const classes = css('container', className, {
     'container--fluid': fluid,
   });

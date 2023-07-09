@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind';
 import { DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
 
-import styles from './Button.module.scss';
+import { Typography } from '../Typography';
 
-import { Typography } from '@/components/reusable';
+import styles from './Button.module.scss';
 
 const css = classNames.bind(styles);
 

@@ -1,10 +1,12 @@
+'use client';
+
 import classNames from 'classnames/bind';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
-import styles from './Code.module.scss';
+import { Typography } from '../Typography';
 
-import { Typography } from '@/components/reusable';
+import styles from './Code.module.scss';
 
 export type SnippetCodeType = {
   language: string;
@@ -12,7 +14,7 @@ export type SnippetCodeType = {
 };
 const css = classNames.bind(styles);
 
-export const BlockCode: React.FC<SnippetCodeType> = ({ language, code }) => (
+export const BlockCode = ({ language, code }: SnippetCodeType) => (
   <>
     <Typography bodyWeight="bold" as="span" variant="body" className={css('code', 'space-p-1')}>
       {language}

@@ -1,12 +1,13 @@
 import classNames from 'classnames/bind';
-import { DetailedHTMLProps, forwardRef, InputHTMLAttributes } from 'react';
+import React, { DetailedHTMLProps, forwardRef, InputHTMLAttributes } from 'react';
+
+import { uuidv4 } from '@/utils';
 
 import { FormGroup } from '../FormGroup';
+import { HelperText } from '../HelperText';
+import { Label } from '../Label';
 
 import styles from './InputField.module.scss';
-
-import { Label, HelperText } from '@/components/reusable';
-import { uuidv4 } from '@/utils';
 
 const css = classNames.bind(styles);
 

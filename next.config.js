@@ -4,9 +4,8 @@ module.exports = {
   images: {
     domains: ['cdn.sanity.io'],
   },
-  i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
+  experimental: {
+    serverActions: true,
   },
   webpack(config) {
     config.module.rules.push({

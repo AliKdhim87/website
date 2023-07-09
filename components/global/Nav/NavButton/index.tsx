@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind';
 import { DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
 
-import styles from '../index.module.scss';
-
 import { CloseIcon, HamburgerIcon } from '@/components/reusable/icons';
+
+import styles from '../index.module.scss';
 
 const css = classNames.bind(styles);
 interface NavButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
@@ -11,7 +11,7 @@ interface NavButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButt
   menuExpanded: boolean;
 }
 
-export const NavButton: React.FC<NavButtonProps> = ({ name, menuExpanded, className, ...props }) => (
+export const NavButton = ({ name, menuExpanded, className, ...props }: NavButtonProps) => (
   <button
     className={css(className, 'nav__button', { 'nav__button--close': name === 'close' })}
     type="button"

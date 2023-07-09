@@ -10,7 +10,7 @@ interface BadgeProps extends LinkProps {
   children: ReactNode;
 }
 
-export const Badge: React.FC<BadgeProps> = ({ href, children }) => (
+export const Badge = ({ href, children }: BadgeProps) => (
   <Link className={css('badge')} href={href}>
     {children && children}
   </Link>

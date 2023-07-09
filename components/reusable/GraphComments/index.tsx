@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect } from 'react';
 
 declare global {
@@ -9,7 +11,7 @@ declare global {
   }
 }
 
-export const GraphComment: React.FC = () => {
+export const GraphComment = () => {
   useEffect(() => {
     window.gc_params = {
       graphcomment_id: process.env.NEXT_PUBLIC_GRAPH_COMMENTS_WEBSITE_ID,

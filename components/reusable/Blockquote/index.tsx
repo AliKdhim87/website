@@ -1,15 +1,15 @@
 import classNames from 'classnames/bind';
 import { BlockquoteHTMLAttributes, DetailedHTMLProps } from 'react';
 
-import styles from './Blockquote.module.scss';
+import { Typography } from '../Typography';
 
-import { Typography } from '@/components/reusable';
+import styles from './Blockquote.module.scss';
 
 const css = classNames.bind(styles);
 
 type BlockquoteProps = DetailedHTMLProps<BlockquoteHTMLAttributes<HTMLQuoteElement>, HTMLQuoteElement>;
 
-export const Blockquote: React.FC<BlockquoteProps> = ({ children }) => (
+export const Blockquote = ({ children }: BlockquoteProps) => (
   <blockquote className={css('blockquote')}>
     <Typography as="p" variant="body" bodySize="mobile">
       {children}

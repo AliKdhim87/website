@@ -4,16 +4,14 @@ import { Container } from '../Container';
 
 import styles from './index.module.scss';
 
-import { Children } from 'global';
-
 const css = classNames.bind(styles);
 
 interface SVGWrapperProps {
   mode: 'dark' | 'light';
-  children: Children;
+  children: React.ReactNode;
 }
 
-export const SVGWrapper: React.FC<SVGWrapperProps> = ({ children, mode }) => (
+export const SVGWrapper = ({ children, mode }: SVGWrapperProps) => (
   <Container fluid>
     <div className={css(`svg-wrapper--${mode}`)}>{children}</div>
   </Container>
