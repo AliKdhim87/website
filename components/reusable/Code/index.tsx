@@ -2,7 +2,7 @@
 
 import classNames from 'classnames/bind';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 import { Typography } from '../Typography';
 
@@ -14,7 +14,7 @@ export type SnippetCodeType = {
 };
 const css = classNames.bind(styles);
 
-export const BlockCode = ({ language, code }: SnippetCodeType) => (
+export const BlockCode: React.FC<SnippetCodeType> = ({ language, code }) => (
   <>
     <Typography bodyWeight="bold" as="span" variant="body" className={css('code', 'space-p-1')}>
       {language}

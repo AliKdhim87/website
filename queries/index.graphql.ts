@@ -2,7 +2,7 @@ const gql = (query: any) => query;
 
 export const GET_ALL_BLOG = gql(`
   query getAllBlog {
-    allPost(sort: { publishedAt: DESC }) {
+    allPost(sort:{_updatedAt: DESC}) {
       _id
       title
       publishedAt
@@ -37,6 +37,7 @@ export const GET_BLOG_BY_SLUG = gql(`
       title
       _id
       publishedAt
+      updatedAt:_updatedAt
       mainImage {
         alt
         asset {
@@ -280,7 +281,7 @@ export const GET_HOME_PAGE = gql(`
         }
       }
     }
-    allPost(sort: { publishedAt: DESC }, limit: 3) {
+    allPost(sort:{_updatedAt: DESC}, limit: 3) {
       _id
       title
       publishedAt
