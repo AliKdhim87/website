@@ -14,6 +14,7 @@ import {
 import { Tags } from '@/components/slices';
 import { GetAllBlogSlugsQuery, GetBlogBySlugQuery } from 'generated/graphql';
 import { GET_ALL_BLOG_SLUGS, GET_BLOG_BY_SLUG } from 'queries/index.graphql';
+import { formattedDate } from 'utils/formattedDate';
 
 type Params = {
   params: {
@@ -91,7 +92,8 @@ export async function generateMetadata({ params: { slug } }: Params): Promise<Me
 const PostPage = async ({ params: { slug } }: Params) => {
   const { page } = await fetchData(slug);
 
-  const { title, bodyRaw, categories, mainImage, publishedAt } = page;
+  const { title, bodyRaw, categories, mainImage, publishedAt, updatedAt } = page;
+
   return (
     <>
       {mainImage &&
@@ -117,8 +119,13 @@ const PostPage = async ({ params: { slug } }: Params) => {
       <>
         <Container className="space-pb-3">
           <Typography as="span" variant="body" bodySize="mobile">
-            {publishedAt}
+            Published: {formattedDate(publishedAt)}
           </Typography>
+          {updatedAt && (
+            <Typography as="span" variant="body" bodySize="mobile">
+              Last Updated: {formattedDate(updatedAt)}
+            </Typography>
+          )}
         </Container>
         {title && <BlogPostTitle title={title} />}
         <Container>
