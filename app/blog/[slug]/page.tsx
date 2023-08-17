@@ -118,11 +118,11 @@ const PostPage = async ({ params: { slug } }: Params) => {
         )}
       <>
         <Container className="space-pb-3">
-          <Typography as="span" variant="body" bodySize="mobile">
+          <Typography as="p" variant="body" bodySize="mobile">
             Published: {formattedDate(publishedAt)}
           </Typography>
           {updatedAt && (
-            <Typography as="span" variant="body" bodySize="mobile">
+            <Typography as="p" variant="body" bodySize="mobile">
               Last Updated: {formattedDate(updatedAt)}
             </Typography>
           )}
