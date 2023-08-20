@@ -1,12 +1,21 @@
 'use client';
 
 import classNames from 'classnames/bind';
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import SyntaxHighlighter, { Light as SyntaxHighlighterLight } from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import html from 'react-syntax-highlighter/dist/esm/languages/hljs/htmlbars';
+import shell from 'react-syntax-highlighter/dist/esm/languages/hljs/shell';
+import typescript from 'react-syntax-highlighter/dist/esm/languages/hljs/typescript';
 
 import { Typography } from '../Typography';
 
 import styles from './Code.module.scss';
+
+SyntaxHighlighterLight.registerLanguage('html', html);
+SyntaxHighlighterLight.registerLanguage('shell', shell);
+SyntaxHighlighterLight.registerLanguage('sh', shell);
+SyntaxHighlighterLight.registerLanguage('tsx', typescript);
+SyntaxHighlighterLight.registerLanguage('jsx', typescript);
 
 export type SnippetCodeType = {
   language: string;
