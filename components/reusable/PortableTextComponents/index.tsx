@@ -70,6 +70,13 @@ export const PortableTextComponents: Partial<PortableTextReactComponents> = {
         </Typography>
       </li>
     ),
+    number: ({ children }) => (
+      <li className="text-color">
+        <Typography as="p" variant="body">
+          {children}
+        </Typography>
+      </li>
+    ),
   },
   marks: {
     link: ({ children, value }) => (
