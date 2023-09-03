@@ -130,7 +130,8 @@ const PostPage = async ({ params: { slug } }: Params) => {
         {title && <BlogPostTitle title={title} />}
         <Container>
           <Grid container justifyContent="center">
-            <Grid md={10} item>
+            <Grid md={10} item style={{ overflowX: 'auto' }}>
+              {/* TODO: CREATE BODY COMPONENT FOR PORTABLE TEXT */}
               {categories && <Tags tags={categories} />}
               <PortableText onMissingComponent={false} value={bodyRaw} components={PortableTextComponents} />
             </Grid>

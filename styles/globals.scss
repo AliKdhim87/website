@@ -211,19 +211,6 @@ textarea {
   font-size: inherit;
 }
 
-pre {
-  margin-block-start: 0;
-  background-color: var(--colors-primary-bg) !important;
-
-  > code {
-    font-family: var(--font-family) !important;
-  }
-
-  span {
-    display: inline !important;
-  }
-}
-
 .blog {
   color: var(--text-color-dark);
   font-family: var(--font-family);
@@ -262,4 +249,15 @@ pre {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+code {
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+
+pre > code {
+  overflow-x: auto;
+  white-space: pre;
+  word-wrap: normal;
 }

@@ -1,3 +1,16 @@
-.code {
+.code-highlighter {
   background-color: var(--colors-primary-bg);
+  position: relative;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.code-highlighter__clipboard {
+  position: absolute;
+  top: 10px;
+  z-index: 2;
+  right: 20px;
+  background-color: transparent;
+  color: #fff;
+  border: none;
 }
