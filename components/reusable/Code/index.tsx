@@ -1,41 +1,64 @@
 'use client';
 
+import React, { useEffect, useRef, useState } from 'react';
+// eslint-disable-next-line import/first, import/no-extraneous-dependencies
+import hljs from 'highlight.js';
+// eslint-disable-next-line import/first, import/no-extraneous-dependencies
+import 'highlight.js/styles/atom-one-dark.css';
+// eslint-disable-next-line import/first, import/no-extraneous-dependencies
+import 'highlight.js/lib/languages/diff';
 import classNames from 'classnames/bind';
-import SyntaxHighlighter, { Light as SyntaxHighlighterLight } from 'react-syntax-highlighter';
-import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import html from 'react-syntax-highlighter/dist/esm/languages/hljs/htmlbars';
-import shell from 'react-syntax-highlighter/dist/esm/languages/hljs/shell';
-import typescript from 'react-syntax-highlighter/dist/esm/languages/hljs/typescript';
-
-import { Typography } from '../Typography';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import copy from 'copy-to-clipboard';
 
 import styles from './Code.module.scss';
-
-SyntaxHighlighterLight.registerLanguage('html', html);
-SyntaxHighlighterLight.registerLanguage('shell', shell);
-SyntaxHighlighterLight.registerLanguage('sh', shell);
-SyntaxHighlighterLight.registerLanguage('tsx', typescript);
-SyntaxHighlighterLight.registerLanguage('jsx', typescript);
 
 export type SnippetCodeType = {
   language: string;
   code: string;
 };
+
 const css = classNames.bind(styles);
 
-export const BlockCode: React.FC<SnippetCodeType> = ({ language, code }) => (
-  <>
-    <Typography bodyWeight="bold" as="span" variant="body" className={css('code', 'space-p-1')}>
-      {language}
-    </Typography>
-    <SyntaxHighlighter
-      language={language}
-      style={atomOneDark}
-      showLineNumbers
-      wrapLines
-      lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
-    >
-      {code}
-    </SyntaxHighlighter>
-  </>
-);
+// eslint-disable-next-line import/no-extraneous-dependencies, @typescript-eslint/no-var-requires
+hljs.registerLanguage('diff', require('highlight.js/lib/languages/diff'));
+
+interface CodeHighlighterProps {
+  code: string;
+  language: string;
+}
+
+export const BlockCode: React.FC<CodeHighlighterProps> = ({ code, language }) => {
+  const codeRef = useRef<HTMLElement | null>(null);
+  const [clipboardText, setClipboardText] = useState('Copy code');
+
+  useEffect(() => {
+    if (codeRef.current) {
+      hljs.highlightElement(codeRef.current);
+    }
+  }, [code, language]);
+
+  return (
+    <div className={css('code-highlighter')}>
+      <button
+        type="button"
+        aria-label="Copy code"
+        className={css('code-highlighter__clipboard')}
+        onClick={() => {
+          setClipboardText('Copied!');
+          copy(code);
+          setTimeout(() => {
+            setClipboardText('Copy code');
+          }, 1000);
+        }}
+      >
+        {clipboardText}
+      </button>
+      <pre>
+        <code ref={codeRef} className={`language-${language}`}>
+          {code}
+        </code>
+      </pre>
+    </div>
+  );
+};
