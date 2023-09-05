@@ -11,6 +11,8 @@ import classNames from 'classnames/bind';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import copy from 'copy-to-clipboard';
 
+import { Typography } from '../Typography';
+
 import styles from './Code.module.scss';
 
 export type SnippetCodeType = {
@@ -37,25 +39,29 @@ export const BlockCode: React.FC<CodeHighlighterProps> = ({ code, language }) =>
       hljs.highlightElement(codeRef.current);
     }
   }, [code, language]);
-
   return (
     <div className={css('code-highlighter')}>
-      <button
-        type="button"
-        aria-label="Copy code"
-        className={css('code-highlighter__clipboard')}
-        onClick={() => {
-          setClipboardText('Copied!');
-          copy(code);
-          setTimeout(() => {
-            setClipboardText('Copy code');
-          }, 1000);
-        }}
-      >
-        {clipboardText}
-      </button>
+      <div className={css('code-highlighter__header')}>
+        <Typography variant="body" as="span">
+          {language}
+        </Typography>
+        <button
+          type="button"
+          aria-label="Copy code"
+          className={css('code-highlighter__clipboard')}
+          onClick={() => {
+            setClipboardText('Copied!');
+            copy(code);
+            setTimeout(() => {
+              setClipboardText('Copy code');
+            }, 1000);
+          }}
+        >
+          {clipboardText}
+        </button>
+      </div>
       <pre>
-        <code ref={codeRef} className={`language-${language}`}>
+        <code ref={codeRef} className={css(`language-${language}`)}>
           {code}
         </code>
       </pre>

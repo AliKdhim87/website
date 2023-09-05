@@ -5,12 +5,22 @@
   overflow-x: auto;
 }
 
+.code-highlighter__header {
+  padding-inline: var(--space-2);
+  padding-block: var(--space-1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .code-highlighter__clipboard {
-  position: absolute;
-  top: 10px;
-  z-index: 2;
-  right: 20px;
   background-color: transparent;
-  color: #fff;
+  color: var(--colors-grey-0);
+  font-size: var(--typography-body-regular-font-size);
   border: none;
+  cursor: pointer;
+}
+
+.code-highlighter__clipboard:hover {
+  color: var(--colors-primary);
 }
