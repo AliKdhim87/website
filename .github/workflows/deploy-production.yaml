@@ -37,10 +37,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
       - name: Create env file
-        run: |
-          touch .env
-          echo SCHEMA_URL=${{ secrets.SCHEMA_URL }} >> .env
-          cat .env
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          envkey_DEBUG: false
+          envkey_SANITY_STUDIO_READ_TOKEN: ${{ secrets.SANITY_STUDIO_READ_TOKEN }}
+          envkey_SCHEMA_URL: ${{ secrets.SCHEMA_URL }}
+          file_name: .env
+          fail_on_empty: false
+          sort_keys: false
       - name: Build
         run: npm run build
       - name: Start Deployment

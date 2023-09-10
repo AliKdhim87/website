@@ -369,6 +369,16 @@ query getAboutPage($slug: String) {
 }
 `);
 
+export const GET_CURRENT_PAGE = gql(`
+query getCurrentPage($slug: String) {
+  allRoute(where: { slug: { current: { eq: $slug } } }) {
+    slug {
+      current
+    }
+  }
+}
+`);
+
 export const GET_ALL_PAGES_AND_BLOGS_AND_CATEGORIES = gql(`
 query getAllPagesAndBlogsAndCategories{
   allRoute (sort:{_updatedAt: DESC}, where:{_:{is_draft: false},includeInSitemap: {eq: true}}){
