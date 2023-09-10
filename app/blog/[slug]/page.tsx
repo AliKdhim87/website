@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import wretch from 'wretch';
 
 import {
   Container,
@@ -15,6 +14,7 @@ import { Tags } from '@/components/slices';
 import { GetAllBlogSlugsQuery, GetBlogBySlugQuery } from 'generated/graphql';
 import { GET_ALL_BLOG_SLUGS, GET_BLOG_BY_SLUG } from 'queries/index.graphql';
 import { formattedDate } from 'utils/formattedDate';
+import { fetchData } from 'utils/fetchData';
 
 type Params = {
   params: {
@@ -22,55 +22,38 @@ type Params = {
   };
 };
 
-const fetchData = async (slug: string) => {
-  try {
-    const response = await wretch(process.env.SCHEMA_URL).post({
-      query: GET_BLOG_BY_SLUG,
-      variables: { slug },
-    });
-    const { data } = await response.json<{ data: GetBlogBySlugQuery }>();
-
-    return {
-      openGraph: {
-        title: data.allPost[0].title,
-        description: data.allPost[0].excerpt,
-        schemaOrg: {
-          images: data.allPost[0].mainImage,
-          websiteURL: data.allSiteSettings[0].schemaOrg?.website,
-          siteName: data.allSiteSettings[0].schemaOrg?.openGraph?.title,
-          publishedTime: data.allPost[0].publishedAt,
-          modifiedTime: data.allPost[0].updatedAt,
-          tags: data.allPost[0].categories?.map((category) => category?.title),
-        },
-      },
-      page: data.allPost[0],
-    };
-  } catch (error) {
-    throw new Error('Error fetching site settings');
-  }
-};
-
-const fetchSlugs = async () => {
-  try {
-    const response = await wretch(process.env.SCHEMA_URL).post({
-      query: GET_ALL_BLOG_SLUGS,
-    });
-    const { data } = await response.json<{ data: GetAllBlogSlugsQuery }>();
-    return data;
-  } catch (error) {
-    throw new Error('Error fetching site settings');
-  }
-};
-
 export async function generateStaticParams() {
-  const { allPost } = await fetchSlugs();
-  return allPost?.map(({ slug }) => ({
-    slug: slug?.current,
-  }));
+  const data = await fetchData<GetAllBlogSlugsQuery>({
+    query: GET_ALL_BLOG_SLUGS,
+    options: {
+      cache: 'force-cache',
+    },
+  });
+  return data.allPost.length > 0
+    ? data.allPost?.map(({ slug }) => ({
+        slug: slug?.current,
+      }))
+    : [];
 }
 
 export async function generateMetadata({ params: { slug } }: Params): Promise<Metadata> {
-  const { openGraph } = await fetchData(slug);
+  const data = await fetchData<GetBlogBySlugQuery>({
+    query: GET_BLOG_BY_SLUG,
+    variables: { slug },
+  });
+
+  const openGraph = {
+    title: data.allPost[0].title,
+    description: data.allPost[0].excerpt,
+    schemaOrg: {
+      images: data.allPost[0].mainImage,
+      websiteURL: data.allSiteSettings[0].schemaOrg?.website,
+      siteName: data.allSiteSettings[0].schemaOrg?.openGraph?.title,
+      publishedTime: data.allPost[0].publishedAt,
+      modifiedTime: data.allPost[0].updatedAt,
+      tags: data.allPost[0].categories?.map((category) => category?.title),
+    },
+  };
 
   return {
     title: openGraph.title,
@@ -89,9 +72,13 @@ export async function generateMetadata({ params: { slug } }: Params): Promise<Me
     },
   };
 }
-const PostPage = async ({ params: { slug } }: Params) => {
-  const { page } = await fetchData(slug);
 
+const PostPage = async ({ params: { slug } }: Params) => {
+  const data = await fetchData<GetBlogBySlugQuery>({
+    query: GET_BLOG_BY_SLUG,
+    variables: { slug },
+  });
+  const page = data.allPost[0];
   const { title, bodyRaw, categories, mainImage, publishedAt, updatedAt } = page;
 
   return (

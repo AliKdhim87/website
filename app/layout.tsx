@@ -1,42 +1,17 @@
 import { Metadata } from 'next';
-import wretch from 'wretch';
 
 import '@fontsource/roboto';
 import '@/styles/globals.scss';
 
 import { Nav, Main, MainWrapper, Footer, NavLinks } from '@/components/global';
 import { GET_SITE_SETTINGS } from 'queries/index.graphql';
+import { fetchData } from 'utils/fetchData';
 
 import { GetSiteSettingsQuery } from '../generated/graphql';
 
 export interface LayoutProps {
   children: React.ReactNode;
 }
-
-const fetchData = async () => {
-  try {
-    const response = wretch(process.env.SCHEMA_URL as any).post({
-      query: GET_SITE_SETTINGS,
-    });
-
-    const { data } = await response.json<{ data: GetSiteSettingsQuery }>();
-
-    const logo = {
-      src: data.SiteSettings?.navigation?.logo?.asset?.url,
-      alt: data.SiteSettings?.navigation?.logo?.alt,
-      width: data.SiteSettings?.navigation?.logo?.asset?.metadata?.dimensions?.width,
-      height: data.SiteSettings?.navigation?.logo?.asset?.metadata?.dimensions?.height,
-    };
-    return {
-      logo,
-      nav: data.SiteSettings?.navigation?.items,
-      footer: data.SiteSettings?.footer?.copyright,
-      schemaOrg: data.SiteSettings?.schemaOrg,
-    };
-  } catch (error) {
-    throw new Error('Error fetching site settings');
-  }
-};
 /*
 TODO
 - fetch the color from CMS / website settings
@@ -44,16 +19,20 @@ TODO
 */
 
 export async function generateMetadata(): Promise<Metadata> {
-  const data = await fetchData();
-  const openGraphImage = data?.schemaOrg?.openGraph?.image?.asset?.url;
-  const openGraphEmail = data.schemaOrg?.email;
-  const openGraphDescription = data.schemaOrg?.openGraph?.description;
-  const openGraphTitle = data?.schemaOrg?.openGraph?.title;
+  const data = await fetchData<GetSiteSettingsQuery>({
+    query: GET_SITE_SETTINGS,
+  });
+
+  const schemaOrg = data.SiteSettings?.schemaOrg;
+  const openGraphImage = schemaOrg?.openGraph?.image?.asset?.url;
+  const openGraphEmail = schemaOrg?.email;
+  const openGraphDescription = schemaOrg?.openGraph?.description;
+  const openGraphTitle = schemaOrg?.openGraph?.title;
 
   return {
     title: {
-      template: `%s | ${data.schemaOrg?.openGraph?.title}`,
-      default: `${data.schemaOrg?.openGraph?.title}`,
+      template: `%s | ${schemaOrg?.openGraph?.title}`,
+      default: `${schemaOrg?.openGraph?.title}`,
     },
     themeColor: '#ffd166',
     icons: {
@@ -97,26 +76,37 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const Layout = async ({ children }: LayoutProps) => {
-  const data = await fetchData();
+  const data = await fetchData<GetSiteSettingsQuery>({
+    query: GET_SITE_SETTINGS,
+  });
+  const logo = {
+    src: data.SiteSettings?.navigation?.logo?.asset?.url,
+    alt: data.SiteSettings?.navigation?.logo?.alt,
+    width: data.SiteSettings?.navigation?.logo?.asset?.metadata?.dimensions?.width,
+    height: data.SiteSettings?.navigation?.logo?.asset?.metadata?.dimensions?.height,
+  };
 
+  const nav = data.SiteSettings?.navigation?.items;
+  const footer = data.SiteSettings?.footer?.copyright;
+  const schemaOrg = data.SiteSettings?.schemaOrg;
   const schemaJsonData = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    email: `mailto:${data.schemaOrg?.email}`,
-    image: data.schemaOrg?.openGraph?.image?.asset?.url,
-    jobTitle: data.schemaOrg?.jobTitle,
-    name: data.schemaOrg?.name,
-    telephone: data.schemaOrg?.telephone,
-    url: data.schemaOrg?.website,
+    email: `mailto:${schemaOrg?.email}`,
+    image: schemaOrg?.openGraph?.image?.asset?.url,
+    jobTitle: schemaOrg?.jobTitle,
+    name: schemaOrg?.name,
+    telephone: schemaOrg?.telephone,
+    url: schemaOrg?.website,
   };
 
   return (
     <html lang="en">
       <body id="root">
         <MainWrapper>
-          <Nav navLinks={data.nav as NavLinks[]} logo={data.logo} />
+          <Nav navLinks={nav as NavLinks[]} logo={logo} />
           <Main>{children}</Main>
-          <Footer copyright={data.footer} />
+          <Footer copyright={footer} />
         </MainWrapper>
         <script
           type="application/ld+json"

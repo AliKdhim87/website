@@ -1,31 +1,21 @@
 import type { Metadata } from 'next';
-import wretch from 'wretch';
+import { draftMode } from 'next/headers';
 
 import { BlogType, PageHeader, RecentPosts, SocialMedia } from '@/components/slices';
 import { uuidv4 } from '@/utils';
 import { GetHomePageQuery } from 'generated/graphql';
 import { GET_HOME_PAGE } from 'queries/index.graphql';
-
-const fetchData = async () => {
-  try {
-    const response = await wretch(process.env.SCHEMA_URL).post({
-      query: GET_HOME_PAGE,
-      variables: { slug: 'front-page' },
-    });
-    const { data } = await response.json<{ data: GetHomePageQuery }>();
-
-    return {
-      openGraph: data.allRoute[0].openGraph,
-      page: data.allRoute[0].page,
-      recentPosts: data.allPost,
-    };
-  } catch (error) {
-    throw new Error('Error fetching site settings');
-  }
-};
+import { fetchData } from 'utils/fetchData';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { openGraph } = await fetchData();
+  const data = await fetchData<GetHomePageQuery>({
+    query: GET_HOME_PAGE,
+    variables: { slug: 'front-page' },
+    options: {
+      cache: draftMode().isEnabled ? 'no-store' : 'force-cache',
+    },
+  });
+  const openGraph = data.allRoute[0]?.openGraph;
   return {
     title: openGraph?.title,
     description: openGraph?.description,
@@ -33,11 +23,15 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const Home = async () => {
-  const data = await fetchData();
-
+  const data = await fetchData<GetHomePageQuery>({
+    query: GET_HOME_PAGE,
+    variables: { slug: 'front-page' },
+  });
+  const page = data.allRoute[0]?.page;
+  const recentPosts = data?.allPost;
   return (
     <div>
-      {data.page?.content?.map((component) => {
+      {page?.content?.map((component) => {
         switch (component?.__typename) {
           case 'PageHeader':
             return <PageHeader key={uuidv4()} title={component.title} body={component.body} titleDistancedBottom />;
@@ -47,7 +41,7 @@ const Home = async () => {
             return (
               <RecentPosts
                 title={component.title}
-                blog={data.recentPosts as BlogType[]}
+                blog={recentPosts as BlogType[]}
                 cta={component.cta}
                 key={uuidv4()}
               />
