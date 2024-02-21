@@ -113,7 +113,7 @@ const Contact = async () => {
       )}
       <Container>
         <Grid container justifyContent="center">
-          <Grid lg={6} md={10} sm={12} xs={12}>
+          <Grid item md={8}>
             <ContactForm onAction={onEmailSubmit} />
           </Grid>
         </Grid>

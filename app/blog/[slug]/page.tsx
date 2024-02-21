@@ -3,7 +3,6 @@ import Image from 'next/image';
 
 import {
   Container,
-  Grid,
   Typography,
   BlogPostTitle,
   PortableTextComponents,
@@ -89,19 +88,17 @@ const PostPage = async ({ params: { slug } }: Params) => {
         mainImage.asset.url &&
         mainImage.asset.metadata?.dimensions?.width &&
         mainImage.asset.metadata?.dimensions?.height && (
-          <Container>
-            <Image
-              src={mainImage.asset.url}
-              alt={mainImage.alt}
-              width={mainImage.asset.metadata.dimensions.width}
-              height={mainImage.asset.metadata.dimensions.height}
-              loading="eager"
-              style={{
-                maxWidth: '100%',
-                height: 'auto',
-              }}
-            />
-          </Container>
+          <Image
+            src={mainImage.asset.url}
+            alt={mainImage.alt}
+            width={mainImage.asset.metadata.dimensions.width}
+            height={mainImage.asset.metadata.dimensions.height}
+            loading="eager"
+            style={{
+              maxWidth: '100%',
+              height: 'auto',
+            }}
+          />
         )}
       <>
         <Container className="space-pb-3">
@@ -116,13 +113,9 @@ const PostPage = async ({ params: { slug } }: Params) => {
         </Container>
         {title && <BlogPostTitle title={title} />}
         <Container>
-          <Grid container justifyContent="center">
-            <Grid md={10} item style={{ overflowX: 'auto' }}>
-              {/* TODO: CREATE BODY COMPONENT FOR PORTABLE TEXT */}
-              {categories && <Tags tags={categories} />}
-              <PortableText onMissingComponent={false} value={bodyRaw} components={PortableTextComponents} />
-            </Grid>
-          </Grid>
+          {/* TODO: CREATE BODY COMPONENT FOR PORTABLE TEXT */}
+          {categories && <Tags tags={categories} />}
+          <PortableText onMissingComponent={false} value={bodyRaw} components={PortableTextComponents} />
           <GraphComment />
         </Container>
       </>
