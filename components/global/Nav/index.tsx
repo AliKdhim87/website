@@ -81,7 +81,7 @@ export const Nav = ({ logo, navLinks }: NavProps) => {
           </span>
           <Grid item xs={6} md={4}>
             <Link href="/">
-              <Logo logo={...logo} />
+              <Logo logo={{ ...logo }} />
             </Link>
           </Grid>
           <Grid item xs={6} md={8} justifyContent="flex-end">
