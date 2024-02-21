@@ -18,10 +18,10 @@ const BlogCategories = async ({ params: { id } }: any) => {
   });
 
   return (
-    <div>
+    <>
       {data.Category?.title && <PageHeader title={data.Category.title} />}
       <RecentPosts blog={data.allPost as BlogType[]} />
-    </div>
+    </>
   );
 };
 
