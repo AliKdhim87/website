@@ -30,7 +30,7 @@ interface CodeHighlighterProps {
   language: string;
 }
 
-export const BlockCode: React.FC<CodeHighlighterProps> = ({ code, language }) => {
+export const BlockCode = ({ code, language }: CodeHighlighterProps) => {
   const codeRef = useRef<HTMLElement | null>(null);
   const [clipboardText, setClipboardText] = useState('Copy code');
 
