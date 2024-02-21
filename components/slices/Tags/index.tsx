@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import { Grid, Badge } from '@/components/reusable';
+import { Badge } from '@/components/reusable';
 import { uuidv4 } from '@/utils';
 import { Category, Maybe } from 'generated/graphql';
 
@@ -13,12 +13,12 @@ interface TagsProps {
 }
 
 export const Tags = ({ tags }: TagsProps) => (
-  <Grid as="ul" container className={css('tags')}>
+  <ul className={css('tags')}>
     {tags &&
       tags.map((tag) => (
-        <Grid as="li" item key={uuidv4()} className={css('tags__item')}>
+        <li className={css('tags__item')} key={uuidv4()}>
           {tag && <Badge href={`categories/${tag._id}`}>{tag.title}</Badge>}
-        </Grid>
+        </li>
       ))}
-  </Grid>
+  </ul>
 );
