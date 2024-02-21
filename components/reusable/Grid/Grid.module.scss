@@ -8,69 +8,67 @@ $spacing: (
   "lg": 24px,
 );
 
-.Grid {
-  &_container {
+.grid {
+  &__container {
     display: flex;
     flex-wrap: wrap;
   }
 
-  &_item {
+  &__item {
     display: block;
-  }
+    inline-size: calc(var(--_-columns, 12) / 12 * 100%);
+    flex: 0 0 auto;
 
-  @for $i from 1 to 13 {
-    &_xs_#{$i} {
-      flex: 0 0 auto;
-      width: calc($i / 12 * 100%);
-    }
-  }
-
-  @include breakpoint("sm") {
     @for $i from 1 to 13 {
-      &_sm_#{$i} {
-        flex: 0 0 auto;
-        width: calc($i / 12 * 100%);
+      &--xs-#{$i} {
+        --_-columns: #{$i};
       }
     }
-  }
 
-  @include breakpoint("md") {
-    @for $i from 1 to 13 {
-      &_md_#{$i} {
-        flex: 0 0 auto;
-        width: calc($i / 12 * 100%);
+    @include breakpoint("sm") {
+      @for $i from 1 to 13 {
+        &--sm-#{$i} {
+          --_-columns: #{$i};
+        }
       }
     }
-  }
 
-  @include breakpoint("lg") {
-    @for $i from 1 to 13 {
-      &_lg_#{$i} {
-        flex: 0 0 auto;
-        width: calc($i / 12 * 100%);
+    @include breakpoint("md") {
+      @for $i from 1 to 13 {
+        &--md-#{$i} {
+          --_-columns: #{$i};
+        }
+      }
+    }
+
+    @include breakpoint("lg") {
+      @for $i from 1 to 13 {
+        &--lg-#{$i} {
+          --_-columns: #{$i};
+        }
       }
     }
   }
 
   @each $name, $value in $spacing {
-    &_spacing_#{$name} {
+    &--spacing-#{$name} {
       margin: -$value;
     }
 
-    &_spacing_#{$name} > &_item {
+    &--spacing-#{$name} > &__item {
       padding: $value;
     }
   }
 
   @each $value in $justify-content {
-    &_justifyContent_#{$value} {
+    &--justifyContent-#{$value} {
       display: flex;
       justify-content: $value;
     }
   }
 
   @each $value in $align-items {
-    &_alignItems_#{$value} {
+    &--alignItems-#{$value} {
       display: flex;
       align-items: $value;
     }
@@ -78,7 +76,7 @@ $spacing: (
 
   @include breakpoint("sm") {
     @each $value in $justify-content {
-      &_justifyContent_sm_#{$value} {
+      &--justifyContent-sm-#{$value} {
         display: flex;
         justify-content: $value;
       }

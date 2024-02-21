@@ -23,14 +23,14 @@ export interface GridProps extends React.HTMLAttributes<HTMLElement> {
   justifyContent?: JustifyContent;
   justifyContentMd?: JustifyContent;
   alignItems?: AlignItems;
-  as?: 'div' | 'ul' | 'li' | 'section' | 'nav' | 'footer' | 'header';
+  as?: React.ElementType;
   ref?: LegacyRef<any>;
 }
 
 export const Grid: FunctionComponent<GridProps> = ({
   children,
-  container,
-  item,
+  container = false,
+  item = false,
   xs,
   sm,
   md,
@@ -39,25 +39,23 @@ export const Grid: FunctionComponent<GridProps> = ({
   justifyContent,
   justifyContentMd,
   alignItems,
-  as = 'div',
+  as: Component = 'div', // Default to 'div' if not provided
   className,
   ref,
   ...props
 }) => {
   const classes = css(className, {
-    Grid_container: container,
-    Grid_item: item,
-    [`Grid_xs_${xs}`]: xs,
-    [`Grid_sm_${sm}`]: sm,
-    [`Grid_md_${md}`]: md,
-    [`Grid_lg_${lg}`]: lg,
-    [`Grid_spacing_${spacing}`]: spacing,
-    [`Grid_justifyContent_${justifyContent}`]: justifyContent,
-    [`Grid_justifyContent_sm_${justifyContentMd}`]: justifyContentMd,
-    [`Grid_alignItems_${alignItems}`]: alignItems,
+    grid__container: container,
+    grid__item: item,
+    [`grid__item--xs-${xs}`]: xs,
+    [`grid__item--sm-${sm}`]: sm,
+    [`grid__item--md-${md}`]: md,
+    [`grid__item-lg--${lg}`]: lg,
+    [`grid-spacing--${spacing}`]: spacing,
+    [`grid--justifyContent-${justifyContent}`]: justifyContent,
+    [`grid--justifyContent-sm-${justifyContentMd}`]: justifyContentMd,
+    [`grid--alignItems-${alignItems}`]: alignItems,
   });
-
-  const Component = as;
 
   return (
     <Component ref={ref} className={classes} {...props}>
