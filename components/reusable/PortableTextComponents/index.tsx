@@ -55,6 +55,11 @@ export const PortableTextComponents: Partial<PortableTextReactComponents> = {
         {children}
       </Typography>
     ),
+    h4: ({ children }) => (
+      <Typography as="h4" variant="h4" className="space-mb-2">
+        {children}
+      </Typography>
+    ),
     normal: ({ children }) => (
       <Typography as="p" variant="body" className="space-mb-1">
         {children}
