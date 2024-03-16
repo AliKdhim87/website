@@ -42,9 +42,7 @@ export const BlockCode = ({ code, language }: CodeHighlighterProps) => {
   return (
     <div className={css('code-highlighter')}>
       <div className={css('code-highlighter__header')}>
-        <Typography variant="body" as="span">
-          {language}
-        </Typography>
+        <Typography as="span">{language}</Typography>
         <button
           type="button"
           aria-label="Copy code"

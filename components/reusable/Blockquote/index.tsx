@@ -11,8 +11,6 @@ type BlockquoteProps = DetailedHTMLProps<BlockquoteHTMLAttributes<HTMLQuoteEleme
 
 export const Blockquote = ({ children }: BlockquoteProps) => (
   <blockquote className={css('blockquote')}>
-    <Typography as="p" variant="body" bodySize="mobile">
-      {children}
-    </Typography>
+    <Typography bodySize="mobile">{children}</Typography>
   </blockquote>
 );
