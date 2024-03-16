@@ -65,21 +65,18 @@ export const PortableTextComponents: Partial<PortableTextReactComponents> = {
         {children}
       </Typography>
     ),
+    normal: ({ children }) => <Typography className="space-mb-1">{children}</Typography>,
     blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
   },
   listItem: {
     bullet: ({ children }) => (
       <li className="text-color">
-        <Typography as="p" variant="body">
-          {children}
-        </Typography>
+        <Typography>{children}</Typography>
       </li>
     ),
     number: ({ children }) => (
       <li className="text-color">
-        <Typography as="p" variant="body">
-          {children}
-        </Typography>
+        <Typography>{children}</Typography>
       </li>
     ),
   },

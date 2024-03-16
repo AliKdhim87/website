@@ -102,14 +102,8 @@ const PostPage = async ({ params: { slug } }: Params) => {
         )}
       <>
         <Container className="space-pb-3">
-          <Typography as="p" variant="body" bodySize="mobile">
-            Published: {formattedDate(publishedAt)}
-          </Typography>
-          {updatedAt && (
-            <Typography as="p" variant="body" bodySize="mobile">
-              Last Updated: {formattedDate(updatedAt)}
-            </Typography>
-          )}
+          <Typography bodySize="mobile">Published: {formattedDate(publishedAt)}</Typography>
+          {updatedAt && <Typography bodySize="mobile">Last Updated: {formattedDate(updatedAt)}</Typography>}
         </Container>
         {title && <BlogPostTitle title={title} />}
         <Container>

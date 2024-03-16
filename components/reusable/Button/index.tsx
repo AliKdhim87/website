@@ -22,11 +22,7 @@ export const Button = ({ text, variant = 'primary', className, loading, ...props
   return (
     // eslint-disable-next-line react/button-has-type
     <button {...props} className={classes} aria-live={loading ? 'polite' : undefined} aria-busy={loading}>
-      {text && (
-        <Typography as="span" variant="body" className={css({ 'button--hide-text': loading })}>
-          {text}
-        </Typography>
-      )}
+      {text && <Typography className={css({ 'button--hide-text': loading })}>{text}</Typography>}
     </button>
   );
 };

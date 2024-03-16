@@ -16,7 +16,7 @@ export const Footer = ({ copyright }: FooterProps) => (
     <Container>
       <Grid container justifyContent="center" alignItems="center">
         {copyright && (
-          <Typography as="span" variant="body" bodySize="secondary">
+          <Typography as="span" bodySize="secondary">
             {copyright}
           </Typography>
         )}

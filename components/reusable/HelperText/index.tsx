@@ -18,7 +18,7 @@ export const HelperText = ({ helperText, error, id }: HelperTextProps) => {
     'helper-text--error': error,
   });
   return helperText ? (
-    <Typography as="p" variant="body" className={classes} id={id}>
+    <Typography className={classes} id={id}>
       {helperText}
     </Typography>
   ) : null;

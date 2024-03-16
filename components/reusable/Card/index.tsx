@@ -25,15 +25,7 @@ export const Card = ({ title, body, publishedAt, blogTitleOptions }: CardProps) 
         {title}
       </Typography>
     )}
-    {body && (
-      <Typography as="p" variant="body" className={css('space-mb-1')}>
-        {body}
-      </Typography>
-    )}
-    {publishedAt && (
-      <Typography as="p" variant="body">
-        {publishedAt}
-      </Typography>
-    )}
+    {body && <Typography className={css('space-mb-1')}>{body}</Typography>}
+    {publishedAt && <Typography>{publishedAt}</Typography>}
   </div>
 );
