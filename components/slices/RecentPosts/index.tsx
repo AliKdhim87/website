@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 
-import { Container, Grid, Typography, Card, CardProps, CTA } from '@/components/reusable';
+import { Container, Grid, Card, CardProps, CTA, Heading } from '@/components/reusable';
 import { Cta, Maybe } from 'generated/graphql';
 import { uuidv4 } from 'utils';
 
@@ -23,16 +23,16 @@ export const RecentPosts = ({ blog, cta, title, ...props }: RecentPostsProps) =>
       <Grid container justifyContent="center">
         <Grid md={10}>
           {title && (
-            <Typography as="h2" variant="h3" className={classNames('text-align-md--center')}>
+            <Heading level={2} variant="h3" className={classNames('text-align-md--center')}>
               {title}
-            </Typography>
+            </Heading>
           )}
           {blog &&
             blog.map(
               ({ slug, title: blogTitle, excerpt, publishedAt }) =>
                 slug &&
                 slug.current && (
-                  <Link href={`/blog/${slug.current}`} passHref key={uuidv4()}>
+                  <Link href={`/blog/${slug.current}`} key={uuidv4()}>
                     <Card title={blogTitle} body={excerpt} publishedAt={publishedAt} {...props} />
                   </Link>
                 ),

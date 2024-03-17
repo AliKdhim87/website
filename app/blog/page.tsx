@@ -46,7 +46,7 @@ const Blog = async () => {
       )}
       <RecentPosts
         blogTitleOptions={{
-          level: 'h2',
+          level: 2,
         }}
         blog={allPost as BlogType[]}
       />

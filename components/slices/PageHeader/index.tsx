@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { Maybe } from 'graphql/jsutils/Maybe';
 import Image, { ImageProps } from 'next/image';
 
-import { Container, Typography, Grid, CTA } from '@/components/reusable';
+import { Container, Typography, Grid, CTA, Heading } from '@/components/reusable';
 import { Cta } from 'generated/graphql';
 
 import styles from './PageHeader.module.scss';
@@ -29,9 +29,9 @@ export const PageHeader = ({
   const content = (
     <>
       {title && (
-        <Typography as="h1" variant="h1" className={css({ 'space-mb-end-3': titleDistancedBottom })}>
+        <Heading level={1} className={css({ 'space-mb-end-3': titleDistancedBottom })}>
           {title}
-        </Typography>
+        </Heading>
       )}
       {body && (
         <Typography as="span" variant="subtitle">

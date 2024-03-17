@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import { Maybe } from 'graphql/jsutils/Maybe';
 
-import { Container, Grid, Typography, Icon, IconsType } from '@/components/reusable';
+import { Container, Grid, Icon, IconsType, Heading } from '@/components/reusable';
 import { uuidv4 } from '@/utils';
 import { Social } from 'generated/graphql';
 
@@ -20,9 +20,9 @@ export const SocialMedia = ({ title, socialMedia }: SocialMediaProps) => (
       <Grid container alignItems="center">
         <Grid item sm={6} justifyContent="center" justifyContentMd="flex-start">
           {title && (
-            <Typography bodyWeight="bold" variant="body" as="h2" className={css('social-media__title')}>
+            <Heading level={2} className={css('social-media__title')}>
               {title}
-            </Typography>
+            </Heading>
           )}
         </Grid>
         <Grid item sm={3} justifyContent="center">
