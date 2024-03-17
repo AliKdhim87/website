@@ -37,7 +37,11 @@ export const RecentPosts = ({ blog, cta, title, ...props }: RecentPostsProps) =>
                   </Link>
                 ),
             )}
-          {cta && cta.route && <CTA href={cta.route} text={cta.title} variant="primary" className="space-mb-start-5" />}
+          {cta && cta.route && (
+            <CTA href={cta.route} className="space-mb-start-5">
+              {cta.title}
+            </CTA>
+          )}
         </Grid>
       </Grid>
     </Container>
