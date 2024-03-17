@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 
 import { Container } from '../Container';
-import { Typography } from '../Typography';
+import { Heading } from '../Heading';
 
 import styles from './BlogPostTitle.module.scss';
 
@@ -13,9 +13,9 @@ export const BlogPostTitle = ({ title }: BlogPostTitleProps) =>
   title ? (
     <div className={css('blog-post-title')}>
       <Container>
-        <Typography as="h1" variant="h3">
+        <Heading level={1} variant="h3">
           {title}
-        </Typography>
+        </Heading>
       </Container>
     </div>
   ) : null;

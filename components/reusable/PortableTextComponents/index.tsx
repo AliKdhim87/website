@@ -10,6 +10,7 @@ import { Blockquote } from '../Blockquote';
 import { SnippetCodeType, BlockCode } from '../Code';
 import { InlineCode } from '../InlineCode';
 import { Typography } from '../Typography';
+import { Heading } from '../Heading';
 
 export const PortableTextComponents: Partial<PortableTextReactComponents> = {
   types: {
@@ -46,24 +47,24 @@ export const PortableTextComponents: Partial<PortableTextReactComponents> = {
   },
   block: {
     h2: ({ children }) => (
-      <Typography as="h2" variant="h2" className="space-mb-2">
+      <Heading level={2} className="space-mb-2">
         {children}
-      </Typography>
+      </Heading>
     ),
     h3: ({ children }) => (
-      <Typography as="h3" variant="h3" className="space-mb-2">
+      <Heading level={3} className="space-mb-2">
         {children}
-      </Typography>
+      </Heading>
     ),
     h4: ({ children }) => (
-      <Typography as="h4" variant="h4" className="space-mb-2">
+      <Heading level={4} className="space-mb-2">
         {children}
-      </Typography>
+      </Heading>
     ),
-    normal: ({ children }) => (
-      <Typography as="p" variant="body" className="space-mb-1">
+    h5: ({ children }) => (
+      <Heading level={5} className="space-mb-2">
         {children}
-      </Typography>
+      </Heading>
     ),
     normal: ({ children }) => <Typography className="space-mb-1">{children}</Typography>,
     blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,

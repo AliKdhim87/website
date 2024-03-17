@@ -1,19 +1,27 @@
 .social-media {
-  padding-block-start: var(--space-3);
-  padding-block-end: var(--space-3);
-  background-color: var(--colors-secondary-bg);
+  --social-media-padding-block-start: var(--space-3);
+  --social-media-padding-block-end: var(--space-3);
+  --social-media-title-font-size: var(--typography-subtitle-font-size);
+  --social-media-link-margin-end: var(--space-3);
+  --social-media-link-color: var(--text-color-dark);
+  --social-media-link-font-size: 36px;
+
+  padding-block-start: var(--social-media-padding-block-start);
+  padding-block-end: var(--social-media-padding-block-end);
 }
 
 .social-media__title {
+  --heading-2-font-size: var(--social-media-title-font-size);
+
   margin-block-end: var(--social-media-title-margin-block-end);
 }
 
 .social-media__link {
-  color: var(--text-color-dark);
-  margin-inline-end: var(--space-3);
-  font-size: 36px;
+  color: var(--social-media-link-color);
+  margin-inline-end: var(--social-media-link-margin-end);
+  font-size: var(--social-media-link-font-size);
 }
 
 .social-media__link:last-child {
-  margin-block-end: 0 !important;
+  --social-media-link-margin-end: 0;
 }
