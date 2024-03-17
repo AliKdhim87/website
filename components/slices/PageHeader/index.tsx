@@ -39,7 +39,9 @@ export const PageHeader = ({
         </Typography>
       )}
       {cta && cta.route && cta.title && (
-        <CTA href={cta.route} text={cta.title} variant="primary" className={css('space-mb-start-4', 'space-auto')} />
+        <CTA href={cta.route} className={css('space-mb-start-4', 'space-auto')}>
+          {cta.title}
+        </CTA>
       )}
     </>
   );
