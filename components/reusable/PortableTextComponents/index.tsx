@@ -4,6 +4,7 @@ import { PortableTextReactComponents } from '@portabletext/react';
 import { getImageDimensions } from '@sanity/asset-utils';
 import urlBuilder from '@sanity/image-url';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { Anchor } from '../Anchor';
 import { Blockquote } from '../Blockquote';
@@ -46,11 +47,15 @@ export const PortableTextComponents: Partial<PortableTextReactComponents> = {
     },
   },
   block: {
-    h2: ({ children }) => (
-      <Heading level={2} className="space-mb-2">
-        {children}
-      </Heading>
-    ),
+    h2: ({ children }) => {
+      const id = String(children).toLowerCase().replaceAll(' ', '-');
+
+      return (
+        <Heading id={id} level={2} className="space-mb-2">
+          <Link href={`#${id}`}>{children}</Link>
+        </Heading>
+      );
+    },
     h3: ({ children }) => (
       <Heading level={3} className="space-mb-2">
         {children}
