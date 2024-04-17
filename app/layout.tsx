@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Viewport, Metadata } from 'next';
 
 import '@fontsource/roboto';
 import '@/styles/globals.scss';
@@ -17,7 +17,12 @@ TODO
 - fetch the color from CMS / website settings
 - fetch all icons from CMS / website settings
 */
-
+export const viewport: Viewport = {
+  themeColor: '#ffd166',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
 export async function generateMetadata(): Promise<Metadata> {
   const data = await fetchData<GetSiteSettingsQuery>({
     query: GET_SITE_SETTINGS,
@@ -34,7 +39,6 @@ export async function generateMetadata(): Promise<Metadata> {
       template: `%s | ${schemaOrg?.openGraph?.title}`,
       default: `${schemaOrg?.openGraph?.title}`,
     },
-    themeColor: '#ffd166',
     icons: {
       icon: [
         {

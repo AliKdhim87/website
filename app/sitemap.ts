@@ -1,10 +1,12 @@
+import { MetadataRoute } from 'next';
+
 import { GET_ALL_PAGES_AND_BLOGS_AND_CATEGORIES } from 'queries/index.graphql';
 import { GetAllPagesAndBlogsAndCategoriesQuery } from 'generated/graphql';
 import { fetchData } from 'utils/fetchData';
 
 const URL = process.env.SITE_URL;
 
-export default async function sitemap() {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const data = await fetchData<GetAllPagesAndBlogsAndCategoriesQuery>({
     query: GET_ALL_PAGES_AND_BLOGS_AND_CATEGORIES,
     variables: { slug: 'blog' },
