@@ -5,7 +5,7 @@ import { Grid, Container } from '@/components/reusable';
 import { ContactForm } from '@/components/reusable/ContactForm';
 import { PageHeader } from '@/components/slices';
 import { uuidv4 } from '@/utils';
-import { GetContactPageQuery } from 'generated/graphql';
+import { GetContactPageQuery } from '@/graphql-types';
 import { GET_CONTACT_PAGE } from 'queries/index.graphql';
 
 async function fetchData() {

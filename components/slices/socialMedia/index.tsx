@@ -3,7 +3,7 @@ import { Maybe } from 'graphql/jsutils/Maybe';
 
 import { Container, Grid, Icon, IconsType, Heading } from '@/components/reusable';
 import { uuidv4 } from '@/utils';
-import { Social } from 'generated/graphql';
+import { Social } from '@/graphql-types';
 
 import styles from './SocialMedia.module.scss';
 

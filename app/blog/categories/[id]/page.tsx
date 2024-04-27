@@ -1,5 +1,5 @@
 import { BlogType, PageHeader, RecentPosts } from '@/components/slices';
-import { GetAllBlogByCategoryIdQuery, GetAllCategoryIdQuery } from 'generated/graphql';
+import { GetAllBlogByCategoryIdQuery, GetAllCategoryIdQuery } from '@/graphql-types';
 import { GET_ALL_BLOG_BY_CATEGORY_ID, GET_ALL_CATEGORY_ID } from 'queries/index.graphql';
 import { fetchData } from 'utils/fetchData';
 

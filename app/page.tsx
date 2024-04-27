@@ -3,7 +3,7 @@ import { draftMode } from 'next/headers';
 
 import { BlogType, PageHeader, RecentPosts, SocialMedia } from '@/components/slices';
 import { uuidv4 } from '@/utils';
-import { GetHomePageQuery } from 'generated/graphql';
+import { GetHomePageQuery } from '@/graphql-types';
 import { GET_HOME_PAGE } from 'queries/index.graphql';
 import { fetchData } from 'utils/fetchData';
 

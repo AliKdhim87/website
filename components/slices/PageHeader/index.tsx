@@ -3,7 +3,7 @@ import { Maybe } from 'graphql/jsutils/Maybe';
 import Image, { ImageProps } from 'next/image';
 
 import { Container, Typography, Grid, CTA, Heading } from '@/components/reusable';
-import { Cta } from 'generated/graphql';
+import { Cta } from '@/graphql-types';
 
 import styles from './PageHeader.module.scss';
 

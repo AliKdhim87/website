@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 import { BlogType, PageHeader, RecentPosts } from '@/components/slices';
-import { GetBlogPageQuery } from 'generated/graphql';
 import { GET_BLOG_PAGE } from 'queries/index.graphql';
 import { uuidv4 } from 'utils/uuid-v4';
+import { GetBlogPageQuery } from '@/graphql-types';
 import { fetchData } from 'utils/fetchData';
 
 export async function generateMetadata(): Promise<Metadata> {

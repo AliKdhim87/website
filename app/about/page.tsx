@@ -4,7 +4,7 @@ import wretch from 'wretch';
 
 import { MoreAbout, MoreAboutItem, PageHeader } from '@/components/slices';
 import { uuidv4 } from '@/utils';
-import { GetAboutPageQuery } from 'generated/graphql';
+import { GetAboutPageQuery } from '@/graphql-types';
 import { GET_ABOUT_PAGE } from 'queries/index.graphql';
 
 async function fetchData() {

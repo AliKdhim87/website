@@ -5,3 +5,4 @@ lib
 coverage
 .next
 graphql.schema.json
+/generated
