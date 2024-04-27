@@ -1,7 +1,7 @@
 import { draftMode } from 'next/headers';
 import { NextResponse } from 'next/server';
 
-import { GetCurrentPageQuery } from 'generated/graphql';
+import { GetCurrentPageQuery } from '@/graphql-types';
 import { fetchData } from 'utils/fetchData';
 
 import { GET_CURRENT_PAGE } from '../../../queries/index.graphql';

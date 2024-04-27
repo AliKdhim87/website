@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import Link from 'next/link';
 
 import { Container, Grid, Card, CardProps, CTA, Heading } from '@/components/reusable';
-import { Cta, Maybe } from 'generated/graphql';
+import { Cta, Maybe } from '@/graphql-types';
 import { uuidv4 } from 'utils';
 
 export type BlogType = {

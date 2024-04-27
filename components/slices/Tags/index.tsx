@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 
 import { Badge } from '@/components/reusable';
 import { uuidv4 } from '@/utils';
-import { Category, Maybe } from 'generated/graphql';
+import { Category, Maybe } from '@/graphql-types';
 
 import styles from './Tags.module.scss';
 

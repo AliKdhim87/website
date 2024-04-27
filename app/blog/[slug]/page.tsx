@@ -10,7 +10,7 @@ import {
   PortableText,
 } from '@/components/reusable';
 import { Tags } from '@/components/slices';
-import { GetAllBlogSlugsQuery, GetBlogBySlugQuery } from 'generated/graphql';
+import { GetAllBlogSlugsQuery, GetBlogBySlugQuery } from '@/graphql-types';
 import { GET_ALL_BLOG_SLUGS, GET_BLOG_BY_SLUG } from 'queries/index.graphql';
 import { formattedDate } from 'utils/formattedDate';
 import { fetchData } from 'utils/fetchData';

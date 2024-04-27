@@ -6,8 +6,7 @@ import '@/styles/globals.scss';
 import { Nav, Main, MainWrapper, Footer, NavLinks } from '@/components/global';
 import { GET_SITE_SETTINGS } from 'queries/index.graphql';
 import { fetchData } from 'utils/fetchData';
-
-import { GetSiteSettingsQuery } from '../generated/graphql';
+import { GetSiteSettingsQuery } from '@/graphql-types';
 
 export interface LayoutProps {
   children: React.ReactNode;

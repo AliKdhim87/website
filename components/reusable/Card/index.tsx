@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import { Maybe } from 'generated/graphql';
+import { Maybe } from '@/graphql-types';
 
 import { Typography } from '../Typography';
 import { Heading, HeadingProps } from '../Heading';

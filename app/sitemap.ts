@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 import { GET_ALL_PAGES_AND_BLOGS_AND_CATEGORIES } from 'queries/index.graphql';
-import { GetAllPagesAndBlogsAndCategoriesQuery } from 'generated/graphql';
+import { GetAllPagesAndBlogsAndCategoriesQuery } from '@/graphql-types';
 import { fetchData } from 'utils/fetchData';
 
 const URL = process.env.SITE_URL;

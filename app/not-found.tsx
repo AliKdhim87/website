@@ -2,7 +2,7 @@ import { Container, Grid } from '@/components/reusable';
 import { NotfoundSVG } from '@/components/reusable/assets/404';
 import { PageHeader } from '@/components/slices';
 import { uuidv4 } from '@/utils';
-import { GetNotFoundPageQuery } from 'generated/graphql';
+import { GetNotFoundPageQuery } from '@/graphql-types';
 import { GET_NOT_FOUND_PAGE } from 'queries/index.graphql';
 import { fetchData } from 'utils/fetchData';
 
