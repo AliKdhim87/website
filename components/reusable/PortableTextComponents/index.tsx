@@ -1,5 +1,3 @@
-'use client';
-
 import { PortableTextReactComponents } from '@portabletext/react';
 import { getImageDimensions } from '@sanity/asset-utils';
 import urlBuilder from '@sanity/image-url';
@@ -15,7 +13,9 @@ import { Heading } from '../Heading';
 
 export const PortableTextComponents: Partial<PortableTextReactComponents> = {
   types: {
-    code: ({ value: { language, code } }: { value: SnippetCodeType }) => <BlockCode language={language} code={code} />,
+    code: ({ value: { language, code, highlightedLines } }: { value: SnippetCodeType }) => (
+      <BlockCode language={language} code={code} highlightedLinesPosition={highlightedLines} />
+    ),
     mainImage: ({ value }) => {
       if (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID && process.env.NEXT_PUBLIC_SANITY_DATASET) {
         const { width, height } = getImageDimensions(value);
