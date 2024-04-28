@@ -5,7 +5,6 @@ interface SVGRProps {
   title?: string;
   titleId?: string;
 }
-
 const SvgBulletIcon = ({ title, titleId, ...props }: SVGProps<SVGSVGElement> & SVGRProps) => (
   <svg
     width="1em"
@@ -13,6 +12,7 @@ const SvgBulletIcon = ({ title, titleId, ...props }: SVGProps<SVGSVGElement> & S
     viewBox="0 0 10 138"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className="icon"
     aria-labelledby={titleId}
     {...props}
   >
@@ -21,5 +21,4 @@ const SvgBulletIcon = ({ title, titleId, ...props }: SVGProps<SVGSVGElement> & S
     <path stroke="currentColor" strokeWidth={2} d="M6 18v120" />
   </svg>
 );
-
 export default SvgBulletIcon;

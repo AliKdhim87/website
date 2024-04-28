@@ -5,7 +5,6 @@ interface SVGRProps {
   title?: string;
   titleId?: string;
 }
-
 const SvgMail = ({ title, titleId, ...props }: SVGProps<SVGSVGElement> & SVGRProps) => (
   <svg
     width="1em"
@@ -13,6 +12,7 @@ const SvgMail = ({ title, titleId, ...props }: SVGProps<SVGSVGElement> & SVGRPro
     viewBox="0 0 31 30"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className="icon"
     aria-labelledby={titleId}
     {...props}
   >
@@ -25,5 +25,4 @@ const SvgMail = ({ title, titleId, ...props }: SVGProps<SVGSVGElement> & SVGRPro
     />
   </svg>
 );
-
 export default SvgMail;
