@@ -5,7 +5,6 @@ interface SVGRProps {
   title?: string;
   titleId?: string;
 }
-
 const SvgGithubIcon = ({ title, titleId, ...props }: SVGProps<SVGSVGElement> & SVGRProps) => (
   <svg
     width="1em"
@@ -13,6 +12,7 @@ const SvgGithubIcon = ({ title, titleId, ...props }: SVGProps<SVGSVGElement> & S
     viewBox="0 0 25 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className="icon"
     aria-labelledby={titleId}
     {...props}
   >
@@ -30,5 +30,4 @@ const SvgGithubIcon = ({ title, titleId, ...props }: SVGProps<SVGSVGElement> & S
     </defs>
   </svg>
 );
-
 export default SvgGithubIcon;
