@@ -2,6 +2,7 @@
 
 export { Heading } from './Heading';
 export { PortableText } from '@portabletext/react';
+export { Clipboard } from './Clipboard';
 export * from './Anchor';
 export * from './Backdrop';
 export * from './Badge';

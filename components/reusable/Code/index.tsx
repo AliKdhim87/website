@@ -1,67 +1,64 @@
-'use client';
+import 'highlight.js/styles/github-dark.css';
 
-import React, { useEffect, useRef, useState } from 'react';
-// eslint-disable-next-line import/first, import/no-extraneous-dependencies
+import xss from 'xss';
 import hljs from 'highlight.js';
-// eslint-disable-next-line import/first, import/no-extraneous-dependencies
-import 'highlight.js/styles/atom-one-dark.css';
-// eslint-disable-next-line import/first, import/no-extraneous-dependencies
-import 'highlight.js/lib/languages/diff';
 import classNames from 'classnames/bind';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import copy from 'copy-to-clipboard';
+import { createElement } from 'react';
 
 import { Typography } from '../Typography';
+import { Clipboard } from '../Clipboard';
 
 import styles from './Code.module.scss';
 
 export type SnippetCodeType = {
   language: string;
   code: string;
+  highlightedLines: number[];
 };
 
 const css = classNames.bind(styles);
-
-// eslint-disable-next-line import/no-extraneous-dependencies, @typescript-eslint/no-var-requires
-hljs.registerLanguage('diff', require('highlight.js/lib/languages/diff'));
-
 interface CodeHighlighterProps {
   code: string;
   language: string;
+  highlightedLinesPosition: number[];
 }
 
-export const BlockCode = ({ code, language }: CodeHighlighterProps) => {
-  const codeRef = useRef<HTMLElement | null>(null);
-  const [clipboardText, setClipboardText] = useState('Copy code');
+type RenderHighlightedLinesProps = CodeHighlighterProps;
 
-  useEffect(() => {
-    if (codeRef.current) {
-      hljs.highlightElement(codeRef.current);
+const renderHighlightedLines = ({ code, language, highlightedLinesPosition }: RenderHighlightedLinesProps) => {
+  const codeLines = code.split('\n');
+  const highlightedLines = codeLines.map((line, index) => {
+    if (
+      highlightedLinesPosition &&
+      highlightedLinesPosition.length > 0 &&
+      highlightedLinesPosition.includes(index + 1)
+    ) {
+      return `<span class="${css('line-highlight')}">${line}</span>`;
     }
-  }, [code, language]);
+    return line;
+  });
+
+  const highlightedCode = highlightedLines.join('\n');
+
+  return createElement('code', {
+    className: css('code-highlighter__code', `language-${language}`),
+    dangerouslySetInnerHTML: {
+      __html: xss(highlightedCode, {
+        allowList: { span: ['class'] },
+      }),
+    },
+  });
+};
+export const BlockCode = ({ code, language, highlightedLinesPosition }: CodeHighlighterProps) => {
+  const hljsCode = hljs.highlight(code, { language }).value;
   return (
     <div className={css('code-highlighter')}>
       <div className={css('code-highlighter__header')}>
-        <Typography as="span">{language}</Typography>
-        <button
-          type="button"
-          aria-label="Copy code"
-          className={css('code-highlighter__clipboard')}
-          onClick={() => {
-            setClipboardText('Copied!');
-            copy(code);
-            setTimeout(() => {
-              setClipboardText('Copy code');
-            }, 1000);
-          }}
-        >
-          {clipboardText}
-        </button>
+        {language && <Typography as="span">{language.toUpperCase()}</Typography>}
+        {code && <Clipboard code={code} />}
       </div>
-      <pre>
-        <code ref={codeRef} className={css(`language-${language}`)}>
-          {code}
-        </code>
+      <pre className={css('code-highlighter__pre')}>
+        {renderHighlightedLines({ code: hljsCode, language, highlightedLinesPosition })}
       </pre>
     </div>
   );

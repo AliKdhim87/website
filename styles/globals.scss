@@ -251,13 +251,6 @@ textarea {
   width: 1px;
 }
 
-code {
-  white-space: pre-line;
-  word-wrap: break-word;
-}
-
-pre > code {
-  overflow-x: auto;
-  white-space: pre;
-  word-wrap: normal;
+svg {
+  display: block;
 }
