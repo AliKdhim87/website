@@ -1,5 +1,8 @@
 name: Deployment Ali-DEV
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
 jobs:
   vercel:
     runs-on: ubuntu-latest
