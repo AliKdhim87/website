@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SVGProps } from 'react';
+import type { SVGProps } from 'react';
 
 interface SVGRProps {
   title?: string;
@@ -7,9 +7,9 @@ interface SVGRProps {
 }
 const SvgCheck = ({ title, titleId, ...props }: SVGProps<SVGSVGElement> & SVGRProps) => (
   <svg
-    viewBox="0 0 24 24"
-    fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
     width="1em"
     height="1em"
     className="icon"
@@ -18,11 +18,11 @@ const SvgCheck = ({ title, titleId, ...props }: SVGProps<SVGSVGElement> & SVGRPr
   >
     {title ? <title id={titleId}>{title}</title> : null}
     <path
-      d="M4 12.611 8.923 17.5 20 6.5"
       stroke="currentColor"
-      strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
+      strokeWidth={2}
+      d="M4 12.611 8.923 17.5 20 6.5"
     />
   </svg>
 );
