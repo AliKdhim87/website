@@ -39,7 +39,7 @@ export const Grid: FunctionComponent<GridProps> = ({
   justifyContent,
   justifyContentMd,
   alignItems,
-  as: Component = 'div', // Default to 'div' if not provided
+  as: Component = 'div',
   className,
   ref,
   ...props
@@ -51,7 +51,7 @@ export const Grid: FunctionComponent<GridProps> = ({
     [`grid__item--sm-${sm}`]: sm,
     [`grid__item--md-${md}`]: md,
     [`grid__item-lg--${lg}`]: lg,
-    [`grid-spacing--${spacing}`]: spacing,
+    [`grid--spacing-${spacing}`]: spacing,
     [`grid--justifyContent-${justifyContent}`]: justifyContent,
     [`grid--justifyContent-sm-${justifyContentMd}`]: justifyContentMd,
     [`grid--alignItems-${alignItems}`]: alignItems,
