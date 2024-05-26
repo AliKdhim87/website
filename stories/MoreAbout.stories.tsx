@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof MoreAbout> = (args) => <MoreAbout {...args
 
 export const MoreAboutDefault = Template.bind({});
 MoreAboutDefault.args = {
-  introduction:
+  value:
     'Ipsam molestiae vitae autem laudantium consequuntur accusamus dicta nisi. Magni et consequatur doloribus neque et. Autem omnis ut consequatur dignissimos autem earum. Dignissimos at omnis nihil non velit sit exercitationem delectus dolores. Voluptatem dolor ea aut perspiciatis.',
   moreAboutItems: [
     {
