@@ -1,32 +1,35 @@
 import type { Metadata } from 'next';
-import wretch from 'wretch';
+import { draftMode } from 'next/headers';
 
 import { Grid, Container } from '@/components/reusable';
 import { ContactForm } from '@/components/reusable/ContactForm';
 import { PageHeader } from '@/components/slices';
-import { uuidv4 } from '@/utils';
+import { fetchData, sanityGraphqlAPIUrl, uuidv4 } from '@/utils';
 import { GetContactPageQuery } from '@/graphql-types';
 import { GET_CONTACT_PAGE } from 'queries/index.graphql';
 
-async function fetchData() {
-  try {
-    const response = await wretch(process.env.SCHEMA_URL).post({
-      query: GET_CONTACT_PAGE,
-      variables: { slug: 'contact' },
-    });
-    const { data } = await response.json<{ data: GetContactPageQuery }>();
-    return {
-      openGraph: data.allRoute[0].openGraph,
-      page: data.allRoute[0].page,
-      schemaOrg: data.allSiteSettings[0].schemaOrg,
-    };
-  } catch (error) {
-    throw new Error('Server error');
-  }
-}
+const apiUrl = sanityGraphqlAPIUrl({
+  projectId: process.env.SANITY_PROJECT_ID,
+  dataset: process.env.SANITY_DATASET,
+  apiVersion: process.env.SANITY_GRAPHQL_API_VERSION,
+});
 
+const getContactPage = async () => {
+  const { allRoute, allSiteSettings } = await fetchData<GetContactPageQuery>({
+    query: GET_CONTACT_PAGE,
+    variables: { slug: 'contact' },
+    apiUrl,
+    isDraftMode: draftMode().isEnabled,
+  });
+
+  return {
+    openGraph: allRoute[0].openGraph,
+    page: allRoute[0].page,
+    schemaOrg: allSiteSettings[0].schemaOrg,
+  };
+};
 export async function generateMetadata(): Promise<Metadata> {
-  const { openGraph, schemaOrg } = await fetchData();
+  const { openGraph, schemaOrg } = await getContactPage();
   const slug = 'contact';
   return {
     title: openGraph?.title,
@@ -105,7 +108,7 @@ const onEmailSubmit = async (fromData: FormData) => {
 };
 
 const Contact = async () => {
-  const { page } = await fetchData();
+  const { page } = await getContactPage();
   return (
     <>
       {page?.content?.map(

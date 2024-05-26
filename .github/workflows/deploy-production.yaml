@@ -44,7 +44,10 @@ jobs:
         with:
           envkey_DEBUG: false
           envkey_SANITY_STUDIO_READ_TOKEN: ${{ secrets.SANITY_STUDIO_READ_TOKEN }}
-          envkey_SCHEMA_URL: ${{ secrets.SCHEMA_URL }}
+          envkey_SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
+          envkey_SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          envkey_SANITY_GRAPHQL_API_VERSION: ${{ secrets.SANITY_GRAPHQL_API_VERSION }}
+          envkey_SANITY_GROQ_API_VERSION: ${{ secrets.SANITY_GROQ_API_VERSION }}
           file_name: .env
           fail_on_empty: false
           sort_keys: false

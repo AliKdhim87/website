@@ -1,15 +1,24 @@
 import { MetadataRoute } from 'next';
+import { draftMode } from 'next/headers';
 
 import { GET_ALL_PAGES_AND_BLOGS_AND_CATEGORIES } from 'queries/index.graphql';
 import { GetAllPagesAndBlogsAndCategoriesQuery } from '@/graphql-types';
-import { fetchData } from 'utils/fetchData';
+import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
 
 const URL = process.env.SITE_URL;
+
+const apiUrl = sanityGraphqlAPIUrl({
+  projectId: process.env.SANITY_PROJECT_ID,
+  dataset: process.env.SANITY_DATASET,
+  apiVersion: process.env.SANITY_GRAPHQL_API_VERSION,
+});
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const data = await fetchData<GetAllPagesAndBlogsAndCategoriesQuery>({
     query: GET_ALL_PAGES_AND_BLOGS_AND_CATEGORIES,
     variables: { slug: 'blog' },
+    apiUrl,
+    isDraftMode: draftMode().isEnabled,
   });
   const blogs = data.allPost;
   const catagoriesData = data.allCategory;

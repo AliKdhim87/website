@@ -2,18 +2,22 @@ import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 
 import { BlogType, PageHeader, RecentPosts, SocialMedia } from '@/components/slices';
-import { uuidv4 } from '@/utils';
-import { GetHomePageQuery } from '@/graphql-types';
+import { fetchData, sanityGraphqlAPIUrl, uuidv4 } from '@/utils';
+import type { GetHomePageQuery } from '@/graphql-types';
 import { GET_HOME_PAGE } from 'queries/index.graphql';
-import { fetchData } from 'utils/fetchData';
+
+const apiUrl = sanityGraphqlAPIUrl({
+  projectId: process.env.SANITY_PROJECT_ID,
+  dataset: process.env.SANITY_DATASET,
+  apiVersion: process.env.SANITY_GRAPHQL_API_VERSION,
+});
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await fetchData<GetHomePageQuery>({
     query: GET_HOME_PAGE,
     variables: { slug: 'front-page' },
-    options: {
-      cache: draftMode().isEnabled ? 'no-store' : 'force-cache',
-    },
+    isDraftMode: draftMode().isEnabled,
+    apiUrl,
   });
   const openGraph = data.allRoute[0]?.openGraph;
   return {
@@ -26,6 +30,8 @@ const Home = async () => {
   const data = await fetchData<GetHomePageQuery>({
     query: GET_HOME_PAGE,
     variables: { slug: 'front-page' },
+    isDraftMode: draftMode().isEnabled,
+    apiUrl,
   });
   const page = data.allRoute[0]?.page;
   const recentPosts = data?.allPost;

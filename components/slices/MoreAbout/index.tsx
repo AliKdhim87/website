@@ -1,7 +1,13 @@
-import { PortableText } from '@portabletext/react';
 import classNames from 'classnames/bind';
 
-import { Container, Grid, Card, CardProps, PortableTextComponents } from '@/components/reusable';
+import {
+  Container,
+  Grid,
+  Card,
+  CardProps,
+  PortableTextComponents,
+  type PortableTextConfigProps,
+} from '@/components/reusable';
 import { BulletIcon } from '@/components/reusable/icons';
 import { uuidv4, orderBy } from '@/utils';
 
@@ -11,19 +17,19 @@ const css = classNames.bind(styles);
 
 export type MoreAboutItem = CardProps;
 
-export type MoreAboutProps = {
-  introduction?: any;
+export type MoreAboutProps = PortableTextConfigProps & {
+  value?: any;
   moreAboutItems?: MoreAboutItem[];
 };
 
-export const MoreAbout = ({ introduction, moreAboutItems }: MoreAboutProps) => (
+export const MoreAbout = ({ value, moreAboutItems, dataset, projectId }: MoreAboutProps) => (
   <section className={css('more-about')}>
     <Container>
       <Grid container justifyContent="center">
         <Grid item md={10}>
-          {introduction && (
+          {value && (
             <div className={css('space-mb-3')}>
-              <PortableText value={introduction} components={PortableTextComponents} />
+              <PortableTextComponents value={value} dataset={dataset} projectId={projectId} />
             </div>
           )}
           <ul className={css('more-about__list')}>

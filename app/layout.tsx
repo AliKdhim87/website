@@ -5,12 +5,19 @@ import '@/styles/globals.scss';
 
 import { Nav, Main, MainWrapper, Footer, NavLinks } from '@/components/global';
 import { GET_SITE_SETTINGS } from 'queries/index.graphql';
-import { fetchData } from 'utils/fetchData';
 import { GetSiteSettingsQuery } from '@/graphql-types';
+import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
 
 export interface LayoutProps {
   children: React.ReactNode;
 }
+
+const apiUrl = sanityGraphqlAPIUrl({
+  projectId: process.env.SANITY_PROJECT_ID,
+  dataset: process.env.SANITY_DATASET,
+  apiVersion: process.env.SANITY_GRAPHQL_API_VERSION,
+});
+
 /*
 TODO
 - fetch the color from CMS / website settings
@@ -25,6 +32,7 @@ export const viewport: Viewport = {
 export async function generateMetadata(): Promise<Metadata> {
   const data = await fetchData<GetSiteSettingsQuery>({
     query: GET_SITE_SETTINGS,
+    apiUrl,
   });
 
   const schemaOrg = data.SiteSettings?.schemaOrg;
@@ -88,6 +96,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const Layout = async ({ children }: LayoutProps) => {
   const data = await fetchData<GetSiteSettingsQuery>({
     query: GET_SITE_SETTINGS,
+    apiUrl,
   });
   const logo = {
     src: data.SiteSettings?.navigation?.logo?.asset?.url,

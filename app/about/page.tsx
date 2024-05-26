@@ -1,32 +1,29 @@
+import { draftMode } from 'next/headers';
 import type { Metadata } from 'next';
 import { ImageProps } from 'next/image';
-import wretch from 'wretch';
 
 import { MoreAbout, MoreAboutItem, PageHeader } from '@/components/slices';
-import { uuidv4 } from '@/utils';
+import { sanityGraphqlAPIUrl, uuidv4, fetchData } from '@/utils';
 import { GetAboutPageQuery } from '@/graphql-types';
 import { GET_ABOUT_PAGE } from 'queries/index.graphql';
 
-async function fetchData() {
-  try {
-    const response = await wretch(process.env.SCHEMA_URL).post({
-      query: GET_ABOUT_PAGE,
-      variables: { slug: 'about' },
-    });
-    const { data } = await response.json<{ data: GetAboutPageQuery }>();
-
-    return {
-      openGraph: data.allRoute[0].openGraph,
-      page: data.allRoute[0].page,
-      schemaOrg: data.allSiteSettings[0].schemaOrg,
-    };
-  } catch (error) {
-    throw new Error('Server error');
-  }
-}
+const apiUrl = sanityGraphqlAPIUrl({
+  projectId: process.env.SANITY_PROJECT_ID,
+  dataset: process.env.SANITY_DATASET,
+  apiVersion: process.env.SANITY_GRAPHQL_API_VERSION,
+});
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { openGraph, schemaOrg } = await fetchData();
+  const { allRoute, allSiteSettings } = await fetchData<GetAboutPageQuery>({
+    query: GET_ABOUT_PAGE,
+    variables: { slug: 'about' },
+    apiUrl,
+    isDraftMode: draftMode().isEnabled,
+  });
+
+  const { openGraph } = allRoute[0];
+  const { schemaOrg } = allSiteSettings[0];
+
   const slug = 'contact';
   return {
     title: openGraph?.title,
@@ -43,7 +40,13 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const AboutPage = async () => {
-  const { page } = await fetchData();
+  const { allRoute } = await fetchData<GetAboutPageQuery>({
+    query: GET_ABOUT_PAGE,
+    variables: { slug: 'about' },
+    apiUrl,
+    isDraftMode: draftMode().isEnabled,
+  });
+  const { page } = allRoute[0];
 
   return (
     <div>
@@ -70,7 +73,9 @@ const AboutPage = async () => {
           case 'AboutMe':
             return (
               <MoreAbout
-                introduction={component.aboutIntroductionRaw}
+                value={component.aboutIntroductionRaw}
+                dataset={process.env.SANITY_DATASET as string}
+                projectId={process.env.SANITY_PROJECT_ID as string}
                 moreAboutItems={component.aboutMeItems as MoreAboutItem[]}
                 key={uuidv4()}
               />
