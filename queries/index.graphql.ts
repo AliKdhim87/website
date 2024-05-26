@@ -1,4 +1,4 @@
-const gql = (query: any) => query;
+export const gql = (query: any) => query;
 
 export const GET_ALL_BLOG = gql(`
   query getAllBlog {

@@ -1,4 +1,3 @@
-import { draftMode } from 'next/headers';
 import wretch from 'wretch';
 
 type Variables = {
@@ -10,22 +9,24 @@ type FetchDataParams<T> = {
   query: string;
   variables?: Variables;
   options?: RequestInit;
+  apiUrl: string;
+  isDraftMode?: boolean;
 };
 
-export async function fetchData<T>({ query, variables, options }: FetchDataParams<T>) {
+export async function fetchData<T>({ query, variables, options, apiUrl, isDraftMode }: FetchDataParams<T>) {
   try {
     const requestOptions = options || {};
 
     if (!requestOptions.cache) {
-      requestOptions.cache = draftMode().isEnabled ? 'no-store' : 'force-cache';
+      requestOptions.cache = isDraftMode ? 'no-store' : 'force-cache';
     }
-
-    const response = await wretch(process.env.SCHEMA_URL, requestOptions).post({
-      query,
-      variables,
-    });
-    const { data } = await response.json<{ data: T }>();
-    return data;
+    const { data } = await wretch(apiUrl, requestOptions)
+      .post({
+        query,
+        variables,
+      })
+      .json((json) => json);
+    return data as T;
   } catch (error) {
     throw new Error('Server error');
   }

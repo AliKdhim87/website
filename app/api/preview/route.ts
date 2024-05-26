@@ -2,9 +2,15 @@ import { draftMode } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 import { GetCurrentPageQuery } from '@/graphql-types';
-import { fetchData } from 'utils/fetchData';
+import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
 
 import { GET_CURRENT_PAGE } from '../../../queries/index.graphql';
+
+const apiUrl = sanityGraphqlAPIUrl({
+  projectId: process.env.SANITY_PROJECT_ID,
+  dataset: process.env.SANITY_DATASET,
+  apiVersion: process.env.SANITY_GRAPHQL_API_VERSION,
+});
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -23,6 +29,7 @@ export async function GET(req: Request) {
     const data = await fetchData<GetCurrentPageQuery>({
       query: GET_CURRENT_PAGE,
       variables: { slug: slugParam },
+      apiUrl,
     });
     const slug = data?.allRoute[0]?.slug;
     // Set draft mode cookie that enables fetching data at request time (instead of at build time)
