@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SVGProps } from 'react';
+import type { SVGProps } from 'react';
 
 interface SVGRProps {
   title?: string;
@@ -7,11 +7,11 @@ interface SVGRProps {
 }
 const SvgBulletIcon = ({ title, titleId, ...props }: SVGProps<SVGSVGElement> & SVGRProps) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     width="1em"
     height="1em"
-    viewBox="0 0 10 138"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 10 138"
     className="icon"
     aria-labelledby={titleId}
     {...props}
