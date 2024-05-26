@@ -27,3 +27,5 @@ export * from './PostItem';
 export * from './SVGWrapper';
 export * from './Textarea';
 export * from './Typography';
+export * from './TOC';
+export * from './Details';
