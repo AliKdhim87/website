@@ -1,6 +1,7 @@
 export { default as BulletIcon } from './BulletIcon';
 export { default as Calendar } from './Calendar';
 export { default as Check } from './Check';
+export { default as ChevronRight } from './ChevronRight';
 export { default as CloseIcon } from './CloseIcon';
 export { default as Copy } from './Copy';
 export { default as Mail } from './Mail';
