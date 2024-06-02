@@ -1,24 +1,32 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
 
 import { HelperText } from '@/components/reusable';
 
-export default {
-  title: 'components/HelperText',
+const meta: Meta<typeof HelperText> = {
+  title: 'Components/HelperText',
   component: HelperText,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
   argTypes: {},
-} as ComponentMeta<typeof HelperText>;
-
-const Template: ComponentStory<typeof HelperText> = (args) => <HelperText {...args} />;
-
-export const HelperTextDefault = Template.bind({});
-HelperTextDefault.args = {
-  helperText: 'Helper text',
-  error: false,
+  args: { onClick: fn() },
 };
 
-export const HelperTextError = Template.bind({});
-HelperTextError.args = {
-  helperText: 'Helper text',
-  error: true,
+export default meta;
+type Story = StoryObj<typeof HelperText>;
+
+export const HelperTextDefault: Story = {
+  args: {
+    helperText: 'Helper text',
+    error: false,
+  },
+};
+
+export const HelperTextError: Story = {
+  args: {
+    helperText: 'Helper text',
+    error: true,
+  },
 };

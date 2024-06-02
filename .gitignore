@@ -48,3 +48,5 @@ graphql.schema.json
 robots.txt
 sitemap-0.xml
 sitemap.xml
+
+*storybook.log

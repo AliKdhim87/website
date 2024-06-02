@@ -6,3 +6,4 @@ coverage
 .next
 graphql.schema.json
 /generated
+/storybook-static
