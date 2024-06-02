@@ -1,33 +1,31 @@
 .toc {
-  --toc-list-margin-block-start: 14px;
-  --toc-list-nested-margin-block-start: 14px;
-  --list-item-padding-block-start: 8px;
-  --list-item-padding-block-end: 8px;
-
-  background-color: var(--colors-primary-bg);
-  padding-inline: 1.5rem;
-  padding-block: 0.75rem;
-  border-radius: 5px;
+  background-color: var(--toc-background-color);
+  padding-inline-start: var(--toc-padding-inline-start);
+  padding-inline-end: var(--toc-padding-inline-end);
+  padding-block-start: var(--toc-padding-block-start);
+  padding-block-end: var(--toc-padding-block-end);
+  border-radius: var(--toc-border-radius);
   position: sticky;
-  max-block-size: 800px;
+  max-block-size: var(--toc-max-block-size);
   overflow-y: auto;
   top: 20px;
 }
 
 .toc__list {
+  --list-item-padding-block-start: var(--toc-list-item-padding-block-start);
+  --list-item-padding-block-end: var(--toc-list-item-padding-block-end);
   --list-margin-block-start: var(--toc-list-margin-block-start);
 }
 
 .toc__list-nested {
-  --list-padding-inline-start: 30px;
+  --list-padding-inline-start: var(--toc-list-nested-padding-inline-start);
   --list-margin-block-start: var(--toc-list-nested-margin-block-start);
 }
 
 .toc__link {
-  --anchor-text-underline-offset: 5px;
+  --anchor-text-underline-offset: var(--toc-link-underline-offset);
   --anchor-color: var(--toc-link-color);
   --anchor-text-decoration: none;
-  --toc-link-font-size: var(--typography-h4-font-size);
   --anchor-font-size: var(--toc-link-font-size);
   --anchor-hover-text-decoration: underline;
 }
