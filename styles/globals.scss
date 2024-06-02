@@ -39,7 +39,6 @@
   --button-secondary-hover-background-color: var(--colors-secondary);
 
   // Anchor
-
   --anchor-color: var(--colors-primary-dark);
   --anchor-color-hover: var(--colors-primary);
 
@@ -110,6 +109,24 @@
   // PageHeader
   --page-header-section-padding-block: var(--space-4);
   --page-header-section-image-padding-block-start: var(--space-3);
+
+  // TOC start
+  --toc-background-color: var(--colors-primary-bg);
+  --toc-border-radius: 5px;
+  --toc-max-block-size: 500px;
+  --toc-padding-inline-start: 30px;
+  --toc-padding-inline-end: 30px;
+  --toc-padding-block-start: 18px;
+  --toc-padding-block-end: 18px;
+  --toc-list-margin-block-start: 14px;
+  --toc-list-nested-margin-block-start: 14px;
+  --toc-list-nested-padding-inline-start: 30px;
+  --toc-list-item-padding-block-start: 8px;
+  --toc-list-item-padding-block-end: 8px;
+  --toc-link-underline-offset: 5px;
+  --toc-link-font-size: var(--typography-h5-font-size);
+
+  // TOC end
 
   @include breakpoint("lg") {
     --container-padding-inline: 20px;
