@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { Container, Grid, Card, CardProps, CTA, Heading } from '@/components/reusable';
 import { Cta, Maybe } from '@/graphql-types';
-import { uuidv4 } from 'utils';
+import { uuidv4 } from '@/utils';
 
 export type BlogType = {
   title: string;
