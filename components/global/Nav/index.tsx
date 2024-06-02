@@ -2,15 +2,15 @@
 
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import classNames from 'classnames/bind';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import Link from 'next/link';
 
 import { Container } from '@/components/reusable';
 import { Backdrop } from '@/components/reusable/Backdrop';
 import { Grid } from '@/components/reusable/Grid';
-import { uuidv4, activeLinkChecker, trapFocus } from '@/utils';
+import { trapFocus } from '@/utils';
 
 import { Header } from '../Header';
 import { Logo } from '../Logo';
@@ -19,16 +19,12 @@ import styles from './index.module.scss';
 import { NavButton } from './NavButton';
 import { NavItem } from './NavItem';
 import { NavList } from './NavList';
+import type { LinkType } from './NavList';
 
 const css = classNames.bind(styles);
 
-export type NavLinks = {
-  route: string | null;
-  title: string | null;
-};
-
 export interface NavProps {
-  navLinks: NavLinks[];
+  navLinks: LinkType[];
   logo: any;
 }
 
@@ -91,23 +87,7 @@ export const Nav = ({ logo, navLinks }: NavProps) => {
               name="open"
               onClick={() => setMobileMode((prevState) => !prevState)}
             />
-            <NavList id={navAriaContrOLiD}>
-              {navLinks &&
-                navLinks.map(({ route, title }) => (
-                  <NavItem key={uuidv4()}>
-                    {title && route && (
-                      <Link
-                        href={route}
-                        aria-current={activeLinkChecker(route, pathname) && 'page'}
-                        className={css('nav-link')}
-                      >
-                        {title}
-                      </Link>
-                    )}
-                  </NavItem>
-                ))}
-            </NavList>
-
+            <NavList list={navLinks} id={navAriaContrOLiD} pathname={pathname} />
             <CSSTransition
               in={mobileMode}
               timeout={300}
@@ -120,7 +100,14 @@ export const Nav = ({ logo, navLinks }: NavProps) => {
             >
               <Backdrop onClick={() => setMobileMode(false)}>
                 <div tabIndex={0} />
-                <NavList ref={navListRef} mobile onClick={(e) => e.stopPropagation()} id={navAriaContrOLiD}>
+                <NavList
+                  list={navLinks}
+                  pathname={pathname}
+                  ref={navListRef}
+                  mobile
+                  onClick={(e) => e.stopPropagation()}
+                  id={navAriaContrOLiD}
+                >
                   <NavItem>
                     <NavButton
                       menuExpanded={mobileMode}
@@ -129,20 +116,6 @@ export const Nav = ({ logo, navLinks }: NavProps) => {
                       onClick={() => setMobileMode(false)}
                     />
                   </NavItem>
-                  {navLinks &&
-                    navLinks.map(({ route, title }) => (
-                      <NavItem key={uuidv4()}>
-                        {route && title && (
-                          <Link
-                            href={route}
-                            aria-current={activeLinkChecker(route, pathname) && 'page'}
-                            className={css('nav-link')}
-                          >
-                            {title}
-                          </Link>
-                        )}
-                      </NavItem>
-                    ))}
                 </NavList>
                 <div tabIndex={0} />
               </Backdrop>

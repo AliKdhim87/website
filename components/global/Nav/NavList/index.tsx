@@ -1,22 +1,52 @@
 import classNames from 'classnames/bind';
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import { forwardRef, type DetailedHTMLProps, type HTMLAttributes, type PropsWithChildren } from 'react';
+
+import { activeLinkChecker, uuidv4 } from '@/utils';
 
 import styles from '../index.module.scss';
+import { NavLink } from '../NavLink';
+import { NavItem } from '../NavItem';
 
 const css = classNames.bind(styles);
 
+export type LinkType = {
+  title: string;
+  route: string;
+};
 export interface NavListProps extends DetailedHTMLProps<HTMLAttributes<HTMLUListElement>, HTMLUListElement> {
   mobile?: boolean;
-  children?: React.ReactNode;
+  list: LinkType[];
+  pathname: string;
 }
 
-export const NavList = ({ children, mobile, ...props }: NavListProps) => {
-  const classes = css('nav__list', 'modal-content', {
+const classes = (mobile?: boolean) =>
+  css('nav__list', 'modal-content', {
     'nav__list--mobile': mobile,
   });
-  return (
-    <ul data-state={mobile ? 'mobile' : 'desktop'} className={classes} {...props}>
+
+export const NavList = forwardRef(
+  ({ children, pathname, mobile, list, ...restProps }: PropsWithChildren<NavListProps>) => (
+    <ul className={classes(mobile)} {...restProps}>
       {children}
+      {Array.isArray(list) &&
+        list.map(({ route, title }) => (
+          <NavItem key={uuidv4()}>
+            {route && title && (
+              <NavLink
+                href={route}
+                aria-current={activeLinkChecker(route, pathname) && 'page'}
+                className={css('nav-link')}
+              >
+                {title}
+              </NavLink>
+            )}
+          </NavItem>
+        ))}
     </ul>
-  );
+  ),
+);
+
+NavList.displayName = 'NavList';
+NavList.defaultProps = {
+  mobile: false,
 };

@@ -3,10 +3,11 @@ import type { Viewport, Metadata } from 'next';
 import '@fontsource/roboto';
 import '@/styles/globals.scss';
 
-import { Nav, Main, MainWrapper, Footer, NavLinks } from '@/components/global';
+import { Nav, Main, MainWrapper, Footer } from '@/components/global';
 import { GET_SITE_SETTINGS } from 'queries/index.graphql';
 import { GetSiteSettingsQuery } from '@/graphql-types';
 import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
+import type { LinkType } from '@/components/global/Nav/NavList';
 
 export interface LayoutProps {
   children: React.ReactNode;
@@ -123,7 +124,7 @@ const Layout = async ({ children }: LayoutProps) => {
     <html lang="en">
       <body id="root">
         <MainWrapper>
-          <Nav navLinks={nav as NavLinks[]} logo={logo} />
+          <Nav navLinks={nav as LinkType[]} logo={logo} />
           <Main>{children}</Main>
           <Footer copyright={footer} />
         </MainWrapper>
