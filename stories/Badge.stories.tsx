@@ -1,18 +1,25 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
 
 import { Badge } from '@/components/reusable';
 
-export default {
-  title: 'components/Badge',
+const meta: Meta<typeof Badge> = {
+  title: 'Components/Badge',
   component: Badge,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
   argTypes: {},
-} as ComponentMeta<typeof Badge>;
+  args: { onClick: fn() },
+};
 
-const Template: ComponentStory<typeof Badge> = (args) => <Badge {...args} />;
+export default meta;
+type Story = StoryObj<typeof Badge>;
 
-export const BadgeDefault = Template.bind({});
-BadgeDefault.args = {
-  children: '#javaScript',
-  href: '#',
+export const BadgeDefault: Story = {
+  args: {
+    children: '#javaScript',
+    href: '#',
+  },
 };

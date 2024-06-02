@@ -1,24 +1,29 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { SocialMedia } from '@/components/slices/socialMedia';
 
-export default {
-  title: 'components/SocialMedia',
+const meta: Meta<typeof SocialMedia> = {
+  title: 'Components/SocialMedia',
   component: SocialMedia,
+  parameters: {
+    layout: 'padded',
+  },
+  tags: ['autodocs'],
   argTypes: {},
-} as ComponentMeta<typeof SocialMedia>;
+};
 
-const Template: ComponentStory<typeof SocialMedia> = (args) => <SocialMedia {...args} />;
+export default meta;
+type Story = StoryObj<typeof SocialMedia>;
 
-export const Default = Template.bind({});
-Default.args = {
-  title: 'Find me across the internet:',
-  socialMedia: [
-    { url: '#', icon: 'github', title: 'Github' },
-    { url: '#', icon: 'instagram', title: 'Instagram' },
-    { url: '#', icon: 'linkedIn', title: 'LinkedIn' },
-    { url: '#', icon: 'twitter', title: 'Twitter' },
-    { url: '#', icon: 'email', title: 'Email' },
-  ],
+export const Default: Story = {
+  args: {
+    title: 'Find me across the internet:',
+    socialMedia: [
+      { url: '#', icon: 'github', title: 'Github' },
+      { url: '#', icon: 'instagram', title: 'Instagram' },
+      { url: '#', icon: 'linkedIn', title: 'LinkedIn' },
+      { url: '#', icon: 'twitter', title: 'Twitter' },
+      { url: '#', icon: 'email', title: 'Email' },
+    ],
+  },
 };

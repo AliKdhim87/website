@@ -1,19 +1,26 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
 
 import { Label } from '@/components/reusable';
 
-export default {
-  title: 'components/Label',
+const meta: Meta<typeof Label> = {
+  title: 'Components/Label',
   component: Label,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
   argTypes: {},
-} as ComponentMeta<typeof Label>;
+  args: { onClick: fn() },
+};
 
-const Template: ComponentStory<typeof Label> = (args) => <Label {...args} />;
+export default meta;
+type Story = StoryObj<typeof Label>;
 
-export const Default = Template.bind({});
-Default.args = {
-  children: 'Label',
-  htmlFor: 'fullName',
-  required: true,
+export const Default: Story = {
+  args: {
+    children: 'Label',
+    htmlFor: 'fullName',
+    required: true,
+  },
 };

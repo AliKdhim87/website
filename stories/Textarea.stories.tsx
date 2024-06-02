@@ -1,22 +1,27 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Textarea } from '@/components/reusable';
 
-export default {
-  title: 'components/Textarea',
+const meta: Meta<typeof Textarea> = {
+  title: 'Components/Textarea',
   component: Textarea,
+  parameters: {
+    layout: 'padded',
+  },
+  tags: ['autodocs'],
   argTypes: {},
-} as ComponentMeta<typeof Textarea>;
+};
 
-const Template: ComponentStory<typeof Textarea> = (args) => <Textarea {...args} />;
+export default meta;
+type Story = StoryObj<typeof Textarea>;
 
-export const Default = Template.bind({});
-Default.args = {
-  label: 'Full Name',
-  placeholder: 'Writ your full name here',
-  required: true,
-  helperText: 'Helper text',
-  error: true,
-  disabled: false,
+export const Default: Story = {
+  args: {
+    label: 'Full Name',
+    placeholder: 'Writ your full name here',
+    required: true,
+    helperText: 'Helper text',
+    error: true,
+    disabled: false,
+  },
 };

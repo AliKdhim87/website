@@ -1,34 +1,39 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Tags } from '@/components/slices';
 
-export default {
-  title: 'components/Tags',
+const meta: Meta<typeof Tags> = {
+  title: 'Components/Tags',
   component: Tags,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
   argTypes: {},
-} as ComponentMeta<typeof Tags>;
+};
 
-const Template: ComponentStory<typeof Tags> = (args) => <Tags {...args} />;
+export default meta;
+type Story = StoryObj<typeof Tags>;
 
-export const TagsDefault = Template.bind({});
-TagsDefault.args = {
-  tags: [
-    {
-      title: '#JavaScript',
-      _id: '#',
-    },
-    {
-      title: '#React',
-      _id: '#',
-    },
-    {
-      title: '#CSS',
-      _id: '#',
-    },
-    {
-      title: '#HTML',
-      _id: '#',
-    },
-  ],
+export const TagsDefault: Story = {
+  args: {
+    tags: [
+      {
+        title: '#JavaScript',
+        _id: '#',
+      },
+      {
+        title: '#React',
+        _id: '#',
+      },
+      {
+        title: '#CSS',
+        _id: '#',
+      },
+      {
+        title: '#HTML',
+        _id: '#',
+      },
+    ],
+  },
 };
