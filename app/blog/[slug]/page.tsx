@@ -123,7 +123,13 @@ const PostPage = async ({ params: { slug } }: Params) => {
         {title && <BlogPostTitle title={title} />}
         <Container>
           {categories && <Tags tags={categories} />}
-          <Grid container spacing="lg" justifyContent="space-between">
+          <Grid
+            container
+            spacing="lg"
+            justifyContent="space-between"
+            flexDirection="column-reverse"
+            flexDirectionSM="column-reverse"
+          >
             <Grid item md={7}>
               <PortableTextComponents
                 onMissingComponent={false}
