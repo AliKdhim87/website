@@ -8,6 +8,7 @@ type Spacing = 'sm' | 'md' | 'lg';
 
 type JustifyContent = 'flex-start' | 'center' | 'flex-end' | 'space-between';
 type AlignItems = 'flex-start' | 'center' | 'flex-end';
+type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';
 
 const css = classNames.bind(styles);
 
@@ -22,9 +23,12 @@ export interface GridProps extends React.HTMLAttributes<HTMLElement> {
   spacing?: Spacing;
   justifyContent?: JustifyContent;
   justifyContentMd?: JustifyContent;
+  flexDirection?: FlexDirection;
+  flexDirectionSM?: FlexDirection;
   alignItems?: AlignItems;
   as?: React.ElementType;
   ref?: LegacyRef<any>;
+  onlyOn?: 'lg' | 'md' | 'sm' | 'xs';
 }
 
 export const Grid: FunctionComponent<GridProps> = ({
@@ -42,6 +46,9 @@ export const Grid: FunctionComponent<GridProps> = ({
   as: Component = 'div',
   className,
   ref,
+  onlyOn,
+  flexDirection,
+  flexDirectionSM,
   ...props
 }) => {
   const classes = css(className, {
@@ -51,9 +58,12 @@ export const Grid: FunctionComponent<GridProps> = ({
     [`grid__item--sm-${sm}`]: sm,
     [`grid__item--md-${md}`]: md,
     [`grid__item-lg--${lg}`]: lg,
+    [`grid__item--only-on-${onlyOn}`]: onlyOn,
     [`grid--spacing-${spacing}`]: spacing,
     [`grid--justifyContent-${justifyContent}`]: justifyContent,
     [`grid--justifyContent-sm-${justifyContentMd}`]: justifyContentMd,
+    [`grid--flex-direction-${flexDirection}`]: flexDirection,
+    [`grid--flex-direction-sm-${flexDirectionSM}`]: flexDirectionSM,
     [`grid--alignItems-${alignItems}`]: alignItems,
   });
 

@@ -4,6 +4,12 @@
   "rules": {
     "selector-class-pattern": null,
     "custom-property-pattern": null,
-    "scss/at-extend-no-missing-placeholder": null
+    "scss/at-extend-no-missing-placeholder": null,
+    "declaration-block-no-redundant-longhand-properties": [
+      true,
+      {
+        "ignoreShorthands": ["flex-flow"]
+      }
+    ]
   }
 }
