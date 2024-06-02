@@ -1,43 +1,70 @@
 .details {
-  box-shadow: 0 0 5px 1px rgb(0 0 0 / 20%);
-  border-radius: 5px;
+  --details-box-shadow: 0 0 5px 1px rgb(0 0 0 / 20%);
+  --details-border-radius: 5px;
+  --details-animation-duration: 250ms;
+  --details-summary-background-color: var(--colors-secondary);
+  --details-summary-color: var(--colors-grey-0);
+  --details-summary-padding-inline-start: 12px;
+  --details-summary-padding-inline-end: 12px;
+  --details-summary-padding-block-start: 12px;
+  --details-summary-padding-block-end: 12px;
+  --details-summary-gap: 10px;
+  --details-body-padding-inline-start: 12px;
+  --details-body-padding-inline-end: 12px;
+  --details-body-padding-block-start: 12px;
+  --details-body-padding-block-end: 12px;
+  --details-body-background-color: var(--colors-primary-bg);
+
+  box-shadow: var(--details-box-shadow);
+  border-radius: var(--details-border-radius);
 
   &__summary {
-    background-color: #115e59;
-    color: #fff;
-    padding-inline: 12px;
-    padding-block: 12px;
-    border-radius: 5px;
+    background-color: var(--details-summary-background-color);
+    color: var(--details-summary-color);
+    padding-inline-start: var(--details-summary-padding-inline-start);
+    padding-inline-end: var(--details-summary-padding-inline-end);
+    padding-block-start: var(--details-summary-padding-block-start);
+    padding-block-end: var(--details-summary-padding-block-end);
+    border-radius: var(--details-border-radius);
     cursor: pointer;
     list-style: none;
     display: flex;
     align-items: center;
-    margin-block-end: -10px;
-    transition: margin-block-end 250ms ease-out;
-    gap: 10px;
+    margin-block-end: var(--_details-summary-margin-block-end, -10px);
+    transition-property: margin-block-end;
+    transition-duration: var(--details-animation-duration);
+    transition-timing-function: ease-out;
+    gap: var(--details-summary-gap);
 
     &::-webkit-details-marker {
       display: none;
     }
 
     & .details__icon {
-      animation: rotate-close-icon 250ms linear;
+      animation-duration: var(--details-animation-duration);
+      animation-name: rotate-close-icon;
+      animation-timing-function: linear;
     }
   }
 
   &[open] .details__summary {
-    margin-block-end: 10px;
+    --_details-summary-margin-block-end: 0;
   }
 
   &[open] .details__summary .details__icon {
     transform: rotate(90deg);
-    animation: rotate-open-icon 250ms linear;
+    animation-name: rotate-open-icon;
+    animation-timing-function: linear;
+    animation-duration: var(--details-animation-duration);
   }
 }
 
 .details__body {
-  padding-inline: 10px;
-  padding-block-end: 10px;
+  padding-inline-start: var(--details-body-padding-inline-start);
+  padding-inline-end: var(--details-body-padding-inline-end);
+  padding-block-start: var(--details-body-padding-block-start);
+  padding-block-end: var(--details-body-padding-block-end);
+  background-color: var(--details-body-background-color);
 }
 
 @keyframes rotate-open-icon {
