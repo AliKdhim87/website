@@ -1,13 +1,21 @@
 .toc {
+  --details-summary-padding-block-start: var(--toc-header-padding-block-start);
+  --details-summary-padding-block-end: var(--toc-header-padding-block-end);
+  --details-summary-padding-inline-start: var(
+    --toc-header-padding-inline-start
+  );
+  --details-summary-padding-inline-end: var(--toc-header-padding-inline-end);
+  --details-summary-background-color: var(--toc-background-color);
+  --details-body-padding-inline-start: var(--toc-body-padding-inline-start);
+  --details-body-padding-inline-end: var(--toc-body-padding-inline-end);
+  --details-body-padding-block-start: var(--toc-body-padding-block-start);
+  --details-body-padding-block-end: var(--toc-body-padding-block-end);
+  --details-body-max-block-size: var(--toc-body-max-block-size);
+  --details-body-overflow-y: auto;
+
   background-color: var(--toc-background-color);
-  padding-inline-start: var(--toc-padding-inline-start);
-  padding-inline-end: var(--toc-padding-inline-end);
-  padding-block-start: var(--toc-padding-block-start);
-  padding-block-end: var(--toc-padding-block-end);
   border-radius: var(--toc-border-radius);
   position: sticky;
-  max-block-size: var(--toc-max-block-size);
-  overflow-y: auto;
   top: 20px;
 }
 
