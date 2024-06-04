@@ -113,11 +113,15 @@
   // TOC start
   --toc-background-color: var(--colors-primary-bg);
   --toc-border-radius: 5px;
-  --toc-max-block-size: 500px;
-  --toc-padding-inline-start: 30px;
-  --toc-padding-inline-end: 30px;
-  --toc-padding-block-start: 18px;
-  --toc-padding-block-end: 18px;
+  --toc-body-padding-inline-start: 30px;
+  --toc-body-padding-inline-end: 30px;
+  --toc-body-padding-block-start: 18px;
+  --toc-body-padding-block-end: 18px;
+  --toc-header-padding-block-start: 18px;
+  --toc-header-padding-block-end: 18px;
+  --toc-header-padding-inline-start: 18px;
+  --toc-header-padding-inline-end: 18px;
+  --toc-body-max-block-size: 400px;
   --toc-list-margin-block-start: 14px;
   --toc-list-nested-margin-block-start: 14px;
   --toc-list-nested-padding-inline-start: 30px;
