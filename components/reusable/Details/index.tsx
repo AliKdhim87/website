@@ -5,6 +5,7 @@ import {
   type HTMLAttributes,
   type PropsWithChildren,
   forwardRef,
+  DetailsHTMLAttributes,
 } from 'react';
 
 import SvgChevronRight from '../icons/ChevronRight';
@@ -13,12 +14,13 @@ import type { HeadingVariant } from '../Heading';
 
 import styles from './styles.module.scss';
 
-export interface DetailsProps extends HTMLAttributes<HTMLDetailsElement> {
+export interface DetailsProps extends DetailedHTMLProps<DetailsHTMLAttributes<HTMLDetailsElement>, HTMLDetailsElement> {
   label?: string;
   headingLevel?: number;
   headingVariant?: HeadingVariant;
   summaryRestProps?: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
   bodyRestProps?: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+  icon?: boolean;
 }
 const cx = classnames.bind(styles);
 
@@ -32,6 +34,7 @@ export const Details = forwardRef(
       headingLevel,
       headingVariant,
       bodyRestProps,
+      icon,
       ...restProps
     }: PropsWithChildren<DetailsProps>,
     ref: ForwardedRef<HTMLDetailsElement>,
@@ -39,7 +42,7 @@ export const Details = forwardRef(
     <details className={cx('details', className)} ref={ref} {...restProps}>
       {label && (
         <summary className={cx('details__summary', summaryRestProps?.className)} {...summaryRestProps}>
-          <SvgChevronRight className={cx('details__icon')} />{' '}
+          {icon && <SvgChevronRight className={cx('details__icon')} />}
           <Heading level={headingLevel ?? 2} variant={headingVariant}>
             {label}
           </Heading>
@@ -61,4 +64,5 @@ Details.defaultProps = {
   bodyRestProps: {},
   headingLevel: 2,
   headingVariant: 'h5',
+  icon: true,
 };
