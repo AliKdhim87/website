@@ -6,3 +6,4 @@ export * from './getTableOfContent';
 export * from './nestHeading';
 export * from './sanityGraphqlAPIUrl';
 export * from './fetchData';
+export * from './useWindowSize';
