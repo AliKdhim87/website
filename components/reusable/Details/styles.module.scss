@@ -59,13 +59,13 @@
   }
 
   &__body {
-      padding-inline-start: var(--details-body-padding-inline-start);
-      padding-inline-end: var(--details-body-padding-inline-end);
-      padding-block-start: var(--details-body-padding-block-start);
-      padding-block-end: var(--details-body-padding-block-end);
-      background-color: var(--details-body-background-color);
-      overflow-y: var(--details-body-overflow-y);
-      max-block-size: var(--details-body-max-block-size);
+    padding-inline-start: var(--details-body-padding-inline-start);
+    padding-inline-end: var(--details-body-padding-inline-end);
+    padding-block-start: var(--details-body-padding-block-start);
+    padding-block-end: var(--details-body-padding-block-end);
+    background-color: var(--details-body-background-color);
+    overflow-y: var(--details-body-overflow-y);
+    max-block-size: var(--details-body-max-block-size);
   }
 }
 
