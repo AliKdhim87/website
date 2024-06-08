@@ -44,6 +44,10 @@
     @include focus;
   }
 
+  &:focus-visible {
+    @include focus-visible;
+  }
+
   &:hover {
     background-color: var(--button-secondary-hover-background-color);
     border: none;

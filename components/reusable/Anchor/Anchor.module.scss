@@ -1,3 +1,5 @@
+@use "../../../styles/common/mixins" as *;
+
 .anchor {
   --anchor-font-family: var(--font-family);
 
@@ -11,5 +13,13 @@
     --anchor-text-decoration: var(--anchor-hover-text-decoration);
 
     color: var(--anchor-color-hover);
+  }
+
+  &:focus {
+    @include focus;
+  }
+
+  &:focus-visible {
+    @include focus-visible;
   }
 }

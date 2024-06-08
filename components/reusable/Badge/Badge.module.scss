@@ -6,5 +6,6 @@
   @extend .button;
   @extend .typography-body;
 
+  text-decoration: none;
   border-radius: var(--border-radius);
 }
