@@ -20,7 +20,6 @@ export const Default: Story = {
     title: 'Find me across the internet:',
     socialMedia: [
       { url: '#', icon: 'github', title: 'Github' },
-      { url: '#', icon: 'instagram', title: 'Instagram' },
       { url: '#', icon: 'linkedIn', title: 'LinkedIn' },
       { url: '#', icon: 'twitter', title: 'Twitter' },
       { url: '#', icon: 'email', title: 'Email' },
