@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { forwardRef } from 'react';
 
 import { Maybe } from '@/graphql-types';
 
@@ -10,20 +11,30 @@ import styles from './Card.module.scss';
 const css = classNames.bind(styles);
 
 export interface CardProps {
-  title?: Maybe<string>;
-  blogTitleOptions?: HeadingProps;
   body?: string;
+  headingOptions?: HeadingProps;
   publishedAt?: string;
+  title?: Maybe<string>;
 }
 
-export const Card = ({ title, body, publishedAt, blogTitleOptions }: CardProps) => (
+export const Card = forwardRef(({ body, headingOptions, publishedAt, title }: CardProps) => (
   <div className={css('card')}>
     {title && (
-      <Heading level={3} variant={blogTitleOptions?.variant || 'h4'}>
+      <Heading level={headingOptions?.level || 3} variant={headingOptions?.variant || 'h4'}>
         {title}
       </Heading>
     )}
     {body && <Typography className={css('space-mb-1')}>{body}</Typography>}
     {publishedAt && <Typography>{publishedAt}</Typography>}
   </div>
-);
+));
+Card.displayName = 'Card';
+Card.defaultProps = {
+  body: undefined,
+  headingOptions: {
+    level: 3,
+    variant: 'h4',
+  },
+  publishedAt: undefined,
+  title: undefined,
+};

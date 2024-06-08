@@ -1,4 +1,4 @@
-import { BlogType, PageHeader, RecentPosts } from '@/components/slices';
+import { BlogType, PageHeader, PostList } from '@/components/slices';
 import { GetAllBlogByCategoryIdQuery, GetAllCategoryIdQuery } from '@/graphql-types';
 import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
 import { GET_ALL_BLOG_BY_CATEGORY_ID, GET_ALL_CATEGORY_ID } from 'queries/index.graphql';
@@ -26,7 +26,7 @@ const BlogCategories = async ({ params: { id } }: any) => {
   return (
     <>
       {data.Category?.title && <PageHeader title={data.Category.title} />}
-      <RecentPosts blog={data.allPost as BlogType[]} />
+      <PostList blog={data.allPost as BlogType[]} />
     </>
   );
 };

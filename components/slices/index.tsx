@@ -2,6 +2,6 @@
 
 export * from './MoreAbout';
 export * from './PageHeader';
-export * from './RecentPosts';
+export * from './PostList';
 export * from './socialMedia';
 export * from './Tags';

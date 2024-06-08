@@ -1,0 +1,15 @@
+@use "../../../styles/common/mixins" as *;
+@use "../../reusable/Anchor/Anchor.module.scss" as *;
+
+.post__item {
+  text-decoration: none;
+  display: block;
+
+  &:focus {
+    @include focus;
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+}
