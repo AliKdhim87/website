@@ -1,3 +1,5 @@
+@use "../../../styles/common/mixins" as *;
+
 .details {
   --details-box-shadow: 0 0 5px 1px rgb(0 0 0 / 20%);
   --details-border-radius: 5px;
@@ -19,6 +21,14 @@
   border-radius: var(--details-border-radius);
 
   &__summary {
+    &:focus {
+      @include focus;
+    }
+
+    &:focus-visible {
+      @include focus-visible;
+    }
+
     background-color: var(--details-summary-background-color);
     color: var(--details-summary-color);
     padding-inline-start: var(--details-summary-padding-inline-start);

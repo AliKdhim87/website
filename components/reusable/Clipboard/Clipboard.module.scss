@@ -1,3 +1,5 @@
+@use "../../../styles/common/mixins" as *;
+
 .clipboard {
   background-color: transparent;
   color: var(--colors-grey-0);
@@ -5,6 +7,15 @@
   cursor: pointer;
   font-size: 40px;
   padding: 0;
+  line-height: 0;
+
+  &:focus {
+    @include focus;
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
 }
 
 .clipboard:hover {

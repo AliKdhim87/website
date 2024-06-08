@@ -2,6 +2,8 @@
 
 .cta {
   @extend .button;
+
+  text-decoration: none;
 }
 
 .cta--primary {
