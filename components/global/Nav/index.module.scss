@@ -50,6 +50,7 @@
 .nav-link {
   @extend .typography-body;
 
+  text-decoration: none;
   padding-bottom: var(--nav-link-padding-bottom);
   transition: 0.2s ease-in-out;
 
