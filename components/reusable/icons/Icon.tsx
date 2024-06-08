@@ -1,32 +1,21 @@
-import {
-  Calendar,
-  CloseIcon,
-  GithubIcon,
-  HamburgerIcon,
-  InstagramIcon,
-  LinkedInIcon,
-  Mail,
-  TwitterIcon,
-  BulletIcon,
-} from './index';
+import { Calendar, CloseIcon, GithubIcon, HamburgerIcon, LinkedInIcon, Mail, BulletIcon, XIcon } from './index';
 
 export const IconsType = {
   calender: Calendar,
   close: CloseIcon,
   github: GithubIcon,
   hamburger: HamburgerIcon,
-  instagram: InstagramIcon,
   linkedIn: LinkedInIcon,
   email: Mail,
-  twitter: TwitterIcon,
+  twitter: XIcon,
   bullet: BulletIcon,
 };
 
-interface IconsProps {
+interface IconsProps extends React.HTMLAttributes<SVGSVGElement> {
   name: keyof typeof IconsType;
 }
 
-export const Icon = ({ name }: IconsProps) => {
+export const Icon = ({ name, ...restProps }: IconsProps) => {
   const Component = IconsType[name];
-  return <Component />;
+  return <Component {...restProps} />;
 };

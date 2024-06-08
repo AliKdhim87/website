@@ -10,26 +10,19 @@ const SvgLinkedInIcon = ({ title, titleId, ...props }: SVGProps<SVGSVGElement> &
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
     height="1em"
-    fill="none"
-    viewBox="0 0 25 24"
+    viewBox="0 0 14 14"
     className="icon"
     aria-labelledby={titleId}
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <g clipPath="url(#linkedInIcon_svg__a)">
-      <path
-        fill="#0077B5"
-        fillRule="evenodd"
-        d="M.5 2.882a2.883 2.883 0 0 1 5.764 0c0 1.591-1.291 2.909-2.882 2.909S.5 4.473.5 2.882M24.494 24h.006v-8.803c0-4.306-.927-7.623-5.96-7.623-2.42 0-4.045 1.328-4.708 2.587h-.07V7.976H8.99V24h4.97v-7.934c0-2.089.396-4.109 2.983-4.109 2.55 0 2.587 2.384 2.587 4.243V24zM.896 7.977h4.976V24H.896z"
-        clipRule="evenodd"
-      />
-    </g>
-    <defs>
-      <clipPath id="linkedInIcon_svg__a">
-        <path fill="currentColor" d="M.5 0h24v24H.5z" />
-      </clipPath>
-    </defs>
+    <path
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M3.574 1.767a1.316 1.316 0 0 1-1.287 1.326A1.346 1.346 0 0 1 .99 1.767 1.326 1.326 0 0 1 2.287.5a1.316 1.316 0 0 1 1.287 1.267M1.129 5.449c0-.762.485-.643 1.158-.643s1.148-.119 1.148.643v7.424c0 .772-.485.614-1.148.614s-1.158.158-1.158-.614zm4.306.001c0-.426.158-.585.405-.634s1.099 0 1.396 0 .416.485.406.851a2.49 2.49 0 0 1 2.217-.99 2.97 2.97 0 0 1 3.148 3.098v5.068c0 .772-.475.614-1.149.614-.673 0-1.148.158-1.148-.614V8.884A1.425 1.425 0 0 0 9.206 7.34 1.435 1.435 0 0 0 7.74 8.914v3.959c0 .772-.485.614-1.158.614s-1.148.158-1.148-.614V5.449Z"
+    />
   </svg>
 );
 export default SvgLinkedInIcon;
