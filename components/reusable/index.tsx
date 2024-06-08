@@ -23,7 +23,6 @@ export * from './InlineCode';
 export * from './InputField';
 export * from './Label';
 export * from './PortableTextComponents';
-export * from './PostItem';
 export * from './SVGWrapper';
 export * from './Textarea';
 export * from './Typography';

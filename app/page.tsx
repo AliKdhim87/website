@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 
-import { BlogType, PageHeader, RecentPosts, SocialMedia } from '@/components/slices';
+import { BlogType, PageHeader, PostList, SocialMedia } from '@/components/slices';
 import { fetchData, sanityGraphqlAPIUrl, uuidv4 } from '@/utils';
 import type { GetHomePageQuery } from '@/graphql-types';
 import { GET_HOME_PAGE } from 'queries/index.graphql';
@@ -45,12 +45,7 @@ const Home = async () => {
             return <SocialMedia title={component.title} socialMedia={component?.items} key={uuidv4()} />;
           case 'BlogList':
             return (
-              <RecentPosts
-                title={component.title}
-                blog={recentPosts as BlogType[]}
-                cta={component.cta}
-                key={uuidv4()}
-              />
+              <PostList title={component.title} blog={recentPosts as BlogType[]} cta={component.cta} key={uuidv4()} />
             );
           default:
             return null;

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 
-import { BlogType, PageHeader, RecentPosts } from '@/components/slices';
+import { BlogType, PageHeader, PostList } from '@/components/slices';
 import { GET_BLOG_PAGE } from 'queries/index.graphql';
 import type { GetBlogPageQuery } from '@/graphql-types';
 import { uuidv4, fetchData, sanityGraphqlAPIUrl } from '@/utils';
@@ -54,8 +54,8 @@ const Blog = async () => {
       {page?.content?.map(
         (component) => component?.__typename === 'PageHeader' && <PageHeader title={component.title} key={uuidv4()} />,
       )}
-      <RecentPosts
-        blogTitleOptions={{
+      <PostList
+        headingOptions={{
           level: 2,
         }}
         blog={allPost as BlogType[]}
