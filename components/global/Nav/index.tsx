@@ -5,7 +5,6 @@ import classNames from 'classnames/bind';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import Link from 'next/link';
 
 import { Container } from '@/components/reusable';
 import { Backdrop } from '@/components/reusable/Backdrop';
@@ -76,9 +75,7 @@ export const Nav = ({ logo, navLinks }: NavProps) => {
             Main Menu
           </span>
           <Grid item xs={6} md={4}>
-            <Link href="/">
-              <Logo logo={{ ...logo }} />
-            </Link>
+            <Logo logo={{ ...logo }} />
           </Grid>
           <Grid item xs={6} md={8} justifyContent="flex-end">
             <NavButton
