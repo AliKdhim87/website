@@ -34,7 +34,17 @@ $breakpoints: (
   border: initial;
 }
 
+@mixin focus-base($outline-width) {
+  color: var(--text-color-dark);
+  outline-width: $outline-width;
+  outline-style: solid;
+  outline-color: var(--colors-primary-dark);
+  outline-offset: var(--focus-outline-offset);
+  background-color: var(--colors-focus-primary);
+}
 @mixin focus {
-  outline: var(--colors-primary) solid 2px;
-  outline-offset: 4px;
+  @include focus-base(var(--focus-outline-width));
+}
+@mixin focus-visible {
+  @include focus-base(var(--focus-visible-outline-width));
 }
