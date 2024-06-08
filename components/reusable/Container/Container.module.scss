@@ -1,6 +1,6 @@
 @use "../../../styles/common/mixins" as *;
 
-.container {
+@mixin container {
   position: relative;
   margin-inline: auto;
   width: 100%;
@@ -27,9 +27,17 @@
   }
 }
 
-.container--fluid {
+@mixin container-fluid {
   padding-right: var(--container-padding-right, 0);
   padding-left: var(--container-padding-left, 0);
 
   --_container-max-inline-size: 100%; // Ensure the container remains fluid
+}
+
+.container {
+  @include container;
+}
+
+.container--fluid {
+  @include container-fluid;
 }
