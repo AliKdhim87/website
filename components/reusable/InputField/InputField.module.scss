@@ -1,4 +1,5 @@
 @use "../Typography/Typography.module.scss" as *;
+@use "../../../styles/common/mixins" as *;
 
 .input-field {
   @extend .typography-body--size-mobile;
@@ -22,7 +23,11 @@
   }
 
   &:focus {
-    --input-field-border-color: var(--input-field-border-color-focus);
+    @include focus;
+  }
+
+  &:focus-visible {
+    @include focus-visible;
   }
 
   &:disabled {
@@ -35,6 +40,5 @@
   &--error {
     --input-field-border-color: var(--input-field-border-error-color);
     --input-field-border-color-hover: var(--input-field-border-error-color);
-    --input-field-border-color-focus: var(--input-field-border-error-color);
   }
 }
