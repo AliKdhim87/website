@@ -91,6 +91,11 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: 'en',
       title: openGraphTitle || undefined,
     },
+    verification: {
+      google: 'google',
+      yandex: 'yandex',
+      yahoo: 'yahoo',
+    },
   };
 }
 
