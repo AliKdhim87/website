@@ -1,4 +1,5 @@
 @use "../Typography/Typography.module.scss" as *;
+@use "../../../styles/common/mixins" as *;
 
 .textarea {
   @extend .typography-body--size-mobile;
@@ -22,7 +23,11 @@
   }
 
   &:focus {
-    --textarea-border-color: var(--textarea-border-color-focus);
+    @include focus;
+  }
+
+  &:focus-visible {
+    @include focus-visible;
   }
 
   &:disabled {
@@ -33,6 +38,5 @@
   &--error {
     --textarea-border-color: var(--textarea-border-error-color);
     --textarea-border-color-hover: var(--textarea-border-error-color);
-    --textarea-border-color-focus: var(--textarea-border-error-color);
   }
 }
