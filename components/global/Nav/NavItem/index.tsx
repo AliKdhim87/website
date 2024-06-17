@@ -1,5 +1,6 @@
-import classNames from 'classnames/bind';
 import { DetailedHTMLProps, LiHTMLAttributes } from 'react';
+
+import classNames from 'classnames/bind';
 
 import styles from '../index.module.scss';
 

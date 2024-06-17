@@ -1,7 +1,8 @@
-import classnames from 'classnames/bind';
-import Link, { LinkProps } from 'next/link';
 import type { HTMLAttributes, PropsWithChildren } from 'react';
 import { forwardRef } from 'react';
+
+import classnames from 'classnames/bind';
+import Link, { LinkProps } from 'next/link';
 
 import styles from '../index.module.scss';
 

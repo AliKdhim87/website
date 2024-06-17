@@ -1,11 +1,12 @@
-import classNames from 'classnames/bind';
 import { forwardRef, type DetailedHTMLProps, type HTMLAttributes, type PropsWithChildren } from 'react';
+
+import classNames from 'classnames/bind';
 
 import { activeLinkChecker, uuidv4 } from '@/utils';
 
 import styles from '../index.module.scss';
-import { NavLink } from '../NavLink';
 import { NavItem } from '../NavItem';
+import { NavLink } from '../NavLink';
 
 const css = classNames.bind(styles);
 

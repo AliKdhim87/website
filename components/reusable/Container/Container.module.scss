@@ -14,7 +14,7 @@
     --_container-max-inline-size: 540px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (width >= 768px) {
     --_container-max-inline-size: 720px; // Adjust max-width for tablets
   }
 

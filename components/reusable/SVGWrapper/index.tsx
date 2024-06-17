@@ -1,8 +1,7 @@
 import classNames from 'classnames/bind';
 
-import { Container } from '../Container';
-
 import styles from './index.module.scss';
+import { Container } from '../Container';
 
 const css = classNames.bind(styles);
 

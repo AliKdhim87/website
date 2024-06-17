@@ -1,8 +1,9 @@
+import React, { forwardRef } from 'react';
+import type { PropsWithChildren, ForwardedRef, Ref } from 'react';
+
 import classNames from 'classnames/bind';
 import Link from 'next/link';
-import React, { forwardRef } from 'react';
 import type { LinkProps } from 'next/link';
-import type { PropsWithChildren, ForwardedRef, Ref } from 'react';
 
 import styles from './CTA.module.scss';
 

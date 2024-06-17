@@ -12,12 +12,12 @@ import {
 } from '@/components/reusable';
 import { Tags } from '@/components/slices';
 import { GetAllBlogSlugsQuery, GetBlogBySlugQuery } from '@/graphql-types';
-import { GET_ALL_BLOG_SLUGS, GET_BLOG_BY_SLUG } from 'queries/index.graphql';
-import { formattedDate } from 'utils/formattedDate';
-import { fetchData } from 'utils/fetchData';
-import { nestHeadings } from 'utils/nestHeading';
 import { getTableOfContent, sanityGraphqlAPIUrl } from '@/utils';
 import { GET_TOC_GROQ_QUERY } from 'queries/groq';
+import { GET_ALL_BLOG_SLUGS, GET_BLOG_BY_SLUG } from 'queries/index.graphql';
+import { fetchData } from 'utils/fetchData';
+import { formattedDate } from 'utils/formattedDate';
+import { nestHeadings } from 'utils/nestHeading';
 
 type Params = {
   params: {
@@ -40,8 +40,8 @@ export async function generateStaticParams() {
     },
     apiUrl,
   });
-  return data.allPost.length > 0
-    ? data.allPost?.map(({ slug }) => ({
+  return Array.isArray(data.allPost)
+    ? data.allPost.map(({ slug }) => ({
         slug: slug?.current,
       }))
     : [];
@@ -102,7 +102,7 @@ const PostPage = async ({ params: { slug } }: Params) => {
         mainImage.asset &&
         mainImage.asset.url &&
         mainImage.asset.metadata?.dimensions?.width &&
-        mainImage.asset.metadata?.dimensions?.height && (
+        mainImage.asset.metadata.dimensions.height && (
           <Image
             src={mainImage.asset.url}
             alt={mainImage.alt}

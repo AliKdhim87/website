@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 
 import { BlogType, PageHeader, PostList, SocialMedia } from '@/components/slices';
-import { fetchData, sanityGraphqlAPIUrl, uuidv4 } from '@/utils';
 import type { GetHomePageQuery } from '@/graphql-types';
+import { fetchData, sanityGraphqlAPIUrl, uuidv4 } from '@/utils';
 import { GET_HOME_PAGE } from 'queries/index.graphql';
 
 const apiUrl = sanityGraphqlAPIUrl({
@@ -34,7 +34,7 @@ const Home = async () => {
     apiUrl,
   });
   const page = data.allRoute[0]?.page;
-  const recentPosts = data?.allPost;
+  const recentPosts = data.allPost;
   return (
     <div>
       {page?.content?.map((component) => {
@@ -42,7 +42,7 @@ const Home = async () => {
           case 'PageHeader':
             return <PageHeader key={uuidv4()} title={component.title} body={component.body} titleDistancedBottom />;
           case 'SocialCollection':
-            return <SocialMedia title={component.title} socialMedia={component?.items} key={uuidv4()} />;
+            return <SocialMedia title={component.title} socialMedia={component.items} key={uuidv4()} />;
           case 'BlogList':
             return (
               <PostList title={component.title} blog={recentPosts as BlogType[]} cta={component.cta} key={uuidv4()} />

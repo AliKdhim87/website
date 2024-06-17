@@ -31,7 +31,7 @@ export async function GET(req: Request) {
       variables: { slug: slugParam },
       apiUrl,
     });
-    const slug = data?.allRoute[0]?.slug;
+    const slug = data.allRoute[0]?.slug;
     // Set draft mode cookie that enables fetching data at request time (instead of at build time)
     draftMode().enable();
     const currentSlug = slug?.current === 'front-page' ? '' : slug?.current;

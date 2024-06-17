@@ -1,11 +1,12 @@
-import classNames from 'classnames/bind';
-import { Maybe } from 'graphql/jsutils/Maybe';
 import { AnchorHTMLAttributes, DetailedHTMLProps, ForwardedRef, PropsWithChildren, forwardRef } from 'react';
 
+import classNames from 'classnames/bind';
+import { Maybe } from 'graphql/jsutils/Maybe';
+
 import { Grid, Icon, IconsType, Heading } from '@/components/reusable';
-import { uuidv4 } from '@/utils';
-import { Social } from '@/graphql-types';
 import type { HeadingProps } from '@/components/reusable/Heading';
+import { Social } from '@/graphql-types';
+import { uuidv4 } from '@/utils';
 
 import styles from './SocialMedia.module.scss';
 
@@ -62,12 +63,12 @@ export const SocialMedia = forwardRef(({ title, socialMedia }: SocialMediaProps)
           socialMedia.map(
             (item) =>
               item &&
-              item?.url && (
+              item.url && (
                 <SocialMediaLink
                   href={item.url}
                   key={uuidv4()}
-                  title={item?.title || undefined}
-                  aria-label={item?.title || undefined}
+                  title={item.title || undefined}
+                  aria-label={item.title || undefined}
                   icon={item.icon as keyof typeof IconsType}
                 />
               ),

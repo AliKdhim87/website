@@ -58,7 +58,7 @@ export const PageHeader = ({
                   <Grid item md={8} sm={6}>
                     {content}
                   </Grid>
-                  {image && image.src && image.alt && (
+                  {image.src && image.alt && (
                     <Grid
                       item
                       md={4}

@@ -37,7 +37,7 @@ export const MoreAbout = ({ value, moreAboutItems, dataset, projectId }: MoreAbo
               orderBy(moreAboutItems).map((item: MoreAboutItem) => (
                 <li className={css('more-about__list-item')} key={uuidv4()}>
                   <BulletIcon className={css('more-about__list-item-icon')} />
-                  <Card title={item?.title} publishedAt={item?.publishedAt} body={item?.body} />
+                  <Card title={item.title} publishedAt={item.publishedAt} body={item.body} />
                 </li>
               ))}
           </ul>

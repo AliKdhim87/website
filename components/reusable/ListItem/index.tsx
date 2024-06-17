@@ -1,5 +1,6 @@
-import classnames from 'classnames/bind';
 import { ForwardedRef, HTMLAttributes, PropsWithChildren, forwardRef } from 'react';
+
+import classnames from 'classnames/bind';
 
 import styles from './styles.module.scss';
 

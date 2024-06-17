@@ -1,4 +1,3 @@
-import classnames from 'classnames/bind';
 import {
   type DetailedHTMLProps,
   type ForwardedRef,
@@ -8,11 +7,12 @@ import {
   DetailsHTMLAttributes,
 } from 'react';
 
-import SvgChevronRight from '../icons/ChevronRight';
-import { Heading } from '../Heading';
-import type { HeadingVariant } from '../Heading';
+import classnames from 'classnames/bind';
 
 import styles from './styles.module.scss';
+import { Heading } from '../Heading';
+import type { HeadingVariant } from '../Heading';
+import SvgChevronRight from '../icons/ChevronRight';
 
 export interface DetailsProps extends DetailedHTMLProps<DetailsHTMLAttributes<HTMLDetailsElement>, HTMLDetailsElement> {
   label?: string;

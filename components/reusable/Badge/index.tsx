@@ -1,6 +1,7 @@
+import React, { ReactNode } from 'react';
+
 import classNames from 'classnames/bind';
 import Link, { LinkProps } from 'next/link';
-import React, { ReactNode } from 'react';
 
 import styles from './Badge.module.scss';
 

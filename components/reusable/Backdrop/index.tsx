@@ -1,9 +1,8 @@
 import classNames from 'classnames/bind';
 import { createPortal } from 'react-dom';
 
-import { Grid, GridProps } from '../Grid/index';
-
 import styles from './Backdrop.module.scss';
+import { Grid, GridProps } from '../Grid/index';
 
 const css = classNames.bind(styles);
 
@@ -35,7 +34,6 @@ export const Backdrop = ({ children, ref, parent = 'root' }: BackdropProps) => {
   const portal = document.getElementById(parent);
 
   return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {portal
         ? createPortal(

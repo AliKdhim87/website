@@ -1,5 +1,5 @@
-import uniq from 'lodash.uniq';
 import last from 'lodash.last';
+import uniq from 'lodash.uniq';
 
 import { HeadingsArray, Heading } from 'global';
 

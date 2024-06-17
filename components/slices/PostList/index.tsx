@@ -1,6 +1,7 @@
+import { forwardRef } from 'react';
+
 import classnames from 'classnames/bind';
 import Link from 'next/link';
-import { forwardRef } from 'react';
 
 import { Container, Grid, Card, CardProps, CTA, Heading } from '@/components/reusable';
 import { Cta, Maybe } from '@/graphql-types';
@@ -51,7 +52,6 @@ export const PostList = ({ blog, cta, title, ...restProps }: PostListProps) => (
           {blog &&
             blog.map(
               ({ slug, title: blogTitle, excerpt, publishedAt }) =>
-                slug &&
                 slug.current && (
                   <PostItem
                     {...restProps}

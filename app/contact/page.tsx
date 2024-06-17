@@ -4,8 +4,8 @@ import { draftMode } from 'next/headers';
 import { Grid, Container } from '@/components/reusable';
 import { ContactForm } from '@/components/reusable/ContactForm';
 import { PageHeader } from '@/components/slices';
-import { fetchData, sanityGraphqlAPIUrl, uuidv4 } from '@/utils';
 import { GetContactPageQuery } from '@/graphql-types';
+import { fetchData, sanityGraphqlAPIUrl, uuidv4 } from '@/utils';
 import { GET_CONTACT_PAGE } from 'queries/index.graphql';
 
 const apiUrl = sanityGraphqlAPIUrl({

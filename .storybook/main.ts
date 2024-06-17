@@ -1,6 +1,7 @@
-import type { StorybookConfig } from '@storybook/nextjs';
-import type { StorybookConfigVite } from '@storybook/builder-vite';
 import * as path from 'path';
+
+import type { StorybookConfigVite } from '@storybook/builder-vite';
+import type { StorybookConfig } from '@storybook/nextjs';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 

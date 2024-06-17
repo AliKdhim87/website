@@ -1,5 +1,6 @@
-import classNames from 'classnames/bind';
 import { DetailedHTMLProps, AnchorHTMLAttributes, forwardRef, PropsWithChildren, ComponentType } from 'react';
+
+import classNames from 'classnames/bind';
 
 import styles from './Anchor.module.scss';
 

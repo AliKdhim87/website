@@ -3,8 +3,8 @@ import { draftMode } from 'next/headers';
 import { Container, Grid } from '@/components/reusable';
 import { NotfoundSVG } from '@/components/reusable/assets/404';
 import { PageHeader } from '@/components/slices';
-import { sanityGraphqlAPIUrl, uuidv4, fetchData } from '@/utils';
 import type { GetNotFoundPageQuery } from '@/graphql-types';
+import { sanityGraphqlAPIUrl, uuidv4, fetchData } from '@/utils';
 import { GET_NOT_FOUND_PAGE } from 'queries/index.graphql';
 
 const apiUrl = sanityGraphqlAPIUrl({

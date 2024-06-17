@@ -1,5 +1,6 @@
-import classNames from 'classnames/bind';
 import { HTMLAttributes, createElement, forwardRef, PropsWithChildren, ForwardedRef } from 'react';
+
+import classNames from 'classnames/bind';
 
 import styles from './Typography.module.scss';
 

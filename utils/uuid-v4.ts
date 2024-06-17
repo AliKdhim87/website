@@ -1,5 +1,3 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable no-bitwise */
 export const uuidv4 = () => {
   const initialValue = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
   return initialValue.replace(/[xy]/g, (c) => {
