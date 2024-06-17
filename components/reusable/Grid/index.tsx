@@ -1,5 +1,6 @@
-import classNames from 'classnames/bind';
 import React, { FunctionComponent, LegacyRef, ReactNode } from 'react';
+
+import classNames from 'classnames/bind';
 
 import styles from './Grid.module.scss';
 

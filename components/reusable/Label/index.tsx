@@ -1,5 +1,6 @@
-import classNames from 'classnames/bind';
 import { DetailedHTMLProps, LabelHTMLAttributes } from 'react';
+
+import classNames from 'classnames/bind';
 
 import styles from './Label.module.scss';
 

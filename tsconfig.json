@@ -27,6 +27,17 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "generated"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    ".next/types/**/*.ts",
+    "./eslint.config.js",
+    "./stylelint.config.js",
+    "./next.config.js",
+    "./.lintstagedrc.js",
+    ".storybook/*"
+  ],
+  "exclude": ["node_modules", "generated", "storybook-static", ".next"]
 }

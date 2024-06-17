@@ -1,9 +1,8 @@
 import classNames from 'classnames/bind';
 
+import styles from './BlogPostTitle.module.scss';
 import { Container } from '../Container';
 import { Heading } from '../Heading';
-
-import styles from './BlogPostTitle.module.scss';
 
 const css = classNames.bind(styles);
 interface BlogPostTitleProps {

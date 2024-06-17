@@ -4,10 +4,10 @@ import '@fontsource/roboto';
 import '@/styles/globals.scss';
 
 import { Nav, Main, MainWrapper, Footer } from '@/components/global';
-import { GET_SITE_SETTINGS } from 'queries/index.graphql';
+import type { LinkType } from '@/components/global/Nav/NavList';
 import { GetSiteSettingsQuery } from '@/graphql-types';
 import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
-import type { LinkType } from '@/components/global/Nav/NavList';
+import { GET_SITE_SETTINGS } from 'queries/index.graphql';
 
 export interface LayoutProps {
   children: React.ReactNode;
@@ -130,11 +130,7 @@ const Layout = async ({ children }: LayoutProps) => {
           <Main>{children}</Main>
           <Footer copyright={footer} />
         </MainWrapper>
-        <script
-          type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonData) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonData) }} />
       </body>
     </html>
   );

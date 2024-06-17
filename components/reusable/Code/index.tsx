@@ -1,14 +1,14 @@
 import 'highlight.js/styles/github-dark.css';
 
-import xss from 'xss';
-import hljs from 'highlight.js';
-import classNames from 'classnames/bind';
 import { createElement } from 'react';
 
-import { Typography } from '../Typography';
-import { Clipboard } from '../Clipboard';
+import classNames from 'classnames/bind';
+import hljs from 'highlight.js';
+import xss from 'xss';
 
 import styles from './Code.module.scss';
+import { Clipboard } from '../Clipboard';
+import { Typography } from '../Typography';
 
 export type SnippetCodeType = {
   language: string;
@@ -28,11 +28,7 @@ type RenderHighlightedLinesProps = CodeHighlighterProps;
 const renderHighlightedLines = ({ code, language, highlightedLinesPosition }: RenderHighlightedLinesProps) => {
   const codeLines = code.split('\n');
   const highlightedLines = codeLines.map((line, index) => {
-    if (
-      highlightedLinesPosition &&
-      highlightedLinesPosition.length > 0 &&
-      highlightedLinesPosition.includes(index + 1)
-    ) {
+    if (Array.isArray(highlightedLinesPosition) && highlightedLinesPosition.includes(index + 1)) {
       return `<span class="${css('line-highlight')}">${line}</span>`;
     }
     return line;

@@ -67,9 +67,9 @@ export const ContactForm = ({ onAction }: ContactFormProps) => {
           label="Full name"
           name="fullname"
           placeholder="Write your Full name here"
-          helperText={errors?.fullname?.message?.toString()}
+          helperText={errors.fullname?.message?.toString()}
           aria-required="true"
-          error={!!errors?.fullname}
+          error={!!errors.fullname}
         />
         <InputField
           {...register('email', {
@@ -88,8 +88,8 @@ export const ContactForm = ({ onAction }: ContactFormProps) => {
           name="email"
           aria-required="true"
           placeholder="Write your Email here"
-          helperText={errors?.email?.message?.toString()}
-          error={!!errors?.email}
+          helperText={errors.email?.message?.toString()}
+          error={!!errors.email}
         />
         <Textarea
           label="Message"
@@ -102,8 +102,8 @@ export const ContactForm = ({ onAction }: ContactFormProps) => {
           name="message"
           aria-required="true"
           placeholder="Write your Message here"
-          helperText={errors?.message?.message?.toString()}
-          error={!!errors?.message}
+          helperText={errors.message?.message?.toString()}
+          error={!!errors.message}
         />
         <Button
           variant="secondary"

@@ -1,20 +1,20 @@
-import classnames from 'classnames/bind';
 import { ForwardedRef, HTMLAttributes, PropsWithChildren, forwardRef } from 'react';
-import slugify from 'slugify';
+
+import classnames from 'classnames/bind';
 import Link from 'next/link';
+import slugify from 'slugify';
 
-import { HeadingsArray } from 'global';
 import { useWindowSize } from '@/utils';
-
-import { List } from '../List';
-import { ListItem } from '../ListItem';
-import { Anchor } from '../Anchor';
-import { Details } from '../Details';
+import { HeadingsArray } from 'global';
 
 import styles from './styles.module.scss';
+import { Anchor } from '../Anchor';
+import { Details } from '../Details';
+import { List } from '../List';
+import { ListItem } from '../ListItem';
 
 interface TOCProps extends HTMLAttributes<HTMLElement> {
-  toc: HeadingsArray;
+  toc?: HeadingsArray;
   label: string;
 }
 const cx = classnames.bind(styles);
@@ -36,7 +36,7 @@ export const TOC = forwardRef(
                 {item.nestedH3 && (
                   <List className={cx('toc__list-nested')}>
                     {item.nestedH3.map((h3) => (
-                      <ListItem key={h3?.id}>
+                      <ListItem key={h3.id}>
                         <Anchor
                           Link={Link}
                           href={`#${slugify(h3.textContent, { lower: true })}`}

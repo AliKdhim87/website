@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 'use client';
 
-/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+import { useEffect, useRef, useState } from 'react';
+
 import classNames from 'classnames/bind';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import { Container } from '@/components/reusable';
@@ -11,14 +12,13 @@ import { Backdrop } from '@/components/reusable/Backdrop';
 import { Grid } from '@/components/reusable/Grid';
 import { trapFocus } from '@/utils';
 
-import { Header } from '../Header';
-import { Logo } from '../Logo';
-
 import styles from './index.module.scss';
 import { NavButton } from './NavButton';
 import { NavItem } from './NavItem';
 import { NavList } from './NavList';
 import type { LinkType } from './NavList';
+import { Header } from '../Header';
+import { Logo } from '../Logo';
 
 const css = classNames.bind(styles);
 
@@ -51,8 +51,8 @@ export const Nav = ({ logo, navLinks }: NavProps) => {
     if (backdrop) {
       document.body.style.overflow = 'hidden';
       trapFocus(backdrop);
-      backdrop?.addEventListener('click', clickHandler);
-      window?.addEventListener('keyup', keyHandler);
+      backdrop.addEventListener('click', clickHandler);
+      window.addEventListener('keyup', keyHandler);
     }
     if (!mobileMode) {
       document.body.style.overflow = 'auto';

@@ -194,7 +194,7 @@
   --nav-link-padding-bottom: 4px;
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .margin-block-xs-5 {
     margin-block: var(--space-5);
   }

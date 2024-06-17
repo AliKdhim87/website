@@ -1,12 +1,12 @@
-import classNames from 'classnames/bind';
 import { forwardRef } from 'react';
+
+import classNames from 'classnames/bind';
 
 import { Maybe } from '@/graphql-types';
 
-import { Typography } from '../Typography';
-import { Heading, HeadingProps } from '../Heading';
-
 import styles from './Card.module.scss';
+import { Heading, HeadingProps } from '../Heading';
+import { Typography } from '../Typography';
 
 const css = classNames.bind(styles);
 

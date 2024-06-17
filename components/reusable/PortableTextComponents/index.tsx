@@ -1,14 +1,13 @@
 import { PortableTextReactComponents, PortableText, PortableTextProps } from '@portabletext/react';
 import slugify from 'slugify';
 
+import { MainImage } from './MainImage';
 import { Anchor } from '../Anchor';
 import { Blockquote } from '../Blockquote';
 import { SnippetCodeType, BlockCode } from '../Code';
+import { Heading } from '../Heading';
 import { InlineCode } from '../InlineCode';
 import { Typography } from '../Typography';
-import { Heading } from '../Heading';
-
-import { MainImage } from './MainImage';
 
 export interface PortableTextConfigProps {
   dataset?: string;
@@ -88,7 +87,7 @@ export const portableTextConfig = ({ dataset, projectId }: PortableTextConfigPro
       ),
       code: ({ children }) => <InlineCode>{children}</InlineCode>,
     },
-  } as Partial<PortableTextReactComponents>);
+  }) as Partial<PortableTextReactComponents>;
 
 type PortableTextComponentsProps = PortableTextProps & PortableTextConfigProps;
 
@@ -99,8 +98,8 @@ export const PortableTextComponents = ({
 }: PortableTextComponentsProps) => (
   <PortableText
     components={portableTextConfig({
-      dataset: restProps?.dataset,
-      projectId: restProps?.projectId,
+      dataset: restProps.dataset,
+      projectId: restProps.projectId,
     })}
     onMissingComponent={onMissingComponent}
     value={value}

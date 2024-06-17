@@ -37,9 +37,9 @@
       }
     },
     {
-      "files": ["*.css", "*.scss"],
+      "files": ["*.scss"],
       "options": {
-        "parser": "css",
+        "parser": "scss",
         "tabWidth": 2
       }
     },

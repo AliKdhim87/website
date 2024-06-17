@@ -1,9 +1,9 @@
-import classNames from 'classnames/bind';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-import { Typography } from '../Typography';
+import classNames from 'classnames/bind';
 
 import styles from './HelperText.module.scss';
+import { Typography } from '../Typography';
 
 interface HelperTextProps extends DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement> {
   helperText?: string;

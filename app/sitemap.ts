@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next';
 import { draftMode } from 'next/headers';
 
-import { GET_ALL_PAGES_AND_BLOGS_AND_CATEGORIES } from 'queries/index.graphql';
 import { GetAllPagesAndBlogsAndCategoriesQuery } from '@/graphql-types';
 import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
+import { GET_ALL_PAGES_AND_BLOGS_AND_CATEGORIES } from 'queries/index.graphql';
 
 const URL = process.env.SITE_URL;
 

@@ -1,9 +1,9 @@
-import classNames from 'classnames/bind';
 import { BlockquoteHTMLAttributes, DetailedHTMLProps } from 'react';
 
-import { Typography } from '../Typography';
+import classNames from 'classnames/bind';
 
 import styles from './Blockquote.module.scss';
+import { Typography } from '../Typography';
 
 const css = classNames.bind(styles);
 

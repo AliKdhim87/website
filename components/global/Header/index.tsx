@@ -1,9 +1,9 @@
-import classNames from 'classnames/bind';
 import { ReactNode } from 'react';
 
-import { Grid } from '../../reusable/Grid';
+import classNames from 'classnames/bind';
 
 import styles from './index.module.scss';
+import { Grid } from '../../reusable/Grid';
 
 const css = classNames.bind(styles);
 interface HeaderProps {

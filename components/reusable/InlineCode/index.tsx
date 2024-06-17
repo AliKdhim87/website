@@ -1,5 +1,6 @@
-import classNames from 'classnames/bind';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
+
+import classNames from 'classnames/bind';
 
 import styles from './InlineCode.module.scss';
 

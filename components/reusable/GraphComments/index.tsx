@@ -22,7 +22,7 @@ export const GraphComment = () => {
       gc.type = 'text/javascript';
       gc.async = true;
       gc.src = `https://graphcomment.com/js/integration.js?${Date.now()}`;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
+      document.getElementsByTagName('head')[0].appendChild(gc);
     })();
   }, []);
 
