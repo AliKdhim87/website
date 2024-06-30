@@ -1,0 +1,85 @@
+{
+  "allRoute": [
+    {
+      "openGraph": {
+        "title": "Home page | Ali Dev",
+        "description": "I am a full-stack web developer based in the Netherland."
+      },
+      "page": {
+        "content": [
+          {
+            "__typename": "PageHeader",
+            "title": "Hello, I'm Ali Kadhim",
+            "body": "As a front-end developer, I'm dedicated to crafting clean code and impeccable designs that elevate websites with immersive interactive experiences.",
+            "cta": null,
+            "titleDistancedBottom": true,
+            "image": null
+          },
+          {
+            "__typename": "SocialCollection",
+            "title": "Find me across the internet:",
+            "items": [
+              {
+                "title": "Github",
+                "url": "https://github.com/AliKdhim87",
+                "icon": "github"
+              },
+              {
+                "title": "Twitter",
+                "url": "https://twitter.com/home",
+                "icon": "twitter"
+              },
+              {
+                "title": "LinkedIn",
+                "url": "https://www.linkedin.com/in/ali-amouri-kadhim-082b75189/",
+                "icon": "linkedIn"
+              },
+              {
+                "title": "Email",
+                "url": "mailto:alikadhim87nl@gmail.com",
+                "icon": "email"
+              }
+            ]
+          },
+          {
+            "__typename": "BlogList",
+            "title": "Recent Writing",
+            "cta": {
+              "title": "View All Blog",
+              "route": "/blog"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "allPost": [
+    {
+      "_id": "4d533c0f-197c-4af7-82c9-a4fbeb28b8ff",
+      "title": "Protect Your Website: How to Stop Hackers with Simple HTML Cleaning",
+      "publishedAt": "2024-05-09",
+      "slug": {
+        "current": "protect-your-website-how-to-stop-hackers-with-simple-html-cleaning"
+      },
+      "excerpt": "Protect your site from XSS attacks. Learn about sanitization and trusted packages like xss for security."
+    },
+    {
+      "_id": "68bec1ba-b4a5-4a1e-b18b-7be889443500",
+      "title": "Sync Smart: Automating Next.js Development with GraphQL Codegen",
+      "publishedAt": "2024-04-23",
+      "slug": {
+        "current": "sync-smart-streamlining-your-next-js-projects-with-codegen"
+      },
+      "excerpt": "Optimize your Next.js projects with GraphQL Codegen. Automate type definitions and query builders for seamless frontend-backend synchronization."
+    },
+    {
+      "_id": "25107e60-6faa-4265-b941-f7e161076502",
+      "title": "How to send emails from Nextjs without the Backend using EmailJs",
+      "publishedAt": "2022-04-22",
+      "slug": {
+        "current": "how-to-send-emails-from-nextjs-or-reactjs-without-the-backend-using-emailjs"
+      },
+      "excerpt": "Learn how to send emails from your Next.js application without the need for a backend server using EmailJS. Follow this step-by-step guide to easily integrate email functionality into your Next.js projects."
+    }
+  ]
+}
