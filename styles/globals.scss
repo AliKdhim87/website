@@ -139,6 +139,11 @@
 
   // TOC end
 
+  // Post list
+  --post-list-padding-block-start: var(--space-3);
+  --post-list-padding-block-end: var(--space-3);
+  --post-list-cta-margin-block-start: var(--space-3);
+
   @include breakpoint("lg") {
     --container-padding-inline: 20px;
   }
