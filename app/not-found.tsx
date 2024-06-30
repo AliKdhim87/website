@@ -1,7 +1,6 @@
 import { draftMode } from 'next/headers';
 
-import { Container, Grid } from '@/components/reusable';
-import { NotfoundSVG } from '@/components/reusable/assets/404';
+import { CTA, Grid } from '@/components/reusable';
 import { PageHeader } from '@/components/slices';
 import type { GetNotFoundPageQuery } from '@/graphql-types';
 import { sanityGraphqlAPIUrl, uuidv4, fetchData } from '@/utils';
@@ -22,29 +21,18 @@ const Custom404 = async () => {
   });
   const page = data.allRoute[0]?.page;
   return (
-    <Container>
-      <Grid container justifyContent="center">
-        <Grid sm={12} md={8} xs={12} className="text-color">
-          <NotfoundSVG />
-        </Grid>
-      </Grid>
+    <>
       {page?.content?.map((component) => {
         if (component?.__typename === 'PageHeader') {
           // TODO make this nicer
-          return (
-            <PageHeader
-              title={component.title}
-              body={component.body}
-              cta={component.cta}
-              backgroundColor="transparent"
-              titleDistancedBottom
-              key={uuidv4()}
-            />
-          );
+          return <PageHeader title={component.title} body={component.body} key={uuidv4()} />;
         }
         return null;
       })}
-    </Container>
+      <Grid item justifyContent="center" className="space-mb-start-4 ">
+        <CTA href="/">Back To Home</CTA>
+      </Grid>
+    </>
   );
 };
 export default Custom404;
