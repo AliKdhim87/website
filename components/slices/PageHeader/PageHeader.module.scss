@@ -1,16 +1,13 @@
 .page-header-section {
   text-align: center;
   padding-block: var(--page-header-section-padding-block);
-}
-
-.page-header-section--bg-primary {
   background-color: var(--colors-primary-bg);
 }
 
-.page-header-section--bg-transparent {
-  background-color: transparent;
+.page-header__heading-group:has(.page-header__subtitle) {
+  --page-header-title-margin-block-end: var(--space-3);
 }
 
-.page-header-section__image {
-  padding-block-start: var(--page-header-section-image-padding-block-start);
+.page-header__title {
+  margin-block-end: var(--page-header-title-margin-block-end);
 }
