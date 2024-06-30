@@ -51,8 +51,12 @@ jobs:
           file_name: .env
           fail_on_empty: false
           sort_keys: false
+      - name: Test
+        run: pnpm test
       - name: Build
         run: npm run build
+      - name: Lint
+        run: pnpm lint
       - name: Start Deployment
         uses: bobheadxi/deployments@v0.4.3
         id: deployment-preview
