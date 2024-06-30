@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { type ForwardedRef, forwardRef } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -17,17 +17,19 @@ export interface CardProps {
   title?: Maybe<string>;
 }
 
-export const Card = forwardRef(({ body, headingOptions, publishedAt, title }: CardProps) => (
-  <div className={css('card')}>
-    {title && (
-      <Heading level={headingOptions?.level || 3} variant={headingOptions?.variant || 'h4'}>
-        {title}
-      </Heading>
-    )}
-    {body && <Typography className={css('space-mb-1')}>{body}</Typography>}
-    {publishedAt && <Typography>{publishedAt}</Typography>}
-  </div>
-));
+export const Card = forwardRef(
+  ({ body, headingOptions, publishedAt, title }: CardProps, ref: ForwardedRef<HTMLDivElement>) => (
+    <div className={css('card')} ref={ref}>
+      {title && (
+        <Heading level={headingOptions?.level || 3} variant={headingOptions?.variant || 'h4'}>
+          {title}
+        </Heading>
+      )}
+      {body && <Typography className={css('space-mb-1')}>{body}</Typography>}
+      {publishedAt && <Typography>{publishedAt}</Typography>}
+    </div>
+  ),
+);
 Card.displayName = 'Card';
 Card.defaultProps = {
   body: undefined,

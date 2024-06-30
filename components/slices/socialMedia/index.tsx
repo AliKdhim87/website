@@ -52,8 +52,8 @@ SocialMediaLink.defaultProps = {
   icon: undefined,
 };
 
-export const SocialMedia = forwardRef(({ title, socialMedia }: SocialMediaProps) => (
-  <section className={css('social-media')} aria-labelledby="social-media-title">
+export const SocialMedia = forwardRef(({ title, socialMedia }: SocialMediaProps, ref: ForwardedRef<HTMLElement>) => (
+  <section ref={ref} className={css('social-media')} aria-labelledby="social-media-title">
     <Grid container alignItems="center" justifyContent="space-between">
       <Grid item sm={6} justifyContent="center" justifyContentMd="flex-start">
         {title && <SocialMediaTitle>{title}</SocialMediaTitle>}
