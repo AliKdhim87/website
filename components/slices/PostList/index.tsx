@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { ForwardedRef, forwardRef } from 'react';
 
 import classnames from 'classnames/bind';
 import Link from 'next/link';
@@ -31,11 +31,13 @@ export interface PostListProps extends Pick<PostItemProps, 'headingOptions'> {
   cta?: Maybe<Cta>;
 }
 
-export const PostItem = forwardRef(({ body, href, publishedAt, title, ...restProps }: PostItemProps) => (
-  <Link href={href} className={cx('post__item')}>
-    <Card title={title} body={body} publishedAt={publishedAt} {...restProps} />
-  </Link>
-));
+export const PostItem = forwardRef(
+  ({ body, href, publishedAt, title, ...restProps }: PostItemProps, ref: ForwardedRef<HTMLAnchorElement>) => (
+    <Link ref={ref} href={href} className={cx('post__item')}>
+      <Card title={title} body={body} publishedAt={publishedAt} {...restProps} />
+    </Link>
+  ),
+);
 
 PostItem.displayName = 'PostItem';
 
