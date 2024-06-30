@@ -40,7 +40,7 @@ const Home = async () => {
       {page?.content?.map((component) => {
         switch (component?.__typename) {
           case 'PageHeader':
-            return <PageHeader key={uuidv4()} title={component.title} body={component.body} titleDistancedBottom />;
+            return <PageHeader key={uuidv4()} title={component.title} body={component.body} />;
           case 'SocialCollection':
             return <SocialMedia title={component.title} socialMedia={component.items} key={uuidv4()} />;
           case 'BlogList':

@@ -210,8 +210,8 @@ export const GET_NOT_FOUND_PAGE = gql(`
             cta {
               title
               route
-            }
-            titleDistancedBottom
+            } #TODO remove this field
+            titleDistancedBottom #TODO remove this field
             image {
               alt
               asset {
@@ -256,7 +256,7 @@ export const GET_HOME_PAGE = gql(`
               title
               route
             }
-            titleDistancedBottom
+            titleDistancedBottom #TODO remove this field
             image {
               alt
               asset {
@@ -331,7 +331,7 @@ query getAboutPage($slug: String) {
         ... on PageHeader {
           __typename
           title
-          titleDistancedBottom
+          titleDistancedBottom #TODO remove this field
           body
           image {
             asset {

@@ -60,15 +60,7 @@ const AboutPage = async () => {
               height: component.image?.asset?.metadata?.dimensions?.height,
             } as ImageProps;
 
-            return (
-              <PageHeader
-                title={component.title}
-                body={component.body}
-                image={image}
-                titleDistancedBottom
-                key={uuidv4()}
-              />
-            );
+            return <PageHeader title={component.title} body={component.body} image={image} key={uuidv4()} />;
           }
           case 'AboutMe':
             return (
