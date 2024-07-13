@@ -41,7 +41,7 @@ export const Details = forwardRef(
   ) => (
     <details className={cx('details', className)} ref={ref} {...restProps}>
       {label && (
-        <summary className={cx('details__summary', summaryRestProps?.className)} {...summaryRestProps}>
+        <summary {...summaryRestProps} className={cx(summaryRestProps?.className, 'details__summary')}>
           {icon && <SvgChevronRight className={cx('details__icon')} />}
           <Heading level={headingLevel ?? 2} variant={headingVariant}>
             {label}
@@ -49,7 +49,7 @@ export const Details = forwardRef(
         </summary>
       )}
       {children && (
-        <div className={cx('details__body', bodyRestProps?.className)} {...bodyRestProps}>
+        <div {...bodyRestProps} className={cx(bodyRestProps?.className, 'details__body')}>
           {children}
         </div>
       )}
