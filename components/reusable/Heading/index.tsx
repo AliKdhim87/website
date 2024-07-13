@@ -20,7 +20,7 @@ export const Heading = forwardRef(
   ) => {
     const variantClass = { [`heading--${variant.toString().replace('h', '')}`]: variant };
 
-    return level > 5 || level === 0
+    return level > 6 || level === 0
       ? createElement('h1', { ref, className: css(className, `heading--1`, variantClass), ...restProps }, children)
       : createElement(
           `h${level}`,
