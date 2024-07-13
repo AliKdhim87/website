@@ -117,6 +117,23 @@
   // PageHeader
   --page-header-section-padding-block: var(--space-4);
 
+  // Details
+  --details-box-shadow: 0 0 5px 1px rgb(0 0 0 / 20%);
+  --details-border-radius: 5px;
+  --details-animation-duration: 250ms;
+  --details-summary-background-color: var(--colors-secondary);
+  --details-summary-color: var(--colors-grey-0);
+  --details-summary-padding-inline-start: 12px;
+  --details-summary-padding-inline-end: 12px;
+  --details-summary-padding-block-start: 12px;
+  --details-summary-padding-block-end: 12px;
+  --details-summary-gap: 10px;
+  --details-body-padding-inline-start: 12px;
+  --details-body-padding-inline-end: 12px;
+  --details-body-padding-block-start: 12px;
+  --details-body-padding-block-end: 12px;
+  --details-body-background-color: var(--colors-primary-bg);
+
   // TOC start
   --toc-background-color: var(--colors-primary-bg);
   --toc-border-radius: 5px;
