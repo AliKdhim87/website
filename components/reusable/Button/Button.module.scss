@@ -2,42 +2,47 @@
 @use "../Typography/Typography.module.scss" as *;
 
 .button {
-  @extend .typography-body;
-
   position: relative;
   padding: var(--button-padding);
   border: none;
   outline: none;
   transition: background-color var(--button-transition);
-  cursor: pointer;
+  cursor: var(--button-cursor, pointer);
   display: flex;
   width: fit-content;
+  background-color: var(--button-background-color);
+}
+
+.button__text {
+  @extend .typography-body;
 }
 
 .button--primary {
   --typography-color: var(--button-primary-color);
-
-  background: var(--button-primary-background-color);
+  --button-background-color: var(--button-primary-background-color);
 
   &:focus {
     @include focus;
   }
 
   &:hover {
-    background-color: var(--button-primary-hover-background-color);
+    --button-background-color: var(--button-primary-hover-background-color);
   }
 
   &:disabled {
-    background-color: var(--button-primary-disabled-background-color);
-    color: var(--button-disabled-color);
-    cursor: not-allowed;
+    --button-background-color: var(--button-primary-disabled-background-color);
+    --typography-color: var(--button-disabled-color);
+    --button-cursor: not-allowed;
   }
 }
 
 .button--secondary {
   --typography-color: var(--button-secondary-color);
+  --button-background-color: var(
+    --button-secondary-background-color,
+    transparent
+  );
 
-  background: var(--button-secondary-background-color, transparent);
   box-shadow: var(--button-secondary-border);
 
   &:focus {
@@ -49,7 +54,8 @@
   }
 
   &:hover {
-    background-color: var(--button-secondary-hover-background-color);
+    --button-background-color: var(--button-secondary-hover-background-color);
+
     border: none;
   }
 
@@ -57,11 +63,12 @@
     background: transparent;
     color: var(--button-disabled-color);
     box-shadow: var(--button-secondary-disabled-border);
-    cursor: not-allowed;
+
+    --button-cursor: not-allowed;
   }
 
   &[aria-busy*="true"] {
-    background-color: var(--button-secondary-hover-background-color);
+    --button-background-color: var(--button-secondary-hover-background-color);
   }
 }
 
