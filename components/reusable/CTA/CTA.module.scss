@@ -2,6 +2,7 @@
 
 .cta {
   @extend .button;
+  @extend .button__text;
 
   text-decoration: none;
 }
