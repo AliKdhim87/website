@@ -107,12 +107,13 @@ export const ContactForm = ({ onAction }: ContactFormProps) => {
         />
         <Button
           variant="secondary"
-          text="Submit"
           type="submit"
           className="space-mb-start-2"
           disabled={Boolean(Object.keys(errors).length)}
           onClick={handleButtonClick}
-        />
+        >
+          Submit
+        </Button>
       </Form>
     </>
   );

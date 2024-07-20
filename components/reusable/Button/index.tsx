@@ -1,27 +1,32 @@
-import { DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
+import type { DetailedHTMLProps, ButtonHTMLAttributes, PropsWithChildren, ForwardedRef } from 'react';
 
 import classNames from 'classnames/bind';
 
 import styles from './Button.module.scss';
-import { Typography } from '../Typography';
 
 const css = classNames.bind(styles);
 
 interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  text: string | React.ReactNode;
   variant?: 'primary' | 'secondary';
   loading?: boolean;
 }
 
-export const Button = ({ text, variant = 'primary', className, loading, ...props }: ButtonProps) => {
-  const classes = css(className, 'button', {
-    [`button--${variant}`]: variant,
-    'button--loading': loading,
-  });
+export const Button = forwardRef(
+  (
+    { variant = 'primary', children, className, loading, ...props }: PropsWithChildren<ButtonProps>,
+    ref: ForwardedRef<HTMLButtonElement>,
+  ) => {
+    const classes = css(className, 'button', {
+      [`button--${variant}`]: variant,
+      'button--loading': loading,
+    });
 
-  return (
-    <button {...props} className={classes} aria-live={loading ? 'polite' : undefined} aria-busy={loading}>
-      {text && <Typography className={css({ 'button--hide-text': loading })}>{text}</Typography>}
-    </button>
-  );
-};
+    return (
+      <button {...props} ref={ref} className={classes} aria-live={loading ? 'polite' : undefined} aria-busy={loading}>
+        {children && <span className={css('button__text', { 'button--hide-text': loading })}>{children}</span>}
+      </button>
+    );
+  },
+);
+Button.displayName = 'Button';
