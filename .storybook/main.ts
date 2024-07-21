@@ -14,6 +14,7 @@ const config: StorybookConfig & StorybookConfigVite = {
     '@chromatic-com/storybook',
     '@storybook/addon-interactions',
     '@storybook/preset-scss',
+    'storybook-addon-pseudo-states',
   ],
   framework: {
     name: '@storybook/nextjs',
