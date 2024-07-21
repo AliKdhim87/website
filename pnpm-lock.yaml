@@ -234,6 +234,9 @@ importers:
       storybook:
         specifier: 8.1.5
         version: 8.1.5(@babel/preset-env@7.24.6(@babel/core@7.24.6))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      storybook-addon-pseudo-states:
+        specifier: ^3.1.1
+        version: 3.1.1
       style-loader:
         specifier: 4.0.0
         version: 4.0.0(webpack@5.88.2(esbuild@0.20.2))
@@ -7889,6 +7892,9 @@ packages:
 
   store2@2.14.2:
     resolution: {integrity: sha512-siT1RiqlfQnGqgT/YzXVUNsom9S0H1OX+dpdGN1xkyYATo4I6sep5NmsRD/40s3IIOvlCq6akxkqG82urIZW1w==}
+
+  storybook-addon-pseudo-states@3.1.1:
+    resolution: {integrity: sha512-08JNTfsiSfj0GgNV4q6+v6iU+Acp7ib/MdySPDb8p+C8N/e+kf6lnM7kIiE/GnTPXlg3dfV6FMaWgGYVfdTcLw==}
 
   storybook@8.1.5:
     resolution: {integrity: sha512-v4o8AfTvxWpdGa9Pa9x8EAmqbN5yJc+2fW8b6ZaCsDOTh2t5Y3EUHbIzdtvX+1Gb6ALsOs5e2Q9GlCAzjz+WNQ==}
@@ -19428,6 +19434,8 @@ snapshots:
       internal-slot: 1.0.5
 
   store2@2.14.2: {}
+
+  storybook-addon-pseudo-states@3.1.1: {}
 
   storybook@8.1.5(@babel/preset-env@7.24.6(@babel/core@7.24.6))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
