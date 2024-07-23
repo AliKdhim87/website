@@ -1,6 +1,5 @@
-'use client';
-
-import { ForwardedRef, PropsWithChildren, createElement, forwardRef } from 'react';
+import { createElement, forwardRef } from 'react';
+import type { ForwardedRef, HTMLAttributes, PropsWithChildren } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -8,7 +7,7 @@ import styles from './index.module.scss';
 
 export type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 
-export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
+export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
   level: number;
   variant?: HeadingVariant;
 }
