@@ -1,3 +1,5 @@
+import { createRef } from 'react';
+
 import { render, screen } from '@testing-library/react';
 
 import { Button } from './index';
@@ -31,10 +33,12 @@ describe('Button', () => {
     render(<Button variant="secondary">Click me</Button>);
     expect(screen.getByRole('button')).toHaveClass('button--secondary');
   });
-  it('renders a button with a ref forwarded', () => {
-    const ref = jest.fn();
-    render(<Button ref={ref}>Click me</Button>);
-    expect(ref).toHaveBeenCalled();
+  it('renders a link with a forwarded ref', () => {
+    const ref = createRef<HTMLButtonElement>();
+    const { container } = render(<Button ref={ref}>Click me</Button>);
+    const buttonElement = container.querySelector(':only-child');
+    expect(ref.current).toBe(buttonElement);
+    expect(buttonElement).toBeInTheDocument();
   });
   it('renders a button with a button CSS class', () => {
     render(<Button>Click me</Button>);
