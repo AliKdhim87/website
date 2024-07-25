@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
 
 import { Badge } from '@/components/reusable';
 
@@ -11,15 +10,32 @@ const meta: Meta<typeof Badge> = {
   },
   tags: ['autodocs'],
   argTypes: {},
-  args: { onClick: fn() },
+  args: { href: '#' },
 };
 
 export default meta;
 type Story = StoryObj<typeof Badge>;
 
-export const BadgeDefault: Story = {
+export const Default: Story = {
   args: {
     children: '#javaScript',
     href: '#',
+  },
+};
+
+export const Hovered: Story = {
+  args: {
+    children: '#javaScript',
+  },
+  parameters: {
+    pseudo: { hover: true },
+  },
+};
+export const Focused: Story = {
+  args: {
+    children: '#javaScript',
+  },
+  parameters: {
+    pseudo: { focus: true },
   },
 };
