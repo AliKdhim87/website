@@ -56,8 +56,8 @@ const AboutPage = async () => {
             const image = {
               src: component.image?.asset?.url,
               alt: component.image?.alt,
-              width: component.image?.asset?.metadata?.dimensions?.width,
-              height: component.image?.asset?.metadata?.dimensions?.height,
+              width: 300,
+              height: 300,
             } as ImageProps;
 
             return <PageHeader title={component.title} body={component.body} image={image} key={uuidv4()} />;
