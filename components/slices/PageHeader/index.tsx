@@ -21,7 +21,18 @@ export const PageHeader = ({ title, body, image, children }: PropsWithChildren<P
   return (
     <section className={rootClasses}>
       <Container>
-        <Grid container spacing={image ? 'md' : undefined}>
+        <Grid container justifyContent="center" spacing={image ? 'md' : undefined}>
+          {image && image.src && image.alt && (
+            <Grid item>
+              <Image
+                className={css('page-header-section__image')}
+                src={image.src}
+                width={image.width}
+                height={image.height}
+                alt={image.alt}
+              />
+            </Grid>
+          )}
           <Grid item md={image ? 9 : undefined}>
             <hgroup className={css('page-header__heading-group')}>
               {title && (
@@ -36,11 +47,6 @@ export const PageHeader = ({ title, body, image, children }: PropsWithChildren<P
               )}
             </hgroup>
           </Grid>
-          {image && image.src && image.alt && (
-            <Grid item md={3} justifyContent="center">
-              <Image src={image.src} width={image.width} height={image.height} alt={image.alt} />
-            </Grid>
-          )}
         </Grid>
         {children}
       </Container>
