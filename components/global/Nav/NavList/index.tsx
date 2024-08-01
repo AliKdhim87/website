@@ -1,4 +1,4 @@
-import { forwardRef, type DetailedHTMLProps, type HTMLAttributes, type PropsWithChildren } from 'react';
+import { ForwardedRef, forwardRef, type DetailedHTMLProps, type HTMLAttributes, type PropsWithChildren } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -26,8 +26,11 @@ const classes = (mobile?: boolean) =>
   });
 
 export const NavList = forwardRef(
-  ({ children, pathname, mobile, list, ...restProps }: PropsWithChildren<NavListProps>) => (
-    <ul className={classes(mobile)} {...restProps}>
+  (
+    { children, pathname, mobile, list, ...restProps }: PropsWithChildren<NavListProps>,
+    ref: ForwardedRef<HTMLUListElement>,
+  ) => (
+    <ul {...restProps} className={classes(mobile)} ref={ref}>
       {children}
       {Array.isArray(list) &&
         list.map(({ route, title }) => (

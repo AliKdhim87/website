@@ -1,4 +1,4 @@
-import type { HTMLAttributes, PropsWithChildren } from 'react';
+import type { ForwardedRef, HTMLAttributes, PropsWithChildren } from 'react';
 import { forwardRef } from 'react';
 
 import classnames from 'classnames/bind';
@@ -10,8 +10,10 @@ const css = classnames.bind(styles);
 
 export interface NavLinkProps extends HTMLAttributes<HTMLAnchorElement>, LinkProps {}
 
-export const NavLink = forwardRef(({ children, ...restProps }: PropsWithChildren<NavLinkProps>) => (
-  <Link className={css('nav-link')} {...restProps}>
-    {children}
-  </Link>
-));
+export const NavLink = forwardRef(
+  ({ children, ...restProps }: PropsWithChildren<NavLinkProps>, ref: ForwardedRef<HTMLAnchorElement>) => (
+    <Link {...restProps} className={css('nav-link')} ref={ref}>
+      {children}
+    </Link>
+  ),
+);
