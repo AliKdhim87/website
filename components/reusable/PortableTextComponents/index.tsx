@@ -7,6 +7,7 @@ import { Blockquote } from '../Blockquote';
 import { SnippetCodeType, BlockCode } from '../Code';
 import { Heading } from '../Heading';
 import { InlineCode } from '../InlineCode';
+import { ListItem } from '../ListItem';
 import { Typography } from '../Typography';
 
 export interface PortableTextConfigProps {
@@ -68,16 +69,8 @@ export const portableTextConfig = ({ dataset, projectId }: PortableTextConfigPro
       blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
     },
     listItem: {
-      bullet: ({ children }) => (
-        <li className="text-color">
-          <Typography>{children}</Typography>
-        </li>
-      ),
-      number: ({ children }) => (
-        <li className="text-color">
-          <Typography>{children}</Typography>
-        </li>
-      ),
+      bullet: ({ children }) => <ListItem>{children}</ListItem>,
+      number: ({ children }) => <ListItem>{children}</ListItem>,
     },
     marks: {
       link: ({ children, value }) => (
