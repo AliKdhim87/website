@@ -1,4 +1,8 @@
+@use "../Typography/Typography.module.scss" as *;
+
 .list-item {
+  @extend .typography-body;
+
   padding-block-start: var(--list-item-padding-block-start, 4px);
   padding-block-end: var(--list-item-padding-block-end, 4px);
   padding-inline-start: var(--list-item-padding-inline-start);

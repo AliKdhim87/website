@@ -1,5 +1,7 @@
 'use client';
 
+import dynamic from 'next/dynamic';
+
 export { Heading } from './Heading';
 export { PortableText } from '@portabletext/react';
 export { Clipboard } from './Clipboard';
@@ -26,5 +28,11 @@ export * from './PortableTextComponents';
 export * from './SVGWrapper';
 export * from './Textarea';
 export * from './Typography';
-export * from './TOC';
+export const TOC = dynamic(
+  async () => {
+    const Component = (await import('./TOC')).TOC;
+    return { default: Component };
+  },
+  { ssr: false },
+);
 export * from './Details';
