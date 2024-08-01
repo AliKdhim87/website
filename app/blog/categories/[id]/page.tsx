@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation';
+
 import { BlogType, PageHeader, PostList } from '@/components/slices';
 import { GetAllBlogByCategoryIdQuery, GetAllCategoryIdQuery } from '@/graphql-types';
 import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
@@ -23,6 +25,9 @@ const BlogCategories = async ({ params: { id } }: any) => {
     apiUrl,
   });
 
+  if (data.allPost.length === 0) {
+    notFound();
+  }
   return (
     <>
       {data.Category?.title && <PageHeader title={data.Category.title} />}

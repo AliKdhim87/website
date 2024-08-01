@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
 import {
   Container,
@@ -53,6 +54,9 @@ export async function generateMetadata({ params: { slug } }: Params): Promise<Me
     variables: { slug },
     apiUrl,
   });
+  if (data.allPost.length === 0) {
+    notFound();
+  }
 
   const openGraph = {
     title: data.allPost[0].title,
@@ -91,6 +95,9 @@ const PostPage = async ({ params: { slug } }: Params) => {
     variables: { slug },
     apiUrl,
   });
+  if (data.allPost.length === 0) {
+    notFound();
+  }
   const page = data.allPost[0];
   const { title, bodyRaw, categories, mainImage, publishedAt, updatedAt } = page;
   const result = await getTableOfContent({ slug, query: GET_TOC_GROQ_QUERY, url: sanityGROQURL });
