@@ -73,9 +73,6 @@ export async function generateMetadata(): Promise<Metadata> {
       apple: [{ url: '/favicon_io/apple-touch-icon.png', type: 'image/png', sizes: '180x180' }],
     },
     metadataBase: new URL(schemaOrg?.website ?? ''),
-    alternates: {
-      canonical: '/',
-    },
     manifest: '/favicon_io/site.webmanifest',
     openGraph: {
       images: openGraphImage || undefined,
