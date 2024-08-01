@@ -75,9 +75,6 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(schemaOrg?.website ?? ''),
     alternates: {
       canonical: '/',
-      languages: {
-        'en-US': '/en-US',
-      },
     },
     manifest: '/favicon_io/site.webmanifest',
     openGraph: {
