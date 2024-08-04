@@ -22,7 +22,8 @@
     "build-storybook": "storybook build",
     "prepare": "husky install",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "playwright": "playwright test"
   },
   "dependencies": {
     "@fontsource/roboto": "5.0.1",
@@ -53,6 +54,7 @@
     "@eslint/compat": "1.1.0",
     "@eslint/js": "9.5.0",
     "@next/eslint-plugin-next": "14.2.4",
+    "@playwright/test": "1.45.3",
     "@storybook/addon-actions": "8.1.5",
     "@storybook/addon-backgrounds": "8.1.5",
     "@storybook/addon-essentials": "8.1.5",
