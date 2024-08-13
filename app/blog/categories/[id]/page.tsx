@@ -31,7 +31,12 @@ const BlogCategories = async ({ params: { id } }: any) => {
   return (
     <>
       {data.Category?.title && <PageHeader title={data.Category.title} />}
-      <PostList blog={data.allPost as BlogType[]} />
+      <PostList
+        blog={data.allPost as BlogType[]}
+        headingOptions={{
+          level: 2,
+        }}
+      />
     </>
   );
 };
