@@ -83,7 +83,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: openGraphTitle || undefined,
     },
     verification: {
-      google: 'google',
+      google: process.env.GOOGLE_SITE_VERIFICATION,
       yandex: 'yandex',
       yahoo: 'yahoo',
     },
