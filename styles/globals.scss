@@ -76,7 +76,16 @@
   --social-media-link-font-size: 36px;
 
   // Card
-  --card-margin-block-start: var(--space-4);
+  --card-margin-block-start: var(--space-1);
+  --card-background-color: var(--colors-primary-bg);
+  --card-padding-block-start: var(--space-2);
+  --card-padding-block-end: var(--space-2);
+  --card-padding-inline-start: var(--space-1);
+  --card-padding-inline-end: var(--space-1);
+  --card-transition-duration: 0.4s;
+  --card-date-color: var(--colors-grey-300);
+  --card-date-margin-block-start: var(--space-1);
+  --card-body-margin-block-start: var(--space-1);
 
   // Helpers
   --text-align-sm-center: center;

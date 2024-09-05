@@ -186,6 +186,7 @@ export const GET_BLOG_PAGE = gql(`
     _id
     title
     publishedAt
+    updatedAt:_updatedAt
     slug {
       current
     }
@@ -285,6 +286,7 @@ export const GET_HOME_PAGE = gql(`
       _id
       title
       publishedAt
+      updatedAt:_updatedAt
       slug {
         current
       }
