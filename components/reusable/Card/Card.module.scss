@@ -1,3 +1,26 @@
 .card {
   margin-block-start: var(--card-margin-block-start);
+  background-color: var(--card-background-color);
+  padding-block-start: var(--card-padding-block-start);
+  padding-block-end: var(--card-padding-block-end);
+  padding-inline-start: var(--card-padding-inline-start);
+  padding-inline-end: var(--card-padding-inline-end);
+  transition-property: scale;
+  transition-duration: var(--card-transition-duration);
+
+  &:hover {
+    opacity: 0.9;
+    scale: 1.01;
+  }
+
+  &__date {
+    --typography-color: var(--colors-grey-300);
+
+    margin-block-start: var(--card-date-margin-block-start);
+    display: grid;
+  }
+
+  &__body {
+    margin-block-start: var(--card-body-margin-block-start);
+  }
 }

@@ -13,9 +13,6 @@ const cx = classnames.bind(styles);
 
 export interface PostListItemProps extends Readonly<CardProps> {
   href: string;
-  title: string;
-  body: string;
-  publishedAt: string;
 }
 
 export type BlogType = {
@@ -23,6 +20,7 @@ export type BlogType = {
   slug: { current: string };
   excerpt: string;
   publishedAt: string;
+  updatedAt?: string;
 };
 
 export interface PostListProps extends Pick<PostListItemProps, 'headingOptions'> {
@@ -32,9 +30,9 @@ export interface PostListProps extends Pick<PostListItemProps, 'headingOptions'>
 }
 
 export const PostListItem = forwardRef(
-  ({ body, href, publishedAt, title, ...restProps }: PostListItemProps, ref: ForwardedRef<HTMLAnchorElement>) => (
+  ({ body, href, publishedAt, updatedAt, title }: PostListItemProps, ref: ForwardedRef<HTMLAnchorElement>) => (
     <Link ref={ref} href={href} className={cx('post-list__item')}>
-      <Card title={title} body={body} publishedAt={publishedAt} {...restProps} />
+      <Card title={title} body={body} publishedAt={publishedAt} updatedAt={updatedAt} />
     </Link>
   ),
 );
@@ -50,7 +48,7 @@ export const PostList = ({ blog, cta, title, ...restProps }: PostListProps) => (
     )}
     {Array.isArray(blog) &&
       blog.map(
-        ({ slug, title: blogTitle, excerpt, publishedAt }) =>
+        ({ slug, title: blogTitle, excerpt, updatedAt, publishedAt }) =>
           slug.current && (
             <PostListItem
               {...restProps}
@@ -58,6 +56,7 @@ export const PostList = ({ blog, cta, title, ...restProps }: PostListProps) => (
               title={blogTitle}
               body={excerpt}
               publishedAt={publishedAt}
+              updatedAt={updatedAt}
               href={`/blog/${slug.current}`}
             />
           ),
