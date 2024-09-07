@@ -23,7 +23,7 @@ const config: StorybookConfig & StorybookConfigVite = {
   core: {
     builder: '@storybook/builder-vite' as any,
   },
-  staticDirs: ['../public'],
+  staticDirs: ['../../public'],
   async viteFinal(config) {
     const { mergeConfig } = await import('vite');
     return mergeConfig(config, {

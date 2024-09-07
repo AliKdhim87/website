@@ -3,7 +3,7 @@ import { DetailedHTMLProps, type ForwardedRef, forwardRef, HTMLAttributes } from
 import classNames from 'classnames/bind';
 
 import { Maybe } from '@/graphql-types';
-import { formattedDate } from 'utils/formattedDate';
+import { formattedDate } from '@/utils';
 
 import styles from './Card.module.scss';
 import { Heading, HeadingProps } from '../Heading';
