@@ -31,7 +31,7 @@ const languageOptions = {
 
 const importConfig = {
   files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-  ignores: ['node_modules/**', 'dist/**', '.next/**', 'storybook-static/**', 'generated/**', '/storybook-static'],
+  ignores: ['node_modules/**', 'dist/**', '.next/**', 'storybook-static/**', 'src/generated/**', '/storybook-static'],
   languageOptions,
   plugins: {
     import: importPlugin,
@@ -71,7 +71,7 @@ const importConfig = {
 
 const typescriptConfig = {
   files: ['**/*.ts', '**/*.tsx'],
-  ignores: ['node_modules/**', 'dist/**', '.next/**', 'storybook-static/**', 'generated/**', '/storybook-static'],
+  ignores: ['node_modules/**', 'dist/**', '.next/**', 'storybook-static/**', 'src/generated/**', '/storybook-static'],
   languageOptions,
   plugins: {
     '@typescript-eslint': typescriptPlugin,
@@ -89,7 +89,7 @@ const typescriptConfig = {
 
 const reactHookConfig = {
   files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-  ignores: ['node_modules/**', 'dist/**', '.next/**', 'storybook-static/**', 'generated/**', '/storybook-static'],
+  ignores: ['node_modules/**', 'dist/**', '.next/**', 'storybook-static/**', 'src/generated/**', '/storybook-static'],
   languageOptions,
   plugins: {
     react: reactPlugin,
@@ -109,7 +109,7 @@ const reactHookConfig = {
 
 const storybookConfig = {
   files: ['**/*.stories.ts', '**/*.stories.tsx'],
-  ignores: ['node_modules/**', 'dist/**', '.next/**', 'storybook-static/**', 'generated/**', '/storybook-static'],
+  ignores: ['node_modules/**', 'dist/**', '.next/**', 'storybook-static/**', 'src/generated/**', '/storybook-static'],
   languageOptions,
   plugins: {
     storybook: fixupPluginRules(storybookPlugin),
@@ -128,7 +128,7 @@ const storybookConfig = {
 const config = tseslint.config(
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-    ignores: ['node_modules/**', 'dist/**', '.next/**', 'storybook-static/**', 'generated/**', '/storybook-static'],
+    ignores: ['node_modules/**', 'dist/**', '.next/**', 'storybook-static/**', 'src/generated/**', '/storybook-static'],
     languageOptions,
     plugins: {
       prettier: prettierPlugin,

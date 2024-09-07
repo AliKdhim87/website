@@ -3,8 +3,8 @@ import { draftMode } from 'next/headers';
 
 import { BlogType, PageHeader, PostList } from '@/components/slices';
 import type { GetBlogPageQuery } from '@/graphql-types';
+import { GET_BLOG_PAGE } from '@/queries/index.graphql';
 import { uuidv4, fetchData, sanityGraphqlAPIUrl } from '@/utils';
-import { GET_BLOG_PAGE } from 'queries/index.graphql';
 
 const apiUrl = sanityGraphqlAPIUrl({
   projectId: process.env.SANITY_PROJECT_ID,

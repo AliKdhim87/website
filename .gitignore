@@ -38,7 +38,7 @@ yarn-error.log*
 *.tsbuildinfo
 
 # types generated
-/generated
+/src/generated
 graphql.schema.json
 
 # storybook output folder

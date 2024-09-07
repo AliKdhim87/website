@@ -13,12 +13,9 @@ import {
 } from '@/components/reusable';
 import { Tags } from '@/components/slices';
 import { GetAllBlogSlugsQuery, GetBlogBySlugQuery } from '@/graphql-types';
-import { getTableOfContent, sanityGraphqlAPIUrl } from '@/utils';
-import { GET_TOC_GROQ_QUERY } from 'queries/groq';
-import { GET_ALL_BLOG_SLUGS, GET_BLOG_BY_SLUG } from 'queries/index.graphql';
-import { fetchData } from 'utils/fetchData';
-import { formattedDate } from 'utils/formattedDate';
-import { nestHeadings } from 'utils/nestHeading';
+import { GET_TOC_GROQ_QUERY } from '@/queries/groq';
+import { GET_ALL_BLOG_SLUGS, GET_BLOG_BY_SLUG } from '@/queries/index.graphql';
+import { getTableOfContent, sanityGraphqlAPIUrl, nestHeadings, formattedDate, fetchData } from '@/utils';
 
 type Params = {
   params: {

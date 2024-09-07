@@ -13,9 +13,9 @@ const apiUrl = sanityGraphqlAPIUrl({
 
 const config: CodegenConfig = {
   schema: apiUrl,
-  documents: ['queries/**/*.graphql.ts'],
+  documents: ['src/queries/**/*.graphql.ts'],
   generates: {
-    './generated/': {
+    './src/generated/': {
       preset: 'client',
       plugins: [
         'typescript',

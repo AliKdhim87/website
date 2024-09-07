@@ -4,8 +4,8 @@ import { ImageProps } from 'next/image';
 
 import { MoreAbout, MoreAboutItem, PageHeader } from '@/components/slices';
 import { GetAboutPageQuery } from '@/graphql-types';
+import { GET_ABOUT_PAGE } from '@/queries/index.graphql';
 import { sanityGraphqlAPIUrl, uuidv4, fetchData } from '@/utils';
-import { GET_ABOUT_PAGE } from 'queries/index.graphql';
 
 const apiUrl = sanityGraphqlAPIUrl({
   projectId: process.env.SANITY_PROJECT_ID,

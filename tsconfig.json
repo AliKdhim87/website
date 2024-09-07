@@ -16,10 +16,12 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/styles/*": ["styles/*"],
-      "@/utils": ["utils"],
-      "@/graphql-types": ["generated/graphql.ts"]
+      "@/components/*": ["src/components/*"],
+      "@/styles/*": ["src/styles/*"],
+      "@/utils": ["src/utils"],
+      "@/graphql-types": ["src/generated/graphql.ts"],
+      "@/queries": ["src/queries"],
+      "@/*": ["src/*"]
     },
     "plugins": [
       {
@@ -32,12 +34,11 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
-    ".next/types/**/*.ts",
     "./eslint.config.js",
     "./stylelint.config.js",
     "./next.config.js",
     "./.lintstagedrc.js",
-    ".storybook/*"
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "generated", "storybook-static", ".next"]
+  "exclude": ["node_modules", "./src/generated", "storybook-static", ".next"]
 }

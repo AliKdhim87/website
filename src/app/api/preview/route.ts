@@ -2,9 +2,8 @@ import { draftMode } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 import { GetCurrentPageQuery } from '@/graphql-types';
+import { GET_CURRENT_PAGE } from '@/queries/index.graphql';
 import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
-
-import { GET_CURRENT_PAGE } from '../../../queries/index.graphql';
 
 const apiUrl = sanityGraphqlAPIUrl({
   projectId: process.env.SANITY_PROJECT_ID,

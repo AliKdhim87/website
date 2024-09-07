@@ -3,8 +3,8 @@ import { draftMode } from 'next/headers';
 import { CTA, Grid } from '@/components/reusable';
 import { PageHeader } from '@/components/slices';
 import type { GetNotFoundPageQuery } from '@/graphql-types';
+import { GET_NOT_FOUND_PAGE } from '@/queries/index.graphql';
 import { sanityGraphqlAPIUrl, uuidv4, fetchData } from '@/utils';
-import { GET_NOT_FOUND_PAGE } from 'queries/index.graphql';
 
 const apiUrl = sanityGraphqlAPIUrl({
   projectId: process.env.SANITY_PROJECT_ID,
