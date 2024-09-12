@@ -45,7 +45,16 @@ const Home = async () => {
             return <SocialMedia title={component.title} socialMedia={component.items} key={uuidv4()} />;
           case 'BlogList':
             return (
-              <PostList title={component.title} blog={recentPosts as BlogType[]} cta={component.cta} key={uuidv4()} />
+              <PostList
+                title={component.title}
+                blog={recentPosts as BlogType[]}
+                cta={component.cta}
+                key={uuidv4()}
+                headingOptions={{
+                  variant: 'h3',
+                  level: 3,
+                }}
+              />
             );
           default:
             return null;

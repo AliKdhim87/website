@@ -30,9 +30,12 @@ export interface PostListProps extends Pick<PostListItemProps, 'headingOptions'>
 }
 
 export const PostListItem = forwardRef(
-  ({ body, href, publishedAt, updatedAt, title }: PostListItemProps, ref: ForwardedRef<HTMLAnchorElement>) => (
+  (
+    { body, href, publishedAt, updatedAt, title, headingOptions }: PostListItemProps,
+    ref: ForwardedRef<HTMLAnchorElement>,
+  ) => (
     <Link ref={ref} href={href} className={cx('post-list__item')}>
-      <Card title={title} body={body} publishedAt={publishedAt} updatedAt={updatedAt} />
+      <Card title={title} body={body} publishedAt={publishedAt} updatedAt={updatedAt} headingOptions={headingOptions} />
     </Link>
   ),
 );

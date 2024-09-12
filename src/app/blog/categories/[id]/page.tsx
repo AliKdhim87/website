@@ -35,6 +35,7 @@ const BlogCategories = async ({ params: { id } }: any) => {
         blog={data.allPost as BlogType[]}
         headingOptions={{
           level: 2,
+          variant: 'h3',
         }}
       />
     </>

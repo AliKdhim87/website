@@ -23,24 +23,28 @@ export const Card = forwardRef(
   (
     { body, headingOptions, publishedAt, updatedAt, title, className, ...restProps }: CardProps,
     ref: ForwardedRef<HTMLDivElement>,
-  ) => (
-    <div className={css('card', className)} ref={ref} {...restProps}>
-      {title && (
-        <Heading level={headingOptions?.level || 3} variant={headingOptions?.variant || 'h4'}>
-          {title}
-        </Heading>
-      )}
-      <div className={css('card__date')}>
-        {publishedAt && <Typography bodySize="secondary">Published on: {formattedDate(publishedAt)}</Typography>}
-        {updatedAt && <Typography bodySize="secondary">Updated on: {formattedDate(updatedAt)}</Typography>}
-      </div>
-      {body && (
-        <div className={css('card__body')}>
-          <Typography>{body}</Typography>
+  ) => {
+    console.log({ headingOptions });
+
+    return (
+      <div className={css('card', className)} ref={ref} {...restProps}>
+        {title && (
+          <Heading level={headingOptions?.level || 3} variant={headingOptions?.variant || 'h4'}>
+            {title}
+          </Heading>
+        )}
+        <div className={css('card__date')}>
+          {publishedAt && <Typography bodySize="secondary">Published on: {formattedDate(publishedAt)}</Typography>}
+          {updatedAt && <Typography bodySize="secondary">Updated on: {formattedDate(updatedAt)}</Typography>}
         </div>
-      )}
-    </div>
-  ),
+        {body && (
+          <div className={css('card__body')}>
+            <Typography>{body}</Typography>
+          </div>
+        )}
+      </div>
+    );
+  },
 );
 Card.displayName = 'Card';
 Card.defaultProps = {

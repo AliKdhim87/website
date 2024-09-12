@@ -57,6 +57,7 @@ const Blog = async () => {
       <PostList
         headingOptions={{
           level: 2,
+          variant: 'h3',
         }}
         blog={allPost as BlogType[]}
       />
