@@ -22,6 +22,7 @@ export const GET_ALL_BLOG_BY_CATEGORY_ID = gql(`
         current
       }
       publishedAt
+      updatedAt:_updatedAt
       excerpt
     }
     Category(id: $categoryId) {
