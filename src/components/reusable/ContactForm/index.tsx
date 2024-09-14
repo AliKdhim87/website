@@ -1,11 +1,15 @@
 'use client';
 
+import classnames from 'classnames/bind';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
-import { Form, InputField, Textarea, Button } from '@/components/reusable';
+import { Form, InputField, Textarea, Button, Heading, Typography } from '@/components/reusable';
 
+import styles from './styles.module.scss';
+
+const css = classnames.bind(styles);
 interface ContactFormProps {
   onAction: (formData: FormData) => Promise<any>;
 }
@@ -118,3 +122,17 @@ export const ContactForm = ({ onAction }: ContactFormProps) => {
     </>
   );
 };
+// TODO: move the content to the CMS
+export const ContactIntro = () => (
+  <div className={css('contact__intro')}>
+    <Heading level={2} variant="h3">
+      Let's Connect and Make Something Awesome
+    </Heading>
+    <Typography>
+      Whether you’re exploring new ideas, need help with a project, or just have questions, I’m here to chat! With a
+      passion for creating seamless, user-friendly digital experiences, I love collaborating on exciting projects. Reach
+      out, whether it’s for a quick question or a bigger conversation. Let’s turn your vision into reality together!
+    </Typography>
+  </div>
+);
+ContactIntro.displayName = 'ContactIntro';
