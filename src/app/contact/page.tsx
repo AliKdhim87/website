@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 
 import { Grid, Container } from '@/components/reusable';
-import { ContactForm } from '@/components/reusable/ContactForm';
+import { ContactForm, ContactIntro } from '@/components/reusable/ContactForm';
 import { PageHeader } from '@/components/slices';
 import { GetContactPageQuery } from '@/graphql-types';
 import { GET_CONTACT_PAGE } from '@/queries/index.graphql';
@@ -121,6 +121,7 @@ const Contact = async () => {
       <Container>
         <Grid container justifyContent="center">
           <Grid item md={8}>
+            <ContactIntro />
             <ContactForm onAction={onEmailSubmit} />
           </Grid>
         </Grid>
