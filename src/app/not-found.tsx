@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 
 import { CTA, Grid } from '@/components/reusable';
@@ -11,6 +12,12 @@ const apiUrl = sanityGraphqlAPIUrl({
   dataset: process.env.SANITY_DATASET,
   apiVersion: process.env.SANITY_GRAPHQL_API_VERSION,
 });
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const Custom404 = async () => {
   const data = await fetchData<GetNotFoundPageQuery>({
