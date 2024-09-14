@@ -30,10 +30,14 @@ const getContactPage = async () => {
 };
 export async function generateMetadata(): Promise<Metadata> {
   const { openGraph, schemaOrg } = await getContactPage();
+
   const slug = 'contact';
   return {
     title: openGraph?.title,
     description: openGraph?.description,
+    alternates: {
+      canonical: `/${slug}`,
+    },
     openGraph: {
       images: openGraph?.image?.asset?.url || undefined,
       description: openGraph?.description || undefined,
