@@ -71,6 +71,9 @@ export async function generateMetadata({ params: { slug } }: Params): Promise<Me
   return {
     title: openGraph.title,
     description: openGraph.description,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
     openGraph: {
       images: openGraph.schemaOrg.images?.asset?.url || undefined,
       url: `${openGraph.schemaOrg.websiteURL}/blog/${slug}`,
