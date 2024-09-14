@@ -87,6 +87,10 @@ export async function generateMetadata(): Promise<Metadata> {
       yandex: 'yandex',
       yahoo: 'yahoo',
     },
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 
