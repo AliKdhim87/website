@@ -1,0 +1,35 @@
+@use "../Container/Container.module.scss" as *;
+@use "../styles/common/mixins" as *;
+
+.ali-dev-social-media {
+  @include container;
+
+  padding-block-start: var(--ali-dev-social-media-padding-block-start);
+  padding-block-end: var(--ali-dev-social-media-padding-block-end);
+}
+
+.ali-dev-social-media__link {
+  color: var(--ali-dev-social-media-link-color);
+  font-size: var(--ali-dev-social-media-link-font-size);
+  line-height: 0;
+
+  &:focus {
+    @include focus;
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+
+  &:hover {
+    --ali-dev-social-media-link-color: var(--ali-dev-social-media-link-hover-color);
+  }
+}
+
+.ali-dev-social-media__list {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  column-gap: var(--ali-dev-social-media-list-column-gap);
+  list-style: none;
+}

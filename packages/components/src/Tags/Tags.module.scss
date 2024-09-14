@@ -1,0 +1,10 @@
+.ali-dev-tags {
+  padding-block-start: var(--ali-dev-tags-padding-block-start);
+  padding-block-end: var(--ali-dev-tags-padding-block-end);
+  padding-inline: 0;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-block: 0;
+  gap: var(--ali-dev-tags-gap);
+}

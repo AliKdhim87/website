@@ -1,0 +1,75 @@
+{
+  "ali-dev": {
+    "colors": {
+      "$type": "color",
+      "primary": {
+        "$value": "#ffd166"
+      },
+      "primary-dark": {
+        "$value": "#ffba1a"
+      },
+      "secondary": {
+        "$value": "#115e59"
+      },
+      "primary-bg": {
+        "$value": "#222831"
+      },
+      "secondary-bg": {
+        "$value": "#393e46"
+      },
+      "backdrop-bg": {
+        "$value": "rgba(0, 0, 0, 0.5)"
+      },
+      "grey": {
+        "0": {
+          "$value": "#ffffff"
+        },
+        "50": {
+          "$value": "#fafafa"
+        },
+        "200": {
+          "$value": "#e5e5e5"
+        },
+        "300": {
+          "$value": "#d4d4d4"
+        },
+        "400": {
+          "$value": "#a3a3a3"
+        },
+        "500": {
+          "$value": "#737373"
+        },
+        "600": {
+          "$value": "#525252"
+        },
+        "700": {
+          "$value": "#404040"
+        },
+        "800": {
+          "$value": "#282828"
+        },
+        "900": {
+          "$value": "#0c0b0b"
+        },
+        "100": {
+          "$value": "#000000"
+        }
+      },
+      "red": {
+        "$value": "#ff002c"
+      },
+      "focus-primary": {
+        "$value": "rgba(255, 186, 26, 0.25)"
+      }
+    },
+    "text": {
+      "$type": "color",
+      "color-dark": {
+        "$value": "#ffffff"
+      },
+      "color-light": {
+        "$value": "#000000"
+      }
+    }
+  }
+}

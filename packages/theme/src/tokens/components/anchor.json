@@ -1,0 +1,32 @@
+{
+  "ali-dev": {
+    "anchor": {
+      "color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.primary-dark}"
+      },
+      "text-decoration": {
+        "$type": "string",
+        "$value": "underline"
+      },
+      "text-underline-offset": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.xs}"
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{ali-dev.typography.font-size.md}"
+      },
+      "font-family": {
+        "$type": "font",
+        "$value": "{ali-dev.typography.font-family.sans}"
+      },
+      "hover": {
+        "color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.primary}"
+        }
+      }
+    }
+  }
+}

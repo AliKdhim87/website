@@ -1,0 +1,37 @@
+{
+  "name": "@ali-dev/theme",
+  "description": "Ali Design System Theme",
+  "author": "Ali Dev",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "homepage": "",
+  "keywords": [
+    "ali-design-system",
+    "ali",
+    "theme"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/types/src/index.d.ts",
+  "files": [
+    "build/"
+  ],
+  "scripts": {
+    "build": "style-dictionary build",
+    "watch": "chokidar 'src/tokens/**/*.json' -c 'npm run build'"
+  },
+  "devDependencies": {
+    "chokidar-cli": "3.0.0",
+    "rimraf": "6.0.1",
+    "style-dictionary": "4.1.2"
+  },
+  "packageManager": "pnpm@9.9.0"
+}

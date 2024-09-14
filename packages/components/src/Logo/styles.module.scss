@@ -1,0 +1,18 @@
+@use "../styles/common/mixins" as *;
+
+.logo {
+  display: inline-block;
+
+  &:focus {
+    @include focus;
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+
+  &__image {
+    max-inline-size: 100%;
+    block-size: auto;
+  }
+}

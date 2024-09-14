@@ -1,0 +1,54 @@
+{
+  "ali-dev": {
+    "typography": {
+      "font-family": {
+        "$type": "font",
+        "$value": "{ali-dev.typography.font-family.sans}"
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{ali-dev.typography.font-size.md}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{ali-dev.typography.font-weight.regular}"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{ali-dev.typography.line-height.normal}"
+      },
+      "margin-block-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.xs}"
+      },
+      "color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.grey.0}"
+      },
+      "sm": {
+        "font-size": {
+          "$type": "dimension",
+          "$value": "{ali-dev.typography.font-size.sm}"
+        }
+      },
+      "md": {
+        "font-size": {
+          "$type": "dimension",
+          "$value": "{ali-dev.typography.font-size.md}"
+        }
+      },
+      "lg": {
+        "font-size": {
+          "$type": "dimension",
+          "$value": "{ali-dev.typography.font-size.lg}"
+        }
+      },
+      "xl": {
+        "font-size": {
+          "$type": "dimension",
+          "$value": "{ali-dev.typography.font-size.xl}"
+        }
+      }
+    }
+  }
+}

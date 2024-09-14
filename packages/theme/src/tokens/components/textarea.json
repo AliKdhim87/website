@@ -1,0 +1,60 @@
+{
+  "ali-dev": {
+    "textarea": {
+      "border-radius": {
+        "$type": "dimension",
+        "$value": "5"
+      },
+      "padding-block-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.md}"
+      },
+      "padding-block-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.md}"
+      },
+      "padding-inline-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.md}"
+      },
+      "padding-inline-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.md}"
+      },
+      "color": {
+        "$type": "color",
+        "$value": "{ali-dev.text.color-dark}"
+      },
+      "border-width": {
+        "$type": "dimension",
+        "$value": "1px"
+      },
+      "border-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.grey.0}"
+      },
+      "hover": {
+        "border-color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.primary}"
+        }
+      },
+      "error": {
+        "border-color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.red}"
+        }
+      },
+      "disabled": {
+        "border-color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.grey.400}"
+        },
+        "placeholder-color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.grey.400}"
+        }
+      }
+    }
+  }
+}

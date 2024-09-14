@@ -1,0 +1,38 @@
+{
+  "ali-dev": {
+    "page-header": {
+      "padding-block-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.4xl}"
+      },
+      "padding-block-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.4xl}"
+      },
+      "background-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.primary-bg}"
+      },
+      "image": {
+        "outline-color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.secondary-bg}"
+        },
+        "outline-width": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.xs}"
+        },
+        "outline-offset": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.xs}"
+        }
+      },
+      "heading-group": {
+        "row-gap": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.lg}"
+        }
+      }
+    }
+  }
+}

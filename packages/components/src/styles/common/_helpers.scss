@@ -1,0 +1,55 @@
+@use "./mixins" as *;
+
+$text-align: (start, center);
+
+@each $item in $text-align {
+  .text-align-sm--#{$item} {
+    text-align: var(--text-align-sm-#{$item});
+  }
+}
+
+@each $item in $text-align {
+  .text-align-md--#{$item} {
+    text-align: var(--text-align-md-#{$item});
+  }
+}
+
+.display-hidden {
+  @include sr-only;
+}
+
+@include breakpoint("sm") {
+  .display-hidden-sm {
+    @include sr-only;
+  }
+
+  .display-block-sm {
+    display: block;
+
+    @include display;
+  }
+}
+
+@include breakpoint("md") {
+  .display-hidden-md {
+    @include sr-only;
+  }
+
+  .display-block-md {
+    display: block;
+
+    @include display;
+  }
+}
+
+@include breakpoint("lg") {
+  .display-hidden-lg {
+    @include sr-only;
+  }
+
+  .display-block-lg {
+    display: block;
+
+    @include display;
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "ali-dev": {
+    "social-media": {
+      "title-margin-block-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.lg}"
+      },
+      "padding-block-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.lg}"
+      },
+      "padding-block-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.lg}"
+      },
+      "link": {
+        "color": {
+          "$type": "color",
+          "$value": "{ali-dev.text.color-dark}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "36px"
+        },
+        "hover": {
+          "color": {
+            "$type": "color",
+            "$value": "{ali-dev.colors.primary-dark}"
+          }
+        }
+      },
+      "list": {
+        "column-gap": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.xxl}"
+        }
+      }
+    }
+  }
+}

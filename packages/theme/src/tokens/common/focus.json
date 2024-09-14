@@ -1,0 +1,30 @@
+{
+  "ali-dev": {
+    "focus": {
+      "outline-offset": {
+        "$type": "dimension",
+        "$value": "4px"
+      },
+      "outline-width": {
+        "$type": "dimension",
+        "$value": "2px"
+      },
+      "visible-outline-width": {
+        "$type": "dimension",
+        "$value": "3px"
+      },
+      "color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.grey.0}"
+      },
+      "outline-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.primary-dark}"
+      },
+      "background-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.focus-primary}"
+      }
+    }
+  }
+}

@@ -1,0 +1,115 @@
+@use "../styles/common/mixins" as *;
+
+@mixin ali-dev-button-appearance($appearance, $component) {
+  --ali-dev-#{$component}-color: var(
+    --ali-dev-#{$component}-#{$appearance}-color
+  );
+  --ali-dev-#{$component}-background-color: var(
+    --ali-dev-#{$component}-#{$appearance}-background-color
+  );
+  --ali-dev-#{$component}-outline-width: var(
+    --ali-dev-#{$component}-#{$appearance}-outline-width
+  );
+  --ali-dev-#{$component}-outline-color: var(
+    --ali-dev-#{$component}-#{$appearance}-outline-color
+  );
+
+  &:focus {
+    @include focus;
+  }
+
+  &:hover {
+    --ali-dev-#{$component}-background-color: var(
+      --ali-dev-#{$component}-#{$appearance}-hover-background-color
+    );
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+
+  &:disabled {
+    --ali-dev-#{$component}-background-color: var(
+      --ali-dev-#{$component}-disabled-background-color
+    );
+    --ali-dev-#{$component}-color: var(--ali-dev-#{$component}-disabled-color);
+    --ali-dev-#{$component}-outline-color: var(
+      --ali-dev-#{$component}-disabled-outline-color
+    );
+    --ali-dev-#{$component}-cursor: not-allowed;
+  }
+
+  &[aria-busy*="true"] {
+    --ali-dev-#{$component}-background-color: var(
+      --ali-dev-#{$component}-#{$appearance}-hover-background-color
+    );
+  }
+}
+@mixin ali-dev-button($component) {
+  position: relative;
+  padding-inline-start: var(--ali-dev-#{$component}-padding-inline-start);
+  padding-inline-end: var(--ali-dev-#{$component}-padding-inline-end);
+  padding-block-start: var(--ali-dev-#{$component}-padding-block-start);
+  padding-block-end: var(--ali-dev-#{$component}-padding-block-end);
+  border: none;
+  transition-property: background-color;
+  transition-delay: var(--ali-dev-#{$component}-transition-delay);
+  cursor: var(--ali-dev-#{$component}-cursor, pointer);
+  display: flex;
+  width: fit-content;
+  background-color: var(--ali-dev-#{$component}-background-color);
+  color: var(--ali-dev-#{$component}-color);
+  outline-style: solid;
+  outline-width: var(--ali-dev-#{$component}-outline-width, 0);
+  outline-color: var(--ali-dev-#{$component}-outline-color, transparent);
+}
+@mixin ali-dev-button-text($component) {
+  font-size: var(--ali-dev-#{$component}-text-font-size);
+  line-height: var(--ali-dev-#{$component}-text-line-height);
+  font-family: var(--ali-dev-#{$component}-text-font-family);
+}
+
+.ali-dev-button {
+  @include ali-dev-button("button");
+
+  &__text {
+    @include ali-dev-button-text("button");
+
+    &--hide {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+
+  &--primary {
+    @include ali-dev-button-appearance("primary", "button");
+  }
+
+  &--secondary {
+    @include ali-dev-button-appearance("secondary", "button");
+  }
+
+  &--loading::after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    inset: 0;
+    margin: auto;
+    border: 4px solid transparent;
+    border-top-color: var(--colors-grey-0);
+    border-radius: 50%;
+    animation: ali-dev-button-loading-spinner 1s ease infinite;
+    cursor: progress;
+  }
+}
+
+@keyframes ali-dev-button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}

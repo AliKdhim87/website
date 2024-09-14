@@ -1,0 +1,11 @@
+@use "../Button/Button.module.scss" as *;
+@use "../Typography/Typography.module.scss" as *;
+
+.ali-dev-badge {
+  @include ali-dev-button-appearance("secondary", "badge");
+  @include ali-dev-button("badge");
+  @include ali-dev-button-text("badge");
+
+  text-decoration: none;
+  border-radius: var(--border-radius);
+}

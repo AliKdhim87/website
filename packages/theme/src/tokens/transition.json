@@ -1,0 +1,38 @@
+{
+  "ali-dev": {
+    "transition": {
+      "duration": {
+        "fast": {
+          "$type": "time",
+          "$value": "0.1s"
+        },
+        "medium": {
+          "$type": "time",
+          "$value": "0.3s"
+        },
+        "slow": {
+          "$type": "time",
+          "$value": "0.5s"
+        }
+      },
+      "easing": {
+        "linear": {
+          "$type": "cubic-bezier",
+          "$value": "linear"
+        },
+        "ease-in": {
+          "$type": "cubic-bezier",
+          "$value": "ease-in"
+        },
+        "ease-out": {
+          "$type": "cubic-bezier",
+          "$value": "ease-out"
+        },
+        "ease-in-out": {
+          "$type": "cubic-bezier",
+          "$value": "ease-in-out"
+        }
+      }
+    }
+  }
+}

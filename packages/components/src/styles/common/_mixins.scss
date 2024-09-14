@@ -1,0 +1,52 @@
+@use "sass:map";
+
+$breakpoints: (
+  "sm": 600px,
+  "md": 960px,
+  "lg": 1280px,
+);
+
+@mixin breakpoint($name) {
+  @media screen and (min-width: map.get($breakpoints, $name)) {
+    @content;
+  }
+}
+
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}
+
+@mixin display {
+  position: initial;
+  width: initial;
+  height: initial;
+  padding: initial;
+  margin: initial;
+  overflow: initial;
+  clip: initial;
+  white-space: initial; /* added line */
+  border: initial;
+}
+
+@mixin focus-base($outline-width) {
+  color: var(--ali-dev-focus-color);
+  outline-width: $outline-width;
+  outline-style: solid;
+  outline-color: var(--ali-dev-focus-outline-color);
+  outline-offset: var(--ali-dev-focus-outline-offset);
+  background-color: var(--ali-dev-focus-background-color);
+}
+@mixin focus {
+  @include focus-base(var(--ali-dev-focus-outline-width));
+}
+@mixin focus-visible {
+  @include focus-base(var(--ali-dev-focus-visible-outline-width));
+}

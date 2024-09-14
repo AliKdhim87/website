@@ -1,0 +1,20 @@
+{
+  "ali-dev": {
+    "card-list": {
+      "padding-block-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.xxl}"
+      },
+      "padding-block-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.xxl}"
+      },
+      "load-more-link": {
+        "margin-block-start": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.xxl}"
+        }
+      }
+    }
+  }
+}

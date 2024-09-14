@@ -1,0 +1,14 @@
+{
+  "ali-dev": {
+    "header": {
+      "background-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.secondary-bg}"
+      },
+      "color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.grey.0}"
+      }
+    }
+  }
+}

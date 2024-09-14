@@ -1,0 +1,26 @@
+{
+  "ali-dev": {
+    "footer": {
+      "padding-block-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.xl}"
+      },
+      "padding-block-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.xl}"
+      },
+      "background-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.secondary-bg}"
+      },
+      "border-block-start-width": {
+        "$type": "dimension",
+        "$value": "1px"
+      },
+      "border-block-start-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.primary}"
+      }
+    }
+  }
+}

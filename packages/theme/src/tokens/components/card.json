@@ -1,0 +1,50 @@
+{
+  "ali-dev": {
+    "card": {
+      "margin-block-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.sm}"
+      },
+      "background-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.primary-bg}"
+      },
+      "padding-block-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.sm}"
+      },
+      "padding-block-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.sm}"
+      },
+      "padding-inline-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.sm}"
+      },
+      "padding-inline-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.sm}"
+      },
+      "transition-duration": {
+        "$type": "time",
+        "$value": "400ms"
+      },
+      "date": {
+        "color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.grey.300}"
+        },
+        "margin-block-start": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.sm}"
+        }
+      },
+      "body": {
+        "margin-block-start": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.sm}"
+        }
+      }
+    }
+  }
+}

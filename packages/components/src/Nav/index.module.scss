@@ -1,0 +1,122 @@
+@use "../Typography/Typography.module.scss" as *;
+@use "../styles/common/mixins" as *;
+
+@mixin ali-dev-nav__link--hover {
+  --ali-dev-nav-link-color: var(--ali-dev-nav-link-hover-color);
+  --ali-dev-nav-link-border-block-end-width: var(--ali-dev-nav-link-hover-border-block-end-width);
+  --ali-dev-nav-link-border-block-end-color: var(--ali-dev-nav-link-hover-border-block-end-color);
+}
+@mixin ali-dev-nav__link--active {
+  --ali-dev-nav-link-color: var(--ali-dev-nav-link-active-color);
+  --ali-dev-nav-link-border-block-end-color: var(--ali-dev-nav-link-active-border-block-end-color);
+  --ali-dev-nav-link-border-block-end-width: var(--ali-dev-nav-link-active-border-block-end-width);
+
+  &:hover {
+    @include ali-dev-nav__link--hover;
+  }
+}
+
+.ali-dev-nav {
+  --_ali-dev-nav-list-display: none;
+
+  background-color: inherit;
+  color: var(--ali-dev-nav-color);
+  padding-block-start: var(--ali-dev-nav-padding-block-start);
+  padding-block-end: var(--ali-dev-nav-padding-block-end);
+}
+
+.ali-dev-nav__list {
+  display: var(--_ali-dev-nav-list-display);
+  justify-content: var(--_ali-dev-nav-list-justify-content, flex-end);
+  list-style-type: none;
+  padding-inline: 0;
+  padding-block-start: var(--ali-dev-nav-list-padding-block-start);
+  padding-block-end: var(--ali-dev-nav-list-padding-block-end);
+  column-gap: var(--ali-dev-nav-list-column-gap);
+  row-gap: var(--ali-dev-nav-list-row-gap);
+  background-color: var(--ali-dev-nav-list-background-color, transparent);
+  margin: 0;
+  height: 100%;
+  @include breakpoint("sm") {
+    --_ali-dev-nav-list-display: flex;
+  }
+}
+
+.ali-dev-nav__list--mobile {
+  --ali-dev-nav-list-item-padding-block-end: var(--ali-dev-nav-list-mobile-padding-block-end);//20px;
+  --ali-dev-nav-list-padding-block-start: var(--ali-dev-nav-list-mobile-padding-block-start);
+  --ali-dev-nav-list-item-margin-inline-start: 0;
+  --_ali-dev-nav-list-display: flex;
+  --_ali-dev-nav-list-justify-content: flex-start;
+  --ali-dev-nav-list-background-color: var(--ali-dev-nav-list-mobile-background-color);
+  --ali-dev-nav-list-row-gap: var(--ali-dev-nav-list-mobile-row-gap);
+
+  inline-size: var(--ali-dev-nav-list-mobile-inline-size);
+  max-inline-size: 400px;
+  margin: 0;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ali-dev-nav__link {
+  @extend .ali-dev-typography--md;
+
+  text-decoration: none;
+  padding-block-end: var(--ali-dev-nav-link-padding-block-end);
+  font-family: var(--ali-dev-nav-link-font-family);
+  transition: 0.2s ease-in-out;
+  color: var(--ali-dev-nav-link-color);
+  border-block-end: var(--ali-dev-nav-link-border-block-end-width, 0) solid var(--ali-dev-nav-link-border-block-end-color, transparent);
+
+  &:hover {
+    @include ali-dev-nav__link--hover;
+  }
+
+  &:active {
+    @include ali-dev-nav__link--active;
+  }
+
+  &:focus {
+    @include focus;
+  }
+
+  &[aria-current="page"] {
+    @include ali-dev-nav__link--active;
+  }
+}
+
+
+.ali-dev-nav__button {
+  --ali-dev-nav-button-display: flex;
+
+  color: var(--ali-dev-nav-button-color);
+  font-size: var(--ali-dev-nav-button-font-size);
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  display: var(--ali-dev-nav-button-display);
+
+  &:hover {
+    --ali-dev-nav-button-color: var(--ali-dev-nav-button-hover-color);
+  }
+
+  &:focus {
+    @include focus;
+  }
+
+
+  @include breakpoint("sm") {
+    --ali-dev-nav-button-display: none;
+  }
+}
+
+.ali-dev-nav__button--close {
+  margin-inline: auto;
+}
+
+.ali-dev-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: var(--ali-dev-backdrop-background-color);
+  color: var(--ali-dev-backdrop-color);
+}

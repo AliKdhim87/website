@@ -1,0 +1,12 @@
+{
+  "ali-dev": {
+    "helper-text": {
+      "error": {
+        "color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.red}"
+        }
+      }
+    }
+  }
+}

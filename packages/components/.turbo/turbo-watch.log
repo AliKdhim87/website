@@ -1,0 +1,28 @@
+
+
+> @ali-dev/components@0.0.0 watch /Users/ali/Dev/nextjs/website/packages/components
+> rollup --config rollup.config.ts --configPlugin typescript -w --bundleConfigAsCjs
+
+[1mloaded rollup.config.ts with warnings[22m
+[1m[33m(!) [plugin typescript] @rollup/plugin-typescript: outputToFilesystem option is defaulting to true.[39m[22m
+c[4mrollup v4.22.4[24m
+[36mbundles [1m./src/index.tsx[22m → [1mdist/index.cjs.js, dist/index.esm.js[22m...[39m
+┌──────────────────────────────────────┐
+│                                      │
+│   [32m[1mDestination: [22m[39m[33m./dist/index.cjs.js[39m   │
+│   [32m[1mBundle Size: [22m[39m [33m6.71 MB[39m              │
+│   [32m[1mMinified Size: [22m[39m [33m1.12 MB[39m            │
+│   [32m[1mGzipped Size: [22m[39m [33m365.83 KB[39m           │
+│                                      │
+└──────────────────────────────────────┘
+┌──────────────────────────────────────┐
+│                                      │
+│   [32m[1mDestination: [22m[39m[33m./dist/index.esm.js[39m   │
+│   [32m[1mBundle Size: [22m[39m [33m6.71 MB[39m              │
+│   [32m[1mMinified Size: [22m[39m [33m1.12 MB[39m            │
+│   [32m[1mGzipped Size: [22m[39m [33m365.66 KB[39m           │
+│                                      │
+└──────────────────────────────────────┘
+[32mcreated [1mdist/index.cjs.js, dist/index.esm.js[22m in [1m50.9s[22m[39m
+
+[2024-11-22 23:27:23] waiting for changes...

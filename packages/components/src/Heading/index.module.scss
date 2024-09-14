@@ -1,0 +1,63 @@
+@mixin ali-dev-heading-dimension($level) {
+  margin-block-start: var(--ali-dev-heading-#{$level}-margin-block-start);
+  margin-block-end: var(--ali-dev-heading-#{$level}-margin-block-end);
+}
+
+@mixin ali-dev-heading($level) {
+  font-family: var(--ali-dev-heading-#{$level}-font-family);
+  color: var(--ali-dev-heading-#{$level}-color);
+  font-size: var(--ali-dev-heading-#{$level}-font-size);
+  line-height: var(--ali-dev-heading-#{$level}-line-height);
+  font-weight: var(--ali-dev-heading-#{$level}-font-weight);
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.ali-dev-heading--h1 {
+  @include ali-dev-heading("h1");
+}
+
+.ali-dev-heading--h1-dimension {
+  @include ali-dev-heading-dimension("h1");
+}
+
+.ali-dev-heading--h2 {
+  @include ali-dev-heading("h2");
+}
+
+.ali-dev-heading--h2-dimension {
+  @include ali-dev-heading-dimension("h2");
+}
+
+.ali-dev-heading--h3 {
+  @include ali-dev-heading("h3");
+  @include ali-dev-heading-dimension("h3");
+}
+
+.ali-dev-heading--h3-dimension {
+  @include ali-dev-heading-dimension("h3");
+}
+
+.ali-dev-heading--h4 {
+  @include ali-dev-heading("h4");
+}
+
+.ali-dev-heading--h4-dimension {
+  @include ali-dev-heading-dimension("h4");
+}
+
+.ali-dev-heading--h5 {
+  @include ali-dev-heading("h5");
+}
+
+.ali-dev-heading--h5-dimension {
+  @include ali-dev-heading-dimension("h5");
+}
+
+.ali-dev-heading--h6 {
+  @include ali-dev-heading("h6");
+}
+
+.ali-dev-heading--h6-dimension {
+  @include ali-dev-heading-dimension("h6");
+}
