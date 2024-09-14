@@ -1,0 +1,43 @@
+@use "../styles/common/mixins" as *;
+
+@mixin container {
+  position: relative;
+  margin-inline: auto;
+  width: 100%;
+  padding-inline: var(--container-padding-inline, 15px); // Default padding
+  max-inline-size: var(
+    --_container-max-inline-size,
+    100%
+  ); // Make the container fluid by default
+
+  @include breakpoint("sm") {
+    --_container-max-inline-size: 540px;
+  }
+
+  @media screen and (width >= 768px) {
+    --_container-max-inline-size: 720px; // Adjust max-width for tablets
+  }
+
+  @include breakpoint("md") {
+    --_container-max-inline-size: 960px; // Adjust max-width for small desktops
+  }
+
+  @include breakpoint("lg") {
+    --_container-max-inline-size: 1200px; // Adjust max-width for large desktops
+  }
+}
+
+@mixin container-fluid {
+  padding-right: var(--container-padding-right, 0);
+  padding-left: var(--container-padding-left, 0);
+
+  --_container-max-inline-size: 100%; // Ensure the container remains fluid
+}
+
+.container {
+  @include container;
+}
+
+.container--fluid {
+  @include container-fluid;
+}

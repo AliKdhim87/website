@@ -1,0 +1,18 @@
+{
+  "ali-dev": {
+    "tags": {
+      "padding-block-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.sm}"
+      },
+      "padding-block-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.sm}"
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.md}"
+      }
+    }
+  }
+}

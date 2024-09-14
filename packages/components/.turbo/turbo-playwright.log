@@ -1,0 +1,21 @@
+
+> @ali-dev/components@0.0.0 playwright /Users/ali/Dev/nextjs/website/packages/components
+> playwright test
+
+Error: Cannot find module '/Users/ali/Dev/nextjs/website/node_modules/next/link' imported from /Users/ali/Dev/nextjs/website/packages/components/src/Anchor/anchor.test.tsx
+Did you mean to import nextjs/website/node_modules/.pnpm/next@14.2.1_@babel+core@7.24.6_@playwright+test@1.45.3_react-dom@18.2.0_react@18.2.0__react@18.2.0_sass@1.77.4/node_modules/next/link.js?
+Error: Cannot find module '/Users/ali/Dev/nextjs/website/packages/components/node_modules/classnames/bind' imported from /Users/ali/Dev/nextjs/website/packages/components/src/Badge/index.tsx
+Did you mean to import classnames@2.3.2/node_modules/classnames/bind.js?
+Error: Cannot find module '/Users/ali/Dev/nextjs/website/packages/components/node_modules/classnames/bind' imported from /Users/ali/Dev/nextjs/website/packages/components/src/Button/index.tsx
+Did you mean to import classnames@2.3.2/node_modules/classnames/bind.js?
+Error: Cannot find module '/Users/ali/Dev/nextjs/website/packages/components/node_modules/classnames/bind' imported from /Users/ali/Dev/nextjs/website/packages/components/src/Card/index.tsx
+Did you mean to import classnames@2.3.2/node_modules/classnames/bind.js?
+Error: Cannot find module '/Users/ali/Dev/nextjs/website/packages/components/node_modules/classnames/bind' imported from /Users/ali/Dev/nextjs/website/packages/components/src/CTA/index.tsx
+Did you mean to import classnames@2.3.2/node_modules/classnames/bind.js?
+Error: Cannot find module '/Users/ali/Dev/nextjs/website/packages/components/node_modules/classnames/bind' imported from /Users/ali/Dev/nextjs/website/packages/components/src/Details/index.tsx
+Did you mean to import classnames@2.3.2/node_modules/classnames/bind.js?
+Error: Cannot find module '/Users/ali/Dev/nextjs/website/packages/components/node_modules/classnames/bind' imported from /Users/ali/Dev/nextjs/website/packages/components/src/Heading/index.tsx
+Did you mean to import classnames@2.3.2/node_modules/classnames/bind.js?
+Error: No tests found
+
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m

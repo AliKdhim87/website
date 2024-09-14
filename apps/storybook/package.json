@@ -1,0 +1,45 @@
+{
+  "name": "@ali-dev/storybook",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6006 --config-dir src/storybook-config",
+    "build": "storybook build --config-dir src/storybook-config"
+  },
+  "dependencies": {
+    "@ali-dev/theme": "workspace:*",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@ali-dev/components": "workspace:*",
+    "@chromatic-com/storybook": "2.0.2",
+    "@storybook/addon-actions": "8.3.4",
+    "@storybook/addon-backgrounds": "8.3.4",
+    "@storybook/addon-essentials": "8.3.4",
+    "@storybook/addon-interactions": "8.3.4",
+    "@storybook/addon-links": "8.3.4",
+    "@storybook/addon-onboarding": "8.3.4",
+    "@storybook/blocks": "8.3.4",
+    "@storybook/builder-vite": "8.3.4",
+    "@storybook/nextjs": "8.3.4",
+    "@storybook/preset-scss": "1.0.3",
+    "@storybook/react": "8.3.4",
+    "@storybook/test": "8.3.4",
+    "@types/node": "20.14.2",
+    "@types/react": "18.2.12",
+    "@types/react-dom": "18.2.5",
+    "@vitejs/plugin-react": "4.3.2",
+    "rimraf": "6.0.1",
+    "storybook": "8.3.4",
+    "storybook-addon-pseudo-states": "4.0.2",
+    "style-loader": "4.0.0",
+    "ts-node": "10.9.2",
+    "typescript": "5.4.5",
+    "typescript-eslint": "7.13.1",
+    "vite": "5.2.12",
+    "vite-plugin-svgr": "4.2.0"
+  },
+  "packageManager": "pnpm@9.9.0"
+}

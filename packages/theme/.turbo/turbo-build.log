@@ -1,0 +1,11 @@
+
+
+> @ali-dev/theme@0.0.0 build /Users/ali/Dev/nextjs/website/packages/theme
+> style-dictionary build --verbose
+
+
+web
+[1m[32m✔︎ build/web/variables.css[39m[22m
+
+scss
+[1m[32m✔︎ build/scss/_variables.scss[39m[22m

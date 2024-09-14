@@ -1,0 +1,64 @@
+{
+  "ali-dev": {
+    "badge": {
+      "color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.grey.100}"
+      },
+      "padding-inline-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.xl}"
+      },
+      "padding-inline-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.xl}"
+      },
+      "padding-block-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.md}"
+      },
+      "padding-block-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.md}"
+      },
+      "transition": {
+        "$type": "time",
+        "$value": "{ali-dev.transition.duration.slow}"
+      },
+      "secondary": {
+        "color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.grey.0}"
+        },
+        "outline-color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.secondary}"
+        },
+        "outline-width": {
+          "$type": "dimension",
+          "$value": "1px"
+        },
+        "hover": {
+          "background-color": {
+            "$type": "color",
+            "$value": "{ali-dev.colors.secondary}"
+          }
+        }
+      },
+      "text": {
+        "font-size": {
+          "$type": "dimension",
+          "$value": "{ali-dev.typography.font-size.md}"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "{ali-dev.typography.line-height.tight}"
+        },
+        "font-family": {
+          "$type": "font-family",
+          "$value": "{ali-dev.typography.font-family.sans}"
+        }
+      }
+    }
+  }
+}

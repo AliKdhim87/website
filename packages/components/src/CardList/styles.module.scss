@@ -1,0 +1,29 @@
+@use "../Anchor/Anchor.module.scss" as *;
+@use "../Container/Container.module.scss" as *;
+@use "../styles/common/mixins" as *;
+
+.ali-dev-card-list {
+  @include container;
+
+  padding-block-start: var(--ali-dev-card-list-padding-block-start);
+  padding-block-end: var(--ali-dev-card-list-padding-block-end);
+
+  &__item {
+    text-decoration: none;
+    display: block;
+
+    &:focus {
+      @include focus;
+    }
+
+    &:focus-visible {
+      @include focus-visible;
+    }
+  }
+
+  &__load-more-link {
+    margin-block-start: var(
+      --ali-dev-card-list-load-more-link-margin-block-start
+    );
+  }
+}

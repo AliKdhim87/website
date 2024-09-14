@@ -1,0 +1,30 @@
+{
+  "ali-dev": {
+    "label": {
+      "font-family": {
+        "$type": "font",
+        "$value": "{ali-dev.typography.font-family.sans}"
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{ali-dev.typography.font-size.md}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{ali-dev.typography.font-weight.regular}"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{ali-dev.typography.line-height.normal}"
+      },
+      "color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.grey.0}"
+      },
+      "column-gap": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.sm}"
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+
+> @ali-dev/components@0.0.0 type-check /Users/ali/Dev/nextjs/website/packages/components
+> tsc -p tsconfig.json --noEmit
+

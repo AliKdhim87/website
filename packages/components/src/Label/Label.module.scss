@@ -1,0 +1,9 @@
+@use "../Typography/Typography.module.scss" as *;
+
+.ali-dev-label {
+  @include ali-dev-typography("label");
+
+  display: flex;
+  align-items: center;
+  column-gap: var(--ali-dev-label-column-gap);
+}

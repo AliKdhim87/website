@@ -10,11 +10,13 @@
 
 # next.js
 /.next/
+apps/website/.next
 /out/
 
 # production
 /build
-
+packages/theme/build
+apps/storybook/storybook-static/
 # misc
 .DS_Store
 *.pem
@@ -54,3 +56,6 @@ sitemap.xml
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+dist
+.rollup.cache
+node_modules

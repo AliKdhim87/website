@@ -1,0 +1,10 @@
+{
+  "ali-dev": {
+    "form-group": {
+      "row-gap": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.md}"
+      }
+    }
+  }
+}

@@ -1,0 +1,148 @@
+
+
+> @ali-dev/website@0.0.0 prebuild /Users/ali/Dev/nextjs/website/apps/website
+> pnpm codegen
+
+
+> @ali-dev/website@0.0.0 codegen /Users/ali/Dev/nextjs/website/apps/website
+> graphql-codegen --config src/codegen.ts
+
+[?25l[2m◼[22m Parse Configuration
+[?25l[2K[1A[2K[G[2m◼[22m Parse Configuration
+[2m◼[22m Generate outputs
+[?25l[?25l[2K[1A[2K[1A[2K[G[93m⠋[39m Parse Configuration
+[2m◼[22m Generate outputs
+[?25l[?25l[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[2m◼[22m Generate outputs
+[?25l[?25l[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[93m⠋[39m Generate outputs
+[?25l[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+[?25l[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+  [2m◼[22m Generate to ./src/generated/
+[?25l[?25l[2K[1A[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+  [93m⠋[39m Generate to ./src/generated/
+[?25l[2K[1A[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+  [33m❯[39m Generate to ./src/generated/
+[?25l[2K[1A[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+  [33m❯[39m Generate to ./src/generated/
+    [2m◼[22m Load GraphQL schemas
+[?25l[2K[1A[2K[1A[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+  [33m❯[39m Generate to ./src/generated/
+    [2m◼[22m Load GraphQL schemas
+    [2m◼[22m Load GraphQL documents
+[?25l[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+  [33m❯[39m Generate to ./src/generated/
+    [2m◼[22m Load GraphQL schemas
+    [2m◼[22m Load GraphQL documents
+    [2m◼[22m Generate
+[?25l[?25l[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+  [33m❯[39m Generate to ./src/generated/
+    [93m⠋[39m Load GraphQL schemas
+    [2m◼[22m Load GraphQL documents
+    [2m◼[22m Generate
+[?25l[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+  [33m❯[39m Generate to ./src/generated/
+    [93m⠙[39m Load GraphQL schemas
+    [2m◼[22m Load GraphQL documents
+    [2m◼[22m Generate
+[?25l[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+  [33m❯[39m Generate to ./src/generated/
+    [93m⠹[39m Load GraphQL schemas
+    [2m◼[22m Load GraphQL documents
+    [2m◼[22m Generate
+[?25l[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+  [33m❯[39m Generate to ./src/generated/
+    [93m⠸[39m Load GraphQL schemas
+    [2m◼[22m Load GraphQL documents
+    [2m◼[22m Generate
+[?25l[?25l[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+  [33m❯[39m Generate to ./src/generated/
+    [32m✔[39m Load GraphQL schemas
+    [2m◼[22m Load GraphQL documents
+    [2m◼[22m Generate
+[?25l[?25l[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+  [33m❯[39m Generate to ./src/generated/
+    [32m✔[39m Load GraphQL schemas
+    [93m⠸[39m Load GraphQL documents
+    [2m◼[22m Generate
+[?25l[?25l[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+  [33m❯[39m Generate to ./src/generated/
+    [32m✔[39m Load GraphQL schemas
+    [32m✔[39m Load GraphQL documents
+    [2m◼[22m Generate
+[?25l[?25l[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+  [33m❯[39m Generate to ./src/generated/
+    [32m✔[39m Load GraphQL schemas
+    [32m✔[39m Load GraphQL documents
+    [93m⠸[39m Generate
+[?25l[?25l[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+  [33m❯[39m Generate to ./src/generated/
+    [32m✔[39m Load GraphQL schemas
+    [32m✔[39m Load GraphQL documents
+    [32m✔[39m Generate
+[?25l[?25l[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[33m❯[39m Generate outputs
+  [32m✔[39m Generate to ./src/generated/
+[?25l[?25l[2K[1A[2K[1A[2K[1A[2K[G[32m✔[39m Parse Configuration
+[32m✔[39m Generate outputs
+[2K[1A[2K[1A[2K[G[?25h[32m✔[39m Parse Configuration
+[32m✔[39m Generate outputs
+[?25h
+> @ali-dev/website@0.0.0 build /Users/ali/Dev/nextjs/website/apps/website
+> next build
+
+  [1m[38;2;173;127;168m▲ Next.js 14.2.1[39m[22m
+  - Environments: .env
+
+ [37m[1m [22m[39m Creating an optimized production build ...
+ [32m[1m✓[22m[39m Compiled successfully
+[?25l [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Linting and checking validity of types     [32m[1m✓[22m[39m Linting and checking validity of types 
+[?25l [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m..[39m[2K[1G[?25h [37m[1m [22m[39m Collecting page data     [32m[1m✓[22m[39m Collecting page data 
+[?25l [37m[1m [22m[39m Generating static pages (0/23)  [36m[    ][39m[2K[1G [37m[1m [22m[39m Generating static pages (9/23)  [36m[=   ][39m[2K[1G[?25h [32m[1m✓[22m[39m Generating static pages (23/23)
+[?25l [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[?25l [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G[?25h [37m[1m [22m[39m Collecting build traces     [32m[1m✓[22m[39m Collecting build traces 
+[2K[1G[?25h [37m[1m [22m[39m Finalizing page optimization     [32m[1m✓[22m[39m Finalizing page optimization 
+
+[4mRoute (app)[24m                                                                              [4mSize[24m     [4mFirst Load JS[24m
+┌ ○ /                                                                                    1.72 kB         [37m[1m455 kB[22m[39m
+├ ○ /_not-found                                                                          138 B            [37m[1m87 kB[22m[39m
+├ ○ /about                                                                               192 B           [37m[1m460 kB[22m[39m
+├ ƒ /api/exit-preview                                                                    0 B                [37m[1m0 B[22m[39m
+├ ƒ /api/preview                                                                         0 B                [37m[1m0 B[22m[39m
+├ ƒ /api/revalidate                                                                      0 B                [37m[1m0 B[22m[39m
+├ ○ /blog                                                                                1.72 kB         [37m[1m455 kB[22m[39m
+├ ● /blog/[slug]                                                                         192 B           [37m[1m460 kB[22m[39m
+├   ├ /blog/how-to-send-emails-from-nextjs-or-reactjs-without-the-backend-using-emailjs
+├   ├ /blog/build-icon-set-by-using-svgo-optimizer-nodejs-tool
+├   ├ /blog/protect-your-website-how-to-stop-hackers-with-simple-html-cleaning
+├   └ [+8 more paths]
+├ ● /blog/categories/[id]                                                                1.72 kB         [37m[1m455 kB[22m[39m
+├ ○ /contact                                                                             16.1 kB         [37m[1m470 kB[22m[39m
+├ ○ /robots.txt                                                                          0 B                [37m[1m0 B[22m[39m
+└ ○ /sitemap.xml                                                                         0 B                [37m[1m0 B[22m[39m
++ First Load JS shared by all                                                            [37m[1m86.9 kB[22m[39m
+  ├ chunks/757-9619561f505ce2e8.js                                                       31.4 kB
+  ├ chunks/fa1448aa-a5623beacb2a3ee0.js                                                  53.6 kB
+  └ other shared chunks (total)                                                          1.92 kB
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses [36mgetStaticProps[39m)
+ƒ  (Dynamic)  server-rendered on demand
+
+[?25h

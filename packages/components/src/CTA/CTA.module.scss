@@ -1,0 +1,16 @@
+@use "../Button/Button.module.scss" as *;
+
+.ali-dev-cta {
+  @include ali-dev-button("cta");
+  @include ali-dev-button-text("cta");
+
+  text-decoration: none;
+}
+
+.ali-dev-cta--primary {
+  @include ali-dev-button-appearance("primary", "cta");
+}
+
+.ali-dev-cta--secondary {
+  @include ali-dev-button-appearance("secondary", "cta");
+}

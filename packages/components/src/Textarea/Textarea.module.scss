@@ -1,0 +1,46 @@
+@use "../Typography/Typography.module.scss" as *;
+@use "../styles/common/mixins" as *;
+
+.ali-dev-textarea {
+  @extend .ali-dev-typography--md;
+
+  border-style: solid;
+  border-color: var(--ali-dev-textarea-border-color);
+  border-width: var(--ali-dev-textarea-border-width);
+  padding-inline-start: var(--ali-dev-textarea-padding-inline-start);
+  padding-inline-end: var(--ali-dev-textarea-padding-inline-end);
+  padding-block-start: var(--ali-dev-textarea-padding-block-start);
+  padding-block-end: var(--ali-dev-textarea-padding-block-end);
+  border-radius: var(--ali-dev-textarea-border-border-radius);
+  outline: none;
+  background-color: transparent;
+  color: var(--ali-dev-textarea-color);
+
+  &::placeholder {
+    @extend .ali-dev-typography--md;
+
+    color: var(--ali-dev-textarea-placeholder-color, inherit);
+  }
+
+  &:hover {
+    --ali-dev-textarea-border-color: var(--ali-dev-textarea-hover-border-color);
+  }
+
+  &:focus {
+    @include focus;
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+
+  &:disabled {
+    --ali-dev-textarea-border-color: var(--textarea-border-color-disabled);
+    --ali-dev-textarea-placeholder-color: var(--textarea-placeholder-disabled-color);
+  }
+
+  &--error {
+    --ali-dev-textarea-border-color: var(--textarea-border-error-color);
+    --ali-dev-textarea-border-color-hover: var(--textarea-border-error-color);
+  }
+}

@@ -1,0 +1,156 @@
+@use "../styles/common/mixins" as *;
+
+$justify-content: (flex-start, flex-end, center, space-between);
+$align-items: (flex-start, flex-end, center);
+$flex-direction: ("row", "row-reverse", "column", "column-reverse");
+$spacing: (
+  "sm": 8px,
+  "md": 16px,
+  "lg": 24px,
+);
+
+.ali-dev-grid {
+  &__container {
+    --ali-dev-grid-column-gap: 0px;
+    --ali-dev-grid-row-gap: 0px;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: var(--_ali-dev-grid-container-flex-direction);
+    gap: var(--ali-dev-grid-row-gap) var(--ali-dev-grid-column-gap);
+  }
+
+  @each $value in $flex-direction {
+    &--flex-direction-#{$value} {
+      --_ali-dev-grid-container-flex-direction: #{$value};
+    }
+  }
+
+  @include breakpoint("sm") {
+    @each $value in $flex-direction {
+      &--flex-direction-sm-#{$value} {
+        --_ali-dev-grid-container-flex-direction: #{$value};
+      }
+    }
+  }
+
+  @include breakpoint("md") {
+    @each $value in $flex-direction {
+      &--flex-direction-sm-#{$value} {
+        --_ali-dev-grid-container-flex-direction: initial;
+      }
+      &--flex-direction-md-#{$value} {
+        --_ali-dev-grid-container-flex-direction: #{$value};
+      }
+    }
+  }
+
+  @include breakpoint("lg") {
+    @each $value in $flex-direction {
+      &--flex-direction-md-#{$value} {
+        --_ali-dev-grid-container-flex-direction: initial;
+      }
+      &--flex-direction-lg-#{$value} {
+        --_ali-dev-grid-container-flex-direction: #{$value};
+      }
+    }
+  }
+
+  &__item {
+    inline-size: calc(
+      (var(--_-columns, 12) / 12 * 100%) - var(--ali-dev-grid-column-gap)
+    );
+    flex: 0 0 auto;
+    display: var(--_ali-dev-grid-item-only-on-display);
+
+    @for $i from 1 to 13 {
+      &--xs-#{$i} {
+        --_-columns: #{$i};
+      }
+    }
+
+    &--only-on-xs {
+      --_ali-dev-grid-item-only-on-display: none;
+    }
+
+    &--only-on-md {
+      --_ali-dev-grid-item-only-on-display: none;
+    }
+
+    &--only-on-sm {
+      --_ali-dev-grid-item-only-on-display: none;
+    }
+
+    &--only-on-lg {
+      --_ali-dev-grid-item-only-on-display: none;
+    }
+
+    @include breakpoint("sm") {
+      &--only-on-sm {
+        --_ali-dev-grid-item-only-on-display: block;
+      }
+      @for $i from 1 to 13 {
+        &--sm-#{$i} {
+          --_-columns: #{$i};
+        }
+      }
+    }
+
+    @include breakpoint("md") {
+      &--only-on-md {
+        --_ali-dev-grid-item-only-on-display: block;
+      }
+      @for $i from 1 to 13 {
+        &--md-#{$i} {
+          --_-columns: #{$i};
+        }
+      }
+    }
+
+    @include breakpoint("lg") {
+      &--only-on-lg {
+        --_ali-dev-grid-item-only-on-display: block;
+      }
+      @for $i from 1 to 13 {
+        &--lg-#{$i} {
+          --_-columns: #{$i};
+        }
+      }
+    }
+  }
+
+  @each $name, $value in $spacing {
+    &--row-gap-#{$name} {
+      --ali-dev-grid-row-gap: #{$value};
+    }
+  }
+
+  @each $name, $value in $spacing {
+    &--column-gap-#{$name} {
+      --ali-dev-grid-column-gap: #{$value};
+    }
+  }
+
+  @each $value in $justify-content {
+    &--justifyContent-#{$value} {
+      display: flex;
+      justify-content: $value;
+    }
+  }
+
+  @each $value in $align-items {
+    &--alignItems-#{$value} {
+      display: flex;
+      align-items: $value;
+    }
+  }
+
+  @include breakpoint("sm") {
+    @each $value in $justify-content {
+      &--justifyContent-sm-#{$value} {
+        display: flex;
+        justify-content: $value;
+      }
+    }
+  }
+}

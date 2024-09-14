@@ -1,0 +1,26 @@
+.ali-dev-card {
+  margin-block-start: var(--ali-dev-card-margin-block-start);
+  background-color: var(--ali-dev-card-background-color);
+  padding-block-start: var(--ali-dev-card-padding-block-start);
+  padding-block-end: var(--ali-dev-card-padding-block-end);
+  padding-inline-start: var(--ali-dev-card-padding-inline-start);
+  padding-inline-end: var(--ali-dev-card-padding-inline-end);
+  transition-property: scale;
+  transition-duration: var(--ali-dev-card-transition-duration);
+
+  &:hover {
+    opacity: 0.9;
+    scale: 1.01;
+  }
+
+  &__date {
+    --ali-dev-typography-color: var(--ali-dev-card-date-color);
+
+    margin-block-start: var(--ali-dev-card-date-margin-block-start);
+    display: grid;
+  }
+
+  &__body {
+    margin-block-start: var(--ali-dev-card-body-margin-block-start);
+  }
+}

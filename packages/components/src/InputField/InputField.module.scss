@@ -1,0 +1,48 @@
+@use "../Typography/Typography.module.scss" as *;
+@use "../styles/common/mixins" as *;
+
+.ali-dev-input-field {
+  @extend .ali-dev-typography--md;
+
+  border-style: solid;
+  border-color: var(--ali-dev-input-field-border-color);
+  border-width: var(--ali-dev-input-field-border-width);
+  padding-inline-start: var(--ali-dev-input-field-padding-inline-start);
+  padding-inline-end: var(--ali-dev-input-field-padding-inline-end);
+  padding-block-start: var(--ali-dev-input-field-padding-block-start);
+  padding-block-end: var(--ali-dev-input-field-padding-block-end);
+  border-radius: var(--ali-dev-input-field-border-border-radius);
+  outline: none;
+  background-color: transparent;
+  color: var(--ali-dev-input-field-color);
+
+  &::placeholder {
+    @extend .ali-dev-typography--md;
+
+    color: var(--ali-dev-input-field-placeholder-color, inherit);
+  }
+
+  &:hover {
+    --ali-dev-input-field-border-color: var(--ali-dev-input-field-hover-border-color);
+  }
+
+  &:focus {
+    @include focus;
+  }
+
+  &:focus-visible {
+    @include focus-visible;
+  }
+
+  &:disabled {
+    --ali-dev-input-field-border-color: var(--ali-dev-input-field-disabled-border-color);
+    --ali-dev-input-field-placeholder-color: var(
+      --ali-dev-input-field-disabled-placeholder-color
+    );
+  }
+
+  &--error {
+    --ali-dev-input-field-border-color: var(--ali-dev-input-field-border-error-color);
+    --ali-dev-input-field-border-color-hover: var(--ali-dev-input-field-border-error-color);
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "ali-dev": {
+    "body": {
+      "color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.grey.0}"
+      },
+      "background-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.secondary-bg}"
+      },
+      "font-size": {
+        "$type": "size",
+        "$value": "{ali-dev.typography.font-size.md}"
+      },
+      "font-family": {
+        "$type": "font",
+        "$value": "{ali-dev.typography.font-family.sans}"
+      }
+    }
+  }
+}
