@@ -310,6 +310,17 @@ export const GET_ALL_CATEGORY_ID = gql(`
   query getAllCategoryId {
     allCategory {
       _id
+      title
+    }
+  }
+`);
+
+export const GET_CATEGORY_BY_ID = gql(`
+  query getCategoryByID($id: ID!) {
+    Category(id: $id) {
+      _id
+      title
+      description
     }
   }
 `);
