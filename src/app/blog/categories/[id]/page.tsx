@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: CategoriesPageProps): Promise
     title: `${Category?.title} Articles`,
     description: `Find all articles related to ${Category?.title} on our blog.`,
     alternates: {
-      canonical: `/blog/category/${params.id}`,
+      canonical: `/blog/categories/${params.id}`,
     },
   };
 }
