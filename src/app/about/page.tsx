@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const { openGraph } = allRoute[0];
   const { schemaOrg } = allSiteSettings[0];
 
-  const slug = 'contact';
+  const slug = 'about';
   return {
     title: openGraph?.title,
     description: openGraph?.description,
