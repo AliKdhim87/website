@@ -36,7 +36,9 @@
 
   &:disabled {
     --ali-dev-textarea-border-color: var(--textarea-border-color-disabled);
-    --ali-dev-textarea-placeholder-color: var(--textarea-placeholder-disabled-color);
+    --ali-dev-textarea-placeholder-color: var(
+      --textarea-placeholder-disabled-color
+    );
   }
 
   &--error {

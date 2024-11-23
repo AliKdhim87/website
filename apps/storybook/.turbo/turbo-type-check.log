@@ -1,5 +1,0 @@
-
-
-> @ali-dev/storybook@0.0.0 type-check /Users/ali/Dev/nextjs/website/apps/storybook
-> tsc -p tsconfig.json --noEmit
-

@@ -1,0 +1,18 @@
+{
+  "ali-dev": {
+    "form": {
+      "padding-block-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.lg}"
+      },
+      "padding-block-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.lg}"
+      },
+      "row-gap": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.md}"
+      }
+    }
+  }
+}

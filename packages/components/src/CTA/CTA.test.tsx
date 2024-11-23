@@ -10,8 +10,8 @@ describe('CTA', () => {
 
     const link = screen.getByRole('link');
 
-    expect(link).toHaveClass('cta');
-    expect(link).toHaveClass('cta--primary');
+    expect(link).toHaveClass('ali-dev-cta');
+    expect(link).toHaveClass('ali-dev-cta--primary');
     expect(link).toHaveTextContent('Click me');
   });
   it('renders a secondary link with the correct class name and children', () => {
@@ -23,8 +23,8 @@ describe('CTA', () => {
 
     const link = screen.getByRole('link');
 
-    expect(link).toHaveClass('cta');
-    expect(link).toHaveClass('cta--secondary');
+    expect(link).toHaveClass('ali-dev-cta');
+    expect(link).toHaveClass('ali-dev-cta--secondary');
     expect(link).toHaveTextContent('Click me');
   });
   it('renders a link with custom class name and children', () => {
@@ -36,8 +36,8 @@ describe('CTA', () => {
 
     const link = screen.getByRole('link');
 
-    expect(link).toHaveClass('cta');
-    expect(link).toHaveClass('cta--primary');
+    expect(link).toHaveClass('ali-dev-cta');
+    expect(link).toHaveClass('ali-dev-cta--primary');
     expect(link).toHaveClass('custom-class');
     expect(link).toHaveTextContent('Click me');
   });

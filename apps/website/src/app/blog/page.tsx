@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 
-import { CardList, CardListItem } from '@/components';
-import { PageHeader } from '@/components/slices';
+import { CardList, CardListItem, PageHeader } from '@/components';
 import type { GetBlogPageQuery } from '@/graphql-types';
 import { GET_BLOG_PAGE } from '@/queries/index.graphql';
 import { uuidv4, fetchData, sanityGraphqlAPIUrl } from '@/utils';

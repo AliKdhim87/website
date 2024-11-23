@@ -17,3 +17,4 @@ next-env.d.ts
 CHANGELOG.md
 /lib
 /src/generated
+generated/

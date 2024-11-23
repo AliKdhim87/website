@@ -1,6 +1,0 @@
-
-
-> @ali-dev/theme@0.0.0 watch /Users/ali/Dev/nextjs/website/packages/theme
-> chokidar 'src/tokens/**/*.json' -c 'npm run build'
-
-Watching "src/tokens/**/*.json" ..

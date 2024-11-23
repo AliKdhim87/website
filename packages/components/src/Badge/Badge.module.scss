@@ -7,5 +7,5 @@
   @include ali-dev-button-text("badge");
 
   text-decoration: none;
-  border-radius: var(--border-radius);
+  border-radius: var(--ali-dev-badge-border-radius);
 }

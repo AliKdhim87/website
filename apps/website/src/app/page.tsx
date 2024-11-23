@@ -6,10 +6,10 @@ import {
   CardListItem,
   CardListLoadMoreLink,
   CardListTitle,
+  PageHeader,
   SocialMedia,
   type SocialMediaListType,
 } from '@/components';
-import { PageHeader } from '@/components/slices';
 import type { GetHomePageQuery } from '@/graphql-types';
 import { GET_HOME_PAGE } from '@/queries/index.graphql';
 import { fetchData, sanityGraphqlAPIUrl } from '@/utils';

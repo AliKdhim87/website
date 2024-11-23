@@ -30,13 +30,14 @@ describe('Heading', () => {
     expect(screen.getByText('Heading').tagName).toBe('H6');
   });
   it('renders a heading with a different variant', () => {
-    render(
+    const { container } = render(
       <Heading level={1} variant="h2">
         Heading
       </Heading>,
     );
-    expect(screen.getByText('Heading')).toBeInTheDocument();
-    expect(screen.getByText('Heading')).toHaveClass('heading--2');
+    const heading = container.querySelector('h1');
+    expect(heading).toBeInTheDocument();
+    expect(heading).toHaveClass('ali-dev-heading--h2');
   });
   it('renders a heading with a different class name', () => {
     render(
@@ -45,8 +46,9 @@ describe('Heading', () => {
       </Heading>,
     );
     expect(screen.getByText('Heading')).toBeInTheDocument();
-    expect(screen.getByText('Heading')).toHaveClass('custom-class');
-    expect(screen.getByText('Heading')).toHaveClass('heading--1');
+    expect(screen.getByText('Heading').classList).toContain('custom-class');
+    expect(screen.getByText('Heading').classList).toContain('ali-dev-heading--h1');
+    expect(screen.getByText('Heading').classList).toContain('ali-dev-heading--h1-dimension');
   });
   it('renders a heading with additional props', () => {
     render(

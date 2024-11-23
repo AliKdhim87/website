@@ -1,4 +1,5 @@
 import { createRef } from 'react';
+import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
@@ -14,7 +15,7 @@ describe('Badge', () => {
   it('should render badge CSS class', () => {
     const { container } = render(<Badge href="/">Badge</Badge>);
     const badgeElement = container.querySelector(':only-child');
-    expect(badgeElement).toHaveClass('badge');
+    expect(badgeElement).toHaveClass('ali-dev-badge');
   });
   it('should render a custom className', () => {
     const { container } = render(
@@ -24,7 +25,7 @@ describe('Badge', () => {
     );
     const badgeElement = container.querySelector(':only-child');
     expect(badgeElement).toHaveClass('custom-class');
-    expect(badgeElement).toHaveClass('badge');
+    expect(badgeElement).toHaveClass('ali-dev-badge');
   });
   it('renders a link with a forwarded ref', () => {
     const ref = createRef<HTMLAnchorElement>();

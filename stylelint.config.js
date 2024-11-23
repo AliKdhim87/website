@@ -13,7 +13,15 @@ export default {
     'declaration-block-no-redundant-longhand-properties': [
       true,
       {
-        ignoreShorthands: ['flex-flow', 'outline', 'padding-block', 'padding-inline', 'margin-block', 'margin-inline'],
+        ignoreShorthands: [
+          'flex-flow',
+          'outline',
+          'padding-block',
+          'padding-inline',
+          'margin-block',
+          'margin-inline',
+          'gap',
+        ],
       },
     ],
     'no-invalid-double-slash-comments': null,

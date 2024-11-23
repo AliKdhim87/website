@@ -1,0 +1,34 @@
+{
+  "ali-dev": {
+    "blockquote": {
+      "margin-inline-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.lg}"
+      },
+      "padding-inline-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.md}"
+      },
+      "padding-inline-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.md}"
+      },
+      "padding-block-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.md}"
+      },
+      "padding-block-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.md}"
+      },
+      "border-left-width": {
+        "$type": "dimension",
+        "$value": "4px"
+      },
+      "border-left-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.grey.0}"
+      }
+    }
+  }
+}

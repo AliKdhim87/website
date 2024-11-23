@@ -12,10 +12,9 @@
     "build": "rollup --config rollup.config.ts --configPlugin typescript --bundleConfigAsCjs",
     "watch": "rollup --config rollup.config.ts --configPlugin typescript -w --bundleConfigAsCjs",
     "svgr:icons": "svgr --typescript --title-prop --replace-attr-values '#fff=currentColor' -d components/reusable/icons assets/icons --icon --svg-props className=icon",
-    "typescript-check": "tsc -p tsconfig.json --noEmit",
     "test": "jest",
     "test:watch": "jest --watch",
-    "playwright": "playwright test"
+    "type-check": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@babel/runtime": "7.25.6",

@@ -18,7 +18,7 @@ export const Clipboard = ({ code }: ClipboardProps) => {
     <button
       type="button"
       aria-label="Copy code"
-      className={css('clipboard')}
+      className={css('ali-dev-clipboard')}
       onClick={() => {
         setClipboardStatus('check');
         copy(code);

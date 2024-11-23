@@ -1,19 +1,24 @@
+import type { ReactNode } from 'react';
+
 import type { LinkType } from '@ali-dev/components';
 import type { Viewport, Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import '@fontsource/roboto';
 import '../styles/globals.scss';
 import '@ali-dev/components/dist/components.css';
 import '@ali-dev/theme/build/web/variables.css';
+import 'highlight.js/styles/github-dark.css';
 
-import { Body, Footer, Nav, LayoutContainer } from '@/components';
+import { Body, Footer, Nav, LayoutContainer, Logo } from '@/components';
+import type { ImageType } from '@/components';
 import { GetSiteSettingsQuery } from '@/graphql-types';
 import { GET_SITE_SETTINGS } from '@/queries/index.graphql';
 import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
 
 export interface LayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const apiUrl = sanityGraphqlAPIUrl({
@@ -129,7 +134,11 @@ const Layout = async ({ children }: LayoutProps) => {
         <LayoutContainer>
           <Nav
             navLinks={nav as LinkType[]}
-            logo={logo}
+            logo={
+              <Link href="/">
+                <Logo logo={logo as ImageType} Image={Image} />
+              </Link>
+            }
             linkProps={{
               as: Link,
             }}

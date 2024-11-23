@@ -3,16 +3,8 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 import type { TagsTypes } from '@/components';
-import { Tags } from '@/components';
-import {
-  Container,
-  Typography,
-  BlogPostTitle,
-  GraphComment,
-  TOC,
-  PortableTextComponents,
-  Grid,
-} from '@/components/reusable';
+import { GraphComment, Grid, Tags, TOC, PortableTextComponents, Container, Typography, BlogHeader } from '@/components';
+// import { GraphComment } from '@/components/reusable';
 import { GetAllBlogSlugsQuery, GetBlogBySlugQuery } from '@/graphql-types';
 import { GET_TOC_GROQ_QUERY } from '@/queries/groq';
 import { GET_ALL_BLOG_SLUGS, GET_BLOG_BY_SLUG } from '@/queries/index.graphql';
@@ -132,21 +124,22 @@ const PostPage = async ({ params: { slug } }: Params) => {
           />
         )}
       <>
-        <Container className="space-pb-3">
-          <Typography bodySize="mobile">Published: {formattedDate(publishedAt)}</Typography>
-          {updatedAt && <Typography bodySize="mobile">Last Updated: {formattedDate(updatedAt)}</Typography>}
+        <Container>
+          <Typography variant="sm">Published: {formattedDate(publishedAt)}</Typography>
+          {updatedAt && <Typography variant="md">Last Updated: {formattedDate(updatedAt)}</Typography>}
         </Container>
-        {title && <BlogPostTitle title={title} />}
+        {title && <BlogHeader title={title} />}
         <Container>
           {categories && <Tags tags={mappedCategories} />}
           <Grid
             container
-            spacing="lg"
+            columnGap="lg"
+            rowGap="lg"
             justifyContent="space-between"
             flexDirection="column-reverse"
             flexDirectionSM="column-reverse"
           >
-            <Grid item md={7}>
+            <Grid item md={7} sm={12}>
               <PortableTextComponents
                 onMissingComponent={false}
                 value={bodyRaw}
@@ -158,7 +151,7 @@ const PostPage = async ({ params: { slug } }: Params) => {
               <TOC toc={nestHeadings(result.toc)} label="Table Of Content" aria-label="Table Of Content" />
             </Grid>
           </Grid>
-          <GraphComment />
+          <GraphComment websiteId={process.env.NEXT_PUBLIC_GRAPH_COMMENTS_WEBSITE_ID} />
         </Container>
       </>
     </>

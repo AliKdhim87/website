@@ -1,0 +1,82 @@
+{
+  "ali-dev": {
+    "code-highlighter": {
+      "background-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.primary-bg}"
+      },
+      "highlighted": {
+        "padding-block-start": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.xs}"
+        },
+        "padding-block-end": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.xs}"
+        }
+      },
+      "header": {
+        "background-color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.grey.900}"
+        },
+        "padding-block-start": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.sm}"
+        },
+        "padding-block-end": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.sm}"
+        },
+        "padding-inline-start": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.md}"
+        },
+        "padding-inline-end": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.md}"
+        }
+      },
+      "pre": {
+        "padding-block-start": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.lg}"
+        },
+        "padding-block-end": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.lg}"
+        },
+        "padding-inline-start": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.sm}"
+        },
+        "padding-inline-end": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.sm}"
+        },
+        "scrollbar": {
+          "block-size": {
+            "$type": "dimension",
+            "$value": "{ali-dev.spacing.sm}"
+          }
+        },
+        "scrollbar-thumb": {
+          "background-color": {
+            "$type": "color",
+            "$value": "{ali-dev.colors.grey.400}"
+          },
+          "border-radius": {
+            "$type": "dimension",
+            "$value": "{ali-dev.other.border-radius}"
+          }
+        }
+      },
+      "code": {
+        "color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.grey.50}"
+        }
+      }
+    }
+  }
+}

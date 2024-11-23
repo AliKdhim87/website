@@ -1,4 +1,4 @@
-import type { SVGProps } from 'react';
+import type { HTMLAttributes, SVGProps } from 'react';
 
 import {
   Calendar,
@@ -10,6 +10,8 @@ import {
   BulletIcon,
   XIcon,
   Asterisk,
+  Check,
+  Copy,
 } from './index';
 
 export const IconsType = {
@@ -22,9 +24,11 @@ export const IconsType = {
   twitter: XIcon,
   bullet: BulletIcon,
   asterisk: Asterisk,
+  copy: Copy,
+  check: Check,
 };
 
-interface IconsProps extends React.HTMLAttributes<SVGSVGElement> {
+interface IconsProps extends HTMLAttributes<SVGSVGElement> {
   name: keyof typeof IconsType;
 }
 

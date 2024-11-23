@@ -23,7 +23,9 @@
   }
 
   &:hover {
-    --ali-dev-input-field-border-color: var(--ali-dev-input-field-hover-border-color);
+    --ali-dev-input-field-border-color: var(
+      --ali-dev-input-field-hover-border-color
+    );
   }
 
   &:focus {
@@ -35,14 +37,20 @@
   }
 
   &:disabled {
-    --ali-dev-input-field-border-color: var(--ali-dev-input-field-disabled-border-color);
+    --ali-dev-input-field-border-color: var(
+      --ali-dev-input-field-disabled-border-color
+    );
     --ali-dev-input-field-placeholder-color: var(
       --ali-dev-input-field-disabled-placeholder-color
     );
   }
 
   &--error {
-    --ali-dev-input-field-border-color: var(--ali-dev-input-field-border-error-color);
-    --ali-dev-input-field-border-color-hover: var(--ali-dev-input-field-border-error-color);
+    --ali-dev-input-field-border-color: var(
+      --ali-dev-input-field-border-error-color
+    );
+    --ali-dev-input-field-border-color-hover: var(
+      --ali-dev-input-field-border-error-color
+    );
   }
 }

@@ -1,12 +1,26 @@
-.list {
-  padding-block-start: var(--list-padding-block-start);
-  padding-block-end: var(--list-padding-block-end);
-  padding-inline-start: var(--list-padding-inline-start);
-  padding-inline-end: var(--list-padding-inline-end);
-  margin-block-start: var(--list-margin-block-start);
-  margin-block-end: var(--list-margin-block-end);
-  margin-inline-start: var(--list-margin-inline-start);
-  margin-inline-end: var(--list-margin-inline-end);
-  color: var(--list-color, currentColor);
-  background-color: var(--list-background-color);
+@use "../Typography/Typography.module.scss" as *;
+
+.ali-dev-list {
+  padding-block-start: var(--ali-dev-list-padding-block-start);
+  padding-block-end: var(--ali-dev-list-padding-block-end);
+  padding-inline-start: var(--ali-dev-list-padding-inline-start);
+  padding-inline-end: var(--ali-dev-list-padding-inline-end);
+  margin-block-start: var(--ali-dev-list-margin-block-start);
+  margin-block-end: var(--ali-dev-list-margin-block-end);
+  margin-inline-start: var(--ali-dev-list-margin-inline-start);
+  margin-inline-end: var(--ali-dev-list-margin-inline-end);
+
+  &__item {
+    @extend .ali-dev-typography--md;
+
+    padding-block-start: var(--ali-dev-list-item-padding-block-start);
+    padding-block-end: var(--ali-dev-list-item-padding-block-end);
+    padding-inline-start: var(--ali-dev-list-item-padding-inline-start);
+    padding-inline-end: var(--ali-dev-list-item-padding-inline-end);
+    margin-block-start: var(--ali-dev-list-item-margin-block-start);
+    margin-block-end: var(--ali-dev-list-item-margin-block-end);
+    margin-inline-start: var(--ali-dev-list-item-margin-inline-start);
+    margin-inline-end: var(--ali-dev-list-item-margin-inline-end);
+    color: var(--ali-dev-list-item-color);
+  }
 }

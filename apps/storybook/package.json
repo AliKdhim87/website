@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "storybook": "storybook dev -p 6006 --config-dir src/storybook-config",
-    "build": "storybook build --config-dir src/storybook-config"
+    "dev": "storybook dev -p 6006 --config-dir src/storybook-config",
+    "build": "storybook build --config-dir src/storybook-config",
+    "type-check": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@ali-dev/theme": "workspace:*",

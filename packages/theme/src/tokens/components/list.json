@@ -1,0 +1,32 @@
+{
+  "ali-dev": {
+    "list": {
+      "padding-inline-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.xxl}"
+      },
+      "margin-block-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.lg}"
+      },
+      "margin-block-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.lg}"
+      },
+      "item": {
+        "padding-block-start": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.xs}"
+        },
+        "padding-block-end": {
+          "$type": "dimension",
+          "$value": "{ali-dev.spacing.xs}"
+        },
+        "color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.grey.0}"
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import { DetailedHTMLProps, ForwardedRef, forwardRef, HTMLAttributes } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -10,14 +10,17 @@ interface ContainerProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement
   fluid?: boolean;
 }
 
-export const Container = ({ children, fluid, className, ...props }: ContainerProps) => {
-  const classes = css('container', className, {
-    'container--fluid': fluid,
-  });
+export const Container = forwardRef(
+  ({ children, fluid, className, ...props }: ContainerProps, ref: ForwardedRef<HTMLDivElement>) => {
+    const classes = css('container', className, {
+      'container--fluid': fluid,
+    });
 
-  return (
-    <div className={classes} {...props}>
-      {children}
-    </div>
-  );
-};
+    return (
+      <div className={classes} ref={ref} {...props}>
+        {children}
+      </div>
+    );
+  },
+);
+Container.displayName = 'Container';

@@ -22,6 +22,7 @@ const CardDate = memo(({ publishedAt, updatedAt }: { publishedAt?: string; updat
     {updatedAt && <Typography variant="sm">{updatedAt}</Typography>}
   </div>
 ));
+CardDate.displayName = 'CardDate';
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   (
@@ -43,3 +44,4 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
     </div>
   ),
 );
+Card.displayName = 'Card';

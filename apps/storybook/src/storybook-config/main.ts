@@ -1,4 +1,4 @@
-import * as path from 'path';
+import * as path from 'node:path';
 
 import type { StorybookConfigVite } from '@storybook/builder-vite';
 import type { StorybookConfig } from '@storybook/nextjs';
@@ -21,7 +21,7 @@ const config: StorybookConfig & StorybookConfigVite = {
     options: {},
   },
   core: {
-    builder: '@storybook/builder-vite' as any,
+    builder: '@storybook/builder-vite',
   },
   staticDirs: ['../public'],
   async viteFinal(config) {

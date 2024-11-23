@@ -1,18 +1,26 @@
 @use "../Typography/Typography.module.scss" as *;
 @use "../styles/common/mixins" as *;
 
-@mixin ali-dev-nav__link--hover {
+@mixin ali-dev-nav-link-hover {
   --ali-dev-nav-link-color: var(--ali-dev-nav-link-hover-color);
-  --ali-dev-nav-link-border-block-end-width: var(--ali-dev-nav-link-hover-border-block-end-width);
-  --ali-dev-nav-link-border-block-end-color: var(--ali-dev-nav-link-hover-border-block-end-color);
+  --ali-dev-nav-link-border-block-end-width: var(
+    --ali-dev-nav-link-hover-border-block-end-width
+  );
+  --ali-dev-nav-link-border-block-end-color: var(
+    --ali-dev-nav-link-hover-border-block-end-color
+  );
 }
-@mixin ali-dev-nav__link--active {
+@mixin ali-dev-nav-link-active {
   --ali-dev-nav-link-color: var(--ali-dev-nav-link-active-color);
-  --ali-dev-nav-link-border-block-end-color: var(--ali-dev-nav-link-active-border-block-end-color);
-  --ali-dev-nav-link-border-block-end-width: var(--ali-dev-nav-link-active-border-block-end-width);
+  --ali-dev-nav-link-border-block-end-color: var(
+    --ali-dev-nav-link-active-border-block-end-color
+  );
+  --ali-dev-nav-link-border-block-end-width: var(
+    --ali-dev-nav-link-active-border-block-end-width
+  );
 
   &:hover {
-    @include ali-dev-nav__link--hover;
+    @include ali-dev-nav-link-hover;
   }
 }
 
@@ -32,8 +40,8 @@
   padding-inline: 0;
   padding-block-start: var(--ali-dev-nav-list-padding-block-start);
   padding-block-end: var(--ali-dev-nav-list-padding-block-end);
-  column-gap: var(--ali-dev-nav-list-column-gap);
   row-gap: var(--ali-dev-nav-list-row-gap);
+  column-gap: var(--ali-dev-nav-list-column-gap);
   background-color: var(--ali-dev-nav-list-background-color, transparent);
   margin: 0;
   height: 100%;
@@ -43,12 +51,18 @@
 }
 
 .ali-dev-nav__list--mobile {
-  --ali-dev-nav-list-item-padding-block-end: var(--ali-dev-nav-list-mobile-padding-block-end);//20px;
-  --ali-dev-nav-list-padding-block-start: var(--ali-dev-nav-list-mobile-padding-block-start);
+  --ali-dev-nav-list-item-padding-block-end: var(
+    --ali-dev-nav-list-mobile-padding-block-end
+  );
+  --ali-dev-nav-list-padding-block-start: var(
+    --ali-dev-nav-list-mobile-padding-block-start
+  );
   --ali-dev-nav-list-item-margin-inline-start: 0;
   --_ali-dev-nav-list-display: flex;
   --_ali-dev-nav-list-justify-content: flex-start;
-  --ali-dev-nav-list-background-color: var(--ali-dev-nav-list-mobile-background-color);
+  --ali-dev-nav-list-background-color: var(
+    --ali-dev-nav-list-mobile-background-color
+  );
   --ali-dev-nav-list-row-gap: var(--ali-dev-nav-list-mobile-row-gap);
 
   inline-size: var(--ali-dev-nav-list-mobile-inline-size);
@@ -66,14 +80,15 @@
   font-family: var(--ali-dev-nav-link-font-family);
   transition: 0.2s ease-in-out;
   color: var(--ali-dev-nav-link-color);
-  border-block-end: var(--ali-dev-nav-link-border-block-end-width, 0) solid var(--ali-dev-nav-link-border-block-end-color, transparent);
+  border-block-end: var(--ali-dev-nav-link-border-block-end-width, 0) solid
+    var(--ali-dev-nav-link-border-block-end-color, transparent);
 
   &:hover {
-    @include ali-dev-nav__link--hover;
+    @include ali-dev-nav-link-hover;
   }
 
   &:active {
-    @include ali-dev-nav__link--active;
+    @include ali-dev-nav-link-active;
   }
 
   &:focus {
@@ -81,10 +96,9 @@
   }
 
   &[aria-current="page"] {
-    @include ali-dev-nav__link--active;
+    @include ali-dev-nav-link-active;
   }
 }
-
 
 .ali-dev-nav__button {
   --ali-dev-nav-button-display: flex;
@@ -103,7 +117,6 @@
   &:focus {
     @include focus;
   }
-
 
   @include breakpoint("sm") {
     --ali-dev-nav-button-display: none;

@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
-import { ImageProps } from 'next/image';
+import Image, { ImageProps } from 'next/image';
 
-import { MoreAbout } from '@/components';
-import { PageHeader } from '@/components/slices';
+import { Container, Grid, Page, PageHeader, PortableTextComponents } from '@/components';
 import { GetAboutPageQuery } from '@/graphql-types';
 import { GET_ABOUT_PAGE } from '@/queries/index.graphql';
 import { sanityGraphqlAPIUrl, uuidv4, fetchData } from '@/utils';
@@ -64,16 +63,36 @@ const AboutPage = async () => {
               height: 300,
             } as ImageProps;
 
-            return <PageHeader title={component.title} body={component.body} image={image} key={uuidv4()} />;
+            return (
+              <PageHeader
+                title={component.title}
+                body={component.body}
+                image={
+                  {
+                    ...image,
+                    ImageComponent: Image,
+                  } as any
+                }
+                key={uuidv4()}
+              />
+            );
           }
           case 'AboutMe':
             return (
-              <MoreAbout
-                value={component.aboutIntroductionRaw}
-                dataset={process.env.SANITY_DATASET as string}
-                projectId={process.env.SANITY_PROJECT_ID as string}
-                key={uuidv4()}
-              />
+              <Page>
+                <Container>
+                  <Grid container justifyContent="center">
+                    <Grid item md={10}>
+                      <PortableTextComponents
+                        value={component.aboutIntroductionRaw}
+                        dataset={process.env.SANITY_DATASET as string}
+                        projectId={process.env.SANITY_PROJECT_ID as string}
+                        key={uuidv4()}
+                      />
+                    </Grid>
+                  </Grid>
+                </Container>
+              </Page>
             );
           default:
             return null;

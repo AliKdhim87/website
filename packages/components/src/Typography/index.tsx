@@ -1,4 +1,4 @@
-import type { HTMLAttributes, PropsWithChildren, ForwardedRef } from 'react';
+import type { HTMLAttributes, PropsWithChildren, ForwardedRef, DetailedHTMLProps } from 'react';
 import { createElement, forwardRef } from 'react';
 
 import classNames from 'classnames/bind';
@@ -8,7 +8,7 @@ import styles from './Typography.module.scss';
 export type AsHTMLElement = 'span' | 'p';
 export type TypographyVariant = 'sm' | 'md' | 'lg' | 'xl';
 
-export interface TypographyProps extends React.DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
+export interface TypographyProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
   as?: AsHTMLElement;
   variant?: TypographyVariant;
   dimension?: boolean;

@@ -1,4 +1,5 @@
 import { createRef } from 'react';
+import React from 'react';
 
 import { render } from '@testing-library/react';
 
@@ -7,7 +8,7 @@ import { Card } from './index';
 describe('Card component', () => {
   test('should render the Card', () => {
     const { container } = render(<Card />);
-    const card = container.querySelector('.card');
+    const card = container.querySelector('.ali-dev-card');
     expect(card).toBeInTheDocument();
   });
 
@@ -20,7 +21,7 @@ describe('Card component', () => {
   });
   it('renders a Card with a custom CSS class', () => {
     const { container } = render(<Card className="custom-class" />);
-    const card = container.querySelector('.card');
+    const card = container.querySelector('.ali-dev-card');
     expect(card).toHaveClass('custom-class');
   });
   it('renders a Card with a custom id', () => {
@@ -43,30 +44,30 @@ describe('Card component', () => {
     });
     describe('Card Date', () => {
       it('renders a Card with a published date', () => {
-        const { container } = render(<Card title="Card Title" publishedAt="2021-01-01" />);
-        const cardDate = container.querySelector('.card__date');
-        expect(cardDate).toHaveTextContent('Published on: Jan 1, 2021');
+        const { container } = render(<Card title="Card Title" publishedAt="2024-11-23" />);
+        const cardDate = container.querySelector('.ali-dev-card__date');
+        expect(cardDate).toHaveTextContent('2024-11-23');
       });
       it('renders a Card with an updated date', () => {
-        const { container } = render(<Card title="Card Title" updatedAt="2021-01-01" />);
-        const cardDate = container.querySelector('.card__date');
-        expect(cardDate).toHaveTextContent('Updated on: Jan 1, 2021');
+        const { container } = render(<Card title="Card Title" updatedAt="2024-11-23" />);
+        const cardDate = container.querySelector('.ali-dev-card__date');
+        expect(cardDate).toHaveTextContent('2024-11-23');
       });
       it('renders a Card with both published and updated dates', () => {
-        const { container } = render(<Card title="Card Title" publishedAt="2021-01-01" updatedAt="2021-01-02" />);
-        const cardDate = container.querySelector('.card__date');
-        expect(cardDate).toHaveTextContent('Published on: Jan 1, 2021Updated on: Jan 2, 2021');
+        const { container } = render(<Card title="Card Title" publishedAt="2024-11-20" updatedAt="2024-11-23" />);
+        const cardDate = container.querySelector('.ali-dev-card__date');
+        expect(cardDate).toHaveTextContent('2024-11-202024-11-23');
       });
     });
     describe('Card Body', () => {
       it('renders a Card with a body', () => {
         const { container } = render(<Card title="Card Title" body="Card Body" />);
-        const cardBody = container.querySelector('.card__body');
+        const cardBody = container.querySelector('.ali-dev-card__body');
         expect(cardBody).toHaveTextContent('Card Body');
       });
       it('renders a Card without a body', () => {
         const { container } = render(<Card title="Card Title" />);
-        const cardBody = container.querySelector('.card__body');
+        const cardBody = container.querySelector('.ali-dev-card__body');
         expect(cardBody).not.toBeInTheDocument();
       });
     });

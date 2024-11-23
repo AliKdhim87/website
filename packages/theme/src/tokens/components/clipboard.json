@@ -1,0 +1,20 @@
+{
+  "ali-dev": {
+    "clipboard": {
+      "icon-size": {
+        "$type": "size",
+        "$value": "40px"
+      },
+      "color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.grey.0}"
+      },
+      "hover": {
+        "color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.primary}"
+        }
+      }
+    }
+  }
+}

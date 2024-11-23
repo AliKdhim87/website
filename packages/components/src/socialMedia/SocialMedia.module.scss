@@ -22,7 +22,9 @@
   }
 
   &:hover {
-    --ali-dev-social-media-link-color: var(--ali-dev-social-media-link-hover-color);
+    --ali-dev-social-media-link-color: var(
+      --ali-dev-social-media-link-hover-color
+    );
   }
 }
 

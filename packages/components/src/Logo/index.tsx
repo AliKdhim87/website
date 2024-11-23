@@ -1,23 +1,42 @@
+import type { ElementType, ForwardedRef, ImgHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
+
 import classnames from 'classnames/bind';
-import Image, { ImageProps } from 'next/image';
-import Link from 'next/link';
 
 import styles from './styles.module.scss';
 
 const cx = classnames.bind(styles);
-export interface LogoProps {
-  logo?: ImageProps;
+
+export type ImageType = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+export interface LogoProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt' | 'width' | 'height'> {
+  logo: ImageType;
+  Image?: any;
 }
-export const Logo = ({ logo }: LogoProps) =>
-  logo && logo.src && logo.width ? (
-    <Link href="/" className={cx('logo')}>
-      <Image
-        className={cx('logo__image')}
-        src={logo.src}
-        alt={logo.alt}
-        width={logo.width}
-        height={logo.height}
-        priority
+
+export const Logo = forwardRef(
+  ({ logo, Image: Component = 'img', className, ...props }: LogoProps, ref: ForwardedRef<HTMLImageElement>) => {
+    const { src, alt, width, height } = logo;
+
+    const ImageComponent = Component as ElementType<ImgHTMLAttributes<HTMLImageElement>>;
+
+    return (
+      <ImageComponent
+        {...(props as ImgHTMLAttributes<HTMLImageElement>)}
+        ref={ref}
+        className={cx('ali-dev-logo', className)}
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
       />
-    </Link>
-  ) : null;
+    );
+  },
+);
+
+Logo.displayName = 'Logo';

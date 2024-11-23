@@ -1,0 +1,18 @@
+{
+  "ali-dev": {
+    "blog-header": {
+      "background-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.primary-bg}"
+      },
+      "padding-block-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.lg}"
+      },
+      "padding-block-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.lg}"
+      }
+    }
+  }
+}

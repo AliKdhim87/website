@@ -8,11 +8,11 @@
     "prebuild": "pnpm codegen",
     "build": "next build",
     "start": "next start",
-    "typescript-check": "tsc -p tsconfig.json --noEmit",
     "codegen": "graphql-codegen --config src/codegen.ts",
     "test": "jest",
     "test:watch": "jest --watch",
-    "playwright": "playwright test"
+    "playwright": "playwright test",
+    "type-check": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@fontsource/roboto": "5.0.1",

@@ -1,11 +1,11 @@
 @use "../styles/common/mixins" as *;
 
-.clipboard {
+.ali-dev-clipboard {
   background-color: transparent;
-  color: var(--colors-grey-0);
+  color: var(--ali-dev-clipboard-color);
   border: none;
   cursor: pointer;
-  font-size: 40px;
+  font-size: var(--ali-dev-clipboard-icon-size);
   padding: 0;
   line-height: 0;
 
@@ -16,8 +16,8 @@
   &:focus-visible {
     @include focus-visible;
   }
-}
 
-.clipboard:hover {
-  color: var(--colors-primary);
+  &:hover {
+    color: var(--ali-dev-clipboard-hover-color);
+  }
 }
