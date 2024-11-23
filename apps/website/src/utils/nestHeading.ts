@@ -1,7 +1,7 @@
 import last from 'lodash.last';
 import uniq from 'lodash.uniq';
 
-import { HeadingsArray, Heading } from 'global';
+import type { Heading, HeadingsArray } from '@/types';
 
 type Level = 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export const nestHeadings = (toc: HeadingsArray): HeadingsArray => {

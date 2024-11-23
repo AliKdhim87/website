@@ -1,0 +1,10 @@
+{
+  "ali-dev": {
+    "backdrop": {
+      "background-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.backdrop-bg}"
+      }
+    }
+  }
+}

@@ -1,10 +1,14 @@
 @mixin ali-dev-typography-dimension {
-  --_ali-dev-typography-margin-block-start: var(--ali-dev-typography-margin-block-start);
-  --_ali-dev-typography-margin-block-end: var(--ali-dev-typography-margin-block-end);
+  --_ali-dev-typography-margin-block-start: var(
+    --ali-dev-typography-margin-block-start
+  );
+  --_ali-dev-typography-margin-block-end: var(
+    --ali-dev-typography-margin-block-end
+  );
 }
 @mixin ali-dev-typography($component) {
   font-family: var(--ali-dev-#{$component}-font-family);
-  line-height: var(--ali-dev-#{$component}-line-height); 
+  line-height: var(--ali-dev-#{$component}-line-height);
   color: var(--ali-dev-#{$component}-color);
   margin-block-start: var(--_ali-dev-#{$component}-margin-block-start);
   margin-block-end: var(--_ali-dev-#{$component}-margin-block-end);
@@ -19,22 +23,34 @@
 }
 
 .ali-dev-typography {
-@include ali-dev-typography("typography");
+  @include ali-dev-typography("typography");
 
   &--sm {
-    --ali-dev-typography-font-size: var( --ali-dev-typography-sm-font-size, 14px); // Use token for small text size
+    --ali-dev-typography-font-size: var(
+      --ali-dev-typography-sm-font-size,
+      14px
+    ); // Use token for small text size
   }
 
   &--md {
-    --ali-dev-typography-font-size: var(--ali-dev-typography-md-font-size, 16px); // Default size, already handled by base
+    --ali-dev-typography-font-size: var(
+      --ali-dev-typography-md-font-size,
+      16px
+    ); // Default size, already handled by base
   }
 
   &--lg {
-    --ali-dev-typography-font-size: var(--ali-dev-typography-lg-font-size, 20px); // Use token for large text size
+    --ali-dev-typography-font-size: var(
+      --ali-dev-typography-lg-font-size,
+      20px
+    ); // Use token for large text size
   }
 
   &--xl {
-    --ali-dev-typography-font-size: var(--ali-dev-typography-xl-font-size, 24px); // Extra large size token
+    --ali-dev-typography-font-size: var(
+      --ali-dev-typography-xl-font-size,
+      24px
+    ); // Extra large size token
   }
 
   // Responsive adjustments (optional)

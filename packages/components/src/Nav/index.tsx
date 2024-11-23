@@ -18,7 +18,6 @@ import { Backdrop } from '../Backdrop';
 import { Container } from '../Container';
 import { Grid } from '../Grid';
 import { Header } from '../Header';
-import { Logo } from '../Logo';
 // import { trapFocus } from '@/utils';
 export const trapFocus = (element: HTMLElement, prevFocusableElement = document.activeElement) => {
   const focusableEls = Array.from(
@@ -119,9 +118,11 @@ export const Nav = ({ logo, navLinks, linkProps }: NavProps) => {
           <span id="mainmenulabel" className="visually-hidden" hidden>
             Main Menu
           </span>
-          <Grid item xs={6} md={4}>
-            <Logo logo={{ ...logo }} />
-          </Grid>
+          {logo && (
+            <Grid item xs={6} md={4}>
+              {logo}
+            </Grid>
+          )}
           <Grid item xs={6} md={8} justifyContent="flex-end">
             <NavButton
               menuExpanded={mobileMode}

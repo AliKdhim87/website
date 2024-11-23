@@ -29,12 +29,7 @@ export const Default: Story = {
             route: '/contact',
           },
         ]}
-        logo={{
-          src: '/Logo-v2.svg',
-          alt: 'Ali Dev Logo',
-          width: 185,
-          height: 50,
-        }}
+        logo={<Typography>Logo</Typography>}
       />
       <main>
         <Typography>

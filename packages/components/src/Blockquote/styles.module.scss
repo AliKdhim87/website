@@ -1,0 +1,14 @@
+@use "../Typography/Typography.module.scss" as *;
+
+.ali-dev-blockquote {
+  @include ali-dev-typography("typography");
+
+  margin-inline-end: var(--ali-dev-blockquote-margin-inline-end);
+  margin-inline-start: 0;
+  padding-inline-start: var(--ali-dev-blockquote-padding-inline-start);
+  padding-inline-end: var(--ali-dev-blockquote-padding-inline-end);
+  padding-block-start: var(--ali-dev-blockquote-padding-block-start);
+  padding-block-end: var(--ali-dev-blockquote-padding-block-end);
+  border-left: var(--ali-dev-blockquote-border-left-width) solid
+    var(--ali-dev-blockquote-border-left-color);
+}

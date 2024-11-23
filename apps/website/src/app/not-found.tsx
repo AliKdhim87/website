@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
+import Link from 'next/link';
 
-import { CTA, Grid } from '@/components/reusable';
-import { PageHeader } from '@/components/slices';
+import { Grid, CTA, PageHeader } from '@/components';
 import type { GetNotFoundPageQuery } from '@/graphql-types';
 import { GET_NOT_FOUND_PAGE } from '@/queries/index.graphql';
 import { sanityGraphqlAPIUrl, uuidv4, fetchData } from '@/utils';
@@ -37,7 +37,9 @@ const Custom404 = async () => {
         return null;
       })}
       <Grid item justifyContent="center" className="space-mb-start-4 ">
-        <CTA href="/">Back To Home</CTA>
+        <CTA Link={Link} href="/">
+          Back To Home
+        </CTA>
       </Grid>
     </>
   );

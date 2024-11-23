@@ -58,6 +58,10 @@
           "$type": "font-family",
           "$value": "{ali-dev.typography.font-family.sans}"
         }
+      },
+      "border-radius": {
+        "$type": "dimension",
+        "$value": "{ali-dev.other.border-radius}"
       }
     }
   }

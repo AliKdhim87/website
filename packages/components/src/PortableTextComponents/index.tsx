@@ -7,7 +7,7 @@ import { Blockquote } from '../Blockquote';
 import { SnippetCodeType, BlockCode } from '../Code';
 import { Heading } from '../Heading';
 import { InlineCode } from '../InlineCode';
-import { ListItem } from '../ListItem';
+import { ListItem } from '../List';
 import { Typography } from '../Typography';
 
 export interface PortableTextConfigProps {
@@ -24,11 +24,11 @@ export const portableTextConfig = ({ dataset, projectId }: PortableTextConfigPro
       mainImage: ({ value }) => <MainImage dataset={dataset} value={value} projectId={projectId} />,
     },
     block: {
+      h1: ({ children }) => <Heading level={1}>{children}</Heading>,
       h2: ({ children, value }) => {
         const id = slugify(value.children[0].text, { lower: true });
-
         return (
-          <Heading id={id} level={2} className="space-mb-2">
+          <Heading id={id} level={2}>
             {children}
           </Heading>
         );
@@ -36,7 +36,7 @@ export const portableTextConfig = ({ dataset, projectId }: PortableTextConfigPro
       h3: ({ children, value }) => {
         const id = slugify(value.children[0].text, { lower: true });
         return (
-          <Heading level={3} id={id} className="space-mb-2">
+          <Heading level={3} id={id}>
             {children}
           </Heading>
         );
@@ -44,7 +44,7 @@ export const portableTextConfig = ({ dataset, projectId }: PortableTextConfigPro
       h4: ({ children, value }) => {
         const id = slugify(value.children[0].text, { lower: true });
         return (
-          <Heading level={4} id={id} className="space-mb-2">
+          <Heading level={4} id={id}>
             {children}
           </Heading>
         );
@@ -52,7 +52,7 @@ export const portableTextConfig = ({ dataset, projectId }: PortableTextConfigPro
       h5: ({ children, value }) => {
         const id = slugify(value.children[0].text, { lower: true });
         return (
-          <Heading level={5} id={id} className="space-mb-2">
+          <Heading level={5} id={id}>
             {children}
           </Heading>
         );
@@ -60,7 +60,7 @@ export const portableTextConfig = ({ dataset, projectId }: PortableTextConfigPro
       h6: ({ children, value }) => {
         const id = slugify(value.children[0].text, { lower: true });
         return (
-          <Heading level={6} id={id} className="space-mb-2">
+          <Heading level={6} id={id}>
             {children}
           </Heading>
         );
@@ -69,8 +69,12 @@ export const portableTextConfig = ({ dataset, projectId }: PortableTextConfigPro
       blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
     },
     listItem: {
-      bullet: ({ children }) => <ListItem>{children}</ListItem>,
-      number: ({ children }) => <ListItem>{children}</ListItem>,
+      bullet: ({ children }) => (
+        <ListItem>
+          <Typography dimension={false}>{children}</Typography>
+        </ListItem>
+      ),
+      number: ({ children }) => <Typography dimension={false}>{children}</Typography>,
     },
     marks: {
       link: ({ children, value }) => (

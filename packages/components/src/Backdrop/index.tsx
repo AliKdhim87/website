@@ -17,7 +17,7 @@ export const Backdrop = ({ children, parent = 'root', ...restProps }: BackdropPr
     <>
       {portal
         ? createPortal(
-            <Grid {...restProps} container justifyContent="flex-end" className={css('backdrop')}>
+            <Grid {...restProps} container justifyContent="flex-end" className={css('ali-dev-backdrop')}>
               {children}
             </Grid>,
             portal,

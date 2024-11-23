@@ -21,8 +21,8 @@ export const PageHeaderWithImage: Story = {
     image: {
       src: '/public/example.svg',
       alt: 'ali dev',
-      width: '225',
-      height: '225',
+      width: 225,
+      height: 225,
     },
   },
 };

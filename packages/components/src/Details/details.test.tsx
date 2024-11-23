@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { render, screen, fireEvent } from '@testing-library/react';
 
 import { Details } from './index';
@@ -26,7 +28,7 @@ describe('Details', () => {
   });
   it('should not showing body when children is not provided', () => {
     const { container } = render(<Details label="Label" />);
-    expect(container.querySelector('.details__body')).toBe(null);
+    expect(container.querySelector('.ali-dev-details__body')).toBe(null);
   });
   it('should not showing label when label is not provided', () => {
     const { container } = render(<Details>Label</Details>);
@@ -36,7 +38,7 @@ describe('Details', () => {
     const { container } = render(<Details label="Click to reveal more" />);
     const icon = container.querySelector('svg');
     expect(icon).toBeInTheDocument();
-    expect(icon).toHaveClass('details__icon');
+    expect(icon).toHaveClass('ali-dev-details__icon');
   });
   it('should not show an SVG icon in the summary when icon is false', () => {
     const { container } = render(<Details label="Click to reveal more" icon={false} />);
@@ -71,7 +73,7 @@ describe('Details', () => {
       </Details>,
     );
 
-    const body = container.querySelector('.details__body');
+    const body = container.querySelector('.ali-dev-details__body');
     expect(body).toHaveClass('custom-class');
   });
   it('should show a h2 by default', () => {

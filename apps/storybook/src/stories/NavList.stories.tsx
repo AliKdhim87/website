@@ -1,4 +1,4 @@
-import { NavList } from '@ali-dev/components';
+import { NavList, NavItem, NavLink } from '@ali-dev/components';
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 
@@ -10,12 +10,6 @@ const meta: Meta<typeof NavList> = {
   },
   tags: ['autodocs'],
   argTypes: {
-    list: {
-      control: 'object',
-    },
-    pathname: {
-      control: 'text',
-    },
     mobile: {
       control: 'boolean',
     },
@@ -43,16 +37,28 @@ const navListData = [
   },
 ];
 export const Default: Story = {
-  args: {
-    list: navListData,
-    pathname: '/blog',
-  },
+  render: (args) => (
+    <NavList {...args}>
+      {navListData.map((item) => (
+        <NavItem key={item.id}>
+          <NavLink href={item.route}>{item.title}</NavLink>
+        </NavItem>
+      ))}
+    </NavList>
+  ),
 };
 
 export const Mobile: Story = {
   args: {
-    list: navListData,
-    pathname: '/blog',
     mobile: true,
   },
+  render: (args) => (
+    <NavList {...args}>
+      {navListData.map((item) => (
+        <NavItem key={item.id}>
+          <NavLink href={item.route}>{item.title}</NavLink>
+        </NavItem>
+      ))}
+    </NavList>
+  ),
 };

@@ -27,11 +27,11 @@ describe('Button', () => {
   });
   it('renders a button with primary variant', () => {
     render(<Button variant="primary">Click me</Button>);
-    expect(screen.getByRole('button')).toHaveClass('button--primary');
+    expect(screen.getByRole('button')).toHaveClass('ali-dev-button--primary');
   });
   it('renders a button with secondary variant', () => {
     render(<Button variant="secondary">Click me</Button>);
-    expect(screen.getByRole('button')).toHaveClass('button--secondary');
+    expect(screen.getByRole('button')).toHaveClass('ali-dev-button--secondary');
   });
   it('renders a link with a forwarded ref', () => {
     const ref = createRef<HTMLButtonElement>();
@@ -42,10 +42,10 @@ describe('Button', () => {
   });
   it('renders a button with a button CSS class', () => {
     render(<Button>Click me</Button>);
-    expect(screen.getByRole('button')).toHaveClass('button');
+    expect(screen.getByRole('button')).toHaveClass('ali-dev-button');
   });
   it('renders a button with a span element', () => {
     render(<Button>Click me</Button>);
-    expect(screen.getByText('Click me')).toHaveClass('button__text');
+    expect(screen.getByText('Click me')).toHaveClass('ali-dev-button__text');
   });
 });

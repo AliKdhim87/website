@@ -7,7 +7,8 @@
 
 # testing
 /coverage
-
+playwright-report/
+test-results/
 # next.js
 /.next/
 apps/website/.next
@@ -40,7 +41,7 @@ yarn-error.log*
 *.tsbuildinfo
 
 # types generated
-/src/generated
+generated/
 graphql.schema.json
 
 # storybook output folder
@@ -59,3 +60,5 @@ sitemap.xml
 dist
 .rollup.cache
 node_modules
+.eslintcache
+.turbo/

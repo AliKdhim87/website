@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { CardList, CardListItem } from '@/components';
-import { PageHeader } from '@/components/slices';
+import { CardList, CardListItem, PageHeader } from '@/components';
 import { GetAllBlogByCategoryIdQuery, GetAllCategoryIdQuery, GetCategoryByIdQuery } from '@/graphql-types';
 import { GET_ALL_BLOG_BY_CATEGORY_ID, GET_ALL_CATEGORY_ID, GET_CATEGORY_BY_ID } from '@/queries/index.graphql';
 import { fetchData, sanityGraphqlAPIUrl } from '@/utils';

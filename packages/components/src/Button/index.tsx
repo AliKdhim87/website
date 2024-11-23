@@ -7,7 +7,7 @@ import styles from './Button.module.scss';
 
 const css = classNames.bind(styles);
 
-interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   variant?: 'primary' | 'secondary';
   loading?: boolean;
 }

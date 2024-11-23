@@ -29,7 +29,7 @@ const renderHighlightedLines = ({ code, language, highlightedLinesPosition }: Re
   const codeLines = code.split('\n');
   const highlightedLines = codeLines.map((line, index) => {
     if (Array.isArray(highlightedLinesPosition) && highlightedLinesPosition.includes(index + 1)) {
-      return `<span class="${css('line-highlight')}">${line}</span>`;
+      return `<span class="${css('ali-dev-code-highlighter__highlighted')}">${line}</span>`;
     }
     return line;
   });
@@ -37,7 +37,7 @@ const renderHighlightedLines = ({ code, language, highlightedLinesPosition }: Re
   const highlightedCode = highlightedLines.join('\n');
 
   return createElement('code', {
-    className: css('code-highlighter__code', `language-${language}`),
+    className: css('ali-dev-code-highlighter__code', `language-${language}`),
     dangerouslySetInnerHTML: {
       __html: xss(highlightedCode, {
         allowList: { span: ['class'] },
@@ -48,12 +48,12 @@ const renderHighlightedLines = ({ code, language, highlightedLinesPosition }: Re
 export const BlockCode = ({ code, language, highlightedLinesPosition }: CodeHighlighterProps) => {
   const hljsCode = hljs.highlight(code, { language }).value;
   return (
-    <div className={css('code-highlighter')}>
-      <div className={css('code-highlighter__header')}>
+    <div className={css('ali-dev-code-highlighter')}>
+      <div className={css('ali-dev-code-highlighter__header')}>
         {language && <Typography as="span">{language.toUpperCase()}</Typography>}
         {code && <Clipboard code={code} />}
       </div>
-      <pre className={css('code-highlighter__pre')}>
+      <pre className={css('ali-dev-code-highlighter__pre')}>
         {renderHighlightedLines({ code: hljsCode, language, highlightedLinesPosition })}
       </pre>
     </div>

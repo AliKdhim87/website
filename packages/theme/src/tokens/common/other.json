@@ -1,0 +1,10 @@
+{
+  "ali-dev": {
+    "other": {
+      "border-radius": {
+        "$type": "dimension",
+        "$value": "5px"
+      }
+    }
+  }
+}

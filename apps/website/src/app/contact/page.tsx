@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 
-import { Grid, Container } from '@/components/reusable';
+import { PageHeader, Grid, Container, Page } from '@/components';
 import { ContactForm, ContactIntro } from '@/components/reusable/ContactForm';
-import { PageHeader } from '@/components/slices';
 import { GetContactPageQuery } from '@/graphql-types';
 import { GET_CONTACT_PAGE } from '@/queries/index.graphql';
 import { fetchData, sanityGraphqlAPIUrl, uuidv4 } from '@/utils';
@@ -119,12 +118,14 @@ const Contact = async () => {
         (component) => component?.__typename === 'PageHeader' && <PageHeader title={component.title} key={uuidv4()} />,
       )}
       <Container>
-        <Grid container justifyContent="center">
-          <Grid item md={8}>
-            <ContactIntro />
-            <ContactForm onAction={onEmailSubmit} />
+        <Page>
+          <Grid container justifyContent="center">
+            <Grid item md={8}>
+              <ContactIntro />
+              <ContactForm onAction={onEmailSubmit} />
+            </Grid>
           </Grid>
-        </Grid>
+        </Page>
       </Container>
     </>
   );

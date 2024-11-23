@@ -1,8 +1,8 @@
-import { forwardRef } from 'react';
+import { type ForwardedRef, forwardRef } from 'react';
 
 import type { SVGRProps } from './Icon';
 
-export const BulletIcon = forwardRef(({ title, titleId, ...props }: SVGRProps) => (
+export const BulletIcon = forwardRef(({ title, titleId, ...props }: SVGRProps, ref: ForwardedRef<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -11,6 +11,7 @@ export const BulletIcon = forwardRef(({ title, titleId, ...props }: SVGRProps) =
     viewBox="0 0 10 138"
     className="icon"
     aria-labelledby={titleId}
+    ref={ref}
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}

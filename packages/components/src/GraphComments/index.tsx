@@ -1,28 +1,15 @@
-import { useEffect } from 'react';
+import type { HtmlHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 
-declare global {
-  interface Window {
-    gc_params: {
-      graphcomment_id: string | undefined;
-      fixed_header_height: number;
-    };
-  }
+import { useGraphComment } from '../hooks/useGraphComment';
+export interface GraphCommentProps extends HtmlHTMLAttributes<HTMLDivElement> {
+  websiteId: string | undefined;
+  headerHeight?: number;
 }
-
-export const GraphComment = () => {
-  useEffect(() => {
-    window.gc_params = {
-      graphcomment_id: process.env.NEXT_PUBLIC_GRAPH_COMMENTS_WEBSITE_ID,
-      fixed_header_height: 0,
-    };
-    (function graphComment() {
-      const gc = document.createElement('script');
-      gc.type = 'text/javascript';
-      gc.async = true;
-      gc.src = `https://graphcomment.com/js/integration.js?${Date.now()}`;
-      document.getElementsByTagName('head')[0].appendChild(gc);
-    })();
-  }, []);
-
-  return <div id="graphcomment" />;
-};
+export const GraphComment = forwardRef<HTMLDivElement, GraphCommentProps>(
+  ({ websiteId, headerHeight, ...restProps }) => {
+    useGraphComment(websiteId, headerHeight);
+    return <div {...restProps} id="graphcomment" />;
+  },
+);
+GraphComment.displayName = 'GraphComment';

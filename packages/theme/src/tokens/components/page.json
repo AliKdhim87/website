@@ -1,0 +1,14 @@
+{
+  "ali-dev": {
+    "page": {
+      "padding-block-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.xxl}"
+      },
+      "padding-block-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.xxl}"
+      }
+    }
+  }
+}

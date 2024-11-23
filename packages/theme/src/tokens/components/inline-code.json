@@ -1,0 +1,34 @@
+{
+  "ali-dev": {
+    "inline-code": {
+      "background-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.primary-bg}"
+      },
+      "color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.grey.0}"
+      },
+      "border-radius": {
+        "$type": "dimension",
+        "$value": "{ali-dev.other.border-radius}"
+      },
+      "padding-inline-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.xs}"
+      },
+      "padding-inline-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.xs}"
+      },
+      "padding-block-start": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.xs}"
+      },
+      "padding-block-end": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.xs}"
+      }
+    }
+  }
+}
