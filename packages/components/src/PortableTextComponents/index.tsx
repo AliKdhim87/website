@@ -1,7 +1,7 @@
 import { PortableTextReactComponents, PortableText, PortableTextProps } from '@portabletext/react';
+import merge from 'lodash.merge';
 import slugify from 'slugify';
 
-import { MainImage } from './MainImage';
 import { Anchor } from '../Anchor';
 import { Blockquote } from '../Blockquote';
 import { SnippetCodeType, BlockCode } from '../Code';
@@ -10,18 +10,12 @@ import { InlineCode } from '../InlineCode';
 import { ListItem } from '../List';
 import { Typography } from '../Typography';
 
-export interface PortableTextConfigProps {
-  dataset?: string;
-  projectId?: string;
-}
-
-export const portableTextConfig = ({ dataset, projectId }: PortableTextConfigProps) =>
+export const portableTextConfig = () =>
   ({
     types: {
       code: ({ value: { language, code, highlightedLines } }: { value: SnippetCodeType }) => (
         <BlockCode language={language} code={code} highlightedLinesPosition={highlightedLines} />
       ),
-      mainImage: ({ value }) => <MainImage dataset={dataset} value={value} projectId={projectId} />,
     },
     block: {
       h1: ({ children }) => <Heading level={1}>{children}</Heading>,
@@ -86,18 +80,16 @@ export const portableTextConfig = ({ dataset, projectId }: PortableTextConfigPro
     },
   }) as Partial<PortableTextReactComponents>;
 
-type PortableTextComponentsProps = PortableTextProps & PortableTextConfigProps;
+type PortableTextComponentsProps = PortableTextProps;
 
 export const PortableTextComponents = ({
   value,
   onMissingComponent = false,
+  components,
   ...restProps
 }: PortableTextComponentsProps) => (
   <PortableText
-    components={portableTextConfig({
-      dataset: restProps.dataset,
-      projectId: restProps.projectId,
-    })}
+    components={merge(portableTextConfig(), components)}
     onMissingComponent={onMissingComponent}
     value={value}
     {...restProps}
