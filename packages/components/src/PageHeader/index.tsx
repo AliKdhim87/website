@@ -1,7 +1,6 @@
 import type { ComponentType, DetailedHTMLProps, HTMLAttributes, PropsWithChildren } from 'react';
 
 import classNames from 'classnames/bind';
-import { Maybe } from 'graphql/jsutils/Maybe';
 
 import styles from './PageHeader.module.scss';
 import { Container } from '../Container';
@@ -20,8 +19,8 @@ type ImageProps = {
 };
 
 export interface PageHeaderProps extends Omit<DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>, 'title'> {
-  title?: Maybe<string>;
-  body?: Maybe<string>;
+  title?: string | null;
+  body?: string | null;
   image?: ImageProps;
 }
 
