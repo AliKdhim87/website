@@ -27,18 +27,6 @@ const meta: Meta<typeof PortableTextComponents> = {
         type: 'object',
       },
     },
-    dataset: {
-      description: 'The dataset to be used in the Portable Text',
-      control: {
-        type: 'text',
-      },
-    },
-    projectId: {
-      description: 'The project id to be used in the Portable Text',
-      control: {
-        type: 'text',
-      },
-    },
   },
 };
 
