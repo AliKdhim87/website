@@ -1,7 +1,7 @@
-import { ForwardedRef, HTMLAttributes, PropsWithChildren, forwardRef } from 'react';
+import type { ComponentType, ForwardedRef, HTMLAttributes, PropsWithChildren } from 'react';
+import { forwardRef } from 'react';
 
 import classnames from 'classnames/bind';
-import Link from 'next/link';
 import slugify from 'slugify';
 
 import styles from './styles.module.scss';
@@ -50,6 +50,7 @@ export type HeadingsArray = HeadingH2[];
 export interface TOCProps extends HTMLAttributes<HTMLElement> {
   toc?: HeadingsArray;
   label: string;
+  Link?: ComponentType<any>;
 }
 const cx = classnames.bind(styles);
 export interface TOCListProps extends ListProps {
@@ -58,7 +59,7 @@ export interface TOCListProps extends ListProps {
 const createHref = (textContent: string) => `#${slugify(textContent, { lower: true })}`;
 
 export const TOC = forwardRef(
-  ({ toc, label, ...restProps }: PropsWithChildren<TOCProps>, ref: ForwardedRef<HTMLElement>) => {
+  ({ toc, label, Link, ...restProps }: PropsWithChildren<TOCProps>, ref: ForwardedRef<HTMLElement>) => {
     const isToc = toc && Array.isArray(toc);
     const { width } = useWindowSize();
     const smallScreen = width ? width < 960 : false;
