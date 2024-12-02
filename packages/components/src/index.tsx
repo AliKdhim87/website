@@ -32,6 +32,7 @@ export { Tags } from './Tags';
 export { TOC } from './TOC';
 export { Typography } from './Typography';
 export { Logo } from './Logo';
+export { Drawer } from './Drawer';
 export * from './CardList';
 export * from './Details';
 export * from './Footer';
