@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 import Image, { ImageProps } from 'next/image';
 
-import { Container, Grid, Page, PageHeader, PortableTextComponents } from '@/components';
+import { Container, Grid, Page, PageHeader, PortableText } from '@/components';
 import { GetAboutPageQuery } from '@/graphql-types';
 import { GET_ABOUT_PAGE } from '@/queries/index.graphql';
 import { sanityGraphqlAPIUrl, uuidv4, fetchData } from '@/utils';
@@ -83,11 +83,11 @@ const AboutPage = async () => {
                 <Container>
                   <Grid container justifyContent="center">
                     <Grid item md={10}>
-                      <PortableTextComponents
+                      <PortableText
                         value={component.aboutIntroductionRaw}
+                        key={uuidv4()}
                         dataset={process.env.SANITY_DATASET as string}
                         projectId={process.env.SANITY_PROJECT_ID as string}
-                        key={uuidv4()}
                       />
                     </Grid>
                   </Grid>

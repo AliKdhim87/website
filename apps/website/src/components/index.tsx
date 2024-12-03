@@ -1,6 +1,8 @@
 'use client';
 import dynamic from 'next/dynamic';
 
+import { MainImage } from './MainImage';
+
 export { Anchor } from '@ali-dev/components';
 export { BlogHeader } from '@ali-dev/components';
 export { Body } from '@ali-dev/components';
@@ -19,6 +21,7 @@ export { LayoutContainer } from '@ali-dev/components';
 export { List, ListItem } from '@ali-dev/components';
 export { Logo } from '@ali-dev/components';
 export { Nav } from '@ali-dev/components';
+export { Navigation } from './Navigation';
 export { Page } from '@ali-dev/components';
 export { PageHeader } from '@ali-dev/components';
 export { SocialMedia } from '@ali-dev/components';
@@ -46,6 +49,24 @@ export const PortableTextComponents = dynamic(
   },
   { ssr: false },
 );
+interface MarkdownProps {
+  dataset: string;
+  projectId: string;
+  value?: any;
+}
+
+export const PortableText = ({ dataset, projectId, value }: MarkdownProps) => {
+  return (
+    <PortableTextComponents
+      value={value}
+      components={{
+        types: {
+          mainImage: ({ value }) => <MainImage dataset={dataset} projectId={projectId} value={value} />,
+        },
+      }}
+    />
+  );
+};
 export type { AnchorProps } from '@ali-dev/components';
 export type { BlogHeaderProps } from '@ali-dev/components';
 export type { ButtonProps } from '@ali-dev/components';

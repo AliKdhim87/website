@@ -3,8 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 import type { TagsTypes } from '@/components';
-import { GraphComment, Grid, Tags, TOC, PortableTextComponents, Container, Typography, BlogHeader } from '@/components';
-// import { GraphComment } from '@/components/reusable';
+import { GraphComment, Grid, Tags, TOC, PortableText, Container, Typography, BlogHeader } from '@/components';
 import { GetAllBlogSlugsQuery, GetBlogBySlugQuery } from '@/graphql-types';
 import { GET_TOC_GROQ_QUERY } from '@/queries/groq';
 import { GET_ALL_BLOG_SLUGS, GET_BLOG_BY_SLUG } from '@/queries/index.graphql';
@@ -140,11 +139,10 @@ const PostPage = async ({ params: { slug } }: Params) => {
             flexDirectionSM="column-reverse"
           >
             <Grid item md={7} sm={12}>
-              <PortableTextComponents
-                onMissingComponent={false}
+              <PortableText
                 value={bodyRaw}
-                dataset={process.env.SANITY_DATASET as string}
-                projectId={process.env.SANITY_PROJECT_ID as string}
+                dataset={process.env.NEXT_PUBLIC_SANITY_DATASET as string}
+                projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string}
               />
             </Grid>
             <Grid item md={5}>
