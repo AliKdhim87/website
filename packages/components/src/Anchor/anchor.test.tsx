@@ -1,8 +1,11 @@
+import React, { type PropsWithChildren } from 'react';
+
 import { render, screen } from '@testing-library/react';
-import Link from 'next/link';
 
 import { Anchor } from './index';
+interface LinkProps extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {}
 
+const Link = ({ children, ...restProps }: PropsWithChildren<LinkProps>) => <a {...restProps}>{children}</a>;
 describe('Anchor', () => {
   it('renders Anchor component', () => {
     render(<Anchor href="/">Anchor</Anchor>);
