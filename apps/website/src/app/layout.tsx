@@ -11,7 +11,7 @@ import '@ali-dev/components/dist/components.css';
 import '@ali-dev/theme/build/web/variables.css';
 import 'highlight.js/styles/github-dark.css';
 
-import { Body, Footer, Nav, LayoutContainer, Logo } from '@/components';
+import { Body, Footer, LayoutContainer, Logo, Navigation } from '@/components';
 import type { ImageType } from '@/components';
 import { GetSiteSettingsQuery } from '@/graphql-types';
 import { GET_SITE_SETTINGS } from '@/queries/index.graphql';
@@ -132,7 +132,7 @@ const Layout = async ({ children }: LayoutProps) => {
     <html lang="en">
       <Body id="root">
         <LayoutContainer>
-          <Nav
+          <Navigation
             navLinks={nav as LinkType[]}
             logo={
               <Link href="/">
