@@ -22,8 +22,5 @@ export const Default: Story = {
       { route: '/contact', title: 'Contact' },
       { route: '/about', title: 'About' },
     ],
-    backdrop: {
-      parent: '#root',
-    },
   },
 };

@@ -10,7 +10,6 @@ import type { NavLinkProps } from './NavLink';
 import { NavLink } from './NavLink';
 import { activeLinkChecker, NavList } from './NavList';
 import type { LinkType } from './NavList';
-import type { BackdropProps } from '../Backdrop';
 import { Container } from '../Container';
 import { Drawer } from '../Drawer';
 import { Grid } from '../Grid';
@@ -24,7 +23,6 @@ const css = classNames.bind(styles);
 export interface NavProps<T extends ElementType = 'a'> {
   navLinks: LinkType[];
   logo: any;
-  backdrop?: BackdropProps;
   linkProps?: NavLinkProps<T>;
   pathname?: string;
 }

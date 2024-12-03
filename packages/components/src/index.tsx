@@ -1,5 +1,4 @@
 export { Anchor } from './Anchor';
-export { Backdrop } from './Backdrop';
 export { Badge } from './Badge';
 export { BlockCode } from './Code';
 export { Blockquote } from './Blockquote';
