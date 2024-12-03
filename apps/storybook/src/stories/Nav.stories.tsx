@@ -1,4 +1,4 @@
-import { Nav } from '@ali-dev/components';
+import { Logo, Nav } from '@ali-dev/components';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Nav> = {
@@ -16,7 +16,7 @@ type Story = StoryObj<typeof Nav>;
 
 export const Default: Story = {
   args: {
-    logo: { src: '/public/Logo-v2.svg', width: '180', height: '69', alt: 'Ali dev logo' },
+    logo: <Logo logo={{ src: '/public/Logo-v2.svg', width: 180, height: 69, alt: 'Ali dev logo' }} />,
     navLinks: [
       { route: '/blog', title: 'Blog' },
       { route: '/contact', title: 'Contact' },
