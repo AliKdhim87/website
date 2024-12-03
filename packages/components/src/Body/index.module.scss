@@ -3,4 +3,8 @@
   color: var(--ali-dev-body-color);
   font-size: var(--ali-dev-body-font-size);
   font-family: var(--ali-dev-body-font-family);
+
+  &:has(dialog[open]) {
+    overflow: hidden;
+  }
 }
