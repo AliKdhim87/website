@@ -1,5 +1,4 @@
-import { forwardRef } from 'react';
-import type { DetailedHTMLProps, ButtonHTMLAttributes, PropsWithChildren, ForwardedRef } from 'react';
+import type { DetailedHTMLProps, ButtonHTMLAttributes, PropsWithChildren } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -12,23 +11,23 @@ export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTML
   loading?: boolean;
 }
 
-export const Button = forwardRef(
-  (
-    { variant = 'primary', children, className, loading, ...props }: PropsWithChildren<ButtonProps>,
-    ref: ForwardedRef<HTMLButtonElement>,
-  ) => {
-    const classes = css(className, 'ali-dev-button', {
-      [`ali-dev-button--${variant}`]: variant,
-      'ali-dev-button--loading': loading,
-    });
+export const Button = ({
+  variant = 'primary',
+  children,
+  className,
+  loading,
+  ...props
+}: PropsWithChildren<ButtonProps>) => {
+  const classes = css(className, 'ali-dev-button', {
+    [`ali-dev-button--${variant}`]: variant,
+    'ali-dev-button--loading': loading,
+  });
 
-    return (
-      <button {...props} ref={ref} className={classes} aria-live={loading ? 'polite' : undefined} aria-busy={loading}>
-        {children && (
-          <span className={css('ali-dev-button__text', { 'ali-dev-button__text--hide': loading })}>{children}</span>
-        )}
-      </button>
-    );
-  },
-);
-Button.displayName = 'Button';
+  return (
+    <button {...props} className={classes} aria-live={loading ? 'polite' : undefined} aria-busy={loading}>
+      {children && (
+        <span className={css('ali-dev-button__text', { 'ali-dev-button__text--hide': loading })}>{children}</span>
+      )}
+    </button>
+  );
+};

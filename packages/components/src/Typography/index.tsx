@@ -1,5 +1,5 @@
-import type { HTMLAttributes, PropsWithChildren, ForwardedRef, DetailedHTMLProps } from 'react';
-import { createElement, forwardRef } from 'react';
+import type { HTMLAttributes, PropsWithChildren, DetailedHTMLProps } from 'react';
+import { createElement } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -15,31 +15,18 @@ export interface TypographyProps extends DetailedHTMLProps<HTMLAttributes<HTMLEl
 }
 const css = classNames.bind(styles);
 
-export const Typography = forwardRef(
-  (
-    {
-      as = 'p',
-      variant = 'md',
-      children,
-      className,
-      dimension = true,
-      ...restProps
-    }: PropsWithChildren<TypographyProps>,
-    ref: ForwardedRef<HTMLElement>,
-  ) => {
-    const classes = css('ali-dev-typography', className, {
-      [`ali-dev-typography--${variant}`]: variant,
-      ['ali-dev-typography--dimension']: dimension,
-    });
+export const Typography = ({
+  as = 'p',
+  variant = 'md',
+  children,
+  className,
+  dimension = true,
+  ...restProps
+}: PropsWithChildren<TypographyProps>) => {
+  const classes = css('ali-dev-typography', className, {
+    [`ali-dev-typography--${variant}`]: variant,
+    ['ali-dev-typography--dimension']: dimension,
+  });
 
-    return createElement(as, { className: classes, ref, ...restProps }, children);
-  },
-);
-
-Typography.displayName = 'Typography';
-
-Typography.defaultProps = {
-  as: 'p',
-  variant: 'md',
-  dimension: true,
+  return createElement(as, { className: classes, ...restProps }, children);
 };
