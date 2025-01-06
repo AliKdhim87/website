@@ -8,11 +8,11 @@ import { GetAllBlogSlugsQuery, GetBlogBySlugQuery } from '@/graphql-types';
 import { GET_TOC_GROQ_QUERY } from '@/queries/groq';
 import { GET_ALL_BLOG_SLUGS, GET_BLOG_BY_SLUG } from '@/queries/index.graphql';
 import { getTableOfContent, sanityGraphqlAPIUrl, nestHeadings, formattedDate, fetchData } from '@/utils';
-
+export const dynamic = 'force-dynamic';
 type Params = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 const apiUrl = sanityGraphqlAPIUrl({
@@ -30,14 +30,18 @@ export async function generateStaticParams() {
     },
     apiUrl,
   });
-  return Array.isArray(data.allPost)
-    ? data.allPost.map(({ slug }) => ({
+  return Array.isArray(data?.allPost)
+    ? data?.allPost.map(({ slug }) => ({
         slug: slug?.current,
       }))
     : [];
 }
 
-export async function generateMetadata({ params: { slug } }: Params): Promise<Metadata> {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const params = await props.params;
+
+  const { slug } = params;
+
   const data = await fetchData<GetBlogBySlugQuery>({
     query: GET_BLOG_BY_SLUG,
     variables: { slug },
@@ -81,16 +85,20 @@ export async function generateMetadata({ params: { slug } }: Params): Promise<Me
   };
 }
 
-const PostPage = async ({ params: { slug } }: Params) => {
+const PostPage = async (props: Params) => {
+  const params = await props.params;
+
+  const { slug } = params;
+
   const data = await fetchData<GetBlogBySlugQuery>({
     query: GET_BLOG_BY_SLUG,
     variables: { slug },
     apiUrl,
   });
-  if (data.allPost.length === 0) {
+  if (data?.allPost?.length === 0) {
     notFound();
   }
-  const page = data.allPost[0];
+  const page = data?.allPost[0];
   const { title, bodyRaw, categories, mainImage, publishedAt, updatedAt } = page;
   const result = await getTableOfContent({ slug, query: GET_TOC_GROQ_QUERY, url: sanityGROQURL });
 

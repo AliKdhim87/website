@@ -13,7 +13,7 @@ import {
 import type { GetHomePageQuery } from '@/graphql-types';
 import { GET_HOME_PAGE } from '@/queries/index.graphql';
 import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
-
+export const dynamic = 'force-dynamic';
 const apiUrl = sanityGraphqlAPIUrl({
   projectId: process.env.SANITY_PROJECT_ID,
   dataset: process.env.SANITY_DATASET,
@@ -21,10 +21,11 @@ const apiUrl = sanityGraphqlAPIUrl({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
+  const draft = await draftMode();
   const data = await fetchData<GetHomePageQuery>({
     query: GET_HOME_PAGE,
     variables: { slug: 'front-page' },
-    isDraftMode: draftMode().isEnabled,
+    isDraftMode: draft.isEnabled,
     apiUrl,
   });
   const openGraph = data.allRoute[0]?.openGraph;
@@ -38,10 +39,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const Home = async () => {
+  const draft = await draftMode();
   const data = await fetchData<GetHomePageQuery>({
     query: GET_HOME_PAGE,
     variables: { slug: 'front-page' },
-    isDraftMode: draftMode().isEnabled,
+    isDraftMode: draft.isEnabled,
     apiUrl,
   });
   const page = data.allRoute[0]?.page;
@@ -62,7 +64,7 @@ const Home = async () => {
             );
           case 'BlogList':
             return (
-              <CardList>
+              <CardList key={`${index}-blog-list`}>
                 <CardListTitle level={2}>{component.title}</CardListTitle>
                 {Array.isArray(recentPosts) &&
                   recentPosts.map(({ title, excerpt, publishedAt, updatedAt, slug }, index: number) => (

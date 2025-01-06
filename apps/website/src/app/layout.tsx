@@ -1,5 +1,3 @@
-import type { ReactNode } from 'react';
-
 import type { LinkType } from '@ali-dev/components';
 import type { Viewport, Metadata } from 'next';
 import Image from 'next/image';
@@ -16,10 +14,6 @@ import type { ImageType } from '@/components';
 import { GetSiteSettingsQuery } from '@/graphql-types';
 import { GET_SITE_SETTINGS } from '@/queries/index.graphql';
 import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
-
-export interface LayoutProps {
-  children: ReactNode;
-}
 
 const apiUrl = sanityGraphqlAPIUrl({
   projectId: process.env.SANITY_PROJECT_ID,
@@ -102,7 +96,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const Layout = async ({ children }: LayoutProps) => {
+// eslint-disable-next-line no-undef
+const Layout = async ({ children }: { children?: React.ReactNode }) => {
   const data = await fetchData<GetSiteSettingsQuery>({
     query: GET_SITE_SETTINGS,
     apiUrl,

@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { Grid, CTA, PageHeader } from '@/components';
 import type { GetNotFoundPageQuery } from '@/graphql-types';
 import { GET_NOT_FOUND_PAGE } from '@/queries/index.graphql';
-import { sanityGraphqlAPIUrl, uuidv4, fetchData } from '@/utils';
+import { sanityGraphqlAPIUrl, fetchData } from '@/utils';
+export const dynamic = 'force-dynamic';
 
 const apiUrl = sanityGraphqlAPIUrl({
   projectId: process.env.SANITY_PROJECT_ID,
@@ -20,22 +21,22 @@ export const metadata: Metadata = {
 };
 
 const Custom404 = async () => {
+  const draft = await draftMode();
   const data = await fetchData<GetNotFoundPageQuery>({
     query: GET_NOT_FOUND_PAGE,
     variables: { slug: 'page-not-found' },
-    isDraftMode: draftMode().isEnabled,
+    isDraftMode: draft.isEnabled,
     apiUrl,
   });
-  const page = data.allRoute[0]?.page;
+  const page = data?.allRoute[0]?.page;
   return (
     <>
-      {page?.content?.map((component) => {
-        if (component?.__typename === 'PageHeader') {
-          // TODO make this nicer
-          return <PageHeader title={component.title} body={component.body} key={uuidv4()} />;
-        }
-        return null;
-      })}
+      {Array.isArray(page?.content) &&
+        page.content.map((component, index: number) => {
+          if (component?.__typename === 'PageHeader')
+            <PageHeader title={component?.title} body={component?.body} key={`page-header${index}`} />;
+          return null;
+        })}
       <Grid item justifyContent="center" className="space-mb-start-4 ">
         <CTA Link={Link} href="/">
           Back To Home

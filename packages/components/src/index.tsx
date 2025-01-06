@@ -43,7 +43,6 @@ export * from './InputField';
 export * from './Label';
 export * from './PageHeader';
 export * from './PortableTextComponents';
-export * from './SVGWrapper';
 export * from './Textarea';
 export type { AnchorProps } from './Anchor';
 export type { AsHTMLElement, TypographyProps, TypographyVariant } from './Typography';
