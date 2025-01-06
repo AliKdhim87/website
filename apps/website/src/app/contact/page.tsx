@@ -6,7 +6,7 @@ import { ContactForm, ContactIntro } from '@/components/reusable/ContactForm';
 import { GetContactPageQuery } from '@/graphql-types';
 import { GET_CONTACT_PAGE } from '@/queries/index.graphql';
 import { fetchData, sanityGraphqlAPIUrl, uuidv4 } from '@/utils';
-
+export const dynamic = 'force-dynamic';
 const apiUrl = sanityGraphqlAPIUrl({
   projectId: process.env.SANITY_PROJECT_ID,
   dataset: process.env.SANITY_DATASET,
@@ -14,17 +14,18 @@ const apiUrl = sanityGraphqlAPIUrl({
 });
 
 const getContactPage = async () => {
+  const draft = await draftMode();
   const { allRoute, allSiteSettings } = await fetchData<GetContactPageQuery>({
     query: GET_CONTACT_PAGE,
     variables: { slug: 'contact' },
     apiUrl,
-    isDraftMode: draftMode().isEnabled,
+    isDraftMode: draft.isEnabled,
   });
 
   return {
-    openGraph: allRoute[0].openGraph,
-    page: allRoute[0].page,
-    schemaOrg: allSiteSettings[0].schemaOrg,
+    openGraph: allRoute[0]?.openGraph,
+    page: allRoute[0]?.page,
+    schemaOrg: allSiteSettings[0]?.schemaOrg,
   };
 };
 export async function generateMetadata(): Promise<Metadata> {
@@ -115,7 +116,7 @@ const Contact = async () => {
   return (
     <>
       {page?.content?.map(
-        (component) => component?.__typename === 'PageHeader' && <PageHeader title={component.title} key={uuidv4()} />,
+        (component) => component?.__typename === 'PageHeader' && <PageHeader title={component?.title} key={uuidv4()} />,
       )}
       <Container>
         <Page>

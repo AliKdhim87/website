@@ -4,8 +4,9 @@ import { draftMode } from 'next/headers';
 import { CardList, CardListItem, PageHeader } from '@/components';
 import type { GetBlogPageQuery } from '@/graphql-types';
 import { GET_BLOG_PAGE } from '@/queries/index.graphql';
-import { uuidv4, fetchData, sanityGraphqlAPIUrl } from '@/utils';
+import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
 
+export const dynamic = 'force-dynamic';
 const apiUrl = sanityGraphqlAPIUrl({
   projectId: process.env.SANITY_PROJECT_ID,
   dataset: process.env.SANITY_DATASET,
@@ -13,13 +14,14 @@ const apiUrl = sanityGraphqlAPIUrl({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
+  const draft = await draftMode();
   const data = await fetchData<GetBlogPageQuery>({
     query: GET_BLOG_PAGE,
     variables: { slug: 'blog' },
-    isDraftMode: draftMode().isEnabled,
+    isDraftMode: draft.isEnabled,
     apiUrl,
   });
-  const openGraph = data.allRoute[0]?.openGraph;
+  const openGraph = data?.allRoute[0]?.openGraph;
   const schemaOrg = data.allSiteSettings[0]?.schemaOrg;
 
   const slug = 'blog';
@@ -42,20 +44,23 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const Blog = async () => {
+  const draft = await draftMode();
   const data = await fetchData<GetBlogPageQuery>({
     query: GET_BLOG_PAGE,
     variables: { slug: 'blog' },
-    isDraftMode: draftMode().isEnabled,
+    isDraftMode: draft.isEnabled,
     apiUrl,
   });
-
-  const { allPost } = data;
-  const page = data.allRoute[0]?.page;
+  const allPost = data?.allPost;
+  const page = data?.allRoute[0]?.page;
 
   return (
     <>
       {page?.content?.map(
-        (component) => component?.__typename === 'PageHeader' && <PageHeader title={component.title} key={uuidv4()} />,
+        (component, index: number) =>
+          component?.__typename === 'PageHeader' && (
+            <PageHeader title={component?.title} key={`page-header-${index}`} />
+          ),
       )}
       <CardList>
         {Array.isArray(allPost) &&

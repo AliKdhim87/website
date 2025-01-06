@@ -6,7 +6,7 @@ import { Container, Grid, Page, PageHeader, PortableText } from '@/components';
 import { GetAboutPageQuery } from '@/graphql-types';
 import { GET_ABOUT_PAGE } from '@/queries/index.graphql';
 import { sanityGraphqlAPIUrl, uuidv4, fetchData } from '@/utils';
-
+export const dynamic = 'force-dynamic';
 const apiUrl = sanityGraphqlAPIUrl({
   projectId: process.env.SANITY_PROJECT_ID,
   dataset: process.env.SANITY_DATASET,
@@ -14,11 +14,12 @@ const apiUrl = sanityGraphqlAPIUrl({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
+  const draft = await draftMode();
   const { allRoute, allSiteSettings } = await fetchData<GetAboutPageQuery>({
     query: GET_ABOUT_PAGE,
     variables: { slug: 'about' },
     apiUrl,
-    isDraftMode: draftMode().isEnabled,
+    isDraftMode: draft.isEnabled,
   });
 
   const { openGraph } = allRoute[0];
@@ -43,17 +44,18 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const AboutPage = async () => {
+  const draft = await draftMode();
   const { allRoute } = await fetchData<GetAboutPageQuery>({
     query: GET_ABOUT_PAGE,
     variables: { slug: 'about' },
     apiUrl,
-    isDraftMode: draftMode().isEnabled,
+    isDraftMode: draft.isEnabled,
   });
   const { page } = allRoute[0];
 
   return (
     <div>
-      {page?.content?.map((component) => {
+      {page?.content?.map((component, index: number) => {
         switch (component?.__typename) {
           case 'PageHeader': {
             const image = {
@@ -73,7 +75,7 @@ const AboutPage = async () => {
                     ImageComponent: Image,
                   } as any
                 }
-                key={uuidv4()}
+                key={`page-header-${index}`}
               />
             );
           }

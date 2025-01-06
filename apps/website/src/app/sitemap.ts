@@ -14,11 +14,12 @@ const apiUrl = sanityGraphqlAPIUrl({
 });
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const draft = await draftMode();
   const data = await fetchData<GetAllPagesAndBlogsAndCategoriesQuery>({
     query: GET_ALL_PAGES_AND_BLOGS_AND_CATEGORIES,
     variables: { slug: 'blog' },
     apiUrl,
-    isDraftMode: draftMode().isEnabled,
+    isDraftMode: draft.isEnabled,
   });
   const blogs = data.allPost;
   const catagoriesData = data.allCategory;

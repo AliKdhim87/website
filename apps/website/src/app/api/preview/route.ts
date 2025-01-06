@@ -25,6 +25,7 @@ export async function GET(req: Request) {
   }
 
   try {
+    const draft = await draftMode();
     const data = await fetchData<GetCurrentPageQuery>({
       query: GET_CURRENT_PAGE,
       variables: { slug: slugParam },
@@ -32,7 +33,7 @@ export async function GET(req: Request) {
     });
     const slug = data.allRoute[0]?.slug;
     // Set draft mode cookie that enables fetching data at request time (instead of at build time)
-    draftMode().enable();
+    draft.enable();
     const currentSlug = slug?.current === 'front-page' ? '' : slug?.current;
     const path = type === 'post' ? `/blog/${slugParam}` : `/${currentSlug}`;
 
