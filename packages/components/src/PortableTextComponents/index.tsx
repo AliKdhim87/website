@@ -68,7 +68,11 @@ export const portableTextConfig = () =>
           <Typography dimension={false}>{children}</Typography>
         </ListItem>
       ),
-      number: ({ children }) => <Typography dimension={false}>{children}</Typography>,
+      number: ({ children }) => (
+        <ListItem>
+          <Typography dimension={false}>{children}</Typography>
+        </ListItem>
+      ),
     },
     marks: {
       link: ({ children, value }) => (
