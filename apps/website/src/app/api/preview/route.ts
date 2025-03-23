@@ -42,7 +42,8 @@ export async function GET(req: Request) {
         Location: path,
       },
     });
-  } catch (e) {
+  } catch (error) {
+    console.error(error);
     return new NextResponse('Not found', { status: 404 });
   }
 }

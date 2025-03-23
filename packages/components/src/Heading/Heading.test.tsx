@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef } from 'react';
 
 import { render, screen } from '@testing-library/react';
 
@@ -87,7 +87,7 @@ describe('Heading', () => {
     expect(screen.getByText('Heading')).toHaveAttribute('data-testid', 'heading');
   });
   it('renders a heading with custom ref', () => {
-    const ref = React.createRef<HTMLHeadingElement>();
+    const ref = createRef<HTMLHeadingElement>();
     render(
       <Heading level={1} ref={ref}>
         Heading

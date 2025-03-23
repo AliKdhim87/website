@@ -18,6 +18,6 @@ CHANGELOG.md
 /lib
 /src/generated
 generated/
-**/.rollup.cache/**
+.rollup.cache/**
 
 

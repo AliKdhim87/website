@@ -28,6 +28,7 @@ export async function fetchData<T>({ query, variables, options, apiUrl, isDraftM
       .json((json) => json);
     return data as T;
   } catch (error) {
+    console.error('Error fetching data:', error);
     throw new Error('Server error');
   }
 }

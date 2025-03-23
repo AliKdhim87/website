@@ -44,4 +44,5 @@ const config: StorybookConfig & StorybookConfigVite = {
   },
 };
 
+// eslint-disable-next-line storybook/csf-component
 export default config;

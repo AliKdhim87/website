@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "storybook dev -p 6006 --config-dir src/storybook-config",
     "build": "storybook build --config-dir src/storybook-config",
-    "type-check": "tsc -p tsconfig.json --noEmit"
+    "type-check": "tsc -p tsconfig.json --noEmit",
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:eslint": "eslint . --cache \"**/*.{js,jsx,ts,tsx}\"",
+    "lint-fix": "npm-run-all --parallel lint-fix:*",
+    "lint-fix:eslint": "eslint . --cache --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint-fix:prettier": "prettier --write '**/*.{js,jsx,ts,tsx,json,scss}'"
   },
   "dependencies": {
     "@ali-dev/theme": "workspace:*",

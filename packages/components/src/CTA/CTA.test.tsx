@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef } from 'react';
 
 import { render, screen } from '@testing-library/react';
 
@@ -42,7 +42,7 @@ describe('CTA', () => {
     expect(link).toHaveTextContent('Click me');
   });
   it('renders a link with a ref forwarded', () => {
-    const ref = React.createRef<HTMLAnchorElement>();
+    const ref = createRef<HTMLAnchorElement>();
     render(<CTA href="https://example.com" ref={ref} />);
 
     expect(ref.current).not.toBeNull();

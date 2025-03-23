@@ -1,44 +1,5 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/components/*": ["src/components/*"],
-      "@/styles/*": ["src/styles/*"],
-      "@/utils": ["src/utils"],
-      "@/graphql-types": ["src/generated/graphql.ts"],
-      "@/queries": ["src/queries"],
-      "@/*": ["src/*"]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
-  },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "./eslint.config.js",
-    "./stylelint.config.js",
-    "apps/website/next.config.js",
-    "./.lintstagedrc.js",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": ["node_modules", "./src/generated", "storybook-static", ".next"]
+  "references": [{ "path": "packages/components" }, { "path": "apps/website" }, { "path": "apps/storybook" }],
+  "include": ["./.lintstagedrc.js", "./eslint.config.js"],
+  "exclude": ["node_modules", ".turbo", ".eslintcache"]
 }

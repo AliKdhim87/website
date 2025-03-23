@@ -1,4 +1,4 @@
-import React, { type PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 
 import { render, screen } from '@testing-library/react';
 

@@ -17,10 +17,24 @@
       "dependsOn": ["^build"]
     },
     "lint": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^lint"],
+      "cache": false
     },
     "lint-fix": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^lint-fix"],
+      "cache": false
+    },
+    "lint:eslint": {
+      "dependsOn": ["^lint:eslint"],
+      "cache": false
+    },
+    "lint-fix:eslint": {
+      "dependsOn": ["^lint-fix:eslint"],
+      "cache": false
+    },
+    "lint-fix:prettier": {
+      "dependsOn": ["^lint-fix:prettier"],
+      "cache": false
     },
     "test": {
       "dependsOn": ["^build"]
@@ -31,7 +45,7 @@
       "cache": false
     },
     "type-check": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^type-check"]
     }
   }
 }
