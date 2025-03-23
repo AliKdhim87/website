@@ -12,7 +12,13 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "playwright": "playwright test",
-    "type-check": "tsc -p tsconfig.json --noEmit"
+    "type-check": "tsc -p tsconfig.json --noEmit",
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:eslint": "eslint . --cache \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:stylelint": "stylelint \"**/*.scss\"",
+    "lint-fix": "npm-run-all --parallel lint-fix:*",
+    "lint-fix:eslint": "eslint . --cache --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint-fix:prettier": "prettier --write '**/*.{js,jsx,ts,tsx,json,scss}'"
   },
   "dependencies": {
     "@ali-dev/components": "workspace:*",
@@ -35,6 +41,7 @@
     "wretch": "2.6.0"
   },
   "devDependencies": {
+    "@graphql-typed-document-node/core": "3.2.0",
     "@playwright/test": "1.45.3",
     "@testing-library/dom": "10.1.0",
     "@testing-library/jest-dom": "6.4.6",

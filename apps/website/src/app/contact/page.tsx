@@ -103,6 +103,7 @@ const onEmailSubmit = async (fromData: FormData) => {
       message: 'Something went wrong! Email not sent',
     };
   } catch (error) {
+    console.error(error);
     return {
       status: 500,
       message: 'Something went wrong! Email not sent',

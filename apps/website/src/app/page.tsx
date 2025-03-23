@@ -76,7 +76,7 @@ const Home = async () => {
                     />
                   ))}
                 {component.cta?.route && (
-                  <CardListLoadMoreLink href={component.cta?.route}>{component.cta?.title}</CardListLoadMoreLink>
+                  <CardListLoadMoreLink href={component.cta.route}>{component.cta.title}</CardListLoadMoreLink>
                 )}
               </CardList>
             );

@@ -1,9 +1,9 @@
 import { CodegenConfig } from '@graphql-codegen/cli';
-import dotenv from 'dotenv';
+import { config as dotenvConfig } from 'dotenv';
 
 import { sanityGraphqlAPIUrl } from './utils';
 
-dotenv.config();
+dotenvConfig();
 
 const apiUrl = sanityGraphqlAPIUrl({
   projectId: process.env.SANITY_PROJECT_ID,

@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
+    "composite": true,
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "noEmit": false,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -34,11 +35,10 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
-    "./eslint.config.js",
-    "./stylelint.config.js",
-    "apps/website/next.config.js",
-    "./.lintstagedrc.js",
+    "./playwright.config.ts",
+    "eslint.config.js",
+    "next.config.js",
     ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "./src/generated", "storybook-static", ".next"]
+  "exclude": ["node_modules", ".next"]
 }

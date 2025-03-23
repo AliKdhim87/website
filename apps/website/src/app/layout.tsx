@@ -9,6 +9,7 @@ import '@fontsource/roboto';
 import '../styles/globals.scss';
 import '@ali-dev/components/dist/components.css';
 import '@ali-dev/theme/build/web/variables.css';
+// eslint-disable-next-line import/no-unresolved
 import 'highlight.js/styles/github-dark.css';
 
 import { Body, Footer, LayoutContainer, Logo, Navigation } from '@/components';

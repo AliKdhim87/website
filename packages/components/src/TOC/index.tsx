@@ -9,8 +9,7 @@ import { Anchor } from '../Anchor';
 import { Details } from '../Details';
 import { useWindowSize } from '../hooks/useWindowSize';
 import type { ListProps } from '../List';
-import { List } from '../List';
-import { ListItem } from '../List';
+import { List, ListItem } from '../List';
 
 export interface HeadingBase {
   level: string;

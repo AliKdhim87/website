@@ -1,6 +1,5 @@
 import type { DetailedHTMLProps, ForwardedRef, InputHTMLAttributes } from 'react';
-import { forwardRef } from 'react';
-import { useId } from 'react';
+import { forwardRef, useId } from 'react';
 
 import classNames from 'classnames/bind';
 

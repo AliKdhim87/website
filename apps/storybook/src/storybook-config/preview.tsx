@@ -30,4 +30,5 @@ const preview: Preview = {
   },
 };
 
+// eslint-disable-next-line storybook/csf-component
 export default preview;

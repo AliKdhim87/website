@@ -14,7 +14,14 @@
     "svgr:icons": "svgr --typescript --title-prop --replace-attr-values '#fff=currentColor' -d components/reusable/icons assets/icons --icon --svg-props className=icon",
     "test": "jest",
     "test:watch": "jest --watch",
-    "type-check": "tsc -p tsconfig.json --noEmit"
+    "type-check": "tsc -p tsconfig.json --noEmit",
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:eslint": "eslint . --cache \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:stylelint": "stylelint \"**/*.scss\"",
+    "lint-fix": "npm-run-all --parallel lint-fix:*",
+    "lint-fix:eslint": "eslint . --cache --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint-fix:stylelint": "stylelint --fix \"**/*.scss\"",
+    "lint-fix:prettier": "prettier --write '**/*.{js,jsx,ts,tsx,json,scss}'"
   },
   "dependencies": {
     "@babel/runtime": "7.25.6",
@@ -46,10 +53,12 @@
     "@testing-library/dom": "10.1.0",
     "@testing-library/jest-dom": "6.4.8",
     "@testing-library/react": "16.0.0",
+    "@types/eslint-plugin-jsx-a11y": "6.10.0",
     "@types/jest": "29.5.12",
     "@types/lodash.last": "3.0.9",
     "@types/lodash.merge": "4.6.9",
     "@types/lodash.uniq": "4.5.9",
+    "@types/mocha": "10.0.10",
     "@types/node": "20.14.2",
     "@types/react": "18.2.12",
     "@vitejs/plugin-react": "4.3.1",
