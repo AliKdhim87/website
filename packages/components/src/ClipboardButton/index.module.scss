@@ -1,11 +1,11 @@
 @use "../styles/common/mixins" as *;
 
-.ali-dev-clipboard {
+.ali-dev-clipboard-button {
   background-color: transparent;
-  color: var(--ali-dev-clipboard-color);
+  color: var(--ali-dev-clipboard-button-color);
   border: none;
   cursor: pointer;
-  font-size: var(--ali-dev-clipboard-icon-size);
+  font-size: var(--ali-dev-clipboard-button-icon-size);
   padding: 0;
   line-height: 0;
 
@@ -18,6 +18,6 @@
   }
 
   &:hover {
-    color: var(--ali-dev-clipboard-hover-color);
+    color: var(--ali-dev-clipboard-button-hover-color);
   }
 }

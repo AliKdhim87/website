@@ -4,7 +4,7 @@ import { draftMode } from 'next/headers';
 import { CardList, CardListItem, PageHeader } from '@/components';
 import type { GetBlogPageQuery } from '@/graphql-types';
 import { GET_BLOG_PAGE } from '@/queries/index.graphql';
-import { uuidv4, fetchData, sanityGraphqlAPIUrl } from '@/utils';
+import { uuidv4, fetchData, sanityGraphqlAPIUrl, formattedDate } from '@/utils';
 
 const apiUrl = sanityGraphqlAPIUrl({
   projectId: process.env.SANITY_PROJECT_ID,
@@ -64,11 +64,19 @@ const Blog = async () => {
               key={index}
               title={title as string}
               body={excerpt as string}
-              updatedAt={updatedAt}
-              publishedAt={publishedAt}
+              publishedAt={{
+                dateTime: publishedAt,
+                formatted: formattedDate(publishedAt),
+                label: 'Published:',
+              }}
+              updatedAt={{
+                dateTime: updatedAt,
+                formatted: formattedDate(updatedAt),
+                label: 'Updated:',
+              }}
               href={`/blog/${slug?.current}`}
               headingOptions={{
-                level: 3,
+                level: 2,
                 variant: 'h3',
               }}
             />

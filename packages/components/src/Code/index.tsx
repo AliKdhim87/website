@@ -1,13 +1,13 @@
 import 'highlight.js/styles/github-dark.css';
 
-import { createElement } from 'react';
+import { createElement, ForwardedRef, forwardRef } from 'react';
 
 import classNames from 'classnames/bind';
 import hljs from 'highlight.js';
 import xss from 'xss';
 
 import styles from './Code.module.scss';
-import { Clipboard } from '../Clipboard';
+import { ClipboardButton } from '../ClipboardButton';
 import { Typography } from '../Typography';
 
 export type SnippetCodeType = {
@@ -45,17 +45,20 @@ const renderHighlightedLines = ({ code, language, highlightedLinesPosition }: Re
     },
   });
 };
-export const BlockCode = ({ code, language, highlightedLinesPosition }: CodeHighlighterProps) => {
-  const hljsCode = hljs.highlight(code, { language }).value;
-  return (
-    <div className={css('ali-dev-code-highlighter')}>
-      <div className={css('ali-dev-code-highlighter__header')}>
-        {language && <Typography as="span">{language.toUpperCase()}</Typography>}
-        {code && <Clipboard code={code} />}
+export const BlockCode = forwardRef<HTMLDivElement, CodeHighlighterProps>(
+  ({ code, language, highlightedLinesPosition }, ref: ForwardedRef<HTMLDivElement>) => {
+    const hljsCode = hljs.highlight(code, { language }).value;
+    return (
+      <div className={css('ali-dev-code-highlighter')} ref={ref}>
+        <div className={css('ali-dev-code-highlighter__header')}>
+          {language && <Typography as="span">{language.toUpperCase()}</Typography>}
+          {code && <ClipboardButton code={code} />}
+        </div>
+        <pre className={css('ali-dev-code-highlighter__pre')}>
+          {renderHighlightedLines({ code: hljsCode, language, highlightedLinesPosition })}
+        </pre>
       </div>
-      <pre className={css('ali-dev-code-highlighter__pre')}>
-        {renderHighlightedLines({ code: hljsCode, language, highlightedLinesPosition })}
-      </pre>
-    </div>
-  );
-};
+    );
+  },
+);
+BlockCode.displayName = 'BlockCode';

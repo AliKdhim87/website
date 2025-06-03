@@ -55,6 +55,7 @@ sitemap.xml
 *storybook.log
 /test-results/
 /playwright-report/
+apps/website/playwright-report/
 /blob-report/
 /playwright/.cache/
 dist
@@ -62,3 +63,4 @@ dist
 node_modules
 .eslintcache
 .turbo/
+rollup.config-*

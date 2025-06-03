@@ -19,11 +19,11 @@
       },
       "outline-color": {
         "$type": "color",
-        "$value": "{ali-dev.colors.primary-dark}"
+        "$value": "{ali-dev.colors.focus-ring}"
       },
       "background-color": {
         "$type": "color",
-        "$value": "{ali-dev.colors.focus-primary}"
+        "$value": "{ali-dev.colors.primary}"
       }
     }
   }

@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/react';
-import '@ali-dev/components/dist/components.css';
+import '@ali-dev/components/components.css';
 import '@ali-dev/theme/build/web/variables.css';
 import 'highlight.js/styles/github-dark.css';
 

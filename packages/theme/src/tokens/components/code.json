@@ -3,7 +3,7 @@
     "code-highlighter": {
       "background-color": {
         "$type": "color",
-        "$value": "{ali-dev.colors.primary-bg}"
+        "$value": "{ali-dev.colors.background-base}"
       },
       "highlighted": {
         "padding-block-start": {

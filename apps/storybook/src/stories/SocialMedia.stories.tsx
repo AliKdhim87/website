@@ -16,7 +16,6 @@ type Story = StoryObj<typeof SocialMedia>;
 
 export const Default: Story = {
   args: {
-    title: 'Find me across the internet:',
     list: [
       { url: '#', icon: 'github', title: 'Github' },
       { url: '#', icon: 'linkedIn', title: 'LinkedIn' },

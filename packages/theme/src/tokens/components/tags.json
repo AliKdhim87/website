@@ -12,6 +12,11 @@
       "gap": {
         "$type": "dimension",
         "$value": "{ali-dev.spacing.md}"
+      },
+      "margin-block-start": {},
+      "margin-block-end": {
+        "$type": "size",
+        "$value": "{ali-dev.spacing.lg}"
       }
     }
   }

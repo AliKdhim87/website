@@ -5,9 +5,22 @@
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
   "types": "./dist/types/src/index.d.ts",
-  "files": [
-    "dist/"
-  ],
+  "style": "./dist/components.css",
+  "files": ["dist/", "src/styles/"],
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/types/src/index.d.ts",
+      "style": "./dist/components.css"
+    },
+    "./components.css": {
+      "default": "./dist/components.css"
+    },
+    "./styles": {
+      "sass": "./src/styles/index.scss"
+    }
+  },
   "scripts": {
     "build": "rollup --config rollup.config.ts --configPlugin typescript --bundleConfigAsCjs",
     "watch": "rollup --config rollup.config.ts --configPlugin typescript -w --bundleConfigAsCjs",

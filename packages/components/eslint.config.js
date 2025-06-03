@@ -17,7 +17,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Common configurations
-const commonIgnores = ['.rollup.cache/**', 'dist/**', '.turbo/**', 'node_modules/**'];
+const commonIgnores = ['.rollup.cache/**', 'dist/**', '.turbo/**', 'node_modules/**', 'rollup.config-*/**'];
 const commonFiles = ['**/*.{ts,tsx,js,jsx}'];
 
 const languageOptions = {

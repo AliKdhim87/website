@@ -56,7 +56,22 @@ const baseConfig = {
     },
   },
 };
-
+const javascriptConfig = {
+  files: ['**/*.js'],
+  languageOptions: {
+    ecmaVersion: 2022,
+    sourceType: 'module',
+    globals: {
+      ...globals.browser,
+      ...globals.node,
+      ...globals.es2021,
+    },
+  },
+  rules: {
+    ...js.configs.recommended.rules,
+    'no-console': ['error', { allow: ['warn', 'error'] }],
+  },
+};
 // TypeScript configuration
 const typescriptConfig = {
   files: ['**/*.{ts}'],
@@ -76,6 +91,6 @@ const typescriptConfig = {
 };
 
 /** @type {import('eslint').ESLint}  */
-const config = tseslint.config({ ignores: commonIgnores }, baseConfig, typescriptConfig);
+const config = tseslint.config({ ignores: commonIgnores }, javascriptConfig, baseConfig, typescriptConfig);
 
 export default config;

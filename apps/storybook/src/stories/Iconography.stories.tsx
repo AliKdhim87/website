@@ -12,7 +12,19 @@ const meta: Meta<typeof Icon> = {
   argTypes: {
     name: {
       control: { type: 'select' },
-      options: ['email', 'asterisk', 'bullet', 'calender', 'close', 'github', 'hamburger', 'linkedIn', 'twitter'],
+      options: [
+        'email',
+        'asterisk',
+        'bullet',
+        'calender',
+        'close',
+        'github',
+        'hamburger',
+        'linkedIn',
+        'twitter',
+        'updatedAt',
+        'publishedAt',
+      ],
     },
   },
   render: (args) => (
@@ -68,5 +80,15 @@ export const LinkedIn: Story = {
 export const Twitter: Story = {
   args: {
     name: 'twitter',
+  },
+};
+export const UpdatedAt: Story = {
+  args: {
+    name: 'updatedAt',
+  },
+};
+export const PublishedAt: Story = {
+  args: {
+    name: 'publishedAt',
   },
 };

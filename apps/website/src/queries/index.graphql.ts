@@ -75,18 +75,6 @@ export const GET_SITE_SETTINGS = gql(`
   query getSiteSettings {
     SiteSettings(id: "siteSettings") {
       navigation {
-        logo {
-          alt
-          asset {
-            metadata {
-              dimensions {
-                height
-                width
-              }
-            }
-            url
-          }
-        }
         items {
           title
           route
@@ -244,7 +232,6 @@ export const GET_HOME_PAGE = gql(`
         content {
           __typename
           ... on SocialCollection {
-            title
             items {
               title
               url

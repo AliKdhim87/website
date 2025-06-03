@@ -1,0 +1,29 @@
+::-webkit-scrollbar {
+  inline-size: var(--ali-dev-scrollbar-size);
+  block-size: var(--ali-dev-scrollbar-size);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--ali-dev-scrollbar-track-background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--ali-dev-scrollbar-thumb-background-color);
+  border-radius: var(--ali-dev-scrollbar-thumb-radius);
+  border-style: solid;
+  border-width: var(--ali-dev-scrollbar-thumb-border-width);
+  border-color: var(--ali-dev-scrollbar-thumb-border-color);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ali-dev-scrollbar-thumb-hover-background-color);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ali-dev-scrollbar-thumb-background-color)
+    var(--ali-dev-scrollbar-track-background-color);
+}

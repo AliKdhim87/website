@@ -40,9 +40,9 @@ $breakpoints: (
   color: var(--text-color-dark);
   outline-width: $outline-width;
   outline-style: solid;
-  outline-color: var(--colors-primary-dark);
+  outline-color: var(--colors-primary-deep);
   outline-offset: var(--focus-outline-offset);
-  background-color: var(--colors-focus-primary);
+  background-color: var(--colors-focus-ring);
 }
 @mixin focus {
   @include focus-base(var(--focus-outline-width));

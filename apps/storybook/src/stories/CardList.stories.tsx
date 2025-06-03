@@ -17,29 +17,26 @@ type Story = StoryObj<typeof CardList>;
 export const Default: Story = {
   render: (args) => (
     <CardList {...args}>
-      <CardListTitle level={2}>Card List Title</CardListTitle>
-      <CardListItem
-        href="#"
-        title="Card List Item"
-        body="Card List Item"
-        publishedAt="2024-01-01"
-        updatedAt="2024-01-01"
-      />
-      <CardListItem
-        href="#"
-        title="Card List Item"
-        body="Card List Item"
-        publishedAt="2024-01-01"
-        updatedAt="2024-01-01"
-      />
-      <CardListItem
-        href="#"
-        title="Card List Item"
-        body="Card List Item"
-        publishedAt="2024-01-01"
-        updatedAt="2024-01-01"
-      />
-      <CardListLoadMoreLink href="#">Load More</CardListLoadMoreLink>
+      <CardListTitle level={2}>Example Card List</CardListTitle>
+      {[1, 2, 3].map((index) => (
+        <CardListItem
+          key={index}
+          href={`#item-${index}`}
+          title={`Card Item ${index}`}
+          body={`This is the description for Card Item ${index}.`}
+          publishedAt={{
+            dateTime: `2025-0${index}-01T12:00:00Z`,
+            formatted: `March ${index}, 2025`,
+            label: 'Published on',
+          }}
+          updatedAt={{
+            dateTime: `2025-0${index}-10T12:00:00Z`,
+            formatted: `March ${index + 9}, 2025`,
+            label: 'Updated on',
+          }}
+        />
+      ))}
+      <CardListLoadMoreLink href="#">Load More Items</CardListLoadMoreLink>
     </CardList>
   ),
 };

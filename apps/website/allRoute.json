@@ -1,0 +1,502 @@
+[
+  {
+    "slug": {
+      "current": "about"
+    },
+    "openGraph": {
+      "title": "About",
+      "description": "Passionate front-end web developer specializing in Reactjs, CSS, and API development. Crafting optimized solutions and captivating user experiences. Let's build something amazing together!",
+      "image": {
+        "asset": {
+          "url": "https://cdn.sanity.io/images/nz7mz6t7/production/25d9e945528a85318e3476663b7c0eccdc9376b9-4580x3447.jpg"
+        }
+      }
+    },
+    "page": {
+      "content": [
+        {
+          "__typename": "PageHeader",
+          "title": "Hey there!",
+          "titleDistancedBottom": true,
+          "body": "I'm a passionate front-end web developer with a focus on Design System, dedicated to making the web a better place, one line of code at a time. \nI thrive on seeking innovative solutions and creating captivating user experiences.",
+          "image": {
+            "asset": {
+              "url": "https://cdn.sanity.io/images/nz7mz6t7/production/adcf261d2ccce11df470724aa4b7ea437622906e-612x612.png",
+              "metadata": {
+                "dimensions": {
+                  "height": 612,
+                  "width": 612
+                }
+              }
+            },
+            "alt": "Ali Amori Kadhim"
+          }
+        },
+        {
+          "__typename": "AboutMe",
+          "aboutIntroductionRaw": [
+            {
+              "_key": "48a4c8e3cb3a",
+              "markDefs": [],
+              "children": [
+                {
+                  "marks": [],
+                  "text": "Ambitious, adventurous, and always animated, I'm not just a developer, but also an advocate of alliterations. I believe in infusing creativity into every project, and my expertise lies in Reactjs. I craft seamless server-side rendering using powerful frameworks like Nextjs and Gatsbyjs. I've also explored Angular and stay up-to-date with the latest technologies by devouring articles and documentation. Plus, I love using tools like Figma to bring my design ideas to life.",
+                  "_key": "bf8929edbcd60",
+                  "_type": "span"
+                }
+              ],
+              "_type": "block",
+              "style": "normal"
+            },
+            {
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Skills:",
+                  "_key": "a71bcc67d6960"
+                }
+              ],
+              "_type": "block",
+              "style": "h2",
+              "_key": "34b11b199681"
+            },
+            {
+              "children": [
+                {
+                  "text": "Frontend:",
+                  "_key": "48e6b35cde390",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "_type": "block",
+              "style": "h3",
+              "_key": "d69a37c5ba9b",
+              "markDefs": []
+            },
+            {
+              "markDefs": [],
+              "children": [
+                {
+                  "_key": "4f8c149ebd850",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "JavaScript, TypeScript"
+                }
+              ],
+              "level": 1,
+              "_type": "block",
+              "style": "normal",
+              "_key": "a5bc23598f73",
+              "listItem": "bullet"
+            },
+            {
+              "style": "normal",
+              "_key": "8f205fb443c0",
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "marks": [],
+                  "text": "CSS, SCSS",
+                  "_key": "3ef7d10921190",
+                  "_type": "span"
+                }
+              ],
+              "level": 1,
+              "_type": "block"
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "a1499bf12c14",
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "CSS-in-JS (styled-components)",
+                  "_key": "b79b417119940"
+                }
+              ],
+              "level": 1
+            },
+            {
+              "style": "normal",
+              "_key": "827d297cb25b",
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "UI libraries (Semantic-UI, Material-UI, Bootstrap)",
+                  "_key": "22b2b751afad0"
+                }
+              ],
+              "level": 1,
+              "_type": "block"
+            },
+            {
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Reactjs state management (react context, Apollo client, redux)",
+                  "_key": "9d20ae2f6ede0"
+                }
+              ],
+              "level": 1,
+              "_type": "block",
+              "style": "normal",
+              "_key": "66506748f502",
+              "listItem": "bullet"
+            },
+            {
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "marks": [],
+                  "text": "HTML5",
+                  "_key": "038790bce44a0",
+                  "_type": "span"
+                }
+              ],
+              "level": 1,
+              "_type": "block",
+              "style": "normal",
+              "_key": "2365ab473a51"
+            },
+            {
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "JavaScript bundlers (Webpack, Parcel, Rollup)",
+                  "_key": "fbcffb882c040"
+                }
+              ],
+              "level": 1,
+              "_type": "block",
+              "style": "normal",
+              "_key": "5db793b483a7"
+            },
+            {
+              "style": "normal",
+              "_key": "5ca3f9adac8d",
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "_key": "79b526b4a1830",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Storybook"
+                }
+              ],
+              "level": 1,
+              "_type": "block"
+            },
+            {
+              "_key": "fbff707effc7",
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Test libraries like Jest",
+                  "_key": "bdb3e1c5f39e0"
+                }
+              ],
+              "level": 1,
+              "_type": "block",
+              "style": "normal"
+            },
+            {
+              "children": [
+                {
+                  "marks": [],
+                  "text": "Backend:",
+                  "_key": "367e23e448350",
+                  "_type": "span"
+                }
+              ],
+              "_type": "block",
+              "style": "h3",
+              "_key": "a56d95d1b8bf",
+              "markDefs": []
+            },
+            {
+              "markDefs": [],
+              "children": [
+                {
+                  "text": "Nodejs, DenoJs",
+                  "_key": "970b0a1fc0ff0",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "level": 1,
+              "_type": "block",
+              "style": "normal",
+              "_key": "da0f96029f86",
+              "listItem": "bullet"
+            },
+            {
+              "style": "normal",
+              "_key": "48cd130c29d3",
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "_key": "06841eb77bf60",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Restful API/GraphQL"
+                }
+              ],
+              "level": 1,
+              "_type": "block"
+            },
+            {
+              "style": "normal",
+              "_key": "66bde384421c",
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "text": "SQL, MongoDB",
+                  "_key": "ec0a36eae6820",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "level": 1,
+              "_type": "block"
+            },
+            {
+              "_type": "block",
+              "style": "h3",
+              "_key": "de8beafa14eb",
+              "markDefs": [],
+              "children": [
+                {
+                  "text": "DevOps:",
+                  "_key": "21275d21a81b0",
+                  "_type": "span",
+                  "marks": []
+                }
+              ]
+            },
+            {
+              "level": 1,
+              "_type": "block",
+              "style": "normal",
+              "_key": "1991a648a760",
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Git, GitHub, GitLab",
+                  "_key": "5076cef5f7e40"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "155e811318b9",
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "text": "CI/CD integrations",
+                  "_key": "ac1b3eb918e30",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "level": 1
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "5a9b12920918",
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Docker",
+                  "_key": "305cd8252cc7"
+                }
+              ],
+              "level": 1
+            },
+            {
+              "_type": "block",
+              "style": "h3",
+              "_key": "cc296d4c1873",
+              "markDefs": [],
+              "children": [
+                {
+                  "marks": [],
+                  "text": "Content Management System (CMS):",
+                  "_key": "ab3acfbc745f0",
+                  "_type": "span"
+                }
+              ]
+            },
+            {
+              "_key": "ff28cd2f7a1e",
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "_key": "95b1a5955f270",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Contentful"
+                }
+              ],
+              "level": 1,
+              "_type": "block",
+              "style": "normal"
+            },
+            {
+              "level": 1,
+              "_type": "block",
+              "style": "normal",
+              "_key": "5763c3779b5c",
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "_key": "5712351d9d9b",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Strapi.io"
+                }
+              ]
+            },
+            {
+              "markDefs": [],
+              "children": [
+                {
+                  "_key": "5a1e965ed28f",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Sanity.io"
+                }
+              ],
+              "level": 1,
+              "_type": "block",
+              "style": "normal",
+              "_key": "c7991ab02a21",
+              "listItem": "bullet"
+            },
+            {
+              "children": [
+                {
+                  "text": "Experience:",
+                  "_key": "3e8f9d0d3d8b0",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "_type": "block",
+              "style": "h2",
+              "_key": "26ef619eb98c",
+              "markDefs": []
+            },
+            {
+              "style": "normal",
+              "_key": "aa847b068cc4",
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "text": "XPAY Solutions GmbH",
+                  "_key": "cb10db4ce4480",
+                  "_type": "span",
+                  "marks": ["strong"]
+                },
+                {
+                  "text": ": Full-stack web developer from September 2020",
+                  "_key": "6f813ac66b87",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "level": 1,
+              "_type": "block"
+            },
+            {
+              "children": [
+                {
+                  "marks": ["strong"],
+                  "text": "Frameless BV",
+                  "_key": "1cd5b66c0c310",
+                  "_type": "span"
+                },
+                {
+                  "_key": "a1d5c78c55ed",
+                  "_type": "span",
+                  "marks": [],
+                  "text": ": Frontend developer since June 2022"
+                }
+              ],
+              "level": 1,
+              "_type": "block",
+              "style": "normal",
+              "_key": "449fa5180c77",
+              "listItem": "bullet",
+              "markDefs": []
+            },
+            {
+              "style": "normal",
+              "_key": "2d915b45bbe5",
+              "markDefs": [],
+              "children": [
+                {
+                  "_key": "c41944cdff3a0",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Apart from my professional work, I'm also actively contributing to open-source projects, collaborating with the developer community to create meaningful solutions together. With my expertise in Design System, I ensure consistency and efficiency in delivering delightful user interfaces."
+                }
+              ],
+              "_type": "block"
+            },
+            {
+              "children": [
+                {
+                  "marks": [],
+                  "text": "I'm all about bringing ideas to life through clean and efficient code, and I'm constantly seeking new challenges and learning opportunities. Let's join forces and create something amazing together!",
+                  "_key": "38487f31c2100",
+                  "_type": "span"
+                }
+              ],
+              "_type": "block",
+              "style": "normal",
+              "_key": "18974abce823",
+              "markDefs": []
+            }
+          ],
+          "aboutMeItems": []
+        }
+      ]
+    }
+  }
+]

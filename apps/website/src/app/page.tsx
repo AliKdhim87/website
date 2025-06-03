@@ -12,7 +12,7 @@ import {
 } from '@/components';
 import type { GetHomePageQuery } from '@/graphql-types';
 import { GET_HOME_PAGE } from '@/queries/index.graphql';
-import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
+import { fetchData, formattedDate, sanityGraphqlAPIUrl } from '@/utils';
 
 const apiUrl = sanityGraphqlAPIUrl({
   projectId: process.env.SANITY_PROJECT_ID,
@@ -53,16 +53,10 @@ const Home = async () => {
           case 'PageHeader':
             return <PageHeader key={`${index}-page-header`} title={component.title} body={component.body} />;
           case 'SocialCollection':
-            return (
-              <SocialMedia
-                title={component.title as string}
-                list={component.items as SocialMediaListType[]}
-                key={`${index}-social-media`}
-              />
-            );
+            return <SocialMedia list={component.items as SocialMediaListType[]} key={`${index}-social-media`} />;
           case 'BlogList':
             return (
-              <CardList>
+              <CardList key={`${index}-blog-list`}>
                 <CardListTitle level={2}>{component.title}</CardListTitle>
                 {Array.isArray(recentPosts) &&
                   recentPosts.map(({ title, excerpt, publishedAt, updatedAt, slug }, index: number) => (
@@ -70,13 +64,23 @@ const Home = async () => {
                       key={index}
                       title={title as string}
                       body={excerpt as string}
-                      updatedAt={updatedAt}
-                      publishedAt={publishedAt}
+                      publishedAt={{
+                        dateTime: publishedAt,
+                        formatted: formattedDate(publishedAt),
+                        label: 'Published:',
+                      }}
+                      updatedAt={{
+                        dateTime: updatedAt,
+                        formatted: formattedDate(updatedAt),
+                        label: 'Updated:',
+                      }}
                       href={`/blog/${slug?.current}`}
                     />
                   ))}
                 {component.cta?.route && (
-                  <CardListLoadMoreLink href={component.cta.route}>{component.cta.title}</CardListLoadMoreLink>
+                  <CardListLoadMoreLink key={index} href={component.cta.route}>
+                    {component.cta.title}
+                  </CardListLoadMoreLink>
                 )}
               </CardList>
             );

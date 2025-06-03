@@ -1,6 +1,6 @@
 {
   "ali-dev": {
-    "clipboard": {
+    "clipboard-button": {
       "icon-size": {
         "$type": "size",
         "$value": "40px"
@@ -12,7 +12,7 @@
       "hover": {
         "color": {
           "$type": "color",
-          "$value": "{ali-dev.colors.primary}"
+          "$value": "{ali-dev.colors.tertiary}"
         }
       }
     }

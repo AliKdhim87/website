@@ -2,18 +2,16 @@ import type { ReactNode } from 'react';
 
 import type { LinkType } from '@ali-dev/components';
 import type { Viewport, Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import '@fontsource/roboto';
 import '../styles/globals.scss';
-import '@ali-dev/components/dist/components.css';
+import '@ali-dev/components/components.css';
 import '@ali-dev/theme/build/web/variables.css';
 // eslint-disable-next-line import/no-unresolved
 import 'highlight.js/styles/github-dark.css';
 
-import { Body, Footer, LayoutContainer, Logo, Navigation } from '@/components';
-import type { ImageType } from '@/components';
+import { Body, Footer, LayoutContainer, LogoImage, LogoWrapper, Navigation, Surface } from '@/components';
 import { GetSiteSettingsQuery } from '@/graphql-types';
 import { GET_SITE_SETTINGS } from '@/queries/index.graphql';
 import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
@@ -108,12 +106,6 @@ const Layout = async ({ children }: LayoutProps) => {
     query: GET_SITE_SETTINGS,
     apiUrl,
   });
-  const logo = {
-    src: data.SiteSettings?.navigation?.logo?.asset?.url,
-    alt: data.SiteSettings?.navigation?.logo?.alt,
-    width: data.SiteSettings?.navigation?.logo?.asset?.metadata?.dimensions?.width,
-    height: data.SiteSettings?.navigation?.logo?.asset?.metadata?.dimensions?.height,
-  };
 
   const nav = data.SiteSettings?.navigation?.items;
   const footer = data.SiteSettings?.footer?.copyright;
@@ -132,22 +124,26 @@ const Layout = async ({ children }: LayoutProps) => {
   return (
     <html lang="en">
       <Body id="root">
-        <LayoutContainer>
-          <Navigation
-            navLinks={nav as LinkType[]}
-            logo={
-              <Link href="/">
-                <Logo logo={logo as ImageType} Image={Image} />
-              </Link>
-            }
-            linkProps={{
-              as: Link,
-            }}
-          />
-          <main>{children}</main>
-          <Footer>{footer}</Footer>
-        </LayoutContainer>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonData) }} />
+        <Surface>
+          <LayoutContainer>
+            <Navigation
+              navLinks={nav as LinkType[]}
+              logo={
+                <Link href="/">
+                  <LogoWrapper>
+                    <LogoImage />
+                  </LogoWrapper>
+                </Link>
+              }
+              linkProps={{
+                as: Link,
+              }}
+            />
+            <main>{children}</main>
+            <Footer>{footer}</Footer>
+          </LayoutContainer>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonData) }} />
+        </Surface>
       </Body>
     </html>
   );

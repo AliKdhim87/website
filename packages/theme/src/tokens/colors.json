@@ -2,73 +2,33 @@
   "ali-dev": {
     "colors": {
       "$type": "color",
-      "primary": {
-        "$value": "#ffd166"
-      },
-      "primary-dark": {
-        "$value": "#ffba1a"
-      },
-      "secondary": {
-        "$value": "#115e59"
-      },
-      "primary-bg": {
-        "$value": "#222831"
-      },
-      "secondary-bg": {
-        "$value": "#393e46"
-      },
-      "backdrop-bg": {
-        "$value": "rgba(0, 0, 0, 0.5)"
-      },
+      "primary": { "$value": "#1f4e77" },
+      "primary-deep": { "$value": "#0a1c34" },
+      "secondary": { "$value": "#071423" },
+      "background-base": { "$value": "#050d18" },
+      "tertiary": { "$value": "#00ffff" },
+      "tertiary-hover": { "$value": "rgba(0, 255, 255, 0.1)" },
+      "tertiary-focus": { "$value": "rgba(0, 255, 255, 0.3)" },
+      "focus-ring": { "$value": "rgba(0,255,255,0.3)" },
+      "overlay-low": { "$value": " rgba(255, 255, 255, 0.1)" },
+      "red": { "$value": "#ff3366" },
       "grey": {
-        "0": {
-          "$value": "#ffffff"
-        },
-        "50": {
-          "$value": "#fafafa"
-        },
-        "200": {
-          "$value": "#e5e5e5"
-        },
-        "300": {
-          "$value": "#d4d4d4"
-        },
-        "400": {
-          "$value": "#a3a3a3"
-        },
-        "500": {
-          "$value": "#737373"
-        },
-        "600": {
-          "$value": "#525252"
-        },
-        "700": {
-          "$value": "#404040"
-        },
-        "800": {
-          "$value": "#282828"
-        },
-        "900": {
-          "$value": "#0c0b0b"
-        },
-        "100": {
-          "$value": "#000000"
-        }
+        "0": { "$value": "#ffffff" },
+        "50": { "$value": "#e9eff3" },
+        "100": { "$value": "#cad6de" },
+        "200": { "$value": "#aabac6" },
+        "300": { "$value": "#8d9fb1" },
+        "400": { "$value": "#72869d" },
+        "500": { "$value": "#5a6c83" },
+        "600": { "$value": "#465466" },
+        "700": { "$value": "#313c49" },
+        "800": { "$value": "#1f2937" },
+        "900": { "$value": "#0f172a" }
       },
-      "red": {
-        "$value": "#ff002c"
-      },
-      "focus-primary": {
-        "$value": "rgba(255, 186, 26, 0.25)"
-      }
-    },
-    "text": {
-      "$type": "color",
-      "color-dark": {
-        "$value": "#ffffff"
-      },
-      "color-light": {
-        "$value": "#000000"
+      "text": {
+        "$type": "color",
+        "color-dark": { "$value": "#ffffff" },
+        "color-light": { "$value": "#a0b3c2" }
       }
     }
   }

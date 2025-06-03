@@ -1,0 +1,10 @@
+{
+  "ali-dev": {
+    "surface": {
+      "$type": "color",
+      "hero-gradient": {
+        "$value": "radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 75%, rgba(26, 62, 95, 0.25) 0%, transparent 60%), linear-gradient(180deg, {ali-dev.colors.background-base} 0%, {ali-dev.colors.secondary} 60%, {ali-dev.colors.primary-deep} 100%)"
+      }
+    }
+  }
+}

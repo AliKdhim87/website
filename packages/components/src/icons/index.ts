@@ -11,3 +11,5 @@ export { HamburgerIcon } from './HamburgerIcon';
 export { LinkedInIcon } from './LinkedInIcon';
 export { TwitterIcon } from './TwitterIcon';
 export { Asterisk } from './Asterisk';
+export { UpdatedAt } from './UpdatedAt';
+export { PublishedAt } from './PublishedAt';
