@@ -1,0 +1,49 @@
+{
+  "ali-dev": {
+    "content-timestamps": {
+      "gap": {
+        "$type": "size",
+        "$value": "{ali-dev.spacing.lg}"
+      },
+      "margin-block-start": {},
+      "margin-block-end": {
+        "$type": "size",
+        "$value": "{ali-dev.spacing.lg}"
+      },
+      "color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.grey.0}"
+      },
+      "font-size": {
+        "$type": "size",
+        "$value": "{ali-dev.typography.font-size.md}"
+      },
+      "font-family": {
+        "$type": "font",
+        "$value": "{ali-dev.typography.font-family.sans}"
+      },
+      "item": {
+        "gap": {
+          "$type": "size",
+          "$value": "{ali-dev.spacing.xs}"
+        }
+      },
+      "label": {
+        "column-gap": {
+          "$type": "size",
+          "$value": "{ali-dev.spacing.xs}"
+        }
+      },
+      "icon": {
+        "color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.tertiary}"
+        },
+        "size": {
+          "$type": "size",
+          "$value": "1.5rem"
+        }
+      }
+    }
+  }
+}

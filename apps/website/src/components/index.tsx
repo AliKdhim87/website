@@ -19,12 +19,15 @@ export { Icon } from '@ali-dev/components';
 export { InputField } from '@ali-dev/components';
 export { LayoutContainer } from '@ali-dev/components';
 export { List, ListItem } from '@ali-dev/components';
-export { Logo } from '@ali-dev/components';
+export { LogoWrapper } from '@ali-dev/components';
+export { LogoImage } from '@ali-dev/components';
 export { Nav } from '@ali-dev/components';
 export { Navigation } from './Navigation';
 export { Page } from '@ali-dev/components';
+export { ContentTimestamps } from '@ali-dev/components';
 export { PageHeader } from '@ali-dev/components';
 export { SocialMedia } from '@ali-dev/components';
+export { Surface } from '@ali-dev/components';
 export { Tags } from '@ali-dev/components';
 export { Textarea } from '@ali-dev/components';
 export { Typography } from '@ali-dev/components';
@@ -86,7 +89,6 @@ export type {
   TOCListProps,
   TOCProps,
 } from '@ali-dev/components';
-export type { ImageType } from '@ali-dev/components';
 export type { PageHeaderProps } from '@ali-dev/components';
 export type { SocialMediaLinkProps, SocialMediaListType } from '@ali-dev/components';
 export type { TagsProps, TagsTypes } from '@ali-dev/components';

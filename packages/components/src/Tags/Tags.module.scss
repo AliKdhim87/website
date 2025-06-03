@@ -7,4 +7,6 @@
   list-style: none;
   margin-block: 0;
   gap: var(--ali-dev-tags-gap);
+  margin-block-start: var(--ali-dev-tags-margin-block-start);
+  margin-block-end: var(--ali-dev-tags-margin-block-end);
 }

@@ -1,5 +1,7 @@
 import type { HTMLAttributes, SVGProps } from 'react';
 
+import classnames from 'classnames/bind';
+
 import {
   Calendar,
   CloseIcon,
@@ -12,7 +14,12 @@ import {
   Asterisk,
   Check,
   Copy,
+  UpdatedAt,
+  PublishedAt,
 } from './index';
+import styles from './index.module.scss';
+
+const css = classnames.bind(styles);
 
 export const IconsType = {
   calender: Calendar,
@@ -26,6 +33,8 @@ export const IconsType = {
   asterisk: Asterisk,
   copy: Copy,
   check: Check,
+  updatedAt: UpdatedAt,
+  publishedAt: PublishedAt,
 };
 
 interface IconsProps extends HTMLAttributes<SVGSVGElement> {
@@ -34,7 +43,7 @@ interface IconsProps extends HTMLAttributes<SVGSVGElement> {
 
 export const Icon = ({ name, ...restProps }: IconsProps) => {
   const Component = IconsType[name];
-  return <Component {...restProps} />;
+  return <Component className={css('ali-dev-icon')} {...restProps} />;
 };
 
 export interface SVGRProps extends SVGProps<SVGSVGElement> {

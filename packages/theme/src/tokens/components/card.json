@@ -7,7 +7,7 @@
       },
       "background-color": {
         "$type": "color",
-        "$value": "{ali-dev.colors.primary-bg}"
+        "$value": "{ali-dev.colors.background-base}"
       },
       "padding-block-start": {
         "$type": "dimension",
@@ -29,6 +29,10 @@
         "$type": "time",
         "$value": "400ms"
       },
+      "row-gap": {
+        "$type": "dimension",
+        "$value": "{ali-dev.spacing.md}"
+      },
       "date": {
         "color": {
           "$type": "color",
@@ -43,6 +47,20 @@
         "margin-block-start": {
           "$type": "dimension",
           "$value": "{ali-dev.spacing.sm}"
+        }
+      },
+      "hover": {
+        "border-color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.tertiary-focus}"
+        },
+        "box-shadow": {
+          "$type": "shadow",
+          "$value": "0 0 12px {ali-dev.colors.tertiary-hover}"
+        },
+        "background-color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.tertiary-focus}"
         }
       }
     }

@@ -7,7 +7,7 @@
       },
       "background-color": {
         "$type": "color",
-        "$value": "{ali-dev.colors.secondary-bg}"
+        "$value": "{ali-dev.colors.secondary}"
       },
       "font-size": {
         "$type": "size",

@@ -22,6 +22,12 @@
     --ali-dev-#{$component}-background-color: var(
       --ali-dev-#{$component}-#{$appearance}-hover-background-color
     );
+    --ali-dev-#{$component}-outline-width: var(
+      --ali-dev-#{$component}-#{$appearance}-hover-outline-width
+    );
+    --ali-dev-#{$component}-outline-color: var(
+      --ali-dev-#{$component}-#{$appearance}-hover-outline-color
+    );
   }
 
   &:focus-visible {

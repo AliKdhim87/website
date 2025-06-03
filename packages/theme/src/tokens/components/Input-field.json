@@ -23,7 +23,7 @@
       },
       "color": {
         "$type": "color",
-        "$value": "{ali-dev.text.color-dark}"
+        "$value": "{ali-dev.colors.text.color-dark}"
       },
       "border-width": {
         "$type": "dimension",

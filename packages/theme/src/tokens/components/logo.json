@@ -1,0 +1,10 @@
+{
+  "ali-dev": {
+    "logo": {
+      "color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.tertiary}"
+      }
+    }
+  }
+}

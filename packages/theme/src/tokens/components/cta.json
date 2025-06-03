@@ -3,7 +3,7 @@
     "cta": {
       "color": {
         "$type": "color",
-        "$value": "{ali-dev.colors.grey.100}"
+        "$value": "{ali-dev.colors.grey.0}"
       },
       "padding-inline-start": {
         "$type": "dimension",
@@ -42,7 +42,7 @@
       "primary": {
         "color": {
           "$type": "color",
-          "$value": "{ali-dev.colors.grey.100}"
+          "$value": "{ali-dev.colors.grey.0}"
         },
         "background-color": {
           "$type": "color",
@@ -51,27 +51,35 @@
         "hover": {
           "background-color": {
             "$type": "color",
-            "$value": "{ali-dev.colors.primary-dark}"
+            "$value": "{ali-dev.colors.primary-deep}"
+          },
+          "outline-color": {
+            "$type": "color",
+            "$value": "{ali-dev.colors.tertiary}"
+          },
+          "outline-width": {
+            "$type": "dimension",
+            "$value": "2px"
           }
         }
       },
       "secondary": {
         "color": {
           "$type": "color",
-          "$value": "{ali-dev.colors.grey.0}"
+          "$value": "{ali-dev.colors.tertiary}"
         },
         "outline-color": {
           "$type": "color",
-          "$value": "{ali-dev.colors.secondary}"
+          "$value": "{ali-dev.colors.tertiary}"
         },
         "outline-width": {
           "$type": "dimension",
-          "$value": "1px"
+          "$value": "2px"
         },
         "hover": {
           "background-color": {
             "$type": "color",
-            "$value": "{ali-dev.colors.secondary}"
+            "$value": "{ali-dev.colors.primary}"
           }
         }
       }

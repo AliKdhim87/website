@@ -14,6 +14,7 @@
   --ali-dev-details-summary-background-color: var(
     --ali-dev-toc-background-color
   );
+  --ali-dev-details-body-background-color: var(--ali-dev-toc-background-color);
   --ali-dev-details-body-padding-inline-start: var(
     --ali-dev-toc-body-padding-inline-start
   );
@@ -29,7 +30,6 @@
   --ali-dev-details-body-max-block-size: var(--ali-dev-toc-body-max-block-size);
   --ali-dev-details-body-overflow-y: auto;
 
-  background-color: var(--ali-dev-toc-background-color);
   border-radius: var(--ali-dev-toc-border-radius);
   position: sticky;
   top: 20px;

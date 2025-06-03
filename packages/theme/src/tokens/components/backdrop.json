@@ -3,7 +3,7 @@
     "backdrop": {
       "background-color": {
         "$type": "color",
-        "$value": "{ali-dev.colors.backdrop-bg}"
+        "$value": "{ali-dev.colors.overlay-low}"
       }
     }
   }

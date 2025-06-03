@@ -1,5 +1,5 @@
 {
   "references": [{ "path": "packages/components" }, { "path": "apps/website" }, { "path": "apps/storybook" }],
-  "include": ["./.lintstagedrc.js", "./eslint.config.js"],
+  "include": ["./.lintstagedrc.js", "./eslint.config.js", "./stylelint.config.js"],
   "exclude": ["node_modules", ".turbo", ".eslintcache"]
 }

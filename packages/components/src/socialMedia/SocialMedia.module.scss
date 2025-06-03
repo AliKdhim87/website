@@ -1,9 +1,8 @@
-@use "../Container/Container.module.scss" as *;
 @use "../styles/common/mixins" as *;
 
 .ali-dev-social-media {
-  @include container;
-
+  display: flex;
+  justify-content: center;
   padding-block-start: var(--ali-dev-social-media-padding-block-start);
   padding-block-end: var(--ali-dev-social-media-padding-block-end);
 }

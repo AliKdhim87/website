@@ -11,12 +11,12 @@
       },
       "background-color": {
         "$type": "color",
-        "$value": "{ali-dev.colors.primary-bg}"
+        "$value": "{ali-dev.colors.background-base}"
       },
       "image": {
         "outline-color": {
           "$type": "color",
-          "$value": "{ali-dev.colors.secondary-bg}"
+          "$value": "{ali-dev.colors.secondary}"
         },
         "outline-width": {
           "$type": "dimension",

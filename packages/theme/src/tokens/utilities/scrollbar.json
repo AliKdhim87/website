@@ -1,0 +1,40 @@
+{
+  "ali-dev": {
+    "scrollbar": {
+      "size": {
+        "$type": "dimension",
+        "$value": "12px"
+      }
+    },
+    "scrollbar-track": {
+      "background-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.secondary}"
+      }
+    },
+    "scrollbar-thumb": {
+      "background-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.primary}"
+      },
+      "border-radius": {
+        "$type": "dimension",
+        "$value": "8px"
+      },
+      "border-width": {
+        "$type": "dimension",
+        "$value": "3px"
+      },
+      "border-color": {
+        "$type": "color",
+        "$value": "{ali-dev.colors.background-base}"
+      },
+      "hover": {
+        "background-color": {
+          "$type": "color",
+          "$value": "{ali-dev.colors.primary-deep}"
+        }
+      }
+    }
+  }
+}

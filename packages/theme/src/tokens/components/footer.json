@@ -11,7 +11,7 @@
       },
       "background-color": {
         "$type": "color",
-        "$value": "{ali-dev.colors.secondary-bg}"
+        "$value": "{ali-dev.colors.secondary}"
       },
       "border-block-start-width": {
         "$type": "dimension",

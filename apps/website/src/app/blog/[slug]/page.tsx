@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 import type { TagsTypes } from '@/components';
-import { GraphComment, Grid, Tags, TOC, PortableText, Container, Typography, BlogHeader } from '@/components';
+import { GraphComment, Grid, Tags, TOC, PortableText, Container, ContentTimestamps, Heading } from '@/components';
 import { GetAllBlogSlugsQuery, GetBlogBySlugQuery } from '@/graphql-types';
 import { GET_TOC_GROQ_QUERY } from '@/queries/groq';
 import { GET_ALL_BLOG_SLUGS, GET_BLOG_BY_SLUG } from '@/queries/index.graphql';
@@ -122,13 +122,21 @@ const PostPage = async ({ params: { slug } }: Params) => {
             }}
           />
         )}
-      <>
-        <Container>
-          <Typography variant="sm">Published: {formattedDate(publishedAt)}</Typography>
-          {updatedAt && <Typography variant="md">Last Updated: {formattedDate(updatedAt)}</Typography>}
-        </Container>
-        {title && <BlogHeader title={title} />}
-        <Container>
+      <Container>
+        {title && <Heading level={1}>{title}</Heading>}
+        <ContentTimestamps
+          publishedAt={{
+            dateTime: publishedAt,
+            formatted: formattedDate(publishedAt),
+            label: 'Published:',
+          }}
+          updatedAt={{
+            dateTime: updatedAt,
+            formatted: formattedDate(updatedAt),
+            label: 'Updated:',
+          }}
+        />
+        <>
           {categories && <Tags tags={mappedCategories} />}
           <Grid
             container
@@ -150,8 +158,8 @@ const PostPage = async ({ params: { slug } }: Params) => {
             </Grid>
           </Grid>
           <GraphComment websiteId={process.env.NEXT_PUBLIC_GRAPH_COMMENTS_WEBSITE_ID} />
-        </Container>
-      </>
+        </>
+      </Container>
     </>
   );
 };
