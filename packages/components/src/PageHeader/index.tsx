@@ -1,4 +1,4 @@
-import type { ComponentType, DetailedHTMLProps, HTMLAttributes, PropsWithChildren } from 'react';
+import type { ElementType, DetailedHTMLProps, HTMLAttributes, PropsWithChildren } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -15,7 +15,7 @@ type ImageProps = {
   alt: string;
   width: number;
   height: number;
-  ImageComponent?: ComponentType<any>;
+  ImageComponent?: ElementType;
 };
 
 export interface PageHeaderProps extends Omit<DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>, 'title'> {

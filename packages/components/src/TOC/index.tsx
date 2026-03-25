@@ -1,5 +1,5 @@
-import type { ComponentType, ForwardedRef, HTMLAttributes, PropsWithChildren } from 'react';
-import { forwardRef } from 'react';
+'use client';
+import type { HTMLAttributes, PropsWithChildren, ElementType } from 'react';
 
 import classnames from 'classnames/bind';
 import slugify from 'slugify';
@@ -49,7 +49,7 @@ export type HeadingsArray = HeadingH2[];
 export interface TOCProps extends HTMLAttributes<HTMLElement> {
   toc?: HeadingsArray;
   label: string;
-  Link?: ComponentType<any>;
+  Link?: ElementType;
 }
 const cx = classnames.bind(styles);
 export interface TOCListProps extends ListProps {
@@ -57,84 +57,76 @@ export interface TOCListProps extends ListProps {
 }
 const createHref = (textContent: string) => `#${slugify(textContent, { lower: true })}`;
 
-export const TOC = forwardRef(
-  ({ toc, label, Link, ...restProps }: PropsWithChildren<TOCProps>, ref: ForwardedRef<HTMLElement>) => {
-    const isToc = toc && Array.isArray(toc);
-    const { width } = useWindowSize();
-    const smallScreen = width ? width < 960 : false;
+export const TOC = ({ toc, label, Link, ...restProps }: PropsWithChildren<TOCProps>) => {
+  const isToc = toc && Array.isArray(toc);
+  const { width } = useWindowSize();
+  const smallScreen = width ? width < 960 : false;
 
-    return isToc ? (
-      <Details label={label} className={cx('ali-dev-toc')} open={!smallScreen} icon={smallScreen}>
-        <nav ref={ref} {...restProps}>
-          <List className={cx('ali-dev-toc__list')}>
-            {toc.map((item) => (
-              <ListItem key={item.id} className={cx('ali-dev-toc__item')}>
-                <Anchor Link={Link} href={createHref(item.textContent)} className={cx('ali-dev-toc__link')}>
-                  {item.textContent}
-                </Anchor>
-                {item.nestedH3 && (
-                  <List>
-                    {item.nestedH3.map((h3) => (
-                      <ListItem key={h3.id} className={cx('ali-dev-toc__item')}>
-                        <Anchor Link={Link} href={createHref(h3.textContent)} className={cx('ali-dev-toc__link')}>
-                          {h3.textContent}
-                        </Anchor>
-                        {h3.nestedH4 && (
-                          <List>
-                            {h3.nestedH4.map((h4) => (
-                              <ListItem key={h4.id} className={cx('ali-dev-toc__item')}>
-                                <Anchor
-                                  Link={Link}
-                                  href={createHref(h4.textContent)}
-                                  className={cx('ali-dev-toc__link')}
-                                >
-                                  {h4.textContent}
-                                </Anchor>
-                                {h4.nestedH5 && (
-                                  <List>
-                                    {h4.nestedH5.map((h5) => (
-                                      <ListItem key={h5.id} className={cx('ali-dev-toc__item')}>
-                                        <Anchor
-                                          Link={Link}
-                                          href={createHref(h5.textContent)}
-                                          className={cx('ali-dev-toc__link')}
-                                        >
-                                          {h5.textContent}
-                                        </Anchor>
-                                        {h5.nestedH6 && (
-                                          <List>
-                                            {h5.nestedH6.map((h6) => (
-                                              <ListItem key={h6.id} className={cx('ali-dev-toc__item')}>
-                                                <Anchor
-                                                  Link={Link}
-                                                  href={createHref(h6.textContent)}
-                                                  className={cx('ali-dev-toc__link')}
-                                                >
-                                                  {h6.textContent}
-                                                </Anchor>
-                                              </ListItem>
-                                            ))}
-                                          </List>
-                                        )}
-                                      </ListItem>
-                                    ))}
-                                  </List>
-                                )}
-                              </ListItem>
-                            ))}
-                          </List>
-                        )}
-                      </ListItem>
-                    ))}
-                  </List>
-                )}
-              </ListItem>
-            ))}
-          </List>
-        </nav>
-      </Details>
-    ) : null;
-  },
-);
-
-TOC.displayName = 'TOC';
+  return isToc ? (
+    <Details label={label} className={cx('ali-dev-toc')} open={!smallScreen} icon={smallScreen}>
+      <nav {...restProps}>
+        <List className={cx('ali-dev-toc__list')}>
+          {toc.map((item) => (
+            <ListItem key={item.id} className={cx('ali-dev-toc__item')}>
+              <Anchor Link={Link} href={createHref(item.textContent)} className={cx('ali-dev-toc__link')}>
+                {item.textContent}
+              </Anchor>
+              {item.nestedH3 && (
+                <List>
+                  {item.nestedH3.map((h3) => (
+                    <ListItem key={h3.id} className={cx('ali-dev-toc__item')}>
+                      <Anchor Link={Link} href={createHref(h3.textContent)} className={cx('ali-dev-toc__link')}>
+                        {h3.textContent}
+                      </Anchor>
+                      {h3.nestedH4 && (
+                        <List>
+                          {h3.nestedH4.map((h4) => (
+                            <ListItem key={h4.id} className={cx('ali-dev-toc__item')}>
+                              <Anchor Link={Link} href={createHref(h4.textContent)} className={cx('ali-dev-toc__link')}>
+                                {h4.textContent}
+                              </Anchor>
+                              {h4.nestedH5 && (
+                                <List>
+                                  {h4.nestedH5.map((h5) => (
+                                    <ListItem key={h5.id} className={cx('ali-dev-toc__item')}>
+                                      <Anchor
+                                        Link={Link}
+                                        href={createHref(h5.textContent)}
+                                        className={cx('ali-dev-toc__link')}
+                                      >
+                                        {h5.textContent}
+                                      </Anchor>
+                                      {h5.nestedH6 && (
+                                        <List>
+                                          {h5.nestedH6.map((h6) => (
+                                            <ListItem key={h6.id} className={cx('ali-dev-toc__item')}>
+                                              <Anchor
+                                                Link={Link}
+                                                href={createHref(h6.textContent)}
+                                                className={cx('ali-dev-toc__link')}
+                                              >
+                                                {h6.textContent}
+                                              </Anchor>
+                                            </ListItem>
+                                          ))}
+                                        </List>
+                                      )}
+                                    </ListItem>
+                                  ))}
+                                </List>
+                              )}
+                            </ListItem>
+                          ))}
+                        </List>
+                      )}
+                    </ListItem>
+                  ))}
+                </List>
+              )}
+            </ListItem>
+          ))}
+        </List>
+      </nav>
+    </Details>
+  ) : null;
+};

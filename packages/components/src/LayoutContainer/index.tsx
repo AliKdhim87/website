@@ -1,5 +1,4 @@
-import type { DetailedHTMLProps, HTMLAttributes, PropsWithChildren, ForwardedRef } from 'react';
-import { forwardRef } from 'react';
+import type { DetailedHTMLProps, HTMLAttributes, PropsWithChildren } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -25,12 +24,10 @@ export interface LayoutContainerProps extends DetailedHTMLProps<HTMLAttributes<H
  * </LayoutContainer>
  */
 
-export const LayoutContainer = forwardRef(
-  ({ children, ...restProps }: PropsWithChildren<LayoutContainerProps>, ref: ForwardedRef<HTMLDivElement>) => (
-    <div className={css('ali-dev-layout-container')} ref={ref} {...restProps}>
-      {children}
-    </div>
-  ),
+export const LayoutContainer = ({ children, ...restProps }: PropsWithChildren<LayoutContainerProps>) => (
+  <div className={css('ali-dev-layout-container')} {...restProps}>
+    {children}
+  </div>
 );
 
 LayoutContainer.displayName = 'LayoutContainer';

@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, FormHTMLAttributes, ForwardedRef, forwardRef, PropsWithChildren } from 'react';
+import { DetailedHTMLProps, FormHTMLAttributes, PropsWithChildren } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -8,11 +8,8 @@ const css = classNames.bind(styles);
 
 export interface FormProps extends DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement> {}
 
-export const Form = forwardRef(
-  ({ children, ...props }: PropsWithChildren<FormProps>, ref: ForwardedRef<HTMLFormElement>) => (
-    <form {...props} className={css('ali-dev-form')} ref={ref}>
-      {children}
-    </form>
-  ),
+export const Form = ({ children, ...props }: PropsWithChildren<FormProps>) => (
+  <form {...props} className={css('ali-dev-form')}>
+    {children}
+  </form>
 );
-Form.displayName = 'Form';

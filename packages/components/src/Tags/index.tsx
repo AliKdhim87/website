@@ -1,5 +1,3 @@
-import { ForwardedRef, forwardRef } from 'react';
-
 import classNames from 'classnames/bind';
 
 import styles from './Tags.module.scss';
@@ -16,8 +14,8 @@ export interface TagsProps {
   tags: TagsTypes[];
 }
 
-export const Tags = forwardRef(({ tags, ...restProps }: TagsProps, ref: ForwardedRef<HTMLUListElement>) => (
-  <ul className={css('ali-dev-tags')} ref={ref} {...restProps}>
+export const Tags = ({ tags, ...restProps }: TagsProps) => (
+  <ul className={css('ali-dev-tags')} {...restProps}>
     {Array.isArray(tags) &&
       tags.map((tag, index: number) => (
         <li className={css('ali-dev-tags__item')} key={index}>
@@ -25,5 +23,4 @@ export const Tags = forwardRef(({ tags, ...restProps }: TagsProps, ref: Forwarde
         </li>
       ))}
   </ul>
-));
-Tags.displayName = 'Tags';
+);

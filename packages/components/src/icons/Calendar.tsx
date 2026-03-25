@@ -1,8 +1,6 @@
-import { type ForwardedRef, forwardRef } from 'react';
-
 import type { SVGRProps } from './Icon';
 
-export const Calendar = forwardRef(({ title, titleId, ...props }: SVGRProps, ref: ForwardedRef<SVGSVGElement>) => (
+export const Calendar = ({ title, titleId, ...props }: SVGRProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -11,7 +9,6 @@ export const Calendar = forwardRef(({ title, titleId, ...props }: SVGRProps, ref
     viewBox="0 0 24 24"
     className="icon"
     aria-labelledby={titleId}
-    ref={ref}
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
@@ -22,5 +19,4 @@ export const Calendar = forwardRef(({ title, titleId, ...props }: SVGRProps, ref
       clipRule="evenodd"
     />
   </svg>
-));
-Calendar.displayName = 'Calendar';
+);

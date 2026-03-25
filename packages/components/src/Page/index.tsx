@@ -1,5 +1,4 @@
 import type { PropsWithChildren } from 'react';
-import { forwardRef } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -7,9 +6,8 @@ import styles from './index.module.scss';
 
 const css = classNames.bind(styles);
 
-export const Page = forwardRef<HTMLDivElement, PropsWithChildren>(({ children, ...restProps }, ref) => (
-  <div className={css('ali-dev-page')} ref={ref} {...restProps}>
+export const Page = ({ children, ...restProps }: PropsWithChildren) => (
+  <div className={css('ali-dev-page')} {...restProps}>
     {children}
   </div>
-));
-Page.displayName = 'Page';
+);

@@ -1,5 +1,4 @@
-import { forwardRef } from 'react';
-import type { PropsWithChildren, ForwardedRef, AnchorHTMLAttributes, DetailedHTMLProps, ComponentType } from 'react';
+import type { PropsWithChildren, AnchorHTMLAttributes, DetailedHTMLProps, ElementType } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -9,25 +8,23 @@ const css = classNames.bind(styles);
 
 export interface CTAProps extends DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
   variant?: 'primary' | 'secondary';
-  Link?: ComponentType<any>;
+  Link?: ElementType;
 }
 
-export const CTA = forwardRef<HTMLAnchorElement, PropsWithChildren<CTAProps>>(
-  ({ children, variant, Link: Component = 'a', className, ...restProps }, ref: ForwardedRef<HTMLAnchorElement>) => {
-    const classes = css('ali-dev-cta', className, {
-      [`ali-dev-cta--${variant}`]: variant,
-    });
+export const CTA = ({
+  children,
+  variant = 'primary',
+  Link: Component = 'a',
+  className,
+  ...restProps
+}: PropsWithChildren<CTAProps>) => {
+  const classes = css('ali-dev-cta', className, {
+    [`ali-dev-cta--${variant}`]: variant,
+  });
 
-    return (
-      <Component ref={ref} className={classes} {...restProps}>
-        {children}
-      </Component>
-    );
-  },
-);
-
-CTA.displayName = 'CTA';
-CTA.defaultProps = {
-  className: undefined,
-  variant: 'primary',
+  return (
+    <Component className={classes} {...restProps}>
+      {children}
+    </Component>
+  );
 };

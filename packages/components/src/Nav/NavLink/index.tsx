@@ -1,12 +1,4 @@
-import type {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  ElementType,
-  ForwardedRef,
-  HTMLAttributes,
-  PropsWithChildren,
-} from 'react';
-import { forwardRef } from 'react';
+import type { ComponentPropsWithoutRef, ElementType, HTMLAttributes, PropsWithChildren } from 'react';
 
 import classnames from 'classnames/bind';
 
@@ -20,15 +12,14 @@ interface NavLinkBaseProps extends HTMLAttributes<HTMLElement> {
 export type NavLinkProps<T extends ElementType> = NavLinkBaseProps &
   Omit<ComponentPropsWithoutRef<T>, keyof NavLinkBaseProps>;
 
-export const NavLink = forwardRef(
-  <T extends ElementType = 'a'>(
-    { children, as: Component = 'a', className, ...restProps }: PropsWithChildren<NavLinkProps<T>>,
-    ref: ForwardedRef<ElementRef<T>>,
-  ) => (
-    <Component className={css('ali-dev-nav__link', className)} ref={ref} {...restProps}>
-      {children}
-    </Component>
-  ),
+export const NavLink = <T extends ElementType = 'a'>({
+  children,
+  as: Component = 'a',
+  className,
+  ref,
+  ...restProps
+}: PropsWithChildren<NavLinkProps<T>>) => (
+  <Component className={css('ali-dev-nav__link', className)} ref={ref} {...restProps}>
+    {children}
+  </Component>
 );
-
-NavLink.displayName = 'NavLink';

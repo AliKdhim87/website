@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
+'use client';
+import { type RefObject, useEffect } from 'react';
 
 export const useClickOutsideDialog = ({
   dialogRef,
   isDialogOpen,
 }: {
-  dialogRef: React.RefObject<HTMLDialogElement>;
+  dialogRef: RefObject<HTMLDialogElement>;
   isDialogOpen: boolean;
 }) => {
   useEffect(() => {
     // Ensure dialogRef.current is captured once in the effect
     const element = dialogRef.current;
-    if (!element) return;
 
     const clickHandler = (event: MouseEvent) => {
       if (event.target === element) {

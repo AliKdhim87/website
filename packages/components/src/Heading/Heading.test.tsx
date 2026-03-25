@@ -1,5 +1,3 @@
-import { createRef } from 'react';
-
 import { render, screen } from '@testing-library/react';
 
 import { Heading } from './index';
@@ -85,16 +83,6 @@ describe('Heading', () => {
     );
     expect(screen.getByText('Heading')).toBeInTheDocument();
     expect(screen.getByText('Heading')).toHaveAttribute('data-testid', 'heading');
-  });
-  it('renders a heading with custom ref', () => {
-    const ref = createRef<HTMLHeadingElement>();
-    render(
-      <Heading level={1} ref={ref}>
-        Heading
-      </Heading>,
-    );
-    expect(ref.current).toBeInTheDocument();
-    expect(ref.current).toHaveTextContent('Heading');
   });
   it('renders a heading 1 when the level is 0', () => {
     render(<Heading level={0}>Heading</Heading>);

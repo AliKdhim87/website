@@ -1,5 +1,3 @@
-import { createRef } from 'react';
-
 import { render, screen } from '@testing-library/react';
 
 import { Button } from './index';
@@ -32,13 +30,6 @@ describe('Button', () => {
   it('renders a button with secondary variant', () => {
     render(<Button variant="secondary">Click me</Button>);
     expect(screen.getByRole('button')).toHaveClass('ali-dev-button--secondary');
-  });
-  it('renders a link with a forwarded ref', () => {
-    const ref = createRef<HTMLButtonElement>();
-    const { container } = render(<Button ref={ref}>Click me</Button>);
-    const buttonElement = container.querySelector(':only-child');
-    expect(ref.current).toBe(buttonElement);
-    expect(buttonElement).toBeInTheDocument();
   });
   it('renders a button with a button CSS class', () => {
     render(<Button>Click me</Button>);

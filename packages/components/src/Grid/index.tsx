@@ -1,4 +1,4 @@
-import React, { ForwardedRef, forwardRef, PropsWithChildren } from 'react';
+import React, { HTMLAttributes, PropsWithChildren } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -13,7 +13,7 @@ type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';
 
 const css = classNames.bind(styles);
 
-export interface GridProps extends React.HTMLAttributes<HTMLElement> {
+export interface GridProps extends HTMLAttributes<HTMLElement> {
   /**
    * If `true`, the component will be a flex container.
    * @default false
@@ -109,52 +109,47 @@ export interface GridProps extends React.HTMLAttributes<HTMLElement> {
  * </Grid>
  *
  * */
-export const Grid = forwardRef(
-  (
-    {
-      children,
-      container = false,
-      item = false,
-      xs,
-      sm,
-      md,
-      lg,
-      columnGap,
-      rowGap,
-      justifyContent,
-      justifyContentMd,
-      alignItems,
-      as: Component = 'div',
-      className,
-      onlyOn,
-      flexDirection,
-      flexDirectionSM,
-      ...props
-    }: PropsWithChildren<GridProps>,
-    ref: ForwardedRef<HTMLElement>,
-  ) => {
-    const classes = css(className, {
-      ['ali-dev-grid__container']: container,
-      ['ali-dev-grid__item']: item,
-      [`ali-dev-grid__item--xs-${xs}`]: xs,
-      [`ali-dev-grid__item--sm-${sm}`]: sm,
-      [`ali-dev-grid__item--md-${md}`]: md,
-      [`ali-dev-grid__item-lg--${lg}`]: lg,
-      [`ali-dev-grid__item--only-on-${onlyOn}`]: onlyOn,
-      [`ali-dev-grid--column-gap-${columnGap}`]: columnGap,
-      [`ali-dev-grid--row-gap-${rowGap}`]: rowGap,
-      [`ali-dev-grid--justifyContent-${justifyContent}`]: justifyContent,
-      [`ali-dev-grid--justifyContent-sm-${justifyContentMd}`]: justifyContentMd,
-      [`ali-dev-grid--flex-direction-${flexDirection}`]: flexDirection,
-      [`ali-dev-grid--flex-direction-sm-${flexDirectionSM}`]: flexDirectionSM,
-      [`ali-dev-grid--alignItems-${alignItems}`]: alignItems,
-    });
+export const Grid = ({
+  children,
+  container = false,
+  item = false,
+  xs,
+  sm,
+  md,
+  lg,
+  columnGap,
+  rowGap,
+  justifyContent,
+  justifyContentMd,
+  alignItems,
+  as: Component = 'div',
+  className,
+  onlyOn,
+  flexDirection,
+  flexDirectionSM,
+  ref,
+  ...props
+}: PropsWithChildren<GridProps & { ref?: React.Ref<HTMLElement> }>) => {
+  const classes = css(className, {
+    ['ali-dev-grid__container']: container,
+    ['ali-dev-grid__item']: item,
+    [`ali-dev-grid__item--xs-${xs}`]: xs,
+    [`ali-dev-grid__item--sm-${sm}`]: sm,
+    [`ali-dev-grid__item--md-${md}`]: md,
+    [`ali-dev-grid__item-lg--${lg}`]: lg,
+    [`ali-dev-grid__item--only-on-${onlyOn}`]: onlyOn,
+    [`ali-dev-grid--column-gap-${columnGap}`]: columnGap,
+    [`ali-dev-grid--row-gap-${rowGap}`]: rowGap,
+    [`ali-dev-grid--justifyContent-${justifyContent}`]: justifyContent,
+    [`ali-dev-grid--justifyContent-sm-${justifyContentMd}`]: justifyContentMd,
+    [`ali-dev-grid--flex-direction-${flexDirection}`]: flexDirection,
+    [`ali-dev-grid--flex-direction-sm-${flexDirectionSM}`]: flexDirectionSM,
+    [`ali-dev-grid--alignItems-${alignItems}`]: alignItems,
+  });
 
-    return (
-      <Component ref={ref} className={classes} {...props}>
-        {children}
-      </Component>
-    );
-  },
-);
-Grid.displayName = 'Grid';
+  return (
+    <Component ref={ref} className={classes} {...props}>
+      {children}
+    </Component>
+  );
+};
