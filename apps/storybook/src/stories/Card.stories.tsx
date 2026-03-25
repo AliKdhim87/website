@@ -20,15 +20,11 @@ const meta: Meta<typeof Card> = {
     },
     publishedAt: {
       control: 'object',
-      description: 'Object containing dateTime, formatted, and label for published date',
-      type: {
-        name: 'object',
-        value: {
-          dateTime: { name: 'string', required: true },
-          formatted: { name: 'string', required: true },
-          label: { name: 'string', required: true },
-        },
-      },
+      description: 'Published date object (TimestampData)',
+    },
+    updatedAt: {
+      control: 'object',
+      description: 'Updated date object (TimestampData)',
     },
   },
 };
@@ -40,16 +36,8 @@ export const Default: Story = {
   args: {
     body: 'Card body',
     title: 'Card title',
-    publishedAt: {
-      dateTime: '2023-10-01T12:00:00Z',
-      formatted: 'October 1, 2023',
-      label: 'Published on',
-    },
-    updatedAt: {
-      dateTime: '2023-10-01T12:00:00Z',
-      formatted: 'October 1, 2023',
-      label: 'Updated on',
-    },
+    publishedAt: { dateTime: '2023-10-01', formatted: 'Oct 1, 2023', label: 'Published' },
+    updatedAt: { dateTime: '2023-10-02', formatted: 'Oct 2, 2023', label: 'Updated' },
     headingOptions: {
       level: 2,
       //   variant: 'h',
