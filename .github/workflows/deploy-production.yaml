@@ -8,20 +8,20 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [24.x]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v6.0.2
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4.3.0
+        uses: actions/setup-node@v6.3.0
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v4.1.0
+      - uses: pnpm/action-setup@v5.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 9.9.0
+          version: 10.32.1
           run_install: false
 
       - name: Get pnpm store directory
@@ -29,7 +29,7 @@ jobs:
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v4.2.3
+      - uses: actions/cache@v5.0.4
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
@@ -78,7 +78,7 @@ jobs:
       - name: Deploy to Preview
         id: vercel-action-preview
         if: github.ref != 'refs/heads/main'
-        uses: amondnet/vercel-action@v25.2.0
+        uses: amondnet/vercel-action@v41.1.4
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
@@ -86,7 +86,7 @@ jobs:
           scope: ${{ secrets.VERCEL_ORG_ID }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy to Production
-        uses: amondnet/vercel-action@v25.2.0
+        uses: amondnet/vercel-action@v41.1.4
         id: vercel-action-production
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:
