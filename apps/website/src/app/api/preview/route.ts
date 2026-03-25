@@ -5,13 +5,13 @@ import { GetCurrentPageQuery } from '@/graphql-types';
 import { GET_CURRENT_PAGE } from '@/queries/index.graphql';
 import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
 
-const apiUrl = sanityGraphqlAPIUrl({
-  projectId: process.env.SANITY_PROJECT_ID,
-  dataset: process.env.SANITY_DATASET,
-  apiVersion: process.env.SANITY_GRAPHQL_API_VERSION,
-});
-
 export async function GET(req: Request) {
+  const apiUrl = sanityGraphqlAPIUrl({
+    projectId: process.env.SANITY_PROJECT_ID,
+    dataset: process.env.SANITY_DATASET,
+    apiVersion: process.env.SANITY_GRAPHQL_API_VERSION,
+  });
+
   const { searchParams } = new URL(req.url);
   const type = searchParams.get('type');
   const id = searchParams.get('id');
@@ -20,7 +20,7 @@ export async function GET(req: Request) {
 
   // Require all params
   if (!slugParam && !type && !id) return new NextResponse('Invalid params', { status: 400 });
-  if (process.env.SANITY_STUDIO_READ_TOKEN && token !== process.env.SANITY_STUDIO_READ_TOKEN) {
+  if (!process.env.SANITY_STUDIO_READ_TOKEN || token !== process.env.SANITY_STUDIO_READ_TOKEN) {
     return new NextResponse('Invalid token', { status: 401 });
   }
 
@@ -32,7 +32,7 @@ export async function GET(req: Request) {
     });
     const slug = data.allRoute[0]?.slug;
     // Set draft mode cookie that enables fetching data at request time (instead of at build time)
-    draftMode().enable();
+    (await draftMode()).enable();
     const currentSlug = slug?.current === 'front-page' ? '' : slug?.current;
     const path = type === 'post' ? `/blog/${slugParam}` : `/${currentSlug}`;
 

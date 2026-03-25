@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
-import Link from 'next/link';
 
-import { Grid, CTA, PageHeader } from '@/components';
+import { Grid, CTA, PageHeader } from '@/components/server';
 import type { GetNotFoundPageQuery } from '@/graphql-types';
 import { GET_NOT_FOUND_PAGE } from '@/queries/index.graphql';
 import { sanityGraphqlAPIUrl, uuidv4, fetchData } from '@/utils';
@@ -23,7 +22,7 @@ const Custom404 = async () => {
   const data = await fetchData<GetNotFoundPageQuery>({
     query: GET_NOT_FOUND_PAGE,
     variables: { slug: 'page-not-found' },
-    isDraftMode: draftMode().isEnabled,
+    isDraftMode: (await draftMode()).isEnabled,
     apiUrl,
   });
   const page = data.allRoute[0]?.page;
@@ -37,9 +36,7 @@ const Custom404 = async () => {
         return null;
       })}
       <Grid item justifyContent="center" className="space-mb-start-4 ">
-        <CTA Link={Link} href="/">
-          Back To Home
-        </CTA>
+        <CTA href="/">Back To Home</CTA>
       </Grid>
     </>
   );

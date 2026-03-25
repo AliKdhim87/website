@@ -2,10 +2,11 @@ import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 import Image, { ImageProps } from 'next/image';
 
-import { Container, Grid, Page, PageHeader, PortableText } from '@/components';
+import { PortableText } from '@/components';
+import { Container, Grid, Page, PageHeader } from '@/components/server';
 import { GetAboutPageQuery } from '@/graphql-types';
 import { GET_ABOUT_PAGE } from '@/queries/index.graphql';
-import { sanityGraphqlAPIUrl, uuidv4, fetchData } from '@/utils';
+import { sanityGraphqlAPIUrl, fetchData } from '@/utils';
 
 const apiUrl = sanityGraphqlAPIUrl({
   projectId: process.env.SANITY_PROJECT_ID,
@@ -18,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     query: GET_ABOUT_PAGE,
     variables: { slug: 'about' },
     apiUrl,
-    isDraftMode: draftMode().isEnabled,
+    isDraftMode: (await draftMode()).isEnabled,
   });
 
   const { openGraph } = allRoute[0];
@@ -47,13 +48,13 @@ const AboutPage = async () => {
     query: GET_ABOUT_PAGE,
     variables: { slug: 'about' },
     apiUrl,
-    isDraftMode: draftMode().isEnabled,
+    isDraftMode: (await draftMode()).isEnabled,
   });
   const { page } = allRoute[0];
 
   return (
     <div>
-      {page?.content?.map((component) => {
+      {page?.content?.map((component, index: number) => {
         switch (component?.__typename) {
           case 'PageHeader': {
             const image = {
@@ -65,6 +66,7 @@ const AboutPage = async () => {
 
             return (
               <PageHeader
+                key={`${index}-page-header`}
                 title={component.title}
                 body={component.body}
                 image={
@@ -73,19 +75,18 @@ const AboutPage = async () => {
                     ImageComponent: Image,
                   } as any
                 }
-                key={uuidv4()}
               />
             );
           }
           case 'AboutMe':
             return (
-              <Page>
+              <Page key={`${index}-about-me`}>
                 <Container>
                   <Grid container justifyContent="center">
                     <Grid item md={10}>
                       <PortableText
                         value={component.aboutIntroductionRaw}
-                        key={uuidv4()}
+                        key={`${index}-portable-text`}
                         dataset={process.env.SANITY_DATASET as string}
                         projectId={process.env.SANITY_PROJECT_ID as string}
                       />

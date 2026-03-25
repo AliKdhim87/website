@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 
-import { CardList, CardListItem, PageHeader } from '@/components';
+import { CardList, CardListItem, PageHeader } from '@/components/server';
 import type { GetBlogPageQuery } from '@/graphql-types';
 import { GET_BLOG_PAGE } from '@/queries/index.graphql';
 import { uuidv4, fetchData, sanityGraphqlAPIUrl, formattedDate } from '@/utils';
@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const data = await fetchData<GetBlogPageQuery>({
     query: GET_BLOG_PAGE,
     variables: { slug: 'blog' },
-    isDraftMode: draftMode().isEnabled,
+    isDraftMode: (await draftMode()).isEnabled,
     apiUrl,
   });
   const openGraph = data.allRoute[0]?.openGraph;
@@ -45,7 +45,7 @@ const Blog = async () => {
   const data = await fetchData<GetBlogPageQuery>({
     query: GET_BLOG_PAGE,
     variables: { slug: 'blog' },
-    isDraftMode: draftMode().isEnabled,
+    isDraftMode: (await draftMode()).isEnabled,
     apiUrl,
   });
 

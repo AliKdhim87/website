@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 
+import type { SocialMediaListType } from '@/components';
 import {
   CardList,
   CardListItem,
@@ -8,8 +9,7 @@ import {
   CardListTitle,
   PageHeader,
   SocialMedia,
-  type SocialMediaListType,
-} from '@/components';
+} from '@/components/server';
 import type { GetHomePageQuery } from '@/graphql-types';
 import { GET_HOME_PAGE } from '@/queries/index.graphql';
 import { fetchData, formattedDate, sanityGraphqlAPIUrl } from '@/utils';
@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const data = await fetchData<GetHomePageQuery>({
     query: GET_HOME_PAGE,
     variables: { slug: 'front-page' },
-    isDraftMode: draftMode().isEnabled,
+    isDraftMode: (await draftMode()).isEnabled,
     apiUrl,
   });
   const openGraph = data.allRoute[0]?.openGraph;
@@ -41,7 +41,7 @@ const Home = async () => {
   const data = await fetchData<GetHomePageQuery>({
     query: GET_HOME_PAGE,
     variables: { slug: 'front-page' },
-    isDraftMode: draftMode().isEnabled,
+    isDraftMode: (await draftMode()).isEnabled,
     apiUrl,
   });
   const page = data.allRoute[0]?.page;
@@ -56,7 +56,7 @@ const Home = async () => {
             return <SocialMedia list={component.items as SocialMediaListType[]} key={`${index}-social-media`} />;
           case 'BlogList':
             return (
-              <CardList key={`${index}-blog-list`}>
+              <CardList key={`${index}-card-list`}>
                 <CardListTitle level={2}>{component.title}</CardListTitle>
                 {Array.isArray(recentPosts) &&
                   recentPosts.map(({ title, excerpt, publishedAt, updatedAt, slug }, index: number) => (

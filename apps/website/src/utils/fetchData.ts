@@ -9,7 +9,7 @@ type FetchDataParams<T> = {
   query: string;
   variables?: Variables;
   options?: RequestInit;
-  apiUrl: string;
+  apiUrl: string | (() => string);
   isDraftMode?: boolean;
 };
 
@@ -20,7 +20,8 @@ export async function fetchData<T>({ query, variables, options, apiUrl, isDraftM
     if (!requestOptions.cache) {
       requestOptions.cache = isDraftMode ? 'no-store' : 'force-cache';
     }
-    const { data } = await wretch(apiUrl, requestOptions)
+    const resolvedUrl = typeof apiUrl === 'function' ? apiUrl() : apiUrl;
+    const { data } = await wretch(resolvedUrl, requestOptions)
       .post({
         query,
         variables,
