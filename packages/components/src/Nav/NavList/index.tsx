@@ -1,8 +1,7 @@
-import { ForwardedRef, forwardRef, type DetailedHTMLProps, type HTMLAttributes, type PropsWithChildren } from 'react';
+import type { DetailedHTMLProps, HTMLAttributes, PropsWithChildren } from 'react';
 
 import classNames from 'classnames/bind';
 
-// import { activeLinkChecker } from '@/utils';
 export const activeLinkChecker = (link?: string, currentPath?: string) => link === currentPath;
 
 import styles from '../index.module.scss';
@@ -22,15 +21,8 @@ const classes = (mobile?: boolean) =>
     'ali-dev-nav__list--mobile': mobile,
   });
 
-export const NavList = forwardRef(
-  ({ children, mobile, ...restProps }: PropsWithChildren<NavListProps>, ref: ForwardedRef<HTMLUListElement>) => (
-    <ul {...restProps} className={classes(mobile)} ref={ref}>
-      {children}
-    </ul>
-  ),
+export const NavList = ({ children, mobile = false, ref, ...restProps }: PropsWithChildren<NavListProps>) => (
+  <ul {...restProps} className={classes(mobile)} ref={ref}>
+    {children}
+  </ul>
 );
-
-NavList.displayName = 'NavList';
-NavList.defaultProps = {
-  mobile: false,
-};

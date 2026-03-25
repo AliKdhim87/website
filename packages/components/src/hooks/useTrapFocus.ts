@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useRef } from 'react';
 
 export const useTrapFocus = (containerRef: React.RefObject<HTMLElement>) => {
@@ -5,7 +6,6 @@ export const useTrapFocus = (containerRef: React.RefObject<HTMLElement>) => {
 
   useEffect(() => {
     const element = containerRef.current;
-    if (!element) return;
 
     const focusableEls = Array.from(
       element.querySelectorAll<HTMLElement>(

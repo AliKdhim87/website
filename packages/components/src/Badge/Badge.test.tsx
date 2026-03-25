@@ -1,5 +1,3 @@
-import { createRef } from 'react';
-
 import { render, screen } from '@testing-library/react';
 
 import { Badge } from './index';
@@ -25,17 +23,6 @@ describe('Badge', () => {
     const badgeElement = container.querySelector(':only-child');
     expect(badgeElement).toHaveClass('custom-class');
     expect(badgeElement).toHaveClass('ali-dev-badge');
-  });
-  it('renders a link with a forwarded ref', () => {
-    const ref = createRef<HTMLAnchorElement>();
-    const { container } = render(
-      <Badge href="/" ref={ref}>
-        Badge
-      </Badge>,
-    );
-    const badgeElement = container.querySelector(':only-child');
-    expect(ref.current).toBe(badgeElement);
-    expect(badgeElement).toBeInTheDocument();
   });
   it('renders a badge with additional attributes', () => {
     const { container } = render(

@@ -1,5 +1,4 @@
-import type { BlockquoteHTMLAttributes, DetailedHTMLProps, ForwardedRef, PropsWithChildren } from 'react';
-import { forwardRef } from 'react';
+import type { BlockquoteHTMLAttributes, DetailedHTMLProps, PropsWithChildren } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -9,11 +8,8 @@ const css = classNames.bind(styles);
 
 type BlockquoteProps = DetailedHTMLProps<BlockquoteHTMLAttributes<HTMLQuoteElement>, HTMLQuoteElement>;
 
-export const Blockquote = forwardRef<HTMLQuoteElement, PropsWithChildren<BlockquoteProps>>(
-  ({ children, className, ...restProps }, ref: ForwardedRef<HTMLQuoteElement>) => (
-    <blockquote {...restProps} className={css('ali-dev-blockquote', className)} ref={ref}>
-      {children}
-    </blockquote>
-  ),
+export const Blockquote = ({ children, className, ...restProps }: PropsWithChildren<BlockquoteProps>) => (
+  <blockquote {...restProps} className={css('ali-dev-blockquote', className)}>
+    {children}
+  </blockquote>
 );
-Blockquote.displayName = 'Blockquote';

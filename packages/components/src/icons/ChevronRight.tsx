@@ -1,8 +1,6 @@
-import { ForwardedRef, forwardRef } from 'react';
-
 import type { SVGRProps } from './Icon';
 
-export const ChevronRight = forwardRef(({ title, titleId, ...props }: SVGRProps, ref: ForwardedRef<SVGSVGElement>) => (
+export const ChevronRight = ({ title, titleId, ...props }: SVGRProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -11,7 +9,6 @@ export const ChevronRight = forwardRef(({ title, titleId, ...props }: SVGRProps,
     viewBox="0 0 185.343 185.343"
     className="icon"
     aria-labelledby={titleId}
-    ref={ref}
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
@@ -22,6 +19,4 @@ export const ChevronRight = forwardRef(({ title, titleId, ...props }: SVGRProps,
       }}
     />
   </svg>
-));
-
-ChevronRight.displayName = 'ChevronRight';
+);

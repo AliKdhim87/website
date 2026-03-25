@@ -1,7 +1,5 @@
-import { type ForwardedRef, forwardRef } from 'react';
-
 import type { SVGRProps } from './Icon';
-export const Check = forwardRef(({ title, titleId, ...props }: SVGRProps, ref: ForwardedRef<SVGSVGElement>) => (
+export const Check = ({ title, titleId, ...props }: SVGRProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -10,7 +8,6 @@ export const Check = forwardRef(({ title, titleId, ...props }: SVGRProps, ref: F
     height="1em"
     className="icon"
     aria-labelledby={titleId}
-    ref={ref}
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
@@ -22,5 +19,4 @@ export const Check = forwardRef(({ title, titleId, ...props }: SVGRProps, ref: F
       d="M4 12.611 8.923 17.5 20 6.5"
     />
   </svg>
-));
-Check.displayName = 'Check';
+);

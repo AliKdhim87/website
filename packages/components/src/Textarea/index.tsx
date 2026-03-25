@@ -1,5 +1,5 @@
-import type { DetailedHTMLProps, ForwardedRef, TextareaHTMLAttributes } from 'react';
-import { forwardRef, useId } from 'react';
+import type { DetailedHTMLProps, TextareaHTMLAttributes } from 'react';
+import { useId } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -16,35 +16,28 @@ interface TextareaProps extends DetailedHTMLProps<TextareaHTMLAttributes<HTMLTex
   label: string;
 }
 
-export const Textarea = forwardRef(
-  (
-    { required, error, label, helperText, disabled, ...props }: TextareaProps,
-    ref: ForwardedRef<HTMLTextAreaElement>,
-  ) => {
-    const id = useId();
-    const ariaLabelledby = useId();
-    const ariaDescribedby = useId();
-    const textareaClasses = css('ali-dev-textarea', { 'ali-dev-textarea--error': error });
-    return (
-      <FormGroup>
-        <Label required={required} htmlFor={id} id={ariaLabelledby}>
-          {label}
-        </Label>
-        <textarea
-          rows={6}
-          id={id}
-          aria-invalid={error}
-          disabled={disabled}
-          className={textareaClasses}
-          aria-describedby={ariaDescribedby}
-          ref={ref}
-          {...props}
-        />
-        <HelperText error={error} id={ariaDescribedby}>
-          {helperText}
-        </HelperText>
-      </FormGroup>
-    );
-  },
-);
-Textarea.displayName = 'Textarea';
+export const Textarea = ({ required, error, label, helperText, disabled, ...props }: TextareaProps) => {
+  const id = useId();
+  const ariaLabelledby = useId();
+  const ariaDescribedby = useId();
+  const textareaClasses = css('ali-dev-textarea', { 'ali-dev-textarea--error': error });
+  return (
+    <FormGroup>
+      <Label required={required} htmlFor={id} id={ariaLabelledby}>
+        {label}
+      </Label>
+      <textarea
+        rows={6}
+        id={id}
+        aria-invalid={error}
+        disabled={disabled}
+        className={textareaClasses}
+        aria-describedby={ariaDescribedby}
+        {...props}
+      />
+      <HelperText error={error} id={ariaDescribedby}>
+        {helperText}
+      </HelperText>
+    </FormGroup>
+  );
+};

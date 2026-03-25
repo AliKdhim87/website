@@ -1,3 +1,4 @@
+'use client';
 import { useEffect } from 'react';
 export interface UseGraphCommentParams {
   graphcomment_id: string | undefined;

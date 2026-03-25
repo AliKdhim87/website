@@ -1,5 +1,3 @@
-import { createRef } from 'react';
-
 import { render, screen } from '@testing-library/react';
 
 import { CTA } from './index';
@@ -40,12 +38,5 @@ describe('CTA', () => {
     expect(link).toHaveClass('ali-dev-cta--primary');
     expect(link).toHaveClass('custom-class');
     expect(link).toHaveTextContent('Click me');
-  });
-  it('renders a link with a ref forwarded', () => {
-    const ref = createRef<HTMLAnchorElement>();
-    render(<CTA href="https://example.com" ref={ref} />);
-
-    expect(ref.current).not.toBeNull();
-    expect(ref.current).toBe(screen.getByRole('link'));
   });
 });

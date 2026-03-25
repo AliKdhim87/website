@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useRef, useState } from 'react';
 
 export const useDialog = () => {
@@ -30,6 +31,6 @@ export const useDialog = () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('touchstart', handleClickOutside);
     };
-  }, [dialogRef.current]);
+  }, []);
   return { dialogRef, open, openDialog, close };
 };

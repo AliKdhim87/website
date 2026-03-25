@@ -1,5 +1,6 @@
+'use client';
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-import { ElementType, useRef, useState } from 'react';
+import { type ElementType, type RefObject, useRef, useState } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -30,12 +31,12 @@ export interface NavProps<T extends ElementType = 'a'> {
 export const Nav = ({ logo, navLinks, linkProps, pathname }: NavProps) => {
   const [mobileMode, setMobileMode] = useState(false);
   const navAriaContrOLiD = 'nav-aria-controls-id';
-  const navListRef = useRef(null);
+  const navListRef = useRef<HTMLUListElement>(null);
   const { close, dialogRef, openDialog, open } = useDialog();
 
-  useTrapFocus(navListRef);
+  useTrapFocus(navListRef as RefObject<HTMLElement>);
   useClickOutsideDialog({
-    dialogRef,
+    dialogRef: dialogRef as RefObject<HTMLDialogElement>,
     isDialogOpen: open,
   });
 
