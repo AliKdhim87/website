@@ -63,4 +63,5 @@ dist
 node_modules
 .eslintcache
 .turbo/
-rollup.config-*
+GEMINI.md
+.infisical.json
