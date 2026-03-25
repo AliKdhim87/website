@@ -1,48 +1,36 @@
-import * as path from 'node:path';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-import type { StorybookConfigVite } from '@storybook/builder-vite';
-import type { StorybookConfig } from '@storybook/nextjs';
-import react from '@vitejs/plugin-react';
+import type { StorybookConfig } from '@storybook/nextjs-vite';
 import svgr from 'vite-plugin-svgr';
 
-const config: StorybookConfig & StorybookConfigVite = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const config: StorybookConfig = {
   stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    '@storybook/addon-onboarding',
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@chromatic-com/storybook',
-    '@storybook/addon-interactions',
+    '@storybook/addon-docs',
     '@storybook/preset-scss',
+    '@chromatic-com/storybook',
     'storybook-addon-pseudo-states',
   ],
   framework: {
-    name: '@storybook/nextjs',
+    name: '@storybook/nextjs-vite',
     options: {},
   },
-  core: {
-    builder: '@storybook/builder-vite',
-  },
   staticDirs: ['../public'],
-  async viteFinal(config) {
+  async viteFinal(config: any) {
     const { mergeConfig } = await import('vite');
     return mergeConfig(config, {
-      plugins: [react(), svgr()],
-      define: {
-        'process.env': process.env,
-      },
-
+      plugins: [svgr()],
       resolve: {
         alias: {
-          '@': path.resolve(__dirname, '../'),
+          '@': resolve(__dirname, '../'),
         },
       },
     });
   },
-  docs: {
-    autodocs: true,
-  },
 };
 
-// eslint-disable-next-line storybook/csf-component
 export default config;

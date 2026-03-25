@@ -25,14 +25,14 @@ export const Default: Story = {
           title={`Card Item ${index}`}
           body={`This is the description for Card Item ${index}.`}
           publishedAt={{
-            dateTime: `2025-0${index}-01T12:00:00Z`,
-            formatted: `March ${index}, 2025`,
-            label: 'Published on',
+            dateTime: '2025-03-22T20:23:26+01:00',
+            formatted: 'March 22, 2025',
+            label: 'Published',
           }}
           updatedAt={{
-            dateTime: `2025-0${index}-10T12:00:00Z`,
-            formatted: `March ${index + 9}, 2025`,
-            label: 'Updated on',
+            dateTime: '2025-03-22T20:23:26+01:00',
+            formatted: 'March 22, 2025',
+            label: 'Updated',
           }}
         />
       ))}

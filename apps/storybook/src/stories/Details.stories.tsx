@@ -1,6 +1,6 @@
 import { Details, Typography } from '@ali-dev/components';
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import { fn } from 'storybook/test';
 
 const meta: Meta<typeof Details> = {
   title: 'Components/Details',

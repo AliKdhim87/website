@@ -1,13 +1,10 @@
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/nextjs-vite';
 import '@ali-dev/components/components.css';
 import '@ali-dev/theme/build/web/variables.css';
 import 'highlight.js/styles/github-dark.css';
 
 const preview: Preview = {
   parameters: {
-    nextjs: {
-      appDirectory: true,
-    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -30,5 +27,4 @@ const preview: Preview = {
   },
 };
 
-// eslint-disable-next-line storybook/csf-component
 export default preview;
