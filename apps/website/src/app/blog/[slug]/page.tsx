@@ -2,17 +2,18 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
+import { GraphComment, TOC, PortableText } from '@/components';
 import type { TagsTypes } from '@/components';
-import { GraphComment, Grid, Tags, TOC, PortableText, Container, ContentTimestamps, Heading } from '@/components';
+import { Grid, Tags, Container, ContentTimestamps, Heading } from '@/components/server';
 import { GetAllBlogSlugsQuery, GetBlogBySlugQuery } from '@/graphql-types';
 import { GET_TOC_GROQ_QUERY } from '@/queries/groq';
 import { GET_ALL_BLOG_SLUGS, GET_BLOG_BY_SLUG } from '@/queries/index.graphql';
 import { getTableOfContent, sanityGraphqlAPIUrl, nestHeadings, formattedDate, fetchData } from '@/utils';
 
 type Params = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 const apiUrl = sanityGraphqlAPIUrl({
@@ -21,7 +22,8 @@ const apiUrl = sanityGraphqlAPIUrl({
   apiVersion: process.env.SANITY_GRAPHQL_API_VERSION,
 });
 
-const sanityGROQURL = `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/${process.env.SANITY_GROQ_API_VERSION}/data/query/${process.env.SANITY_DATASET}`;
+const sanityGROQURL = () =>
+  `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/${process.env.SANITY_GROQ_API_VERSION}/data/query/${process.env.SANITY_DATASET}`;
 export async function generateStaticParams() {
   const data = await fetchData<GetAllBlogSlugsQuery>({
     query: GET_ALL_BLOG_SLUGS,
@@ -37,7 +39,11 @@ export async function generateStaticParams() {
     : [];
 }
 
-export async function generateMetadata({ params: { slug } }: Params): Promise<Metadata> {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const params = await props.params;
+
+  const { slug } = params;
+
   const data = await fetchData<GetBlogBySlugQuery>({
     query: GET_BLOG_BY_SLUG,
     variables: { slug },
@@ -81,7 +87,11 @@ export async function generateMetadata({ params: { slug } }: Params): Promise<Me
   };
 }
 
-const PostPage = async ({ params: { slug } }: Params) => {
+const PostPage = async (props: Params) => {
+  const params = await props.params;
+
+  const { slug } = params;
+
   const data = await fetchData<GetBlogBySlugQuery>({
     query: GET_BLOG_BY_SLUG,
     variables: { slug },
@@ -116,6 +126,7 @@ const PostPage = async ({ params: { slug } }: Params) => {
             width={mainImage.asset.metadata.dimensions.width}
             height={mainImage.asset.metadata.dimensions.height}
             loading="eager"
+            unoptimized
             style={{
               maxWidth: '100%',
               height: 'auto',

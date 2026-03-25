@@ -1,7 +1,7 @@
 'use client';
 
 import { getImageDimensions } from '@sanity/asset-utils';
-import urlBuilder from '@sanity/image-url';
+import { createImageUrlBuilder } from '@sanity/image-url';
 import Image from 'next/image';
 
 type ImageValue = {
@@ -18,7 +18,7 @@ interface MainImageProps {
 export const MainImage = ({ dataset, value, projectId }: MainImageProps) => {
   if (projectId && dataset && value) {
     const { width, height } = getImageDimensions(value);
-    const imageUrl = urlBuilder({ projectId, dataset })
+    const imageUrl = createImageUrlBuilder({ projectId, dataset })
       .image(value.asset._ref)
       .width(800)
       .fit('max')
@@ -28,6 +28,7 @@ export const MainImage = ({ dataset, value, projectId }: MainImageProps) => {
     return (
       <Image
         loading="eager"
+        unoptimized
         src={imageUrl}
         alt={value.alt}
         width={width}

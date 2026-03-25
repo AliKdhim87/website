@@ -1,53 +1,54 @@
 'use client';
+import type { ComponentType } from 'react';
+
 import dynamic from 'next/dynamic';
 
 import { MainImage } from './MainImage';
 
-export { Anchor } from '@ali-dev/components';
-export { BlogHeader } from '@ali-dev/components';
-export { Body } from '@ali-dev/components';
-export { Button } from '@ali-dev/components';
-export { CardList, CardListItem, CardListLoadMoreLink, CardListTitle } from '@ali-dev/components';
-export { Container } from '@ali-dev/components';
-export { CTA } from '@ali-dev/components';
-export { Footer } from '@ali-dev/components';
-export { Form } from '@ali-dev/components';
-export { Grid } from '@ali-dev/components';
-export { Header } from '@ali-dev/components';
-export { Heading } from '@ali-dev/components';
-export { Icon } from '@ali-dev/components';
-export { InputField } from '@ali-dev/components';
-export { LayoutContainer } from '@ali-dev/components';
-export { List, ListItem } from '@ali-dev/components';
-export { LogoWrapper } from '@ali-dev/components';
-export { LogoImage } from '@ali-dev/components';
-export { Nav } from '@ali-dev/components';
+export { Surface } from '@ali-dev/components/src/Surface';
+export { LogoImage } from '@ali-dev/components/src/LogoImage';
+export { LogoWrapper } from '@ali-dev/components/src/Logo';
+export { Anchor } from '@ali-dev/components/src/Anchor';
+export { BlogHeader } from '@ali-dev/components/src/BlogHeader';
+export { Body } from '@ali-dev/components/src/Body';
+export { Button } from '@ali-dev/components/src/Button';
+export { CardList, CardListItem, CardListLoadMoreLink, CardListTitle } from '@ali-dev/components/src/CardList';
+export { Container } from '@ali-dev/components/src/Container';
+export { CTA } from '@ali-dev/components/src/CTA';
+export { Footer } from '@ali-dev/components/src/Footer';
+export { Form } from '@ali-dev/components/src/Form';
+export { Grid } from '@ali-dev/components/src/Grid';
+export { Header } from '@ali-dev/components/src/Header';
+export { Heading } from '@ali-dev/components/src/Heading';
+export { Icon } from '@ali-dev/components/src/icons/Icon';
+export { InputField } from '@ali-dev/components/src/InputField';
+export { LayoutContainer } from '@ali-dev/components/src/LayoutContainer';
+export { List, ListItem } from '@ali-dev/components/src/List';
+export { Nav } from '@ali-dev/components/src/Nav';
 export { Navigation } from './Navigation';
-export { Page } from '@ali-dev/components';
-export { ContentTimestamps } from '@ali-dev/components';
-export { PageHeader } from '@ali-dev/components';
-export { SocialMedia } from '@ali-dev/components';
-export { Surface } from '@ali-dev/components';
-export { Tags } from '@ali-dev/components';
-export { Textarea } from '@ali-dev/components';
-export { Typography } from '@ali-dev/components';
+export { Page } from '@ali-dev/components/src/Page';
+export { PageHeader } from '@ali-dev/components/src/PageHeader';
+export { SocialMedia } from '@ali-dev/components/src/socialMedia';
+export { Tags } from '@ali-dev/components/src/Tags';
+export { Textarea } from '@ali-dev/components/src/Textarea';
+export { Typography } from '@ali-dev/components/src/Typography';
 export const TOC = dynamic(
   async () => {
-    const Component = (await import('@ali-dev/components')).TOC;
+    const Component = (await import('@ali-dev/components/src/TOC')).TOC;
     return { default: Component };
   },
   { ssr: false },
 );
 export const GraphComment = dynamic(
   async () => {
-    const Component = (await import('@ali-dev/components')).GraphComment;
+    const Component = (await import('@ali-dev/components/src/GraphComments')).GraphComment;
     return { default: Component };
   },
   { ssr: false },
 );
-export const PortableTextComponents = dynamic(
+export const PortableTextComponents: ComponentType<any> = dynamic(
   async () => {
-    const Component = (await import('@ali-dev/components')).PortableTextComponents;
+    const Component = (await import('@ali-dev/components/src/PortableTextComponents')).PortableTextComponents;
     return { default: Component };
   },
   { ssr: false },
@@ -64,19 +65,20 @@ export const PortableText = ({ dataset, projectId, value }: MarkdownProps) => {
       value={value}
       components={{
         types: {
-          mainImage: ({ value }) => <MainImage dataset={dataset} projectId={projectId} value={value} />,
+          mainImage: ({ value }: { value: any }) => <MainImage dataset={dataset} projectId={projectId} value={value} />,
         },
       }}
     />
   );
 };
-export type { AnchorProps } from '@ali-dev/components';
-export type { BlogHeaderProps } from '@ali-dev/components';
-export type { ButtonProps } from '@ali-dev/components';
-export type { CardListItemProps, CardListProps } from '@ali-dev/components';
-export type { CTAProps } from '@ali-dev/components';
-export type { GridProps } from '@ali-dev/components';
-export type { HeadingProps, HeadingVariant } from '@ali-dev/components';
+
+export type { AnchorProps } from '@ali-dev/components/src/Anchor';
+export type { BlogHeaderProps } from '@ali-dev/components/src/BlogHeader';
+export type { ButtonProps } from '@ali-dev/components/src/Button';
+export type { CardListItemProps, CardListProps } from '@ali-dev/components/src/CardList';
+export type { CTAProps } from '@ali-dev/components/src/CTA';
+export type { GridProps } from '@ali-dev/components/src/Grid';
+export type { HeadingProps, HeadingVariant } from '@ali-dev/components/src/Heading';
 export type {
   HeadingType,
   HeadingBase,
@@ -88,8 +90,9 @@ export type {
   HeadingsArray,
   TOCListProps,
   TOCProps,
-} from '@ali-dev/components';
-export type { PageHeaderProps } from '@ali-dev/components';
-export type { SocialMediaLinkProps, SocialMediaListType } from '@ali-dev/components';
-export type { TagsProps, TagsTypes } from '@ali-dev/components';
-export type { TypographyProps } from '@ali-dev/components';
+} from '@ali-dev/components/src/TOC';
+export type { PageHeaderProps } from '@ali-dev/components/src/PageHeader';
+export type { SocialMediaListType } from '@ali-dev/components/src/socialMedia';
+export type { SocialMediaLinkProps } from '@ali-dev/components/src/socialMedia/SocialMediaLink';
+export type { TagsProps, TagsTypes } from '@ali-dev/components/src/Tags';
+export type { TypographyProps } from '@ali-dev/components/src/Typography';

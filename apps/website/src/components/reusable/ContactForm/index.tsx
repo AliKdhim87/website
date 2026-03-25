@@ -1,15 +1,20 @@
 'use client';
 
+import { SyntheticEvent, useCallback } from 'react';
+
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { Button, Typography, Heading, InputField, Textarea, Form } from '@/components';
+
 interface ContactFormProps {
   onAction: (formData: FormData) => Promise<any>;
 }
 
 export const ContactForm = ({ onAction }: ContactFormProps) => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const {
     register,
     trigger,
@@ -18,9 +23,11 @@ export const ContactForm = ({ onAction }: ContactFormProps) => {
   } = useForm({
     mode: 'onChange',
   });
+
   const handleButtonClick = async () => {
     await trigger();
   };
+
   const toastify = (message: string, type: 'error' | 'success') => {
     toast[type](message, {
       position: 'top-center',
@@ -33,29 +40,38 @@ export const ContactForm = ({ onAction }: ContactFormProps) => {
     });
   };
 
+  const handleSubmit = useCallback(
+    async (e: SyntheticEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      if (!executeRecaptcha) {
+        toastify('reCAPTCHA not ready. Please try again.', 'error');
+        return;
+      }
+      const formData = new FormData(e.currentTarget);
+      const token = await executeRecaptcha('contact_form');
+      formData.append('recaptchaToken', token);
+      const res = await onAction(formData);
+      switch (res.status) {
+        case 200:
+          toastify(res.message, 'success');
+          reset();
+          break;
+        case 400:
+        case 429:
+        case 500:
+          toastify(res.message, 'error');
+          break;
+        default:
+          break;
+      }
+    },
+    [executeRecaptcha, onAction, reset],
+  );
+
   return (
     <>
       <ToastContainer />
-      <Form
-        action={(formData) => {
-          onAction(formData).then((res) => {
-            switch (res.status) {
-              case 200:
-                toastify(res.message, 'success');
-                reset();
-                break;
-              case 400:
-                toastify(res.message, 'error');
-                break;
-              case 500:
-                toastify(res.message, 'error');
-                break;
-              default:
-                break;
-            }
-          });
-        }}
-      >
+      <Form onSubmit={handleSubmit}>
         <InputField
           {...register('fullname', {
             required: {
@@ -79,8 +95,7 @@ export const ContactForm = ({ onAction }: ContactFormProps) => {
               message: 'Please enter your email',
             },
             pattern: {
-              value:
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
               message: 'Please enter a valid email address',
             },
           })}
@@ -127,9 +142,10 @@ export const ContactIntro = () => (
       Let&apos;s Connect and Make Something Awesome
     </Heading>
     <Typography>
-      Whether you’re exploring new ideas, need help with a project, or just have questions, I’m here to chat! With a
-      passion for creating seamless, user-friendly digital experiences, I love collaborating on exciting projects. Reach
-      out, whether it’s for a quick question or a bigger conversation. Let’s turn your vision into reality together!
+      Whether you&apos;re exploring new ideas, need help with a project, or just have questions, I&apos;m here to chat!
+      With a passion for creating seamless, user-friendly digital experiences, I love collaborating on exciting
+      projects. Reach out, whether it&apos;s for a quick question or a bigger conversation. Let&apos;s turn your vision
+      into reality together!
     </Typography>
   </>
 );

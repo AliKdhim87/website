@@ -1,55 +1,41 @@
-import path from 'path';
-
 export default {
   reactStrictMode: true,
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'cdn.sanity.io',
+        protocol: "https",
+        hostname: "cdn.sanity.io",
       },
     ],
   },
-  webpack(config) {
-    config.module.rules.forEach((rule) => {
-      if (rule.test && rule.test.toString().includes('scss') && rule.use) {
-        rule.use.forEach((loader) => {
-          // loader can be string or object, so guard it
-          if (
-            (typeof loader === 'object' || typeof loader === 'function') &&
-            loader.loader &&
-            loader.loader.includes('sass-loader')
-          ) {
-            loader.options = {
-              ...loader.options,
-              sassOptions: {
-                ...(loader.options?.sassOptions || {}),
-                includePaths: [path.resolve(__dirname, 'node_modules')],
-              },
-            };
-          }
-        });
-      }
-    });
-
-    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'));
-
-    config.module.rules.push(
+  transpilePackages: ["@ali-dev/components"],
+  async headers() {
+    return [
       {
-        ...fileLoaderRule,
-        test: /\.svg$/i,
-        resourceQuery: /url/,
+        source: "/(.*)",
+        headers: [
+          {
+            key: "X-Frame-Options",
+            value: "DENY",
+          },
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
+          {
+            key: "Referrer-Policy",
+            value: "origin-when-cross-origin",
+          },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000; includeSubDomains; preload",
+          },
+          {
+            key: "X-XSS-Protection",
+            value: "1; mode=block",
+          },
+        ],
       },
-      {
-        test: /\.svg$/i,
-        issuer: fileLoaderRule.issuer,
-        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] },
-        use: ['@svgr/webpack'],
-      },
-    );
-
-    fileLoaderRule.exclude = /\.svg$/i;
-
-    return config;
+    ];
   },
 };

@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { CardList, CardListItem, PageHeader } from '@/components';
+import { CardList, CardListItem, PageHeader } from '@/components/server';
 import { GetAllBlogByCategoryIdQuery, GetAllCategoryIdQuery, GetCategoryByIdQuery } from '@/graphql-types';
 import { GET_ALL_BLOG_BY_CATEGORY_ID, GET_ALL_CATEGORY_ID, GET_CATEGORY_BY_ID } from '@/queries/index.graphql';
 import { fetchData, sanityGraphqlAPIUrl } from '@/utils';
 interface CategoriesPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 const apiUrl = sanityGraphqlAPIUrl({
@@ -21,10 +21,11 @@ export async function generateStaticParams() {
     query: GET_ALL_CATEGORY_ID,
     apiUrl,
   });
-  return allCategoryIds.allCategory.map((category) => ({ params: { id: category._id } }));
+  return allCategoryIds.allCategory.map((category) => ({ id: category._id as string }));
 }
 
-export async function generateMetadata({ params }: CategoriesPageProps): Promise<Metadata> {
+export async function generateMetadata(props: CategoriesPageProps): Promise<Metadata> {
+  const params = await props.params;
   const { Category } = await fetchData<GetCategoryByIdQuery>({
     query: GET_CATEGORY_BY_ID,
     variables: { id: params.id },
@@ -40,7 +41,11 @@ export async function generateMetadata({ params }: CategoriesPageProps): Promise
   };
 }
 
-const BlogCategories = async ({ params: { id } }: CategoriesPageProps) => {
+const BlogCategories = async (props: CategoriesPageProps) => {
+  const params = await props.params;
+
+  const { id } = params;
+
   const data = await fetchData<GetAllBlogByCategoryIdQuery>({
     query: GET_ALL_BLOG_BY_CATEGORY_ID,
     variables: { categoryId: id },
