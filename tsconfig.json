@@ -3,3 +3,4 @@
   "include": ["./.lintstagedrc.js", "./eslint.config.js", "./stylelint.config.js"],
   "exclude": ["node_modules", ".turbo", ".eslintcache"]
 }
+
