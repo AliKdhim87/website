@@ -2,11 +2,7 @@
   "compilerOptions": {
     "composite": true,
     "target": "es2022",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,24 +16,12 @@
     "jsx": "react-jsx",
     "incremental": true,
     "paths": {
-      "@/components/*": [
-        "./src/components/*"
-      ],
-      "@/styles/*": [
-        "./src/styles/*"
-      ],
-      "@/utils": [
-        "./src/utils"
-      ],
-      "@/graphql-types": [
-        "./src/generated/graphql.ts"
-      ],
-      "@/queries": [
-        "./src/queries"
-      ],
-      "@/*": [
-        "./src/*"
-      ]
+      "@/components/*": ["./src/components/*"],
+      "@/styles/*": ["./src/styles/*"],
+      "@/utils": ["./src/utils"],
+      "@/graphql-types": ["./src/generated/graphql.ts"],
+      "@/queries": ["./src/queries"],
+      "@/*": ["./src/*"]
     },
     "plugins": [
       {
@@ -56,8 +40,5 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    ".next"
-  ]
+  "exclude": ["node_modules", ".next"]
 }

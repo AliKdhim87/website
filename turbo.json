@@ -17,15 +17,15 @@
       "dependsOn": ["^build"]
     },
     "lint": {
-      "dependsOn": ["^lint"],
+      "dependsOn": ["^build", "^lint"],
       "cache": false
     },
     "lint-fix": {
-      "dependsOn": ["^lint-fix"],
+      "dependsOn": ["^build", "^lint-fix"],
       "cache": false
     },
     "lint:eslint": {
-      "dependsOn": ["^lint:eslint"],
+      "dependsOn": ["^build", "^lint:eslint"],
       "cache": false
     },
     "lint-fix:eslint": {
