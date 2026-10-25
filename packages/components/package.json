@@ -14,7 +14,13 @@
       "types": "./dist/types/src/index.d.ts",
       "style": "./dist/components.css"
     },
-    "./src/*": "./src/*",
+    "./src/*": [
+      "./src/*/index.tsx",
+      "./src/*/index.ts",
+      "./src/*.tsx",
+      "./src/*.ts",
+      "./src/*"
+    ],
     "./components.css": {
       "default": "./dist/components.css"
     },
