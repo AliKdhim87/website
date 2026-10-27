@@ -8,6 +8,9 @@ const {
   SANITY_GRAPHQL_API_VERSION = '',
   SANITY_GROQ_API_VERSION = '',
   SITE_URL = '',
+  NEXT_PUBLIC_SENTRY_DSN = '',
+  SENTRY_PROJECT = '',
+  SENTRY_AUTH_TOKEN = '',
 } = process.env;
 
 const envEntries = {
@@ -18,6 +21,9 @@ const envEntries = {
   SANITY_GRAPHQL_API_VERSION,
   SANITY_GROQ_API_VERSION,
   SITE_URL,
+  NEXT_PUBLIC_SENTRY_DSN,
+  SENTRY_PROJECT,
+  SENTRY_AUTH_TOKEN,
 } as const;
 
 const createEnvFile = async (): Promise<void> => {
