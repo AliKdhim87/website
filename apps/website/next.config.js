@@ -1,4 +1,6 @@
-export default {
+import { withSentryConfig } from "@sentry/nextjs/config";
+
+const nextConfig = {
   reactStrictMode: true,
   images: {
     remotePatterns: [
@@ -39,3 +41,11 @@ export default {
     ];
   },
 };
+
+export default withSentryConfig(nextConfig, {
+  org: "ali-dev-6z",
+  project: process.env.SENTRY_PROJECT,
+  silent: !process.env.CI,
+  widenClientFileUpload: true,
+  tunnelRoute: "/monitoring",
+});
